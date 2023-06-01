@@ -1,0 +1,51 @@
+﻿@model hocvien.Models.Phieudangkyhoc
+
+@{
+    ViewData["Title"] = "registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>registration</h1>
+
+<h4>Phieudangkyhoc</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateRegistration" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Maphieu" class="control-label"></label>
+                <input asp-for="Maphieu" class="form-control" />
+                <span asp-validation-for="Maphieu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mahv" class="control-label"></label>
+                <input asp-for="Mahv" class="form-control" value="@ViewBag.s" />
+                <span asp-validation-for="Mahv" class="text-danger"></span>
+            </div>
+          @*  <div class="form-group">
+                <label asp-for="Ngaydk" class="control-label"></label>
+                <input asp-for="Ngaydk" class="form-control" />
+                <span asp-validation-for="Ngaydk" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Ghichu" class="control-label"></label>
+                <input asp-for="Ghichu" class="form-control" />
+                <span asp-validation-for="Ghichu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maloptuyensinh" class="control-label"></label>
+                <input asp-for="Maloptuyensinh" class="form-control" value="@ViewBag.kh" />
+                <span asp-validation-for="Maloptuyensinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

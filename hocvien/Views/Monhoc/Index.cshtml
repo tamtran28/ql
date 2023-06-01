@@ -1,0 +1,66 @@
+﻿@model IEnumerable<hocvien.Models.Monhoc>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh sách môn học</h1>
+
+<p>
+    <a asp-action="formthemMonhoc" class="btn btn-primary">Thêm môn học</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mamh)
+            </th>
+            <th>
+               Tên môn học
+            </th>
+            <th>
+                Mô tả
+            </th>
+            <th>
+                Học phí
+            </th>
+            <th>
+                Người tạo
+            </th>
+            <th>
+               Ngày tạo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mamh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenmh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hocphi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nguoitao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaytao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

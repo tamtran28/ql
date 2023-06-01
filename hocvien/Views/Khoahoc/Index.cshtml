@@ -1,0 +1,63 @@
+﻿@model IEnumerable<hocvien.Models.Khoahoc>
+
+@{
+    ViewData["Title"] = "Danh sách khóa học";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="formthemKhoahoc">Thêm khóa học</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Makh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenkh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thoiluong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motakh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nguoitao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaytao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Makh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenkh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thoiluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motakh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nguoitao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaytao)
+            </td>
+            <td>
+                    <a asp-action="formXoakhoahoc" asp-route-id="@item.Makh" class="btn btn-primary">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,172 @@
+﻿@model hocvien.Models.Loptuyensinh
+
+@{
+    ViewData["Title"] = "formthemLoptuyensinh";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>formthemLoptuyensinh</h1>
+
+<h4>Loptuyensinh</h4>
+<hr />
+@*<form asp-action="themLoptuyensinh" method="post">*@
+    <form asp-action="CreateClass" method="post">
+        <div class="row">
+            <div class="col-md-6">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Makh" class="control-label">Tên khóa học</label>
+                    <select asp-items="@ViewBag.DSKhoahoc" asp-for="Makh" onchange="xemKh_change()" class="form-control"></select>
+                    @*<div id="xemkhoahoc"></div>*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mamh" class="control-label">Tên lớp</label>
+                    @foreach (var item in ViewBag.DSMonhoc)
+                    {
+                        <div class="form-check">
+                            <input type="checkbox" asp-for="Mamh" value="@item.Value" class="form-check-input" id="xemkhoahoc">
+                            <label class="form-check-label" for="mamh_@item.Value">@item.Text</label>
+                        </div>
+                    }
+                    <div asp-validation-for="Mamh" class="text-danger"></div>
+                </div>
+                <div class="col-md-6-offset-md-2">
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+                @* <div class="form-group">
+                        <label asp-for="Maloptuyensinh" class="control-label"></label>
+                        <input asp-for="Maloptuyensinh" class="form-control" />
+                    </div>*@
+
+                @*<div class="form-group">
+                         <label asp-for="Tenloptuyensinh" class="control-label">Tên lớp tuyển sinh</label>
+                         <input asp-for="Tenloptuyensinh" class="form-control" />
+                         <span asp-validation-for="Tenloptuyensinh" class="text-danger"></span>
+                     </div>
+                     <div class="form-group">
+                         <label asp-for="Trangthai" class="control-label"></label>
+                         <input asp-for="Trangthai" class="form-control" />
+                         <span asp-validation-for="Trangthai" class="text-danger"></span>
+                     </div>
+                     <div class="form-group">
+                         <label asp-for="Nguoitao" class="control-label">Người tạo</label>
+                         <input asp-for="Nguoitao" class="form-control" />
+                         <span asp-validation-for="Nguoitao" class="text-danger"></span>
+                     </div>
+                     </div>
+                     <div class="col-md-6">
+                     <div class="form-group">
+                         <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
+                         <input asp-for="Ngaytao" type="date" class="form-control" />
+                         <span asp-validation-for="Ngaytao" class="text-danger"></span>
+                     </div>
+                     <div class="form-group">
+                         <label asp-for="Ngaybatdau" class="control-label">Ngày bắt đầu</label>
+                         <input asp-for="Ngaybatdau" type="date" class="form-control" />
+                         <span asp-validation-for="Ngaybatdau" class="text-danger"></span>
+                     </div>
+                     <div class="form-group">
+                         <label asp-for="Ngayketthuc" class="control-label">Ngày kết thúc</label>
+                         <input asp-for="Ngayketthuc" type="date" class="form-control" />
+                         <span asp-validation-for="Ngayketthuc" class="text-danger"></span>
+                     </div>
+                     <div class="form-group">
+                         <label asp-for="Thuhoc" class="control-label">Thứ học</label>
+                         <input asp-for="Thuhoc" class="form-control" />
+                         <span asp-validation-for="Thuhoc" class="text-danger"></span>
+                     </div>
+                     <div class="form-group">
+                         <label asp-for="Giohoc" class="control-label">Giờ học</label>
+                         <input asp-for="Giohoc" class="form-control" />
+                         <span asp-validation-for="Giohoc" class="text-danger"></span>
+                     </div>
+                    </div>
+                    <div class="col-md-6-offset-md-2">
+                     <div class="form-group">
+                         <input type="submit" value="Create" class="btn btn-primary" />
+                     </div>*@
+
+            </div>
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    <script type="text/javascript">function xemKh_change() {
+            const maKh = document.getElementById("Makh").value;
+            // Create an XMLHttpRequest object
+            const xhttp = new XMLHttpRequest();
+
+            // Define a callback function
+            xhttp.onload = function () {
+                // Here you can use the Data
+                document.getElementById("xemkhoahoc").innerHTML = xhttp.responseText;
+            }
+
+            // Send a request
+            const strUrl = "/Loptuyensinh/xemKhoahoc/" + maKh;
+            xhttp.open("GET", strUrl);
+            xhttp.send();
+        }
+        function xemmh_change() {
+            const maMh = document.getElementById("Mamh").value;
+            // Create an XMLHttpRequest object
+            const xhttp = new XMLHttpRequest();
+
+            // Define a callback function
+            xhttp.onload = function () {
+                // Here you can use the Data
+                document.getElementById("xemmonhoc").innerHTML = xhttp.responseText;
+            }
+
+            // Send a request
+            const strUrl = "/Loptuyensinh/xemMonhoc/" + maMh;
+            xhttp.open("GET", strUrl);
+            xhttp.send();
+        }
+        //$(document).ready(function () {
+        //    $("#Makh, #Mamh").change(function () {
+        //        var courseId = $("#Makh").val();
+        //        var subjectId = $("#Mamh").val();
+        //        if (courseId && subjectId) {
+        //            $.ajax({
+        //                url: "/Class/GenerateClassCode",
+        //                type: "POST",
+        //                data: { courseId: courseId, subjectId: subjectId },
+        //                success: function (data) {
+        //                    $("#class-code").val(data);
+        //                },
+        //                error: function () {
+        //                    alert("Không thể tạo mã lớp tuyển sinh!");
+        //                }
+        //            });
+        //        }
+        //    });
+        //});
+
+        //function matuyensinh_change() {
+        //    const maKh = document.getElementById("Makh").value;
+        //    const maMh = document.getElementById("Mamh").value;
+        //    const maTS = maKh + "-" + maMh;
+        //    // Create an XMLHttpRequest object
+        //    const xhttp = new XMLHttpRequest();
+
+        //    // Define a callback function
+        //    xhttp.onload = function () {
+        //        // Here you can use the Data
+        //        document.getElementById("matuyensinh").innerHTML = xhttp.responseText;
+        //    }
+
+        //    // Send a request
+        //    const strUrl = "/Loptuyensinh/xemMonhoc/" + maTS;
+        //    xhttp.open("GET", strUrl);
+        //    xhttp.send();
+        //}</script>
+
+    @*@section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    *@

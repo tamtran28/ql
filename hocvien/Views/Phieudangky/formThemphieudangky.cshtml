@@ -1,0 +1,115 @@
+﻿@model IEnumerable<hocvien.Models.Phieudangkyhoc>
+
+@{
+    ViewData["Title"] = "Dang ky";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Đăng ký khóa học</h1>
+<div id="thongtinHocvien"></div>
+<hr />
+@*<input type="button" onclick="dangkykhoahoc_click()" value="Dang Ky" />
+<input type="hidden" id="mahv" />*@
+
+<h3>Tìm kiếm học viên</h3>
+<div class="row">
+    <div class="col-md-8">
+        <input type="text" id="tenhv" class="form-control" />
+        <input type="hidden" id="mahv" />
+
+    </div>
+    <div class="col-md-4">
+        <input type="button" onclick="timHocvien_click()" value="Tìm kiếm" />
+    </div>
+</div>
+<div id="danhsachHocvien"></div>
+@*<select id="malop" asp-items="@ViewBag.DSLop" class="form-control" onchange="chonLop_change()">
+</select>
+<div id="thongtinlophoc"></div>*@
+<script type="text/javascript">
+    function timHocvien_click(){
+        const tenhv=document.getElementById("tenhv").value;
+        // Create an XMLHttpRequest object
+        const xhttp = new XMLHttpRequest();
+
+        // Define a callback function
+        xhttp.onload = function () {
+            // Here you can use the Data
+            document.getElementById("danhsachHocvien").innerHTML=xhttp.responseText;
+        }
+
+        // Send a request
+        const strUrl = "/Phieudangky/timHocvien/" + tenhv;
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+
+    }
+    function chonHocvien_click(id){
+        // Create an XMLHttpRequest object
+        const xhttp = new XMLHttpRequest();
+
+        // Define a callback function
+        xhttp.onload = function () {
+            // Here you can use the Data
+            document.getElementById("thongtinHocvien").innerHTML = xhttp.responseText;
+            document.getElementById("danhsachHocvien").innerHTML = "";
+            document.getElementById("mahv").innerHTML = xhttp.responseText;
+        }
+
+        // Send a request
+        const strUrl = "/Phieudangky/timMotHocvien/" + id;
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+    }
+    function chonLop_change() {
+        const malop = document.getElementById("malop").value;
+        const xhttp= new XMLHttpRequest();
+        // Define a callback function
+        xhttp.onload = function () {
+            // Here you can use the Data
+            document.getElementById("thongtinlophoc").innerHTML = xhttp.responseText;
+            //document.getElementById("danhsachHocvien").innerHTML = "";
+        }
+
+        // Send a request
+        const strUrl = "/Phieudangky/timLop/" + malop;
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+    }
+
+    function dangkykhoahoc_click() {
+        const mh = document.getElementById("malop").value;
+        const hv = document.getElementById("mahv").value;
+        if(hv==""){
+            alert("chua chon hv");
+        }
+        if (mh=="") {
+            alert("chua chon lop");
+        }
+        const xhttp = new XMLHttpRequest();
+        // Define a callback function
+        xhttp.onload = function () {
+            if(JSON.parse(xhttp.responseText)==true){
+                alert("Dang ky thanh cong");
+                return;
+            }
+            //else{
+            //    alert("Mon nay da dang ky");
+            //    return;
+            //}
+        }
+            // Here you can use the Data
+            //document.getElementById("thongtinmonhoc").innerHTML = xhttp.responseText;
+            //document.getElementById("danhsachHocvien").innerHTML = "";
+         //Send a request
+       // let mhh={mshv:hv,msmh:mh,diem:""};
+        //const strUrl = "/Phieudangky/dangkyMonhoc";
+        //xhttp.open("POST", strUrl);
+        //xhttp.setRequestHeader("Content-Type","application/json");
+        //xhttp.send(JSON.stringify(mhh));
+
+        const strUrl = "/Phieudangky/dangkyMonhoc";
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+    }
+</script>

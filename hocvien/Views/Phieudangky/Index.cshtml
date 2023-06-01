@@ -1,0 +1,88 @@
+﻿@model IEnumerable<hocvien.Models.CPhieuDangKy>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="SearchCourse">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Maphieu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mahv)
+            </th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.Makh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mamh)
+            </th>*@
+
+            <th>
+                @Html.DisplayNameFor(model => model.Maloptuyensinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaydk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenloptuyensinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hoten)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maphieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mahv)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Makh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mamh)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Maloptuyensinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaydk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenloptuyensinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+           @* <td>
+                    <form asp-action="Payment" method="post" asp-route-id="@Model.Maphieu">
+                            <input type="hidden" name="registrationCode" value="@regForm.RegistrationCode" />
+                            <button type="submit" class="btn btn-primary">Thanh toán</button>
+                                </form>
+            </td>*@
+            <td>
+                    <form asp-action="formLapHD" asp-controller="Hoadon" asp-route-id="@item.Maphieu">
+                        <button type="submit" class="btn btn-primary">Thanh toán</button>
+                        </form>
+                   @* <a asp-action="hoaDon" asp-controller="Hoadon" asp-route-id="@item.Maphieu" class="btn btn-primary">Tạo</a>*@
+            </td>
+               
+        </tr>
+            
+}
+    </tbody>
+</table>

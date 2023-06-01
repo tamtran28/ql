@@ -1,0 +1,80 @@
+﻿@model IEnumerable<hocvien.Models.Hocvien>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           @* <th>
+                @Html.DisplayNameFor(model => model.Mahv)
+            </th>*@
+            <th>
+                Họ tên
+            </th>
+            <th>
+               Ngày sinh
+            </th>
+            <th>
+                SDT
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.Gioitinh)
+            </th>*@
+            <th>
+               Trạng thái
+            </th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.Nguoitao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaytao)
+            </th>*@
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Mahv)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diachi)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Gioitinh)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Trangthai)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Nguoitao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaytao)
+            </td>*@
+          
+            <td>
+                    <a asp-action="chiTiet" class="btn btn-primary" asp-route-id="@item.Mahv">Chi tiết</a>
+            </td>
+                <td>
+                    <input type="button" value="Chọn học viên" onclick="chonHocvien_click('@item.Mahv')" class="btn btn-primary" />a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

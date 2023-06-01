@@ -1,0 +1,29 @@
+﻿
+<select id="dslop" asp-items="@ViewBag.DSLop" class="form-control" onchange="xemDSLop_change()"></select>
+<div>
+    <p>
+        <a asp-action="taoLop" asp-route-id="dslop">Them</a>
+    </p>
+</div>
+<div id="dshocvien"></div>
+
+<script type="text/javascript">
+
+    function xemDSLop_change() {
+        const malop = document.getElementById("dslop").value;
+        // Create an XMLHttpRequest object
+        const xhttp = new XMLHttpRequest();
+
+        // Define a callback function
+        xhttp.onload = function () {
+            // Here you can use the Data
+            document.getElementById("dshocvien").innerHTML = xhttp.responseText;
+
+        }
+
+        // Send a request
+        const strUrl = "/Xeplop/xemDSLop/" + malop;
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+    }
+</script>

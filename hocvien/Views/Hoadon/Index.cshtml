@@ -1,0 +1,84 @@
+﻿@model IEnumerable<hocvien.Models.Hoadon>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="formLapHD">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mahd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaythu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tongtienthanhtoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ghichu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hinhthuc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trangthaithanhtoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manv)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.Mahv)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Maphieu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mahd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaythu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tongtienthanhtoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ghichu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hinhthuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trangthaithanhtoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manv)
+            </td>
+          @*  <td>
+                @Html.DisplayFor(modelItem => item.Mahv)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Maphieu)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

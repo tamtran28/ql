@@ -1,0 +1,95 @@
+﻿@model hocvien.Models.Hocvien
+
+@{
+    ViewData["Title"] = "themHocVien";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+<h1>Thêm học viên</h1>
+
+<hr />
+<form asp-action="themHocVien" method="post">
+<div class="row">
+    <div class="col-md-6">
+     
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           @* <div class="form-group" >
+                <label asp-for="Mahv" class="control-label"></label>
+                <input asp-for="Mahv" class="form-control" />
+                <span asp-validation-for="Mahv" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Hoten" class="control-label">Họ tên</label>
+                <input asp-for="Hoten" class="form-control" />
+                <span asp-validation-for="Hoten" class="text-danger"></span>
+            </div>
+            <div class="form-group" >
+                <label asp-for="Ngaysinh" class="control-label">Ngày sinh </label>
+                <input asp-for="Ngaysinh" type="date" class="form-control" />
+                <span asp-validation-for="Ngaysinh" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Sdt" class="control-label">SDT</label>
+                <input asp-for="Sdt" class="form-control" />
+                <span asp-validation-for="Sdt" class="text-danger"></span>
+            </div>
+           
+       
+            <div class="form-group">
+                <label asp-for="Diachi" class="control-label">Địa chỉ</label>
+                <input asp-for="Diachi" class="form-control" />
+                <span asp-validation-for="Diachi" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Gioitinh" class="control-label">Giới tính</label>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input asp-for="Gioitinh" type="radio" value="true" class="form-check-input" />Nam
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input asp-for="Gioitinh" type="radio" value="false" checked="checked" class="form-check-input" />Nữ
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trangthai" class="control-label">Trạng thái</label>
+                <input asp-for="Trangthai" class="form-control" />
+                <span asp-validation-for="Trangthai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nguoitao" class="control-label">Người tạo</label>
+                <input asp-for="Nguoitao" class="form-control" />
+                <span asp-validation-for="Nguoitao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
+                <input asp-for="Ngaytao" type="date" class="form-control" />
+                <span asp-validation-for="Ngaytao" class="text-danger"></span>
+            </div>
+           </div>
+            <div class="form-group">
+                <input type="submit" value="Them" class="btn btn-primary" />
+            </div>
+        
+    </div>
+
+</form>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@*
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@

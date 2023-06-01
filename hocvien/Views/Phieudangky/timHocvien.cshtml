@@ -1,0 +1,99 @@
+﻿@model IEnumerable<hocvien.Models.Hocvien>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mahv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hoten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaysinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diachi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gioitinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trangthai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nguoitao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaytao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <form asp-action="registration" method="post">
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mahv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gioitinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trangthai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nguoitao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaytao)
+            </td>
+           @* <td>
+                    <button class="select-student" data-id="@item.Mahv">Chọn</button>
+
+            </td>*@
+                <td>
+                        @*<input type="submit" value="Chọn học viên" class="btn btn-primary"/>*@
+                        @*<input type="submit" value="Chọn lớp" class="btn btn-primary" />*@
+                    <a asp-action="registration" class="btn btn-primary" asp-route-id="@item.Mahv">Chọn</a>
+
+                </td>
+        </tr>
+        </form>
+}
+    </tbody>
+</table>
+<script type="text/javascript">
+    // Lắng nghe sự kiện click của các nút chọn học viên
+    document.querySelectorAll('.select-student').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            // Lấy mã học viên từ thuộc tính data-student-id của nút chọn học viên
+            var studentId = event.target.getAttribute("data-id");
+            // Chuyển đến trang đăng ký khóa học với thông tin học viên tương ứng
+            //window.location.href = '/CreateRegistration?studentId=' + studentId;
+            //window.location.href = '/test?studentId=' + studentId;
+            alert('student');
+        });
+    });
+
+
+</script>

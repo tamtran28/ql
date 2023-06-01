@@ -1,0 +1,62 @@
+﻿@model IEnumerable<hocvien.Models.Lophoc>
+
+@{
+    ViewData["Title"] = "ChonLop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ChonLop</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Malophoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mahv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phonghoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Maloptuyensinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Magv)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Malophoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mahv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phonghoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maloptuyensinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Magv)
+            </td>
+            <td>
+
+                    <form asp-action="ChonHocVien" asp-controller="Xeplop" asp-route-id="@item.Malophoc">
+                        <button type="submit" class="btn btn-primary">Chọn</button>
+                    </form>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

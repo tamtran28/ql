@@ -1,0 +1,134 @@
+﻿@model IEnumerable<hocvien.Models.CHocvienview>
+
+@{
+    ViewData["Title"] = "Danh sách học viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+}
+<h1>Danh sách học viên</h1>
+
+    <p>
+    <a asp-action="themHocVien" class="btn btn-primary">Thêm học viên</a>
+    </p>
+  
+<h2>Tìm kiếm học viên</h2>
+<div class="row">
+    <div class="col-md-8">
+        <input type="text" id="hotenhv" class="form-control"/>
+    </div>
+    <div class="col-md-4">
+        <input type="button" onclick="timHocvien_click()" value="Tìm kiếm"/>
+    </div>
+</div>
+<div id="danhsachHocvien"></div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.Mahv)
+            </th>*@
+            <th>
+                Họ tên
+            </th>
+            <th>
+               Ngày sinh
+            </th>
+            <th>
+               SDT
+            </th>
+            <th>
+               Địa chỉ
+            </th>
+            <th>
+                Giới tính
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Mahv)
+             </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gioitinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trangthai)
+            </td>
+          
+            <td>
+                    <a asp-action="formSuaHocvien" asp-route-id="@item.Mahv" class="btn btn-primary">Sửa</a>
+             </td>
+              <td>
+                    <a asp-action="formXoaHocVien" asp-route-id="@item.Mahv" class="btn btn-danger delete-btn">Xóa</a>
+             </td>
+        </tr>
+}
+    </tbody>
+    <div class="pagination">
+       
+           <a href="@Url.Action("Index", new { currentPage = 1 })">First</a>
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+               <a href="@Url.Action("Index", new { currentPage = i })" class="@(ViewBag.CurrentPage == i ? "active" : "")">@i</a>
+            }
+            <a href="@Url.Action("Index", new { currentPage = ViewBag.TotalPages })">Last</a>
+       
+    </div>
+</table>
+<p>Tổng số record: @ViewBag.TotalItems</p>
+<p>Trang hiện tại: @ViewBag.CurrentPage</p>
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <script>
+        window.onload = function () {
+            alert('@ViewBag.SuccessMessage');
+        }
+    </script>
+}
+
+<script type="text/javascript">
+    function timHocvien_click(){
+        const hotenhv=document.getElementById("hotenhv").value;
+        // Create an XMLHttpRequest object
+        const xhttp = new XMLHttpRequest();
+
+        // Define a callback function
+        xhttp.onload = function () {
+            // Here you can use the Data
+            document.getElementById("danhsachHocvien").innerHTML=xhttp.responseText;
+        }
+
+        // Send a request
+        const strUrl="/Hocvien/timHocvien/"+hotenhv;
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+
+    }
+</script>
