@@ -16,6 +16,10 @@
 
   <ItemGroup>
     <Folder Include="Area\TVV\Controllers\" />
+    <Folder Include="Views\LopTS\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\LopTS\" />
+  </ItemGroup>
 </Project>

@@ -188,3 +188,4 @@
 /Users/Tracy/Downloads/trungtam-master/hocvien/obj/Debug/net5.0/hocvien.pdb
 /Users/Tracy/Downloads/trungtam-master/hocvien/obj/Debug/net5.0/hocvien.genruntimeconfig.cache
 /Users/Tracy/Downloads/trungtam-master/hocvien/obj/Debug/net5.0/ref/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master/hocvien/obj/Debug/net5.0/Razor/Views/LopTS/Create.cshtml.g.cs

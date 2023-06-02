@@ -1,0 +1,55 @@
+@*@page
+    @{
+        ViewData["Title"] = "Create";
+    }
+
+    <h1>Create</h1>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
+@model CreateClassViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        <label class="control-label">Tên khóa học</label>
+        @Html.DropDownListFor(m => m.Makh, ViewBag.DSKhoahoc as SelectList, "Chọn khóa học", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Makh, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Tên môn học</label>
+        @foreach (var monhoc in ViewBag.DSMonhoc as List<Monhoc>)
+        {
+            <div class="form-check">
+                <input type="checkbox" name="MamhList" value="@monhoc.Mamh" class="form-check-input" id="mamh_@monhoc.Mamh">
+                <label class="form-check-label" for="mamh_@monhoc.Mamh">@monhoc.Tenmh</label>
+            </div>
+        }
+    </div>
+ 
+    <div class="form-group">
+        <label class="control-label">Ngày bắt đầu</label>
+        <input type="date" name="Ngaybatdau" class="form-control" placeholder="Nhập ngày bắt đầu" />
+        @*@Html.ValidationMessageFor(m => m.Ngaybatdau, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Ngày kết thúc</label>
+        <input type="date" name="Ngayketthuc" class="form-control" placeholder="Nhập ngày kết thúc" />
+        @*@Html.ValidationMessageFor(m => m.Ngayketthuc, "", new { @class = "text-danger" })*@
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Giờ học</label>
+        <input type="text" name="Giohoc" class="form-control" placeholder="Nhập giờ học" />
+        @Html.ValidationMessageFor(m => m.Giohoc, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Lưu" class="btn btn-primary" />
+    </div>
+}

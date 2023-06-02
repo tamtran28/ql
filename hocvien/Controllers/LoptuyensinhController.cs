@@ -73,6 +73,23 @@ namespace hocvien.Controllers
             return PartialView(x);
         }
 
+        //[HttpPost]
+        //public IActionResult Create(string makh, List<string> mamh, DateTime ngayBatDau, DateTime ngayKetThuc, string gioHoc)
+        //{
+        //    var lopTuyenSinh = new Loptuyensinh
+        //    {
+        //        Makh = makh,
+        //        Ngaybatdau = ngayBatDau,
+        //        Ngayketthuc = ngayKetThuc,
+        //        Giohoc = gioHoc,
+        //        MamhNavigation = mamh.Select(m => new Loptuyensinh{ Mamh = m }).ToList()
+        //    };
+
+        //    _dbContext.LopTuyenSinhs.Add(lopTuyenSinh);
+        //    _dbContext.SaveChanges();
+
+        //    return RedirectToAction("Index"); // Chuyển hướng đến trang hiển thị danh sách lớp tuyển sinh
+        //}
 
         //[HttpPost]
         //public IActionResult CreateClass(DanhsachMH model)
