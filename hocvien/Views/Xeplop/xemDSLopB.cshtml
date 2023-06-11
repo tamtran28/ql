@@ -1,7 +1,7 @@
-﻿@model IEnumerable<hocvien.Models.Phieudangkyhoc>
+﻿@model IEnumerable<hocvien.Model.Phieudangkyhoc>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="formThemLop" class="btn btn-primary">Thêm lớp</a>
 </p>
 <table class="table">
     <thead>
@@ -21,9 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Ghichu)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Maloptuyensinh)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -45,9 +45,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Ghichu)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Maloptuyensinh)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
