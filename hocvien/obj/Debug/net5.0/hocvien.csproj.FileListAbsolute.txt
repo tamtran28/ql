@@ -189,3 +189,580 @@
 /Users/Tracy/Downloads/trungtam-master/hocvien/obj/Debug/net5.0/hocvien.genruntimeconfig.cache
 /Users/Tracy/Downloads/trungtam-master/hocvien/obj/Debug/net5.0/ref/hocvien.dll
 /Users/Tracy/Downloads/trungtam-master/hocvien/obj/Debug/net5.0/Razor/Views/LopTS/Create.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/appsettings.Development.json
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/appsettings.json
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/hocvien
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/hocvien.deps.json
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/hocvien.runtimeconfig.json
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/hocvien.runtimeconfig.dev.json
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/hocvien.pdb
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/hocvien.Views.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/hocvien.Views.pdb
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Humanizer.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.AspNetCore.Razor.Language.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.CSharp.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.Razor.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.Workspaces.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.Data.SqlClient.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.SqlServer.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.Identity.Client.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/dotnet-aspnet-codegenerator-design.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/Newtonsoft.Json.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Composition.AttributedModel.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Composition.Convention.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Composition.Hosting.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Composition.Runtime.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Composition.TypedParts.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Configuration.ConfigurationManager.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Runtime.Caching.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/System.Security.Cryptography.ProtectedData.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/cs/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/de/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/es/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/fr/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/it/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ja/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ko/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/pl/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/pt-BR/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ru/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/tr/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.pdb
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.pdb
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.pdb
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.pdb
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-arm/lib/net5.0/dotnet-aspnet-codegenerator-design.exe
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win-arm64/lib/net5.0/dotnet-aspnet-codegenerator-design.exe
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.csproj.AssemblyReference.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.AssemblyInfoInputs.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.AssemblyInfo.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.csproj.CoreCompileInputs.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.MvcApplicationPartsAssemblyInfo.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.RazorAssemblyInfo.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.RazorAssemblyInfo.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/scopedcss/bundle/hocvien.styles.css
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/staticwebassets/hocvien.StaticWebAssets.Manifest.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/staticwebassets/hocvien.StaticWebAssets.Pack.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/staticwebassets/msbuild.hocvien.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/staticwebassets/msbuild.build.hocvien.props
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/staticwebassets/msbuild.buildMultiTargeting.hocvien.props
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/staticwebassets/msbuild.buildTransitive.hocvien.props
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.TagHelpers.input.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.TagHelpers.output.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.RazorCoreGenerate.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Dangnhap/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Giaovien/formthemGiaovien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Giaovien/formXoaGiaoVien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Giaovien/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hoadon/formLapHD.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hoadon/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hoadon/LapHoaDon.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/chiTiet.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/formSuaHocvien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/formXoaHocVien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/themHocVien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/timHocvien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Home/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Home/Privacy.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/KHController1cs/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Khoahoc/formSuakhoahoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Khoahoc/formthemKhoahoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Khoahoc/formXoakhoahoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Khoahoc/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/LopTS/Create.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/formthemLoptuyensinh.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/themLoptuyensinh.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/xemKhoahoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/xemMonhoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Monhoc/formthemMonhoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Monhoc/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/chonLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/CreateRegistration.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/formThemphieudangky.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/registration.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/SearchCourse.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/SearchStudent.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/timHocvien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/timLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/timMotHocvien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Shared/Error.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Shared/_Layout.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/ChonLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/formThemLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/taoLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/xemDSLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/_ViewImports.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/Razor/Views/_ViewStart.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.RazorTargetAssemblyInfo.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.RazorTargetAssemblyInfo.cs
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.Views.pdb
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.csproj.CopyComplete
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/refint/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.pdb
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/hocvien.genruntimeconfig.cache
+/Users/Tracy/Downloads/trungtam-master 2/hocvien/obj/Debug/net5.0/ref/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/appsettings.Development.json
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/appsettings.json
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/hocvien
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/hocvien.deps.json
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/hocvien.runtimeconfig.json
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/hocvien.runtimeconfig.dev.json
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/hocvien.pdb
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/hocvien.Views.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/hocvien.Views.pdb
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Humanizer.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.AspNetCore.Razor.Language.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.CSharp.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.Razor.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.CodeAnalysis.Workspaces.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.Data.SqlClient.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.SqlServer.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.Identity.Client.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/dotnet-aspnet-codegenerator-design.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/Newtonsoft.Json.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Composition.AttributedModel.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Composition.Convention.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Composition.Hosting.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Composition.Runtime.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Composition.TypedParts.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Configuration.ConfigurationManager.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Runtime.Caching.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/System.Security.Cryptography.ProtectedData.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/cs/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/de/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/es/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/fr/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/it/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ja/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ko/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/pl/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/pt-BR/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ru/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/tr/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.pdb
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.pdb
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.pdb
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.pdb
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-arm/lib/net5.0/dotnet-aspnet-codegenerator-design.exe
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win-arm64/lib/net5.0/dotnet-aspnet-codegenerator-design.exe
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/bin/Debug/net5.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.csproj.AssemblyReference.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.AssemblyInfoInputs.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.AssemblyInfo.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.csproj.CoreCompileInputs.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.MvcApplicationPartsAssemblyInfo.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.RazorAssemblyInfo.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.RazorAssemblyInfo.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/scopedcss/bundle/hocvien.styles.css
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/staticwebassets/hocvien.StaticWebAssets.Manifest.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/staticwebassets/hocvien.StaticWebAssets.Pack.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/staticwebassets/msbuild.hocvien.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/staticwebassets/msbuild.build.hocvien.props
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/staticwebassets/msbuild.buildMultiTargeting.hocvien.props
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/staticwebassets/msbuild.buildTransitive.hocvien.props
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.TagHelpers.input.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.TagHelpers.output.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.RazorCoreGenerate.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Dangnhap/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Giaovien/formthemGiaovien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Giaovien/formXoaGiaoVien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Giaovien/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hoadon/formLapHD.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hoadon/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hoadon/LapHoaDon.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/chiTiet.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/formSuaHocvien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/formXoaHocVien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/themHocVien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Hocvien/timHocvien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Home/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Home/Privacy.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/KHController1cs/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Khoahoc/formSuakhoahoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Khoahoc/formthemKhoahoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Khoahoc/formXoakhoahoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Khoahoc/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/LopTS/Create.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/formthemLoptuyensinh.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/themLoptuyensinh.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/xemKhoahoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Loptuyensinh/xemMonhoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Monhoc/formthemMonhoc.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Monhoc/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/chonLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/CreateRegistration.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/formThemphieudangky.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/registration.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/SearchCourse.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/SearchStudent.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/timHocvien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/timLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Phieudangky/timMotHocvien.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Shared/Error.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Shared/_Layout.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/ChonLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/formThemLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/Index.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/taoLop.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/_ViewImports.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/_ViewStart.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.RazorTargetAssemblyInfo.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.RazorTargetAssemblyInfo.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.Views.pdb
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.csproj.CopyComplete
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/refint/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.pdb
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/hocvien.genruntimeconfig.cache
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/ref/hocvien.dll
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/PhieuDK/Create.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/xemDSLopB.cshtml.g.cs
+/Users/Tracy/Downloads/trungtam-master 2 2/hocvien/obj/Debug/net5.0/Razor/Views/Xeplop/xemDSLop.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\appsettings.Development.json
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\appsettings.json
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\hocvien.exe
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\hocvien.deps.json
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\hocvien.runtimeconfig.json
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\hocvien.runtimeconfig.dev.json
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\hocvien.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\hocvien.pdb
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\hocvien.Views.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\hocvien.Views.pdb
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Humanizer.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\dotnet-aspnet-codegenerator-design.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Composition.Convention.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Composition.Hosting.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Composition.Runtime.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Composition.TypedParts.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Runtime.Caching.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.csproj.AssemblyReference.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.GeneratedMSBuildEditorConfig.editorconfig
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.AssemblyInfoInputs.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.AssemblyInfo.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.csproj.CoreCompileInputs.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.MvcApplicationPartsAssemblyInfo.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.RazorAssemblyInfo.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.RazorAssemblyInfo.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\scopedcss\bundle\hocvien.styles.css
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\staticwebassets\hocvien.StaticWebAssets.Manifest.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.TagHelpers.input.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.TagHelpers.output.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.RazorCoreGenerate.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Dangnhap\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Giaovien\formthemGiaovien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Giaovien\formXoaGiaoVien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Giaovien\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\formLapHD.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\LapHoaDon.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hocvien\chiTiet.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hocvien\formSuaHocvien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hocvien\formXoaHocVien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hocvien\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hocvien\themHocVien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Hocvien\timHocvien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\KHController1cs\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Khoahoc\formSuakhoahoc.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Khoahoc\formthemKhoahoc.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Khoahoc\formXoakhoahoc.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Khoahoc\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\LopTS\Create.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\formthemLoptuyensinh.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\themLoptuyensinh.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\xemKhoahoc.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\xemMonhoc.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Monhoc\formthemMonhoc.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Monhoc\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\chonLop.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\CreateRegistration.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\formThemphieudangky.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\registration.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\SearchCourse.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\SearchStudent.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\timHocvien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\timLop.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\timMotHocvien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\PhieuDK\Create.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\ChonLop.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\formThemLop.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\Index.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\taoLop.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\xemDSLop.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\xemDSLopB.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.RazorTargetAssemblyInfo.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.RazorTargetAssemblyInfo.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.Views.pdb
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.csproj.CopyComplete
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\refint\hocvien.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.pdb
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\hocvien.genruntimeconfig.cache
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\ref\hocvien.dll
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\formTaolophoc.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\danhSach.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\XepLop.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\DanhSachHocVien.cshtml.g.cs
+D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Phancong\ChonGiaoVien.cshtml.g.cs

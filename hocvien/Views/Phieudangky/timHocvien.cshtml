@@ -1,4 +1,4 @@
-﻿@model IEnumerable<hocvien.Models.Hocvien>
+﻿@model IEnumerable<hocvien.Model.Hocvien>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -38,7 +38,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-            <form asp-action="registration" method="post">
+            <form asp-action="registration" >
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Mahv)

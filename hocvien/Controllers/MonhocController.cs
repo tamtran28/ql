@@ -1,4 +1,5 @@
-﻿using hocvien.Models;
+﻿using hocvien.Model;
+
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -7,7 +8,7 @@ namespace hocvien.Controllers
 {
     public class MonhocController : Controller
     {
-        private trungtamContext db = new trungtamContext();
+        private centerContext db = new centerContext();
         public IActionResult Index()
         {
             return View(db.Monhocs.ToList());

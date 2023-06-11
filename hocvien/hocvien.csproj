@@ -17,9 +17,11 @@
   <ItemGroup>
     <Folder Include="Area\TVV\Controllers\" />
     <Folder Include="Views\LopTS\" />
+    <Folder Include="Views\PhieuDK\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Views\LopTS\" />
+    <None Remove="Views\PhieuDK\" />
   </ItemGroup>
 </Project>

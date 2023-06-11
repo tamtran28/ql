@@ -27,9 +27,9 @@ namespace hocvien
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<Models.trungtamContext>(opt =>
+            services.AddDbContext<Model.centerContext>(opt =>
             {
-                opt.UseSqlServer("Server=localhost,1433; Database=center;User=sa;Password=Password.1");
+                opt.UseSqlServer("Server=LAPTOP-OOJMN2T7;Database=QLBH;Trusted_Connection=True;");
             });
             services.AddDistributedMemoryCache();
 

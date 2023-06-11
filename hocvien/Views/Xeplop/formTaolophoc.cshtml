@@ -1,0 +1,53 @@
+﻿@model hocvien.Model.Lophoc
+
+@{
+    ViewData["Title"] = "formTaolophoc";
+}
+
+<h1>formTaolophoc</h1>
+
+<h4>Lophoc</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="themLophoc" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Malophoc" class="control-label"></label>
+                <input asp-for="Malophoc" class="form-control" />
+                <span asp-validation-for="Malophoc" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="Mahv" class="control-label"></label>
+                <input asp-for="Mahv" class="form-control" />
+                <span asp-validation-for="Mahv" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Phonghoc" class="control-label"></label>
+                <input asp-for="Phonghoc" class="form-control" />
+                <span asp-validation-for="Phonghoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maloptuyensinh" class="control-label"></label>
+                <input asp-for="Maloptuyensinh" readonly class="form-control" value="@ViewBag.s"/>
+                <span asp-validation-for="Maloptuyensinh" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="Magv" class="control-label"></label>
+                <input asp-for="Magv" class="form-control" />
+                <span asp-validation-for="Magv" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

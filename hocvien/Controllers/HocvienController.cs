@@ -1,4 +1,4 @@
-﻿using hocvien.Models;
+﻿using hocvien.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +11,7 @@ namespace hocvien.Controllers
 {
     public class HocvienController : Controller
     {
-        private trungtamContext db = new trungtamContext();
+        private centerContext db = new centerContext();
         //public IActionResult Index()
 
         //{
@@ -43,11 +43,11 @@ namespace hocvien.Controllers
                 ViewBag.SuccessMessage = TempData["SuccessMessage"];
             }
 
-            List<Models.CHocvienview> ds = db.Hocviens.Select(a => new Models.CHocvienview
+            List<Model.CHocvienview> ds = db.Hocviens.Select(a => new Model.CHocvienview
             {
                 Mahv = a.Mahv,
                 Hoten = a.Hoten,
-                Ngaysinh = a.Ngaysinh.Value.ToShortDateString(),
+                //Ngaysinh = a.Ngaysinh.Value.ToShortDateString(),
                 Gioitinh = (a.Gioitinh == 1 ? "Nam" : "Nữ"),
                 Sdt = a.Sdt,
                 Diachi = a.Diachi,
@@ -81,11 +81,11 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult ThemHocVien(Hocvien hocVien)
         {
-            if (hocVien.Ngaysinh.Value.Year >= DateTime.Now.Year || (DateTime.Now.Year - hocVien.Ngaysinh.Value.Year) < 4)
-            {
-                ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-                return View(hocVien);
-            }
+            //if (hocVien.Ngaysinh.Value.Year >= DateTime.Now.Year || (DateTime.Now.Year - hocVien.Ngaysinh.Value.Year) < 4)
+            //{
+            //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+            //    return View(hocVien);
+            //}
 
             hocVien.Mahv = taoMaHocVien();
            db.Hocviens.Add(hocVien);
@@ -122,16 +122,16 @@ namespace hocvien.Controllers
         public IActionResult formSuaHocvien(string id)
         {
             
-            Models.Hocvien x = db.Hocviens.Find(id);
+            Model.Hocvien x = db.Hocviens.Find(id);
             return View(x);
         }
         [HttpPost]
-        public IActionResult suaHocvien(Models.Hocvien x)
+        public IActionResult suaHocvien(Model.Hocvien x)
         {
 
             if (ModelState.IsValid)
             {
-                Models.Hocvien hv = db.Hocviens.Find(x.Mahv);
+                Model.Hocvien hv = db.Hocviens.Find(x.Mahv);
                 if (hv != null)
                 {
                     hv.Hoten = x.Hoten;
@@ -160,14 +160,14 @@ namespace hocvien.Controllers
         public IActionResult formXoaHocVien(String id)
         {
             int dem = db.Phieudangkyhocs.Where(a => a.Mahv == id).ToList().Count();
-            Models.Hocvien x = db.Hocviens.Find(id);
+            Model.Hocvien x = db.Hocviens.Find(id);
             ViewBag.flag = dem;
 
             return View(x);
         }
         public IActionResult xoaHocVien(String id)
         {
-            Models.Hocvien x = db.Hocviens.Find(id);
+            Model.Hocvien x = db.Hocviens.Find(id);
             if (x != null)
             {
                 db.Hocviens.Remove(x);

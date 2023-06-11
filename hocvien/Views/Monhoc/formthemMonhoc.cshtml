@@ -1,4 +1,4 @@
-﻿@model hocvien.Models.Monhoc
+﻿@model hocvien.Model.Monhoc
 
 @{
     ViewData["Title"] = "formthemMonhoc";
@@ -29,23 +29,28 @@
                 <span asp-validation-for="Mota" class="text-danger"></span>
             </div>
             </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="Hocphi" class="control-label">Học phí</label>
-                <input asp-for="Hocphi" class="form-control" />
-                <span asp-validation-for="Hocphi" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nguoitao" class="control-label">Người tạo</label>
-                <input asp-for="Nguoitao" class="form-control" />
-                <span asp-validation-for="Nguoitao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
-                <input asp-for="Ngaytao" class="form-control" />
-                <span asp-validation-for="Ngaytao" class="text-danger"></span>
-            </div>
-            </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Hocphi" class="control-label">Học phí</label>
+            <input asp-for="Hocphi" class="form-control" />
+            <span asp-validation-for="Hocphi" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nguoitao" class="control-label">Người tạo</label>
+            <input asp-for="Nguoitao" class="form-control" />
+            <span asp-validation-for="Nguoitao" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
+            <input asp-for="Ngaytao" class="form-control" />
+            <span asp-validation-for="Ngaytao" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Trangthai" class="control-label">Trạng thái</label>
+            <input asp-for="Trangthai" class="form-control" />
+            <span asp-validation-for="Trangthai" class="text-danger"></span>
+        </div>
+    </div>
             <div class="form-group">
                 <input type="submit" value="Thêm" class="btn btn-primary" />
             </div>

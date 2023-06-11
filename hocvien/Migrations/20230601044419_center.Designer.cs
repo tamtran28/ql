@@ -5,11 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using hocvien.Models;
+
+using hocvien.Model;
 
 namespace hocvien.Migrations
 {
-    [DbContext(typeof(trungtamContext))]
+    [DbContext(typeof(centerContext))]
     [Migration("20230601044419_center")]
     partial class center
     {

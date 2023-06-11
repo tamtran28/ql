@@ -1,4 +1,4 @@
-﻿using hocvien.Models;
+﻿using hocvien.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +9,7 @@ namespace hocvien.Controllers
 {
     public class HoadonController : Controller
     {
-        trungtamContext db = new trungtamContext();
+        centerContext db = new centerContext();
         public IActionResult Index()
         {
            // return View(db.Hoadons.ToList());
@@ -17,15 +17,9 @@ namespace hocvien.Controllers
         }
         public IActionResult formLapHD(string id)
         {
-            //    var selectedPhieuDangKy = db.Phieudangkyhocs
-            //.Where(p => p.Id == selectedPhieuDangKyId)
-            //.Include(p => p.LopTuyenSinhs)
-            //.FirstOrDefault();
-
-            //    var maLop = selectedPhieuDangKy.LopTuyenSinhs.MaLop;
-            //    var maHocVien = selectedPhieuDangKy.MaHocVien;
+        
             ViewBag.Id = id;
-            var courseFee = db.Phieudangkyhocs
+            var courseFee = db.LopDangkyhocs
                    .Join(
                        db.Loptuyensinhs,
                        r => r.Maloptuyensinh,
@@ -42,16 +36,11 @@ namespace hocvien.Controllers
             ViewBag.fee = courseFee;
             return View();
         }
-        
+
         [HttpPost]
         public IActionResult hoaDon(Hoadon hd)
             {
-               //String registrationId = id;
-              // Models.Phieudangkyhoc x = db.Phieudangkyhocs.Find(hd.Maphieu);
-              //if (hd.Maphieu==)
-              //  {
-              //      return NotFound();
-              //  }
+               
 
             var existingInvoice = db.Hoadons.FirstOrDefault(x => x.Maphieu == hd.Maphieu);
             if (existingInvoice != null)
@@ -62,14 +51,11 @@ namespace hocvien.Controllers
             }
 
             // Tạo hóa đơn cho phiếu đăng ký này
-            // var hoadon = new Hoadon
-            //  {
+            
             hd.Mahd = taoMaHD();
-            //  Mahv = x.Mahv,
-            // Maphieu = x.Maphieu,
+          
             hd.Ngaythu = DateTime.Now;
-                //Tongtienthanhtoan = courseFee
-           // };
+               
             db.Hoadons.Add(hd);
             db.SaveChanges();
             return RedirectToAction("Index");

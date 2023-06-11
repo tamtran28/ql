@@ -1,4 +1,4 @@
-﻿using hocvien.Models;
+﻿using hocvien.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,10 +15,33 @@ namespace hocvien.Controllers
 {
     public class LoptuyensinhController : Controller
     {
-        private trungtamContext db = new trungtamContext();
+        private centerContext db = new centerContext();
         public IActionResult Index()
         {
-            return View(db.Loptuyensinhs.ToList());
+
+            var ds = db.Loptuyensinhs
+            .Join(db.Cahocs,
+                r => r.Macahoc,
+                s => s.Macahoc,
+                (r, s) =>
+            //    new { Loptuyensinh = r, Cahoc = s })
+            //.Join(db.LopDangkyhocs, s => s.Phieudangkyhoc.Maphieu, n => n.Maphieu, (s, n) => new { Phieudangkyhoc = s, LopDangkyhoc = n })
+            //.Join(db.Loptuyensinhs,
+            //s => s.LopDangkyhoc.Maloptuyensinh,
+            //j => j.Maloptuyensinh,
+            new CLopTS
+            {
+               // Maphieu = s.Phieudangkyhoc.Phieudangkyhoc.Maphieu,
+                //Mahv = s.Phieudangkyhoc.Hocvien.Mahv,
+                //Hoten = s.Phieudangkyhoc.Hocvien.Hoten,
+                Ngaybatdau = r.Ngaybatdau,
+                Ngayketthuc = r.Ngayketthuc,
+                Maloptuyensinh = r.Maloptuyensinh,
+                Tenloptuyensinh = r.Tenloptuyensinh,
+                Thuhoc = s.Thuhoc,
+                Giohoc = s.Giohoc,
+            });
+            return View(ds);
         }
        
         public IActionResult formthemLoptuyensinh()
@@ -73,39 +96,7 @@ namespace hocvien.Controllers
             return PartialView(x);
         }
 
-        //[HttpPost]
-        //public IActionResult Create(string makh, List<string> mamh, DateTime ngayBatDau, DateTime ngayKetThuc, string gioHoc)
-        //{
-        //    var lopTuyenSinh = new Loptuyensinh
-        //    {
-        //        Makh = makh,
-        //        Ngaybatdau = ngayBatDau,
-        //        Ngayketthuc = ngayKetThuc,
-        //        Giohoc = gioHoc,
-        //        MamhNavigation = mamh.Select(m => new Loptuyensinh{ Mamh = m }).ToList()
-        //    };
-
-        //    _dbContext.LopTuyenSinhs.Add(lopTuyenSinh);
-        //    _dbContext.SaveChanges();
-
-        //    return RedirectToAction("Index"); // Chuyển hướng đến trang hiển thị danh sách lớp tuyển sinh
-        //}
-
-        //[HttpPost]
-        //public IActionResult CreateClass(DanhsachMH model)
-        //{
-        //    // Lưu danh sách mã môn học đã chọn vào session
-        //    // HttpContext.Session.Set<List<string>>("Mamh", model.SelectedSubjects);
-        //    byte[] selectedSubjectsBytes = HttpContext.Session.Get("SelectedSubjects");
-        //    List<string> selectedSubjects = JsonConvert.DeserializeObject<List<string>>(Encoding.UTF8.GetString(selectedSubjectsBytes));
-
-
-
-        //    // Chuyển hướng đến trang nhập ngày và giờ học
-        //    //return RedirectToAction("EnterSchedule");
-        //    //return Content(selectedSubjects.ToList());
-        //}
-
+        
 
     }
 }

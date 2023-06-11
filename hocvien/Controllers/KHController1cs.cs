@@ -1,4 +1,4 @@
-﻿using hocvien.Models;
+﻿using hocvien.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -7,7 +7,7 @@ namespace hocvien.Controllers
 {
     public class KHController1cs : Controller
     {
-        private trungtamContext db = new trungtamContext();
+        private centerContext db = new centerContext();
         public IActionResult Index()
         {
             DateTime currentDate = DateTime.Now;

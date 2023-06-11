@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using hocvien.Models;
+using hocvien.Model;
+
 
 namespace hocvien.Migrations
 {
-    [DbContext(typeof(trungtamContext))]
+    [DbContext(typeof(centerContext))]
     partial class trungtamContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

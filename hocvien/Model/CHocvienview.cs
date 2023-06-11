@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace hocvien.Models
+namespace hocvien.Model
 {
     public class CHocvienview
     {

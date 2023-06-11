@@ -1,114 +1,130 @@
-﻿@model IEnumerable<hocvien.Models.Loptuyensinh>
-
-<p>
+﻿@model IEnumerable<hocvien.Model.Loptuyensinh>
+<!--<p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.Maloptuyensinh)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tenloptuyensinh)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Trangthai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nguoitao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ngaytao)
-            </th>*@
+
             <th>
                 @Html.DisplayNameFor(model => model.Ngaybatdau)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ngayketthuc)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.Thuhoc)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Giohoc)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Makh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mamh)
             </th>*@
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-@*@for(int i =0;i<Model.item.Count();i++ )*@
-            <form asp-action="formThemphieudangky" >
+
+        <form method="post" action="/Phieudangky/SelectCourse">
+            @foreach (var item in Model)
+            {
             <tr>
                 <td>
-                    <input type="checkbox" />
-                </td>
-                <td id="ddlLopHoc">
-                        @item.Maloptuyensinh
+                    <input type="checkbox" name="selectedClasses" value="@item.Maloptuyensinh" />
                 </td>
                 <td>
-                        @item.Tenloptuyensinh
+                    @item.Maloptuyensinh
                 </td>
                 <td>
-                        @item.Ngaybatdau
+                    @item.Tenloptuyensinh
                 </td>
                 <td>
-                        @item.Ngayketthuc
+                    @item.Ngaybatdau
                 </td>
                 <td>
-                        @item.Thuhoc
+                    @item.Ngayketthuc
+                </td>
+                @*<td>
+                    @item.Thuhoc
                 </td>
                 <td>
-                        @item.Giohoc
-                </td>
-                <td>
-                    <input type="hidden" name="id" value="@item.Maloptuyensinh" />
-                   @* <input type="text" name="soluong" class="form-control col-md-2" />*@
-                </td>
-              @*  <td>
-                    @*<input type="submit" value="Chọn học viên" class="btn btn-primary"/>*@
-                    <input type="submit" value="Chọn lớp" class="btn btn-primary" />
-                   @* <a asp-action="formThemphieudangky" class="btn btn-primary" asp-route-id="@item.Maloptuyensinh">Chọn</a>
-                    *@
-                    @*<form asp-action="SelectCourse" asp-controller="Phieudangky" asp-route-id="@item.Maloptuyensinh">
-                        <button type="submit" class="btn btn-primary">Chọn</button>
-                    </form>*@
-                   @* <a href="/Phieudangky/SearchCourse" class="btn btn-primary">Chọn lớp học</a>*@
-                  @*  <button onclick="selectClass(@item.Maloptuyensinh)">Chọn lớp học IE0032</button>*@
-               @* </td>*@
-            <td>
-                    <a asp-action="formThemphieudangky" asp-route-id="@item.Maloptuyensinh" class="btn btn-primary">Chọn</a>
-            </td>
+                    @item.Giohoc
+                </td>*@
             </tr>
+        }
+        </tbody>
+    </table>
+    <button type="button" onclick="submitForm()">Lưu</button>
 
-     </form>
-}
-    </tbody>
-</table>
-<script>
-  function selectClass(classId) {
-    // Lưu mã lớp học vào session
-        sessionStorage.setItem('maLopHoc', classId);
-
-    // Chuyển hướng đến trang tìm kiếm học viên
-        window.location.href = '/Phieudangky/e';
-  }
-</script>
-
-
-
+    </table>
+</form>-->
 @*<script>
-    function luuMaLopHoc() {
-        // Lấy mã lớp học từ combobox hoặc bất kỳ đâu tùy vào cách bạn thiết kế
-        var maLopHoc = document.getElementById("ddlLopHoc").value;
-        // Lưu mã lớp học vào session
-        sessionStorage.setItem("maLopHoc", maLopHoc);
-    }
-</script>*@
+        function luuMaLopHoc() {
+            // Lấy mã lớp học từ combobox hoặc bất kỳ đâu tùy vào cách bạn thiết kế
+            var maLopHoc = document.getElementById("ddlLopHoc").value;
+            // Lưu mã lớp học vào session
+            sessionStorage.setItem("maLopHoc", maLopHoc);
+        }
+    </script>*@
+<form id="selectCourseForm" method="post" action="/Phieudangky/SelectCourse">
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Maloptuyensinh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tenloptuyensinh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ngaybatdau)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ngayketthuc)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Thuhoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Giohoc)
+                </th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="selectedClasses" value="@item.Maloptuyensinh" />
+                    </td>
+                    <td>
+                        @item.Maloptuyensinh
+                    </td>
+                    <td>
+                        @item.Tenloptuyensinh
+                    </td>
+                    <td>
+                        @item.Ngaybatdau
+                    </td>
+                    <td>
+                        @item.Ngayketthuc
+                    </td>
+                   @* <td>
+                        @item.Thuhoc
+                    </td>
+                    <td>
+                        @item.Giohoc
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+    <input type="submit" value="Lưu" />
+</form>

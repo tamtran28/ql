@@ -1,4 +1,4 @@
-﻿using hocvien.Models;
+﻿using hocvien.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -7,7 +7,7 @@ namespace hocvien.Controllers
 {
     public class GiaovienController : Controller
     {
-        private trungtamContext db = new trungtamContext();
+        private centerContext db = new centerContext();
         public IActionResult Index()
         {
             return View(db.Giaoviens.ToList());
@@ -47,14 +47,14 @@ namespace hocvien.Controllers
         public IActionResult formXoaGiaoVien(String id)
         {
             int dem = db.Lophocs.Where(a => a.Magv == id).ToList().Count();
-            Models.Giaovien x = db.Giaoviens.Find(id);
+            Model.Giaovien x = db.Giaoviens.Find(id);
             ViewBag.flag = dem;
 
             return View(x);
         }
         public IActionResult xoaHocVien(String id)
         {
-            Models.Giaovien x = db.Giaoviens.Find(id);
+            Model.Giaovien x = db.Giaoviens.Find(id);
             if (x != null)
             {
                 db.Giaoviens.Remove(x);

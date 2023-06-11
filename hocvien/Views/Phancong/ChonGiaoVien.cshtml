@@ -1,0 +1,24 @@
+﻿@*
+@{
+    ViewData["Title"] = "ChonGiaoVien";
+}
+
+<h1>ChonGiaoVien</h1>*@
+@model List<Giaovien>
+
+<h2>Chọn giáo viên cho lớp học</h2>
+
+<form method="post" asp-action="PhanCongGiaoVien" asp-controller="Phancong">
+    <input type="hidden" name="malophoc" value="@Model" />
+    <div>
+        <label for="magv">Giáo viên:</label>
+        <select name="magv">
+            <option value="">Chọn giáo viên</option>
+            @foreach (var giaoVien in ViewBag.DanhSachGiaoVien)
+            {
+                <option value="@giaoVien.Magv">@giaoVien.Hoten</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Lưu phân công</button>
+</form>

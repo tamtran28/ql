@@ -1,4 +1,4 @@
-﻿@model hocvien.Models.Lophoc
+﻿@model hocvien.Model.Lophoc
 
 @{
     ViewData["Title"] = "taoLop";
@@ -18,11 +18,11 @@
                 <input asp-for="Malophoc" class="form-control" />
                 <span asp-validation-for="Malophoc" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           @* <div class="form-group">
                 <label asp-for="Mahv" class="control-label"></label>
                 <input asp-for="Mahv" class="form-control" />
                 <span asp-validation-for="Mahv" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Phonghoc" class="control-label"></label>
                 <input asp-for="Phonghoc" class="form-control" />

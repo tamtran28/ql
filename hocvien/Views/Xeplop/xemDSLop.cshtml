@@ -1,0 +1,90 @@
+@page
+@model IEnumerable<hocvien.Model.Loptuyensinh>
+
+<p>
+    <a asp-action="Create" asp-controller="LopTS" class="btn btn-primary">Thêm lớp tuyển sinh</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã lớp tuyển sinh
+            </th>
+            <th>
+                Tên lớp tuyển sinh
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Trangthai)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Nguoitao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ngaytao)
+                </th>*@
+           @* <th>
+                Ngày bắt đầu
+            </th>
+            <th>
+                Ngày kết thúc
+            </th>*@
+            <th>
+                Thứ học
+            </th>
+            <th>
+                Giờ học
+            </th>
+            @* <th>
+                    @Html.DisplayNameFor(model => model.Makh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mamh)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maloptuyensinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenloptuyensinh)
+            </td>
+            @* <td>
+                    @Html.DisplayFor(modelItem => item.Trangthai)
+                </td>*@
+            @*  <td>
+                    @Html.DisplayFor(modelItem => item.Nguoitao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaytao)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaybatdau.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngayketthuc.Date)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Thuhoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giohoc)
+            </td>*@
+            @* <td>
+                    @Html.DisplayFor(modelItem => item.Makh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mamh)
+                </td>*@
+            <td>
+            <td>
+                <a asp-action="formTaolophoc" asp-controller="Xeplop" asp-route-id="@item.Maloptuyensinh" class="btn btn-primary">Tạo lớp học</a>
+            </td>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+﻿@*
+@{
+    ViewData["Title"] = "XepLop";
+}
+
+<h1>XepLop</h1>*@
+
+@model List<Hocvien>
+
+<h2>Danh sách học viên đăng ký lớp</h2>
+<p>Mã lớp tuyển sinh: @ViewBag.Maloptuyensinh</p>
+<p>Mã lớp học: @ViewBag.Malophoc</p>
+
+<form method="post" asp-controller="XepLop" asp-action="XepLop">
+    <input type="hidden" name="maloptuyensinh" value="@ViewBag.Maloptuyensinh" />
+    <input type="hidden" name="malophoc" value="@ViewBag.Malophoc" />
+
+    @foreach (var hocvien in Model)
+    {
+        <div>
+            <input type="checkbox" name="hocvienIds" value="@hocvien.Mahv" /> @hocvien.Hoten
+        </div>
+    }
+
+    <button type="submit">Xếp lớp</button>
+</form>

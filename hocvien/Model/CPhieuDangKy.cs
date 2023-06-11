@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace hocvien.Models
+namespace hocvien.Model
 {
     public class CPhieuDangKy
     {

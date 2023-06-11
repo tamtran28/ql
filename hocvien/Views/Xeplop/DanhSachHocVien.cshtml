@@ -1,0 +1,26 @@
+﻿@*
+@{
+    ViewData["Title"] = "DanhSachHocVien";
+}
+
+<h1>DanhSachHocVien</h1>
+*@
+@model List<Hocvien>
+
+<h2>Danh sách học viên</h2>
+
+<table>
+    <tr>
+        <th>Mã học viên</th>
+        <th>Họ tên</th>
+        <!-- Thêm các cột thông tin khác của học viên nếu cần -->
+    </tr>
+    @foreach (var hocvien in Model)
+    {
+        <tr>
+            <td>@hocvien.Mahv</td>
+            <td>@hocvien.Hoten</td>
+            <!-- Hiển thị các thông tin khác của học viên nếu cần -->
+        </tr>
+    }
+</table>

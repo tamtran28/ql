@@ -1,4 +1,4 @@
-﻿using hocvien.Models;
+﻿using hocvien.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ namespace hocvien.Controllers
 {
     public class KhoahocController : Controller
     {
-        private trungtamContext db = new trungtamContext();
+        private centerContext db = new centerContext();
         public IActionResult Index()
         {
             //List<Models.Khoahoc> ds = db.Khoahocs.Select(a => new Models.Khoahoc
@@ -64,14 +64,14 @@ namespace hocvien.Controllers
         public IActionResult formXoakhoahoc(String id)
         {
             int dem = db.Loptuyensinhs.Where(a => a.Makh == id).ToList().Count();
-            Models.Khoahoc x = db.Khoahocs.Find(id);
+            Model.Khoahoc x = db.Khoahocs.Find(id);
             ViewBag.flag = dem;
 
             return View(x);
         }
         public IActionResult xoaKhoahoc(String id)
         {
-            Models.Khoahoc x = db.Khoahocs.Find(id);
+            Model.Khoahoc x = db.Khoahocs.Find(id);
             if (x != null)
             {
                 db.Khoahocs.Remove(x);
@@ -82,15 +82,15 @@ namespace hocvien.Controllers
         public IActionResult formSuakhoahoc(string id)
         {
 
-            Models.Khoahoc x = db.Khoahocs.Find(id);
+            Model.Khoahoc x = db.Khoahocs.Find(id);
             return View(x);
         }
         [HttpPost]
-        public IActionResult suaKhoahoc(Models.Khoahoc x)
+        public IActionResult suaKhoahoc(Model.Khoahoc x)
         {
             if (ModelState.IsValid)
             {
-                Models.Khoahoc kh = db.Khoahocs.Find(x.Makh);
+                Model.Khoahoc kh = db.Khoahocs.Find(x.Makh);
                 if (kh != null)
                 {
                     kh.Tenkh = x.Tenkh;

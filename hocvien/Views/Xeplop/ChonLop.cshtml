@@ -1,4 +1,4 @@
-﻿@model IEnumerable<hocvien.Models.Lophoc>
+﻿@model IEnumerable<hocvien.Model.Lophoc>
 
 @{
     ViewData["Title"] = "ChonLop";
@@ -16,9 +16,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Malophoc)
             </th>
-            <th>
+          @*  <th>
                 @Html.DisplayNameFor(model => model.Mahv)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Phonghoc)
             </th>
@@ -37,9 +37,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Malophoc)
             </td>
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.Mahv)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Phonghoc)
             </td>

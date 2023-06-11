@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace hocvien.Models
+namespace hocvien.Model
 {
     public class CChitietphieudangkyViewcs
     {
@@ -12,17 +12,17 @@ namespace hocvien.Models
         public string Ghichu { get; set; }
         public string Maloptuyensinh { get; set; }
         public string Tenloptuyensinh { get; set; }
-        public static List<CChitietphieudangkyViewcs> getDSChitietHoadon(Models.Phieudangkyhoc hd)
-        {
-            return hd.LopDangkyhocs.Select(x => new CChitietphieudangkyViewcs
-            {
-                Maloptuyensinh = x.Maloptuyensinh,
-                Tenloptuyensinh = x.MalopNavigation.Tenloptuyensinh,
-                Ngaydk = x.MaphieuNavigation.Ngaydk.Value.ToShortDateString(),
-                //Mahv = x.Don.Value.ToString(),
-                Mahv = x.MaphieuNavigation.Mahv,
-               // Thanhtien = (x.Soluong.Value * x.Dongia.Value).ToString()
-            }).ToList();
-        }
+        //public static List<CChitietphieudangkyViewcs> getDSChitietHoadon(Model.Phieudangkyhoc hd)
+        //{
+        //    return hd.LopDangkyhocs.Select(x => new CChitietphieudangkyViewcs
+        //    {
+        //        Maloptuyensinh = x.Maloptuyensinh,
+        //        Tenloptuyensinh = x.MalopNavigation.Tenloptuyensinh,
+        //        Ngaydk = x.MaphieuNavigation.Ngaydk.Value.ToShortDateString(),
+        //        //Mahv = x.Don.Value.ToString(),
+        //        Mahv = x.MaphieuNavigation.Mahv,
+        //       // Thanhtien = (x.Soluong.Value * x.Dongia.Value).ToString()
+        //    }).ToList();
+        //}
     }
 }
