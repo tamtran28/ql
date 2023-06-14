@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>chiTiet</h1>
+@*<h1>chiTiet</h1>
 
 <div>
     <h4>CHocvienview</h4>
@@ -76,4 +76,63 @@
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
+
+
+<h1>Thông tin học viên</h1>
+
+<p><strong>Mã học viên:</strong> @Model.Mahv</p>
+<p><strong>Họ tên:</strong> @Model.Hoten</p>
+<p><strong>Ngày sinh:</strong> @Model.Ngaysinh</p>
+<p><strong>Số điện thoại:</strong> @Model.Sdt</p>
+<p><strong>Địa chỉ:</strong> @Model.Diachi</p>
+<p><strong>Giới tính:</strong> @Model.Gioitinh</p>
+<p><strong>Trạng thái:</strong> @Model.Trangthai</p>
+
+@if (Model.Malophoc != null)
+{
+    <h2>Thông tin lớp học</h2>
+    <p><strong>Mã lớp học:</strong> @Model.Malophoc</p>
+    <p><strong>Tên lớp học:</strong> @Model.Tenlop</p>
+}
+else
+{
+    <h2>Thông tin lớp học</h2>
+    <p>Chưa có thông tin lớp học</p>
+}
+
+@if (Model.Phieudiems.Count > 0)
+{
+    <h2>Phiếu điểm</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mã lớp học</th>
+                <th>Mã học viên</th>
+                <th>Điểm đọc</th>
+                <th>Điểm viết</th>
+                <th>Điểm nói</th>
+                <th>Điểm nghe</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var phieudiem in Model.Phieudiems)
+            {
+                <tr>
+                    <td>@phieudiem.Malophoc</td>
+                    <td>@phieudiem.Mahv</td>
+                    <td>@phieudiem.Diemdoc</td>
+                    <td>@phieudiem.Diemviet</td>
+                    <td>@phieudiem.Diemnoi</td>
+                    <td>@phieudiem.Diemnghe</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>Phiếu điểm</h2>
+    <p>Chưa có phiếu điểm</p>
+}

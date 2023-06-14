@@ -8,12 +8,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
+//using BCrypt.Net;
 namespace hocvien.Controllers
 {
     public class DangnhapController : Controller
     {
         private centerContext db = new centerContext();
+
+        //[HttpPost]
+        //public IActionResult Login(LoginViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (model.Role == "giáo viên")
+        //        {
+        //            var giaovien = db.Giaoviens.FirstOrDefault(gv => gv.Email == model.Email);
+        //            if (giaovien != null && giaovien.Matkhau == EncryptPassword(model.Password))
+        //            {
+        //                // Đăng nhập thành công cho giáo viên
+        //                // Lưu thông tin đăng nhập vào session hoặc cookie
+        //                return RedirectToAction("Index", "Home");
+        //            }
+        //        }
+        //        else if (model.Role == "nhân viên")
+        //        {
+        //            var nhanvien = db.Nhanviens.FirstOrDefault(nv => nv.Email == model.Email);
+        //            if (nhanvien != null && nhanvien.Matkhau == EncryptPassword(model.Password))
+        //            {
+        //                // Đăng nhập thành công cho nhân viên
+        //                // Lưu thông tin đăng nhập vào session hoặc cookie
+        //                return RedirectToAction("Index", "Home");
+        //            }
+        //        }
+        //    }
+
+        //    // Xử lý lỗi đăng nhập không thành công
+        //    ModelState.AddModelError(string.Empty, "Thông tin đăng nhập không hợp lệ.");
+        //    return View(model);
+        //}
+        //private string EncryptPassword(string password)
+        //{
+        //    // Sử dụng BCrypt để mã hóa mật khẩu
+        //    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+
+        //    // Trả về mật khẩu đã được mã hóa
+        //    return hashedPassword;
+        //}
+
+        //// Kiểm tra mật khẩu
+        //private bool VerifyPassword(string password, string hashedPassword)
+        //{
+        //    // Sử dụng BCrypt để kiểm tra tính hợp lệ của mật khẩu
+        //    bool isValidPassword = BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+
+        //    // Trả về kết quả kiểm tra
+        //    return isValidPassword;
+        //}
+
+
+
         public IActionResult Index()
         {
             if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)

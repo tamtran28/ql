@@ -188,10 +188,10 @@ namespace hocvien.Controllers
             db.SaveChanges();
             //
            // var hocvienDaXepLop = db.Hocviens.Where(h => hocvienIds.Contains(h.Mahv)).ToList();
-            var hocvienChuaXepLop = db.Phieudiems.Where(h => !hocvienIds.Contains(h.Mahv)).ToList();
+           // var hocvienChuaXepLop = db.Phieudiems.Where(h => !hocvienIds.Contains(h.Mahv)).ToList();
 
-            return View(hocvienChuaXepLop);
-            //return RedirectToAction("Index");
+            //return View(hocvienChuaXepLop);
+            return RedirectToAction("Index");
         }
         public IActionResult DanhSachHocVien(string malophoc)
         {

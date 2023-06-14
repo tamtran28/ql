@@ -8,6 +8,10 @@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }*@
+
+@{
+    Layout = "_Layout";
+}
 @model CreateClassViewModel
 
 @using (Html.BeginForm())

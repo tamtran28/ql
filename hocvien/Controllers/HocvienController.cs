@@ -47,7 +47,7 @@ namespace hocvien.Controllers
             {
                 Mahv = a.Mahv,
                 Hoten = a.Hoten,
-                //Ngaysinh = a.Ngaysinh.Value.ToShortDateString(),
+                Ngaysinh = a.Ngaysinh.ToShortDateString(),
                 Gioitinh = (a.Gioitinh == 1 ? "Nam" : "Nữ"),
                 Sdt = a.Sdt,
                 Diachi = a.Diachi,
@@ -199,8 +199,6 @@ namespace hocvien.Controllers
 
             //     }
             //     return View("Index");
-
-
             var hocVien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == id);
 
             if (hocVien == null)
@@ -209,26 +207,72 @@ namespace hocvien.Controllers
             }
 
             var phieuDiem = db.Phieudiems.FirstOrDefault(pd => pd.Mahv == id);
-            var lopHoc = db.Lophocs.Where(lh => lh.Malophoc == phieuDiem.Malophoc);
 
-           //var lopHoc = db.Lophocs.Join(db.Phieudiems, x => x.Malophoc, y => y.MalophocNavigation, (x, y) => new { Phieudiem = x, Lophoc = y }
+            if (phieuDiem == null)
+            {
+                return View(new CHocvienview
+                {
+                    Mahv = hocVien.Mahv,
+                    Hoten = hocVien.Hoten,
+                    Ngaysinh = hocVien.Ngaysinh.ToShortDateString(),
+                    Sdt = hocVien.Sdt,
+                    Diachi = hocVien.Diachi,
+                    Gioitinh = hocVien.Gioitinh == 1 ? "Nam" : "Nữ",
+                    Trangthai = hocVien.Trangthai
+                });
+            }
+
+            var malophoc = phieuDiem != null ? phieuDiem.Malophoc : null;
+            var lopHoc = db.Lophocs.FirstOrDefault(lh => lh.Malophoc == malophoc);
+
+            string tenLop = lopHoc != null ? lopHoc.Malophoc : "Chưa có";
 
             var model = new CHocvienview
             {
                 Mahv = hocVien.Mahv,
                 Hoten = hocVien.Hoten,
-                Diachi = hocVien.Diachi,
+                Ngaysinh = hocVien.Ngaysinh.ToShortDateString(),
                 Sdt = hocVien.Sdt,
-                
-
-               // Gioitinh = hocVien.Gioitinh,
-
-                //Malophoc = 
-                //Tenlop = lopHoc.Tenlop,
-                // Phieudie = lopHoc?.Id,
-                // TenLop = lopHoc?.TenLop
+                Diachi = hocVien.Diachi,
+                Gioitinh = hocVien.Gioitinh == 1 ? "Nam" : "Nữ",
+                Trangthai = hocVien.Trangthai,
+                Malophoc = lopHoc?.Malophoc,
+                Tenlop = tenLop,
+                Phieudiems = new List<Phieudiem> { phieuDiem }
             };
+
             return View(model);
+
+
+            // var hocVien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == id);
+
+            // if (hocVien == null)
+            // {
+            //     return NotFound();
+            // }
+
+            // var phieuDiem = db.Phieudiems.FirstOrDefault(pd => pd.Mahv == id);
+            // var lopHoc = db.Lophocs.Where(lh => lh.Malophoc == phieuDiem.Malophoc);
+
+            ////var lopHoc = db.Lophocs.Join(db.Phieudiems, x => x.Malophoc, y => y.MalophocNavigation, (x, y) => new { Phieudiem = x, Lophoc = y }
+
+            // var model = new CHocvienview
+            // {
+            //     Mahv = hocVien.Mahv,
+            //     Hoten = hocVien.Hoten,
+            //     Diachi = hocVien.Diachi,
+            //     Sdt = hocVien.Sdt,
+
+
+            //    // Gioitinh = hocVien.Gioitinh,
+
+            //     //Malophoc = 
+            //     //Tenlop = lopHoc.Tenlop,
+            //     // Phieudie = lopHoc?.Id,
+            //     // TenLop = lopHoc?.TenLop
+            // };
+            // return View(model);
+
         }
     }
 }

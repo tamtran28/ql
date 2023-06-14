@@ -4,13 +4,16 @@
 }
 
 <h1>ChonGiaoVien</h1>*@
+@{
+    Layout = "_Layout";
+}
 @model List<Giaovien>
 
 <h2>Chọn giáo viên cho lớp học</h2>
 
 <form method="post" asp-action="PhanCongGiaoVien" asp-controller="Phancong">
-    <input type="hidden" name="malophoc" value="@Model" />
-    <div>
+    <input type="text" name="malophoc" value="@ViewBag.MaLopHoc" />
+
         <label for="magv">Giáo viên:</label>
         <select name="magv">
             <option value="">Chọn giáo viên</option>

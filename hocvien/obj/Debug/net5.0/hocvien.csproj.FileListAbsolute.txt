@@ -725,7 +725,6 @@ D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5
 D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\LopTS\Create.cshtml.g.cs
 D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\formthemLoptuyensinh.cshtml.g.cs
 D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\Index.cshtml.g.cs
-D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\themLoptuyensinh.cshtml.g.cs
 D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\xemKhoahoc.cshtml.g.cs
 D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\xemMonhoc.cshtml.g.cs
 D:\android\dart\trungtam-master 2 2 3\trungtam-master 2 2\hocvien\obj\Debug\net5.0\Razor\Views\Monhoc\formthemMonhoc.cshtml.g.cs
