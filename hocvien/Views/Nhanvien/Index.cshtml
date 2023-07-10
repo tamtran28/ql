@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Danh sách nhân viên</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -14,29 +14,29 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Hoten)
+              Họ tên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ngaysinh)
+               Ngày sinh
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Diachi)
+             Giới tính
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gioitinh)
+                SDT
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+               Địa chỉ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sdt)
+               Trạng thái
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Trangthai)
-            </th>
-            <th>
+            </th>*@
+           @* <th>
                 @Html.DisplayNameFor(model => model.Matkhau)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Nhom)
             </th>
@@ -53,23 +53,30 @@
                 @Html.DisplayFor(modelItem => item.Ngaysinh)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Diachi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gioitinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                    @if (item.Gioitinh == 1)
+                    {
+                        <span>Nam</span>
+                    }
+                    else
+                    {
+                        <span>Nữ</span>
+                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sdt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Trangthai)
+                @Html.DisplayFor(modelItem => item.Diachi)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Matkhau)
+                @Html.DisplayFor(modelItem => item.Trangthai)
             </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Trangthai)
+            </td>*@
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Matkhau)
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Nhom)
             </td>

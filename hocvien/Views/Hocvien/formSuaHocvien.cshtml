@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                @* @if (Model.Gioitinh ==1)
+                 @if (Model.Gioitinh ==1)
                     {
                         <div class="form-check-inline">
                             <label class="form-check-label">
@@ -66,10 +66,10 @@
                                 <input asp-for="Gioitinh" type="radio" value="false" checked="checked" class="form-check-input" />Nữ
                             </label>
                         </div>
-                    }*@
-                <label asp-for="Gioitinh" class="control-label">Giới tính</label>
+                    }
+                @*<label asp-for="Gioitinh" class="control-label">Giới tính</label>
                 <input asp-for="Gioitinh" class="form-control" />
-                <span asp-validation-for="Gioitinh" class="text-danger"></span>
+                <span asp-validation-for="Gioitinh" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <label asp-for="Trangthai" class="control-label">Trạng thái</label>
