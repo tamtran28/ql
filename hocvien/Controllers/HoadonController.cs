@@ -257,7 +257,7 @@ namespace hocvien.Controllers
 
         
         [HttpPost]
-        public IActionResult hoaDon(Hoadon hd, string maphieu, int sotien)
+        public IActionResult hoaDon(Hoadon hd, string maphieu, int sotien,int sotiendatra)
         {
             string manv = HttpContext.Session.GetString("Manv");
 
@@ -267,21 +267,24 @@ namespace hocvien.Controllers
             hd.Manv = manv;
             hd.Trangthaithanhtoan = "Thanh toán";
             hd.Maphieu = maphieu;
+            decimal soTienDaTra = sotiendatra;
 
+            // Tính số tiền đã trả mới
+            decimal soTienDaTraMoi = soTienDaTra + sotien;
             // Lưu số tiền đã đóng
-            hd.Sotiendatra = sotien;
+            hd.Sotiendatra = soTienDaTraMoi;
 
             // Tính tổng tiền cần thanh toán lấy ở phieudangky
             var phieudangkyhoc = db.Phieudangkyhocs.FirstOrDefault(p => p.Maphieu == maphieu);
             if (phieudangkyhoc != null)
             {
                 hd.Tongtienthanhtoan = phieudangkyhoc.tongtien;
-                hd.Sotienconlai = phieudangkyhoc.tongtien - hd.Sotiendatra.Value;
+                hd.Sotienconlai = phieudangkyhoc.Sotienconlai - hd.Sotiendatra.Value;
 
-                // Check if sotienconlai is equal to 0
+               
                 if (decimal.Equals(phieudangkyhoc.Sotienconlai, decimal.Zero))
                 {
-                    // Redirect to the detailed invoice page without creating a new invoice or updating the remaining amount
+                    
                     return RedirectToAction("chiTiethoadon", new { mahd = hd.Mahd });
                 }
 
@@ -289,7 +292,7 @@ namespace hocvien.Controllers
                 db.Hoadons.Add(hd);
                 db.SaveChanges();
 
-                // Update the remaining amount and amount paid in Phieudangkyhoc table
+                
                 phieudangkyhoc.Sotiendatra += sotien;
                 phieudangkyhoc.Sotienconlai = phieudangkyhoc.tongtien - phieudangkyhoc.Sotiendatra.Value;
 
