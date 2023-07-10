@@ -13,7 +13,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th></th>
+           
             <th>
                Mã phiếu
             </th>
@@ -46,9 +46,9 @@
         <form asp-action="formLapHD" asp-controller="Hoadon" method="post">
         @foreach (var item in Model) {
         <tr>
-                <td>
+              @*  <td>
                     <input type="checkbox" name="selectedClasses[]" value="@item.Maloptuyensinh"   />
-                </td>
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Maphieu)
                     <input type="hidden" name="maphieu" value="@item.Maphieu" />
@@ -109,7 +109,7 @@
 
    
 }
-       <button type="submit" class="btn btn-primary" >Thanh toán</button>
+      @* <button type="submit" class="btn btn-primary" >Thanh toán</button>*@
        
         </form>
     </tbody>

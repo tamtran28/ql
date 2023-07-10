@@ -4,15 +4,15 @@
     ViewData["Title"] = "search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h3>Tìm kiếm học viên</h3>
+<h3>Tìm kiếm phiếu đăng ký</h3>
 <div class="row">
     <div class="col-md-8">
-        <input type="text" id="maphieu" class="form-control" />
+        <input type="search" id="maphieu" class="form-control rounded" />
         <input type="hidden" id="mahv" />
 
     </div>
     <div class="col-md-4">
-        <input type="button" onclick="timPhieuDK_click()" value="Tìm kiếm" />
+        <input type="button" class="btn btn-outline-primary"  onclick="timPhieuDK_click()" value="Tìm kiếm" />
     </div>
 </div>
 <div id="danhsachphieu"</div>

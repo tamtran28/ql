@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<hocvien.Model.Hocvien>
-@{
+@*@{
     Layout = "_Layout";
-}
+}*@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -84,18 +84,3 @@
 }
     </tbody>
 </table>
-<script type="text/javascript">
-    // Lắng nghe sự kiện click của các nút chọn học viên
-    document.querySelectorAll('.select-student').forEach(function (button) {
-        button.addEventListener('click', function (event) {
-            // Lấy mã học viên từ thuộc tính data-student-id của nút chọn học viên
-            var studentId = event.target.getAttribute("data-id");
-            // Chuyển đến trang đăng ký khóa học với thông tin học viên tương ứng
-            //window.location.href = '/CreateRegistration?studentId=' + studentId;
-            //window.location.href = '/test?studentId=' + studentId;
-            alert('student');
-        });
-    });
-
-
-</script>

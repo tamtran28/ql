@@ -2543,3 +2543,4 @@ C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\hocvien.genruntimeconfig.cache
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\ref\hocvien.dll
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Giaovien\formSuaGiaovien.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Nhanvien\formSuaNhanvien.cshtml.g.cs

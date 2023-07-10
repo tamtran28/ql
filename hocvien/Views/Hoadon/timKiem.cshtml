@@ -10,16 +10,16 @@
                Mã phiếu
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ngaydk)
+                Mã học viên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ghichu)
+               Mã nhân viên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MahvNavigation)
+                Ngày đăng ký
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ManvNavigation)
+                Ghi chú
             </th>
             <th></th>
         </tr>
@@ -31,21 +31,21 @@
                     @Html.DisplayFor(modelItem => item.Maphieu)
                 </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Mahv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manv)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Ngaydk)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ghichu)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MahvNavigation.Mahv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ManvNavigation.Manv)
-            </td>
-            <td>
                     <form method="post" action="formLapHD">
         <input type="hidden" name="maphieu" value="@item.Maphieu" />
-        <button type="submit">Thanh toán</button>
+                        <button type="submit" class="btn btn-primary btn-rounded">Thanh toán</button>
     </form>
 
                    @* <a asp-action="formLapHD" asp-route-maphieu="@item.Maphieu">Thanh toán</a> |*@

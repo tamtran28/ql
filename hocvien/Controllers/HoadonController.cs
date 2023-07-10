@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace hocvien.Controllers
 {
-   
+    [Authorize(Roles = "tuyensinh")]
     public class HoadonController : Controller
     {
         centerContext db = new centerContext();
@@ -233,9 +233,9 @@ namespace hocvien.Controllers
                     .ToList();
 
                 var malopTuyenSinhs = lopDangKyHocs.Select(ldk => ldk.Maloptuyensinh).ToList();
-
+                //var hocvien = hoadon.MahvNavigation;
                 ViewBag.maphieu = maphieu;
-                ViewBag.Hocvien = hoadon.MahvNavigation?.Hoten;
+                //ViewBag.Hocvien =hocvien.Hoten ;
                 ViewBag.LopDangkyhocs = malopTuyenSinhs;
                 ViewBag.TongTien = hoadon.tongtien; 
                 if (decimal.Equals(hoadon.Sotienconlai, decimal.Zero))
@@ -255,139 +255,7 @@ namespace hocvien.Controllers
 
 
 
-        //[HttpPost]
-        //public IActionResult hoaDon(string[] selectedClasses, Hoadon hd)
-        //{
-
-        //    hd.Mahd = taoMaHD();
-        //    hd.Ngaythu = DateTime.Now;
-        //    hd.Manv = "NV001";
-
-        //    db.Hoadons.Add(hd);
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //[HttpPost]
-        //public IActionResult hoaDon(Hoadon hd, string maphieu, int sotien)
-        //{
-        //    string manv = HttpContext.Session.GetString("Manv");
-        //    // Tạo mã hóa đơn
-        //    hd.Mahd = taoMaHD();
-        //    hd.Ngaythu = DateTime.Now;
-        //    hd.Manv = "NV002";
-        //    hd.Trangthaithanhtoan = "Đã";
-        //    // Tìm danh sách các mã lớp tuyển sinh mà học viên đăng ký trong bảng LopDangkyhoc
-        //    List<string> maloptuyensinh = db.LopDangkyhocs
-        //        .Where(ldk => maphieu == ldk.Maphieu)
-        //        .Select(ldk => ldk.Maloptuyensinh)
-        //        .ToList();
-
-        //    // Tính tổng tiền cần thanh toán
-        //    var tongtien = 0;
-
-        //    foreach (var classId in maloptuyensinh)
-        //    {
-        //        var TongTien = db.LopDangkyhocs
-        //            .Where(ldk => ldk.Maphieu == hd.Maphieu && ldk.Maloptuyensinh == classId)
-        //            .Join(
-        //                db.Loptuyensinhs,
-        //                r => r.Maloptuyensinh,
-        //                a => a.Maloptuyensinh,
-        //                (r, a) => new { LopDangkyhoc = r, Loptuyensinh = a }
-        //            )
-        //            .Join(
-        //                db.Monhocs,
-        //                a => a.Loptuyensinh.Mamh,
-        //                s => s.Mamh,
-        //                (a, s) => s.Hocphi
-        //            )
-        //            .FirstOrDefault();
-
-        //        if (TongTien != null)
-        //        {
-        //            tongtien += (int)TongTien;
-        //        }
-        //    }
-        //    hd.Tongtienthanhtoan = tongtien;
-        //    // Lưu số tiền đã đóng
-        //    hd.Sotiendatra = sotien;
-
-        //    // Tính số tiền còn lại
-        //    hd.Sotienconlai = (decimal)(tongtien - hd.Sotiendatra);
-
-        //    // Lưu hóa đơn vào cơ sở dữ liệu
-        //    db.Hoadons.Add(hd);
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //[HttpPost]
-        //public IActionResult hoaDon(Hoadon hd, string maphieu, int sotien)
-        //{
-        //    string manv = HttpContext.Session.GetString("Manv");
-
-        //    // Kiểm tra xem đã tồn tại hóa đơn cho phiếu đăng ký này chưa
-        //    Hoadon existingHoaDon = db.Hoadons.FirstOrDefault(h => h.Maphieu == maphieu);
-
-        //    if (existingHoaDon == null)
-        //    {
-        //        // Tạo mã hóa đơn
-        //        hd.Mahd = taoMaHD();
-        //        hd.Ngaythu = DateTime.Now;
-        //        hd.Manv = "NV002";
-        //        hd.Trangthaithanhtoan = "Đã";
-        //        hd.Maphieu = maphieu;
-
-        //        // Lưu số tiền đã đóng
-        //        hd.Sotiendatra = sotien;
-
-        //        // Tính tổng tiền cần thanh toán
-        //        var tongtien = TinhTongTienThanhToan(maphieu);
-        //        hd.Tongtienthanhtoan = tongtien;
-
-        //        // Tính số tiền còn lại
-        //        hd.Sotienconlai = tongtien - hd.Sotiendatra.Value;
-
-        //        // Lưu hóa đơn vào cơ sở dữ liệu
-        //        db.Hoadons.Add(hd);
-        //    }
-        //    else
-        //    {
-        //        // Cập nhật thông tin hóa đơn đã tồn tại
-        //        existingHoaDon.Ngaythu = DateTime.Now;
-        //        existingHoaDon.Manv = "NV002";
-        //        existingHoaDon.Trangthaithanhtoan = "Đã";
-        //        existingHoaDon.Maphieu = maphieu;
-
-        //        // Lấy thông tin số tiền đã đóng và tổng tiền cần thanh toán từ cơ sở dữ liệu
-        //        var tongtien = TinhTongTienThanhToan(maphieu);
-        //        existingHoaDon.Tongtienthanhtoan = tongtien;
-        //        existingHoaDon.Sotiendatra += sotien;
-        //        existingHoaDon.Sotienconlai = tongtien - existingHoaDon.Sotiendatra.Value;
-        //    }
-
-        //    // Cập nhật trạng thái thanh toán của các maloptuyensinh
-        //    List<string> maloptuyensinh = db.LopDangkyhocs
-        //        .Where(ldk => ldk.Maphieu == maphieu)
-        //        .Select(ldk => ldk.Maloptuyensinh)
-        //        .ToList();
-
-        //    foreach (var classId in maloptuyensinh)
-        //    {
-        //        var lopDangKyHoc = db.LopDangkyhocs.FirstOrDefault(ldk => ldk.Maphieu == maphieu && ldk.Maloptuyensinh == classId);
-        //        if (lopDangKyHoc != null)
-        //        {
-        //            lopDangKyHoc.Trangthai = 1; // Đánh dấu lớp đã được thanh toán
-        //        }
-        //    }
-
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("Index");
-        //}
+        
         [HttpPost]
         public IActionResult hoaDon(Hoadon hd, string maphieu, int sotien)
         {
@@ -396,8 +264,8 @@ namespace hocvien.Controllers
             // Tạo mã hóa đơn
             hd.Mahd = taoMaHD();
             hd.Ngaythu = DateTime.Now;
-            hd.Manv = "NV002";
-            hd.Trangthaithanhtoan = "Đã";
+            hd.Manv = manv;
+            hd.Trangthaithanhtoan = "Thanh toán";
             hd.Maphieu = maphieu;
 
             // Lưu số tiền đã đóng
@@ -474,58 +342,58 @@ namespace hocvien.Controllers
 
             return maHocVien;
         }
-        //public IActionResult formXoahoadon(string id)
-        //{
-        //    Model.Hoadon x = db.Hoadons.Find(id);
-        //    return View(x);
-        //}
-        //[HttpPost]
-        //public IActionResult xoaHoadon(string mahd)
-        //{
+        public IActionResult formXoahoadon(string id)
+        {
+            Model.Hoadon x = db.Hoadons.Find(id);
+            return View(x);
+        }
+        [HttpPost]
+        public IActionResult xoaHoadon(string mahd)
+        {
 
-        //    Model.Hoadon x = db.Hoadons.Find(mahd);
-        //    if (x != null)
-        //    {
-        //        db.Hoadons.Remove(x);
-        //        db.SaveChanges();
-        //    }
+            Model.Hoadon x = db.Hoadons.Find(mahd);
+            if (x != null)
+            {
+                db.Hoadons.Remove(x);
+                db.SaveChanges();
+            }
 
-           
-        //    db.SaveChanges();
 
-        //    // Return a success response
-        //    return RedirectToAction("Index");
-        //}
-        //public IActionResult formSuahoadon(string id)
-        //{
-        //    ViewBag.ten = User.Identity.Name;
-        //    Model.Hocvien x = db.Hocviens.Find(id);
+            db.SaveChanges();
 
-        //    return View(x);
-        //}
-        //[HttpPost]
-        //public IActionResult suaHoadon(Model.Hoadon x)
-        //{
+            // Return a success response
+            return RedirectToAction("Index");
+        }
+        public IActionResult formSuahoadon(string id)
+        {
+            ViewBag.ten = User.Identity.Name;
+            Model.Hocvien x = db.Hocviens.Find(id);
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        Model.Hoadon hd = db.Hoadons.Find(x.Mahd);
-        //        if (hd != null)
-        //        {
-        //            hd.Ngaythu = x.Ngaythu;
-        //            hd.Tongtienthanhtoan = x.Tongtienthanhtoan;
-        //            hd.Ghichu = x.Ghichu;
-        //            hd.Hinhthuc = x.Hinhthuc;
-        //            hd.Trangthaithanhtoan = x.Trangthaithanhtoan;
-        //            hd.Manv = x.Manv;
-        //           // hd.Maphieu = x.Maphieu;
-        //        }
-        //        TempData["SuaSuccessMessage"] = "Sửa thành công";
-        //        return RedirectToAction("Index");
-        //    }
+            return View(x);
+        }
+        [HttpPost]
+        public IActionResult suaHoadon(Model.Hoadon x)
+        {
 
-        //    return View("formSuahoadon");
-        //}
+            if (ModelState.IsValid)
+            {
+                Model.Hoadon hd = db.Hoadons.Find(x.Mahd);
+                if (hd != null)
+                {
+                    hd.Ngaythu = x.Ngaythu;
+                    hd.Tongtienthanhtoan = x.Tongtienthanhtoan;
+                    hd.Ghichu = x.Ghichu;
+                    hd.Hinhthuc = x.Hinhthuc;
+                    hd.Trangthaithanhtoan = x.Trangthaithanhtoan;
+                    hd.Manv = x.Manv;
+                    // hd.Maphieu = x.Maphieu;
+                }
+                TempData["SuaSuccessMessage"] = "Sửa thành công";
+                return RedirectToAction("Index");
+            }
+
+            return View("formSuahoadon");
+        }
 
     }
 }

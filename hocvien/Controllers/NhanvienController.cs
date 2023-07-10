@@ -47,11 +47,11 @@ namespace hocvien.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult doiMatkhau( string oldPassword, string newPassword)
+        public IActionResult doiMatkhau(string oldPassword, string newPassword)
         {
             string username = HttpContext.Session.GetString("Manv");
-           // ViewBag.ten = manv;
-           // string username = User.Identity.Name; // Retrieve the username from the logged-in user's identity
+            // ViewBag.ten = manv;
+            // string username = User.Identity.Name; // Retrieve the username from the logged-in user's identity
 
             // Example logic to retrieve the employee from the database using the username
             var employee = db.Nhanviens.FirstOrDefault(nv => nv.Manv == username);
@@ -89,6 +89,64 @@ namespace hocvien.Controllers
             // Return e success response
             return RedirectToAction("Index");
         }
+        public IActionResult formSuaNhanvien(string id)
+        {
+            string manv = HttpContext.Session.GetString("Manv");
+            ViewBag.ten = manv;
+            Model.Nhanvien x = db.Nhanviens.Find(id);
 
+            return View(x);
+        }
+        [HttpPost]
+        public IActionResult suaNhanvien(Model.Nhanvien x)
+        {
+
+            if (ModelState.IsValid)
+            {
+                Model.Nhanvien hv = db.Nhanviens.Find(x.Manv);
+                if (hv != null)
+                {
+                    hv.Hoten = x.Hoten;
+                    hv.Ngaysinh = x.Ngaysinh;
+                    //if (x.Ngaysinh.Value.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Value.Year) < 4)
+                    //{
+                    //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                    //    return -1;
+                    //}
+                    hv.Gioitinh = x.Gioitinh;
+                    hv.Trangthai = x.Trangthai;
+                    hv.Diachi = x.Diachi;
+                    hv.Email   = x.Email;
+                    hv.Nhom = x.Nhom;
+                    hv.Sdt = x.Sdt;
+                    db.SaveChanges();
+                }
+                TempData["SuaSuccessMessage"] = "Sửa học viên thành công";
+                return RedirectToAction("Index");
+            }
+
+            return View("formSuaHocvien");
+        }
+
+        public IActionResult formXoaNhanVien(String id)
+        {
+            int dem = db.Nhanviens.Where(a => a.Manv == id).ToList().Count();
+            Model.Nhanvien x = db.Nhanviens.Find(id);
+            ViewBag.flag = dem;
+
+            return View(x);
+        }
+        public IActionResult xoaHocVien(String id)
+        {
+            Model.Nhanvien x = db.Nhanviens.Find(id);
+            if (x != null)
+            {
+                db.Nhanviens.Remove(x);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+
+        }
     }
 }

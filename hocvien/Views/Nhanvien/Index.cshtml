@@ -73,11 +73,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Nhom)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Manv">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Manv">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Manv">Delete</a>
-            </td>
+                <td>
+                    <a asp-action="formSuaNhanvien" asp-route-id="@item.Manv" class="btn btn-primary btn-rounded">Sửa</a>
+                </td>
+                <td>
+                    <a asp-action="formXoaNhanVien" asp-route-id="@item.Manv" class="btn btn-danger delete-btn">Xóa</a>
+                </td>
+                <td>
         </tr>
 }
     </tbody>
