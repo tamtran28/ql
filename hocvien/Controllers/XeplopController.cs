@@ -110,15 +110,15 @@ namespace hocvien.Controllers
             return PartialView(hocvien);
         }
 
-        
 
-        public IActionResult Index1()
-        {
 
-            //ViewBag.DSlop = new SelectList(db.Khoahocs.ToList(), "Makh", "Tenkh");
-            return View(db.Lophocs.ToList());
+        //public IActionResult Index1()
+        //{
 
-        }
+        //    //ViewBag.DSlop = new SelectList(db.Khoahocs.ToList(), "Makh", "Tenkh");
+        //    return View(db.Lophocs.ToList());
+
+        //}
         public IActionResult Index()
         {
 
@@ -126,6 +126,27 @@ namespace hocvien.Controllers
             return View(lophocs);
 
         }
+        //public IActionResult Index()
+        //{
+        //    var tenGiaoviens = db.Lophocs
+        //        .Include(l => l.LophocGiaoviens)
+        //        .SelectMany(l => l.LophocGiaoviens.Select(lg => lg.MagvNavigation.Hoten))
+        //        .ToList();
+
+        //    return View(tenGiaoviens);
+        //}
+
+        //        public IActionResult Index()
+        //{
+        //    var lophocs = db.Lophocs
+        //        .Include(l => l.LophocGiaoviens)
+        //        .ThenInclude(lg => lg.Giaovien)
+        //        .ToList();
+
+        //    return View(lophocs);
+        //}
+
+
         public IActionResult xemDSLop(string id)
         {
             List<Loptuyensinh> ds = db.Loptuyensinhs.Where(p => p.Maloptuyensinh == id).ToList();

@@ -46,9 +46,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Maloptuyensinh)
             </td>
-            <td>
+           @* <td>
                     @item.LophocGiaoviens
-            </td>
+            </td>*@
+                <td>
+                    @foreach (var lophocGiaovien in item.LophocGiaoviens)
+                    {
+                        <span>@lophocGiaovien.MagvNavigation?.Hoten</span>
+                    }
+                </td>
             <td>
 
                @* <td>
