@@ -1,6 +1,6 @@
 ﻿
 using hocvien.Model;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace hocvien.Controllers
 {
+    //[Authorize(Roles = "tuyển sinh")]
     public class PhieudangkyController : Controller
     {
         private centerContext db = new centerContext();
@@ -97,23 +99,51 @@ namespace hocvien.Controllers
         }
 
 
+        //[HttpPost]
+        //public IActionResult CreateRegistration(Phieudangkyhoc p)
+        //{
+        //     p.Maphieu = taoMaphieu();
+
+        //    List<string> sessionSelectedClasses = MySessions.GetList<string>(HttpContext.Session, "selectedClasses");
+
+        //    p.Maphieu = taoMaphieu();
+        //    p.Ngaydk = DateTime.Now; // Lấy ngày hiện tại
+
+        //    // Lưu phiếu đăng ký vào cơ sở dữ liệu
+        //    db.Phieudangkyhocs.Add(p);
+        //    db.SaveChanges();
+
+        //    // Lưu danh sách lớp tuyển sinh đã chọn vào bảng 'LopDangkyhoc' với mã phiếu đăng ký tương ứng
+        //    if (sessionSelectedClasses != null && sessionSelectedClasses.Count > 0)
+        //    {
+        //        foreach (var malop in sessionSelectedClasses)
+        //        {
+        //            var lopDangKyHoc = new LopDangkyhoc
+        //            {
+        //                Maphieu = p.Maphieu,
+        //                Maloptuyensinh = malop
+        //            };
+
+        //            db.LopDangkyhocs.Add(lopDangKyHoc);
+        //        }
+
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return RedirectToAction("Index");
+        //}
+
         [HttpPost]
         public IActionResult CreateRegistration(Phieudangkyhoc p)
         {
-             p.Maphieu = taoMaphieu();
-
-            List<string> sessionSelectedClasses = MySessions.GetList<string>(HttpContext.Session, "selectedClasses");
-            
             p.Maphieu = taoMaphieu();
             p.Ngaydk = DateTime.Now; // Lấy ngày hiện tại
-              
-            // Lưu phiếu đăng ký vào cơ sở dữ liệu
-            db.Phieudangkyhocs.Add(p);
-            db.SaveChanges();
 
             // Lưu danh sách lớp tuyển sinh đã chọn vào bảng 'LopDangkyhoc' với mã phiếu đăng ký tương ứng
+            List<string> sessionSelectedClasses = MySessions.GetList<string>(HttpContext.Session, "selectedClasses");
             if (sessionSelectedClasses != null && sessionSelectedClasses.Count > 0)
             {
+                decimal totalCourseFee = 0;
                 foreach (var malop in sessionSelectedClasses)
                 {
                     var lopDangKyHoc = new LopDangkyhoc
@@ -123,23 +153,66 @@ namespace hocvien.Controllers
                     };
 
                     db.LopDangkyhocs.Add(lopDangKyHoc);
+
+                    // Lấy thông tin về môn học và tính tổng tiền dựa trên giá học phí của mỗi môn học
+                    var TongTien = db.Loptuyensinhs
+                        .Where(ldk => ldk.Maloptuyensinh == malop)
+                        .Join(
+                            db.Monhocs,
+                            ldk => ldk.Mamh,
+                            mh => mh.Mamh,
+                            (ldk, mh) => mh.Hocphi
+                        )
+                        .FirstOrDefault();
+
+                    if (TongTien != null)
+                    {
+                        totalCourseFee += TongTien;
+                    }
                 }
 
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                // Cập nhật thông tin tổng tiền, số tiền đã trả và số tiền còn lại trong phiếu đăng ký
+                p.tongtien = totalCourseFee;
+                p.Sotiendatra = 0; // Ban đầu số tiền đã trả là 0
+                p.Sotienconlai = totalCourseFee;
             }
-            return RedirectToAction("Index");
-        }
 
-
-        [HttpPost]
-        public IActionResult themPhieudangky(Phieudangkyhoc p)
-        {
-            p.Maphieu = taoMaphieu();
+            // Lưu phiếu đăng ký vào cơ sở dữ liệu
             db.Phieudangkyhocs.Add(p);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
+
+        //private decimal TinhTongTienThanhToan(string maphieu)
+        //{
+        //    var tongtien = db.LopDangkyhocs
+        //        .Where(ldk => ldk.Maphieu == maphieu) // Chỉ tính tổng tiền cho những lớp chưa được thanh toán
+        //        .Join(
+        //            db.Loptuyensinhs,
+        //            ldk => ldk.Maloptuyensinh,
+        //            lt => lt.Maloptuyensinh,
+        //            (ldk, lt) => new { LopDangkyhoc = ldk, Loptuyensinh = lt }
+        //        )
+        //        .Join(
+        //            db.Monhocs,
+        //            a => a.Loptuyensinh.Mamh,
+        //            s => s.Mamh,
+        //            (a, s) => s.Hocphi
+        //        )
+        //        .Sum();
+
+        //    return tongtien;
+        //}
+
+        //[HttpPost]
+        //public IActionResult themPhieudangky(Phieudangkyhoc p)
+        //{
+        //    p.Maphieu = taoMaphieu();
+        //    db.Phieudangkyhocs.Add(p);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
         private string taoMaphieu()
         {
             // Lấy mã học viên cuối cùng từ CSDL
@@ -171,19 +244,6 @@ namespace hocvien.Controllers
             Hocvien x = db.Hocviens.Find(id);
             return PartialView(x);
         }
-
-        public IActionResult dangkyMonhoc(Phieudangkyhoc x)
-        {
-           
-                x.Maphieu = taoMaphieu();
-                x.Ngaydk = DateTime.Now;
-                db.Phieudangkyhocs.Add(x);
-                db.SaveChanges();
-                 return RedirectToAction("Index");
-
-            
-        }
-
         public IActionResult timLop(string id)
         {
             //List<Monhoc> dsMH = xulyhv.getDSMonhoc();
@@ -191,6 +251,55 @@ namespace hocvien.Controllers
             //Loptuyensinh x = db.Loptuyensinhs.Find(id);
             return PartialView(ds);
         }
-      
+        public IActionResult formXoaphieudangky(string id)
+        {
+            Model.Hoadon x = db.Hoadons.Find(id);
+            int dem = db.LopDangkyhocs.Where(a => a.Maphieu == id).ToList().Count();
+            return View(x);
+        }
+        [HttpPost]
+        public IActionResult xoaPhieudangky(string id)
+        {
+
+            Model.Phieudangkyhoc x = db.Phieudangkyhocs.Find(id);
+            if (x != null)
+            {
+                db.Phieudangkyhocs.Remove(x);
+                db.SaveChanges();
+            }
+
+
+            db.SaveChanges();
+
+            // Return a success response
+            return RedirectToAction("Index");
+        }
+        public IActionResult formSuaphieudangky(string id)
+        {
+            ViewBag.ten = User.Identity.Name;
+            Model.Phieudangkyhoc x = db.Phieudangkyhocs.Find(id);
+
+            return View(x);
+        }
+        [HttpPost]
+        public IActionResult suaPhieudangky(Model.Phieudangkyhoc x)
+        {
+
+            if (ModelState.IsValid)
+            {
+                Model.Phieudangkyhoc p = db.Phieudangkyhocs.Find(x.Maphieu);
+                if (p != null)
+                {
+                    p.Ngaydk = x.Ngaydk;
+                    p.Ghichu = x.Ghichu;
+                   
+                }
+                TempData["SuaSuccessMessage"] = "Sửa thành công";
+                return RedirectToAction("Index");
+            }
+
+            return View("formSuaphieudangky");
+        }
+
     }
 }

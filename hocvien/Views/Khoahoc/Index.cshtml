@@ -4,8 +4,19 @@
     ViewData["Title"] = "Danh sách khóa học";
     Layout = "_Layout";
 }
-
-<h1>Index</h1>
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.sua))
+{
+    <div id="msgAlertS" class="alert alert-success" role="alert">
+        @ViewBag.sua
+    </div>
+}
+<h1>Danh sách khóa học</h1>
 
 <p>
     <a asp-action="formthemKhoahoc">Thêm khóa học</a>
@@ -20,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.Tenkh)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Thoiluong)
+                @*@Html.DisplayNameFor(model => model.Thoiluong)*@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Motakh)
@@ -35,30 +46,62 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Makh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tenkh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Thoiluong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Motakh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nguoitao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ngaytao)
-            </td>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Makh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tenkh)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Thoiluong)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motakh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nguoitao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaytao)
+                </td>
+                <td>
                     <a asp-action="formXoakhoahoc" asp-route-id="@item.Makh" class="btn btn-primary">Xóa</a>
-            </td>
-        </tr>
-}
+                </td>
+                <td>
+                    <a asp-action="formSuakhoahoc" asp-route-id="@item.Makh" class="btn btn-primary">Sửa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <script>window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.sua))
+{
+    <script>window.onload = function () {
+            var alertElement = document.getElementById('msgAlertS');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}

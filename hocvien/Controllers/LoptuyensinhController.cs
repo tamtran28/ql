@@ -18,7 +18,10 @@ namespace hocvien.Controllers
         private centerContext db = new centerContext();
         public IActionResult Index()
         {
-
+            if (TempData.ContainsKey("SuccessMessage"))
+            {
+                ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            }
             var ds = db.Loptuyensinhs
             .Join(db.Cahocs,
                 r => r.Macahoc,
@@ -34,8 +37,8 @@ namespace hocvien.Controllers
                // Maphieu = s.Phieudangkyhoc.Phieudangkyhoc.Maphieu,
                 //Mahv = s.Phieudangkyhoc.Hocvien.Mahv,
                 //Hoten = s.Phieudangkyhoc.Hocvien.Hoten,
-                Ngaybatdau = r.Ngaybatdau,
-                Ngayketthuc = r.Ngayketthuc,
+                Ngaybatdau = (DateTime)r.Ngaybatdau,
+                Ngayketthuc = (DateTime)r.Ngayketthuc,
                 Maloptuyensinh = r.Maloptuyensinh,
                 Tenloptuyensinh = r.Tenloptuyensinh,
                 Thuhoc = s.Thuhoc,
@@ -43,48 +46,73 @@ namespace hocvien.Controllers
             });
             return View(ds);
         }
-       
-        public IActionResult formthemLoptuyensinh()
 
+        public IActionResult Create()
         {
-            ViewBag.DSKhoahoc = new SelectList(db.Khoahocs.ToList(), "Makh", "Tenkh");
-            ViewBag.DSMonhoc = new SelectList(db.Monhocs.ToList(), "Mamh", "Tenmh");
+            // Lấy danh sách khóa học và môn học từ cơ sở dữ liệu
+            var khoahocs = db.Khoahocs.Where(kh => kh.Trangthai == "Đang mở").ToList();
+            var monhocs = db.Monhocs.ToList();
+            var cahoc = db.Cahocs.ToList();
+            // Tạo SelectList cho combobox khóa học
+            var khoahocSelectList = new SelectList(khoahocs, "Makh", "Tenkh");
+
+            ViewBag.DSKhoahoc = khoahocSelectList;
+            ViewBag.DSMonhoc = monhocs;
+            ViewBag.Cahocs = cahoc;
             return View();
         }
 
+        // Action để xử lý khi người dùng nhấn nút Lưu
         [HttpPost]
-        public IActionResult themLoptuyensinh(Loptuyensinh ts)
+        public IActionResult Create(CreateClassViewModel model)
         {
+            string thangNamHienTai = DateTime.Now.ToString("MMyyyy");
             if (ModelState.IsValid)
             {
-                // Lấy mã khóa học và mã môn học từ form
-                string courseId = ts.Makh;
-                string subjectId = ts.Mamh;
+                // Tạo các đối tượng Loptuyensinh và lưu vào cơ sở dữ liệu
+                foreach (var mamh in model.MamhList)
+                {
+                    var macahoc = Request.Form[$"Macahoc_{mamh}"];
+                    var ngaybatdau = DateTime.Parse(Request.Form[$"NgaybatdauList[{mamh}]"]);
+                    var ngayketthuc = DateTime.Parse(Request.Form[$"NgayketthucList[{mamh}]"]);
 
-                // Lấy thông tin khóa học và môn học từ database
-                var course = db.Khoahocs.Find(courseId);
-                var subject = db.Monhocs.Find(subjectId);
 
-                // Tạo mã lớp tuyển sinh tự động
-              
-         
-                string thangNamHienTai = DateTime.Now.ToString("MMyyyy");
+                    var loptuyensinh = new Loptuyensinh
+                    {
+                        Maloptuyensinh = String.Concat(model.Makh, "-", mamh, thangNamHienTai).Replace(" ", ""), // Hàm để tạo mã lớp tuyển sinh duy nhất
+                                                                                                                 //Maloptuyensinh ="KH",
+                        Tenloptuyensinh = String.Concat(model.Makh, "-", mamh, thangNamHienTai).Replace(" ", ""),
+                        Trangthai = "Trạng thái",
+                        Nguoitao = "Người tạo",
+                        Ngaytao = DateTime.Now,
+                        Ngaybatdau = ngaybatdau,
+                        Ngayketthuc = ngayketthuc,
+                        Macahoc = macahoc,
+                        Makh = model.Makh,
+                        Mamh = mamh
+                    };
 
-                string maLopTuyenSinh = String.Concat(course.Makh,"-",subject.Mamh,"-",thangNamHienTai).Replace(" ", "");
-         
-               ts.Maloptuyensinh = maLopTuyenSinh;
-                db.Loptuyensinhs.Add(ts);
+                    db.Loptuyensinhs.Add(loptuyensinh);
+                }
+
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                // Chuyển hướng đến trang thành công hoặc trang thông báo
+                TempData["SuccessMessage"] = "Thêm lớp tuyển sinh thành công";
+                return RedirectToAction("Index", "Loptuyensinh");
             }
 
-           
-            ViewBag.Courses = db.Khoahocs.ToList();
-            ViewBag.Subjects = db.Monhocs.ToList();
-            return View(ts);
-        }
+            // Nếu dữ liệu không hợp lệ, hiển thị lại trang tạo lớp tuyển sinh với thông báo lỗi
+            var khoahocs = db.Khoahocs.ToList();
+            var monhocs = db.Monhocs.ToList();
+            var cahoc = db.Cahocs.ToList();
+            var khoahocSelectList = new SelectList(khoahocs, "Makh", "Tenkh");
 
+            ViewBag.DSKhoahoc = khoahocSelectList;
+            ViewBag.DSMonhoc = monhocs;
+            ViewBag.Cahocs = cahoc;
+            return View(model);
+        }
         public IActionResult xemKhoahoc(string id)
         {
             Khoahoc x = db.Khoahocs.Find(id);
@@ -96,7 +124,52 @@ namespace hocvien.Controllers
             return PartialView(x);
         }
 
-        
+        public IActionResult formXoaloptuyensinh(String id)
+        {
+            int dem = db.Lophocs.Where(a => a.Maloptuyensinh == id).ToList().Count();
+            Model.Loptuyensinh x = db.Loptuyensinhs.Find(id);
+            ViewBag.flag = dem;
+
+            return View(x);
+        }
+        public IActionResult xoaLoptuyensinh(String id)
+        {
+            Model.Khoahoc x = db.Khoahocs.Find(id);
+            if (x != null)
+            {
+                db.Khoahocs.Remove(x);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        public IActionResult formSualoptuyensinh(string id)
+        {
+            string manv = HttpContext.Session.GetString("Manv");
+            ViewBag.ten = manv;
+           // Model.Loptuyensinh x = db.Loptuyensinhs.Find(id);
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult suaKhoahoc(Model.Loptuyensinh x)
+        {
+            if (ModelState.IsValid)
+            {
+                Model.Loptuyensinh kh = db.Loptuyensinhs.Find(x.Maloptuyensinh);
+                if (kh != null)
+                {
+                    kh.Tenloptuyensinh = x.Tenloptuyensinh;
+                    kh.Trangthai = x.Trangthai ;
+                   // kh.Macahoc = x.Macahoc;
+
+
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+
+            return View("formSuakhoahoc");
+        }
 
     }
 }

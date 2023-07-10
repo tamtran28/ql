@@ -13,6 +13,7 @@ namespace hocvien.Model
         public int? Diemviet { get; set; }
         public int? Diemnoi { get; set; }
         public int? Diemnghe { get; set; }
+        public int Trangthai { get; set; }
 
         public virtual Hocvien MahvNavigation { get; set; }
         public virtual Lophoc MalophocNavigation { get; set; }

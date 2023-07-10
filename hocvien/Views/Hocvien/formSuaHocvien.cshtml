@@ -8,16 +8,16 @@
 <h1>Sửa học viên</h1>
 
 <hr />
-<form asp-action="suaHocvien" method="post">
-<div class="row">
-    <div class="col-md-6">
-      
+<form asp-action="suaHocvien" method="post" asp-controller="Hocvien">
+    <div class="row">
+        <div class="col-md-6">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="Mahv" class="control-label"></label>
-                <input asp-for="Mahv" class="form-control" />
-                <span asp-validation-for="Mahv" class="text-danger"></span>
-            </div>*@
+            <div class="form-group">
+                    <label asp-for="Mahv" class="control-label"></label>
+                    <input asp-for="Mahv" class="form-control" readonly />
+                    <span asp-validation-for="Mahv" class="text-danger"></span>
+                </div>
             <div class="form-group">
                 <label asp-for="Hoten" class="control-label">Họ tên</label>
                 <input asp-for="Hoten" class="form-control" />
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Ngaysinh" class="control-label">Ngày sinh</label>
-                <input asp-for="Ngaysinh" type ="date" class="form-control" />
+                <input asp-for="Ngaysinh" type="date" class="form-control" />
                 <span asp-validation-for="Ngaysinh" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,35 +38,35 @@
                 <input asp-for="Diachi" class="form-control" />
                 <span asp-validation-for="Diachi" class="text-danger"></span>
             </div>
-            </div>
+        </div>
         <div class="col-md-6">
             <div class="form-group">
-               @* @if (Model.Gioitinh ==1)
-                {
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input asp-for="Gioitinh" type="radio" value="true" checked="checked" class="form-check-input" />Nam
-                        </label>
-                    </div>
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input asp-for="Gioitinh" type="radio" value="false" class="form-check-input" />Nữ
-                        </label>
-                    </div>
-                }
-                else
-                {
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input asp-for="Gioitinh" type="radio" value="true" class="form-check-input" />Nam
-                        </label>
-                    </div>
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                            <input asp-for="Gioitinh" type="radio" value="false" checked="checked" class="form-check-input" />Nữ
-                        </label>
-                    </div>
-                }*@
+                @* @if (Model.Gioitinh ==1)
+                    {
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input asp-for="Gioitinh" type="radio" value="true" checked="checked" class="form-check-input" />Nam
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input asp-for="Gioitinh" type="radio" value="false" class="form-check-input" />Nữ
+                            </label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input asp-for="Gioitinh" type="radio" value="true" class="form-check-input" />Nam
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input asp-for="Gioitinh" type="radio" value="false" checked="checked" class="form-check-input" />Nữ
+                            </label>
+                        </div>
+                    }*@
                 <label asp-for="Gioitinh" class="control-label">Giới tính</label>
                 <input asp-for="Gioitinh" class="form-control" />
                 <span asp-validation-for="Gioitinh" class="text-danger"></span>
@@ -78,7 +78,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Nguoitao" class="control-label">Người tạo</label>
-                <input asp-for="Nguoitao"  class="form-control" />
+                <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -86,11 +86,12 @@
                 <input asp-for="Ngaytao" type="date" class="form-control" />
                 <span asp-validation-for="Ngaytao" class="text-danger"></span>
             </div>
-           </div>
-            <div class="form-group">
-                <input type="submit" value="Lưu" class="btn btn-primary" />
-            </div>
-      
+        </div>
+
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Lưu" class="btn btn-primary" />
     </div>
 </form>
 <div>

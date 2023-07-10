@@ -14,7 +14,7 @@ namespace hocvien.Model
 
         public string Makh { get; set; }
         public string Tenkh { get; set; }
-        public string Thoiluong { get; set; }
+       // public string Thoiluong { get; set; }
         public string Motakh { get; set; }
         public string Nguoitao { get; set; }
         public DateTime Ngaytao { get; set; }

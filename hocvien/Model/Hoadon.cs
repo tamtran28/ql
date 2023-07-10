@@ -15,8 +15,10 @@ namespace hocvien.Model
         public string Trangthaithanhtoan { get; set; }
         public string Manv { get; set; }
         public string Maphieu { get; set; }
-
+        public decimal? Sotiendatra { get; set; }
+        public decimal Sotienconlai{ get; set; }
         public virtual Nhanvien ManvNavigation { get; set; }
         public virtual Phieudangkyhoc MaphieuNavigation { get; set; }
+
     }
 }

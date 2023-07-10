@@ -14,10 +14,9 @@ namespace hocvien.Model
         }
 
         public string Malophoc { get; set; }
-       // public string Mahv { get; set; }
         public string Phonghoc { get; set; }
         public string Maloptuyensinh { get; set; }
-        public string Magv { get; set; }
+        //public string Magv { get; set; }
 
         public virtual Loptuyensinh MaloptuyensinhNavigation { get; set; }
         public virtual ICollection<LophocGiaovien> LophocGiaoviens { get; set; }

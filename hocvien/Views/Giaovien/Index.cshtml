@@ -5,47 +5,58 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
+<h1>Danh sách giáo viên</h1>
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessage))
+{
+    <div id="msgAlertS" class="alert alert-success" role="alert">
+        @ViewBag.SuaSuccessMessage
+    </div>
+}
 <p>
-    <a asp-action="formthemGiaovien">Create New</a>
+    <a asp-action="formthemGiaovien" class="btn btn-primary">Thêm giáo viên</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Magv)
+               Mã giáo viên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Hoten)
+               Họ tên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ngaysinh)
+               Ngày sinh
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gioitinh)
+               Giới tính
             </th>
            
             <th>
-                @Html.DisplayNameFor(model => model.Diachi)
+               Địa chỉ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sdt)
+                SDT
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Capdoday)
+                Cấp độ dạy          
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Trinhdo)
+                Trình độ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+               Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nguoitao)
+                Người tạo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ngaytao)
+               Ngày tạo
             </th>
             <th></th>
         </tr>
@@ -88,9 +99,12 @@
                 @Html.DisplayFor(modelItem => item.Ngaytao)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <td>
+                    <a asp-action="formSuagiaovien" asp-route-id="@item.Magv" class="btn btn-primary">Sửa</a>
+                </td>
+                <td>
+                    <a asp-action="formXoaGiaoVien" asp-route-id="@item.Magv" class="btn btn-danger delete-btn">Xóa</a>
+                </td>
             </td>
         </tr>
 }

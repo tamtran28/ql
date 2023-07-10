@@ -20,11 +20,11 @@ namespace hocvien.Model
         public DateTime Ngaytao { get; set; }
         public DateTime Ngaybatdau { get; set; }
         public DateTime Ngayketthuc { get; set; }
-       // public string Thuhoc { get; set; }
+        //public string Thuhoc { get; set; }
         public string Macahoc { get; set; }
         public string Makh { get; set; }
         public string Mamh { get; set; }
-       // public string Giohoc { get; set; }
+        //public string Giohoc { get; set; }
 
         public virtual Cahoc MacahocNavigation { get; set; }
         public virtual Khoahoc MakhNavigation { get; set; }

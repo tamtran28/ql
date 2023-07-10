@@ -12,18 +12,34 @@
 
 <h2>Danh sách học viên</h2>
 
-<table>
+<table class="table">
     <tr>
+        <th>Mã lớp học</th>
         <th>Mã học viên</th>
         <th>Họ tên</th>
+        <th></th>
         <!-- Thêm các cột thông tin khác của học viên nếu cần -->
     </tr>
     @foreach (var hocvien in Model)
     {
         <tr>
+            <td>@ViewBag.malophoc</td>
             <td>@hocvien.Mahv</td>
             <td>@hocvien.Hoten</td>
+            <td>
+                <form method="post" asp-action="ChuyenLop">
+                    <input type="hidden" name="maHocVien" value="@hocvien.Mahv" />
+                    <input type="hidden" name="maLopHoc" value="@ViewBag.malophoc" />
+                    <button type="submit" class="btn btn-primary">Chuyển lớp</button>
+                   
+                </form>
+               
+
+
+            </td>
             <!-- Hiển thị các thông tin khác của học viên nếu cần -->
         </tr>
+       
     }
+    <a asp-action="NhapDiem" class="btn-btn primary" asp-controller="Diem" asp-route-maLopHoc="@ViewBag.malophoc">Nhập điểm</a>
 </table>

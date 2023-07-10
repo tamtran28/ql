@@ -36,7 +36,7 @@ namespace hocvien.Model
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=LAPTOP-OOJMN2T7;Database=center;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=NNGWIN009\\SQLEXPRESS;Database=center;Trusted_Connection=True;");
             }
         }
 
@@ -104,6 +104,11 @@ namespace hocvien.Model
                     .HasMaxLength(255)
                     .HasColumnName("hoten");
 
+                entity.Property(e => e.Matkhau)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("matkhau");
+
                 entity.Property(e => e.Ngaysinh)
                     .HasColumnType("datetime")
                     .HasColumnName("ngaysinh");
@@ -166,6 +171,8 @@ namespace hocvien.Model
                 entity.Property(e => e.Ngaythu)
                     .HasColumnType("datetime")
                     .HasColumnName("ngaythu");
+
+                entity.Property(e => e.Sotiendatra).HasColumnType("money");
 
                 entity.Property(e => e.Tongtienthanhtoan)
                     .HasColumnType("money")
@@ -268,10 +275,10 @@ namespace hocvien.Model
                     .HasMaxLength(50)
                     .HasColumnName("tenkh");
 
-                entity.Property(e => e.Thoiluong)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("thoiluong");
+                //entity.Property(e => e.Thoiluong)
+                //    .IsRequired()
+                //    .HasMaxLength(50)
+                //    .HasColumnName("thoiluong");
 
                 entity.Property(e => e.Trangthai)
                     .HasMaxLength(50)
@@ -325,13 +332,6 @@ namespace hocvien.Model
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .IsFixedLength(true);
-
-                //entity.Property(e => e.Mahv)
-                //    .IsRequired()
-                //    .HasMaxLength(50)
-                //    .IsUnicode(false)
-                //    .HasColumnName("mahv")
-                //    .IsFixedLength(true);
 
                 entity.Property(e => e.Maloptuyensinh)
                     .IsRequired()
@@ -556,7 +556,9 @@ namespace hocvien.Model
                     .HasColumnType("date")
                     .HasColumnName("ngaysinh");
 
-                entity.Property(e => e.Nhom).HasColumnName("nhom");
+                entity.Property(e => e.Nhom)
+                    .HasMaxLength(50)
+                    .HasColumnName("nhom");
 
                 entity.Property(e => e.Sdt).HasColumnName("sdt");
 
@@ -593,6 +595,12 @@ namespace hocvien.Model
                     .HasColumnName("mahv")
                     .IsFixedLength(true);
 
+                entity.Property(e => e.Manv)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("manv")
+                    .IsFixedLength(true);
+
                 entity.Property(e => e.Ngaydk)
                     .HasColumnType("datetime")
                     .HasColumnName("ngaydk");
@@ -602,6 +610,11 @@ namespace hocvien.Model
                     .HasForeignKey(d => d.Mahv)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FKphieudangk163725");
+
+                entity.HasOne(d => d.ManvNavigation)
+                    .WithMany(p => p.Phieudangkyhocs)
+                    .HasForeignKey(d => d.Manv)
+                    .HasConstraintName("FKphieudangkyhocnv");
             });
 
             modelBuilder.Entity<Phieudiem>(entity =>
@@ -632,6 +645,10 @@ namespace hocvien.Model
                 entity.Property(e => e.Diemnoi).HasColumnName("diemnoi");
 
                 entity.Property(e => e.Diemviet).HasColumnName("diemviet");
+
+                entity.Property(e => e.Trangthai)
+                    .HasMaxLength(50)
+                    .HasColumnName("trangthai");
 
                 entity.HasOne(d => d.MahvNavigation)
                     .WithMany(p => p.Phieudiems)

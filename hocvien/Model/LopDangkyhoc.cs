@@ -9,7 +9,7 @@ namespace hocvien.Model
     {
         public string Maphieu { get; set; }
         public string Maloptuyensinh { get; set; }
-
+        public int Trangthai { get; set; }
         public virtual Loptuyensinh MaloptuyensinhNavigation { get; set; }
         public virtual Phieudangkyhoc MaphieuNavigation { get; set; }
     }

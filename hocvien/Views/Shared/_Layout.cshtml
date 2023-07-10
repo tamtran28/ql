@@ -135,15 +135,15 @@
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link" href="/Hocvien/Index/">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Quản lý học viên</span>
                 </a>
             </li>
-
+*@
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link" href="/Khoahoc/Index">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lý khóa học </span>
@@ -184,7 +184,8 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lý giáo viên</span>
                 </a>
-            </li>
+            </li>*@
+
             <!-- Nav Item - Pages Collapse Menu -->
             @* <li class="nav-item">
             <a class="nav-link collapsed" href="~/Views/HocVien/Index.cshtml" data-toggle="collapse" data-target="#collapseTwo"
@@ -203,6 +204,74 @@
             <i class="fas fa-fw fa-wrench"></i>
             Quan ly lop
             </a>*@
+            @if (User.IsInRole("tuyển sinh") || User.IsInRole("học vụ") || User.IsInRole("giáo viên")) {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Hocvien/Index/">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Quản lý học viên</span>
+                    </a>
+                </li>
+            }
+
+            @if (User.IsInRole("quản lý")){ 
+            <li class="nav-item">
+                <a class="nav-link" href="/Khoahoc/Index">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý khóa học</span>
+                </a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Monhoc/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý môn học</span>
+                    </a>
+                </li>
+            }
+            @if (User.IsInRole("quản lý"))
+            {
+                
+            }
+            @if (User.IsInRole("quản lý") || (User.IsInRole("quản lý") ) )
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Loptuyensinh/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý lớp tuyển sinh</span>
+                    </a>
+                </li>
+            }
+            @if (User.IsInRole("tuyển sinh"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Phieudangky/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý phiếu đăng ký</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Hoadon/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý hóa đơn</span>
+                    </a>
+                </li>
+               
+            }
+           
+            @if (User.IsInRole("học vụ"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Giaovien/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý giáo viên</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Xeplop/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý xếp lớp</span>
+                    </a>
+                </li>
+            }
             @*<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
@@ -476,7 +545,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Tam</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@User.Identity.Name</span>
                                 <img class="img-profile rounded-circle"
                                      src="asset/admin/img/undraw_profile.svg">
                             </a>
@@ -487,9 +556,9 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="@Url.Action("formDoimatkhau","Nhanvien")">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    Đổi mật khẩu
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -553,7 +622,8 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="@Url.Action("Logout", "Dangnhap")">Logout</a>
+
                 </div>
             </div>
         </div>

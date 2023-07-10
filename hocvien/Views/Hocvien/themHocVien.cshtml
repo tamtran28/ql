@@ -4,12 +4,7 @@
     ViewData["Title"] = "themHocVien";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
-{
-    <div class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
-    </div>
-}
+
 
 <h1>Thêm học viên</h1>
 
@@ -69,7 +64,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Nguoitao" class="control-label">Người tạo</label>
-                <input asp-for="Nguoitao" class="form-control" />
+                <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
             <div class="form-group">

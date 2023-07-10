@@ -1,0 +1,37 @@
+﻿@model hocvien.Model.Phieudangkyhoc
+
+@{
+    ViewData["Title"] = "search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Tìm kiếm học viên</h3>
+<div class="row">
+    <div class="col-md-8">
+        <input type="text" id="maphieu" class="form-control" />
+        <input type="hidden" id="mahv" />
+
+    </div>
+    <div class="col-md-4">
+        <input type="button" onclick="timPhieuDK_click()" value="Tìm kiếm" />
+    </div>
+</div>
+<div id="danhsachphieu"</div>
+<script type="text/javascript">
+    function timPhieuDK_click() {
+        const maphieu = document.getElementById("maphieu").value;
+        // Create an XMLHttpRequest object
+        const xhttp = new XMLHttpRequest();
+
+        // Define a callback function
+        xhttp.onload = function () {
+            // Here you can use the Data
+            document.getElementById("danhsachphieu").innerHTML = xhttp.responseText;
+        }
+
+        // Send a request
+        const strUrl = "/Hoadon/timKiem/" + maphieu;
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+
+    }
+</script>

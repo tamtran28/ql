@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="formSuakhoahoc" method="post">
+        <form asp-action="suaKhoahoc" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Makh" class="control-label"></label>
@@ -22,15 +22,15 @@
                 <input asp-for="Tenkh" class="form-control" />
                 <span asp-validation-for="Tenkh" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           @* <div class="form-group">
                 <label asp-for="Thoiluong" class="control-label"></label>
                 <input asp-for="Thoiluong" class="form-control" />
                 <span asp-validation-for="Thoiluong" class="text-danger"></span>
-            </div>
+            </div>*@
          </form>
          </div>
              <div class="col-md-8">
-        <form asp-action="Suakhoahoc">
+        <form asp-action="Suakhoahoc" method="post">
             <div class="form-group">
                 <label asp-for="Motakh" class="control-label"></label>
                 <input asp-for="Motakh" class="form-control" />
@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Nguoitao" class="control-label"></label>
-                <input asp-for="Nguoitao" class="form-control" />
+                <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
             <div class="form-group">

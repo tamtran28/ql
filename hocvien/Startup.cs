@@ -29,7 +29,7 @@ namespace hocvien
 
             services.AddDbContext<Model.centerContext>(opt =>
             {
-                opt.UseSqlServer("Server=LAPTOP-OOJMN2T7;Database=QLBH;Trusted_Connection=True;");
+                opt.UseSqlServer("Server=NNGWIN009\\SQLEXPRESS;Database=center;Trusted_Connection=True;");
             });
             services.AddDistributedMemoryCache();
 
@@ -47,20 +47,25 @@ namespace hocvien
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             })
-                .AddCookie(options =>
-            {
-                options.LoginPath = "/Account/Login";
-                 options.AccessDeniedPath = "/Account/AccessDenied";
+             .AddCookie(options =>
+             {
+                 options.LoginPath = "/Dangnhap/Login";
+                 options.AccessDeniedPath = "/Dangnhap/Denied";
              });
 
             // Cấu hình ủy quyền
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("AdvisorOnly", policy => policy.RequireRole("Advisor"));
-                options.AddPolicy("AcademicOnly", policy => policy.RequireRole("Academic"));
-                options.AddPolicy("ManagerOnly", policy => policy.RequireRole("Manager"));
+                options.AddPolicy("tuyensinh", policy => policy.RequireRole("tuyensinh"));
+                options.AddPolicy("hocvu", policy => policy.RequireRole("hocvu"));
+                options.AddPolicy("quanly", policy => policy.RequireRole("quanly"));
+                options.AddPolicy("giaovien", policy => policy.RequireRole("giaovien"));
+               
             });
 
+            //dangnhap
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,16 +85,16 @@ namespace hocvien
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
             //services.AddSession();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Dangnhap}/{action=Login}/{id?}");
             });
         }
 

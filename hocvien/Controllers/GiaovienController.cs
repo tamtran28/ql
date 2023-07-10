@@ -1,10 +1,13 @@
 ﻿using hocvien.Model;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 
 namespace hocvien.Controllers
 {
+    //[Authorize(Roles = "học vụ")]
     public class GiaovienController : Controller
     {
         private centerContext db = new centerContext();
@@ -15,20 +18,41 @@ namespace hocvien.Controllers
 
         public IActionResult formthemGiaovien()
         {
+            string manv = HttpContext.Session.GetString("Manv");
+            ViewBag.ten = manv;
             return View();
         }
 
+        //[HttpPost]
+        //public IActionResult themGiaovien(Giaovien kh)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        kh.Magv = taoMagiaovien();
+        //        db.Giaoviens.Add(kh);
+        //        db.SaveChanges();
+        //        TempData["SuccessMessage"] = "Thêm gi viên thành công";
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View("formthemGiaovien");
+
+
+        //}
         [HttpPost]
-        public IActionResult themGiaovien(Giaovien kh)
+        public IActionResult themGiaovien(Giaovien gv)
         {
-            if (ModelState.IsValid)
+            if (gv.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - gv.Ngaysinh.Year) < 18)
             {
-                kh.Magv = taoMagiaovien();
-                db.Giaoviens.Add(kh);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                return RedirectToAction("formthemGiaovien");
             }
-            return View("formthemGiaovien");
+
+            gv.Magv = taoMagiaovien();
+            db.Giaoviens.Add(gv);
+            db.SaveChanges();
+
+            TempData["SuccessMessage"] = "Thêm học viên thành công";
+            return RedirectToAction("Index");
 
 
         }
@@ -46,13 +70,13 @@ namespace hocvien.Controllers
         }
         public IActionResult formXoaGiaoVien(String id)
         {
-            int dem = db.Lophocs.Where(a => a.Magv == id).ToList().Count();
+            int dem = db.LophocGiaoviens.Where(a => a.Magv == id).ToList().Count();
             Model.Giaovien x = db.Giaoviens.Find(id);
             ViewBag.flag = dem;
 
             return View(x);
         }
-        public IActionResult xoaHocVien(String id)
+        public IActionResult xoaGiaoVien(String id)
         {
             Model.Giaovien x = db.Giaoviens.Find(id);
             if (x != null)
@@ -63,6 +87,45 @@ namespace hocvien.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult formSuaGiaovien(string id)
+        {
+            string manv = HttpContext.Session.GetString("Manv");
+            ViewBag.ten = manv;
+            Model.Hocvien x = db.Hocviens.Find(id);
 
+            return View(x);
+        }
+        [HttpPost]
+        public IActionResult suaGiaovien(Model.Giaovien x)
+        {
+
+            if (ModelState.IsValid)
+            {
+                Model.Giaovien hv = db.Giaoviens.Find(x.Magv);
+                if (hv != null)
+                {
+                    hv.Hoten = x.Hoten;
+                    hv.Ngaysinh = x.Ngaysinh;
+                    if (x.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Year) < 18)
+                    {
+                        ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                        return View("formSuaHocvien", x);
+                    }
+                    hv.Gioitinh = x.Gioitinh;
+                    hv.Sdt = x.Sdt;
+                    
+                    hv.Diachi = x.Diachi;
+                    hv.Capdoday = x.Capdoday;
+                    hv.Trinhdo = x.Trinhdo;
+                    hv.Ngaytao = x.Ngaytao;
+                    hv.Nguoitao = x.Nguoitao;
+                    db.SaveChanges();
+                }
+                TempData["SuaSuccessMessage"] = "Sửa giáo viên thành công";
+                return RedirectToAction("Index");
+            }
+
+            return View("formSuaHocvien");
+        }
     }
 }

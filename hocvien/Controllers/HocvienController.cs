@@ -1,14 +1,20 @@
 ﻿using hocvien.Model;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace hocvien.Controllers
 {
+    [Authorize(Roles = "tuyensinh,hocvu,giaovien") ]
+   // [Authorize(Roles = "học vụ") ]
+    
     public class HocvienController : Controller
     {
         private centerContext db = new centerContext();
@@ -42,7 +48,10 @@ namespace hocvien.Controllers
             {
                 ViewBag.SuccessMessage = TempData["SuccessMessage"];
             }
-
+            if (TempData.ContainsKey("SuaSuccessMessage"))
+            {
+                ViewBag.SuaSuccessMessage = TempData["SuaSuccessMessage"];
+            }
             List<Model.CHocvienview> ds = db.Hocviens.Select(a => new Model.CHocvienview
             {
                 Mahv = a.Mahv,
@@ -75,22 +84,25 @@ namespace hocvien.Controllers
 
         public IActionResult themHocVien()
         {
+            string manv = HttpContext.Session.GetString("Manv");
+            ViewBag.ten = manv;
             return View();
         }
 
         [HttpPost]
         public IActionResult ThemHocVien(Hocvien hocVien)
         {
-            //if (hocVien.Ngaysinh.Value.Year >= DateTime.Now.Year || (DateTime.Now.Year - hocVien.Ngaysinh.Value.Year) < 4)
-            //{
-            //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-            //    return View(hocVien);
-            //}
+            if (hocVien.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - hocVien.Ngaysinh.Year) < 4)
+            {
+                ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                return View(hocVien);
+            }
 
             hocVien.Mahv = taoMaHocVien();
            db.Hocviens.Add(hocVien);
             db.SaveChanges();
-            ViewBag.SuccessMessage = "Thêm học viên thành công!";
+
+            TempData["SuccessMessage"] = "Thêm học viên thành công";
             return RedirectToAction("Index");
            
 
@@ -121,14 +133,16 @@ namespace hocvien.Controllers
 
         public IActionResult formSuaHocvien(string id)
         {
-            
+            string manv = HttpContext.Session.GetString("Manv");
+            ViewBag.ten = manv;
             Model.Hocvien x = db.Hocviens.Find(id);
+            
             return View(x);
         }
         [HttpPost]
-        public IActionResult suaHocvien(Model.Hocvien x)
+        public IActionResult suaHocvien( Model.Hocvien x)
         {
-
+            
             if (ModelState.IsValid)
             {
                 Model.Hocvien hv = db.Hocviens.Find(x.Mahv);
@@ -146,11 +160,9 @@ namespace hocvien.Controllers
                     hv.Diachi = x.Diachi;
                     hv.Ngaytao = x.Ngaytao;
                     hv.Sdt = x.Sdt;
-                  
-                   
-
                     db.SaveChanges();
                 }
+                TempData["SuaSuccessMessage"] = "Sửa học viên thành công";
                 return RedirectToAction("Index");
             }
            
@@ -181,24 +193,6 @@ namespace hocvien.Controllers
         public IActionResult chiTiet(string id)
         {
 
-            //     Models.Hocvien a = db.Hocviens.Find(id);
-            //     if (a != null)
-            //     {
-            //         var studentDetails = db.Hocviens.Join(db.Phieudiems, x => x.Mahv, y => y.Mahv,
-            //(x, y) => new { HocVien = x, PhieuDiem = y }
-            //     ).Where(x => x.HocVien.Mahv == id).Select(x => new
-            //     {
-            //         x.HocVien.Mahv,
-            //         x.HocVien.Hoten,
-            //         x.HocVien.Ngaysinh,
-            //         x.HocVien.Diachi,
-            //         x.PhieuDiem.MalophocNavigation.Tenlop,
-            //     }).FirstOrDefault();
-
-            //         return View(studentDetails);
-
-            //     }
-            //     return View("Index");
             var hocVien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == id);
 
             if (hocVien == null)
@@ -206,7 +200,7 @@ namespace hocvien.Controllers
                 return NotFound();
             }
 
-            var phieuDiem = db.Phieudiems.FirstOrDefault(pd => pd.Mahv == id);
+            var phieuDiem = db.Phieudiems.FirstOrDefault(pd => pd.Mahv==id);
 
             if (phieuDiem == null)
             {
@@ -222,10 +216,8 @@ namespace hocvien.Controllers
                 });
             }
 
-            var malophoc = phieuDiem != null ? phieuDiem.Malophoc : null;
+            var malophoc = phieuDiem.Malophoc;
             var lopHoc = db.Lophocs.FirstOrDefault(lh => lh.Malophoc == malophoc);
-
-            string tenLop = lopHoc != null ? lopHoc.Malophoc : "Chưa có";
 
             var model = new CHocvienview
             {
@@ -236,42 +228,12 @@ namespace hocvien.Controllers
                 Diachi = hocVien.Diachi,
                 Gioitinh = hocVien.Gioitinh == 1 ? "Nam" : "Nữ",
                 Trangthai = hocVien.Trangthai,
-                Malophoc = lopHoc?.Malophoc,
-                Tenlop = tenLop,
+                Malophoc = lopHoc?.Malophoc ?? "Chưa có",
+                //Tenlop = lopHoc?.Malophoc ?? "Chưa có",
                 Phieudiems = new List<Phieudiem> { phieuDiem }
             };
 
             return View(model);
-
-
-            // var hocVien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == id);
-
-            // if (hocVien == null)
-            // {
-            //     return NotFound();
-            // }
-
-            // var phieuDiem = db.Phieudiems.FirstOrDefault(pd => pd.Mahv == id);
-            // var lopHoc = db.Lophocs.Where(lh => lh.Malophoc == phieuDiem.Malophoc);
-
-            ////var lopHoc = db.Lophocs.Join(db.Phieudiems, x => x.Malophoc, y => y.MalophocNavigation, (x, y) => new { Phieudiem = x, Lophoc = y }
-
-            // var model = new CHocvienview
-            // {
-            //     Mahv = hocVien.Mahv,
-            //     Hoten = hocVien.Hoten,
-            //     Diachi = hocVien.Diachi,
-            //     Sdt = hocVien.Sdt,
-
-
-            //    // Gioitinh = hocVien.Gioitinh,
-
-            //     //Malophoc = 
-            //     //Tenlop = lopHoc.Tenlop,
-            //     // Phieudie = lopHoc?.Id,
-            //     // TenLop = lopHoc?.TenLop
-            // };
-            // return View(model);
 
         }
     }

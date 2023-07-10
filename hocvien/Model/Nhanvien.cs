@@ -10,6 +10,7 @@ namespace hocvien.Model
         public Nhanvien()
         {
             Hoadons = new HashSet<Hoadon>();
+            Phieudangkyhocs = new HashSet<Phieudangkyhoc>();
         }
 
         public string Manv { get; set; }
@@ -24,5 +25,6 @@ namespace hocvien.Model
         public int Nhom { get; set; }
 
         public virtual ICollection<Hoadon> Hoadons { get; set; }
+        public virtual ICollection<Phieudangkyhoc> Phieudangkyhocs { get; set; }
     }
 }

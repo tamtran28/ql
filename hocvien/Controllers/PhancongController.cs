@@ -22,22 +22,51 @@ namespace hocvien.Controllers
 
             return View();
         }
+        //[HttpPost]
+        //public IActionResult PhanCongGiaoVien(string malophoc, string magv)
+        //{
+        //    var lopHoc = db.Lophocs.FirstOrDefault(l => l.Malophoc == malophoc);
+        //    if (lopHoc == null)
+        //    {
+        //        // Xử lý lỗi hoặc thông báo lớp học không tồn tại
+        //        return RedirectToAction("DanhSachLopHoc");
+        //    }
+
+        //    lopHoc.Magv = magv;
+
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("Index","Xeplop");
+        //}
         [HttpPost]
         public IActionResult PhanCongGiaoVien(string malophoc, string magv)
         {
             var lopHoc = db.Lophocs.FirstOrDefault(l => l.Malophoc == malophoc);
             if (lopHoc == null)
             {
-                // Xử lý lỗi hoặc thông báo lớp học không tồn tại
+                // Handle the error or display a message that the class does not exist
                 return RedirectToAction("DanhSachLopHoc");
             }
 
-            lopHoc.Magv = magv;
+            // Update the Magv property of the Lophoc entity
+            //lopHoc.Magv = magv;
 
+            // Save the changes to the database
             db.SaveChanges();
 
-            return RedirectToAction("Index","Xeplop");
+            // Create a new LophocGiaovien entity and add it to the lophoc_giaovien table
+            var lophocGiaovien = new LophocGiaovien
+            {
+                Malophoc = malophoc,
+                Magv = magv
+            };
+
+            db.LophocGiaoviens.Add(lophocGiaovien);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Xeplop");
         }
+
 
     }
 }

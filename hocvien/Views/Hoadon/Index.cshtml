@@ -5,40 +5,40 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Danh sách hóa đơn</h1>
 
 <p>
-    <a asp-action="formLapHD">Create New</a>
+    <a asp-action="search" class="btn btn-primary">Lập phiếu thanh toán</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Mahd)
+              Mã hóa đơn
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ngaythu)
+                Mã Phiếu
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tongtienthanhtoan)
+               Tổng tiền thanh toán
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ghichu)
+               Ghi chú
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Hinhthuc)
+               Hình thức
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Trangthaithanhtoan)
+                Trạng thái thanh toán
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Manv)
+              Người thu
             </th>
            @* <th>
                 @Html.DisplayNameFor(model => model.Mahv)
             </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Maphieu)
+               Ngày thu
             </th>
             <th></th>
         </tr>
@@ -50,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Mahd)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ngaythu)
+                @Html.DisplayFor(modelItem => item.Maphieu)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tongtienthanhtoan)
@@ -71,12 +71,15 @@
                 @Html.DisplayFor(modelItem => item.Mahv)
             </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Maphieu)
+                @Html.DisplayFor(modelItem => item.Ngaythu)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <td>
+                    <a asp-action="formXoahoadon" asp-route-id="@item.Mahd" class="btn btn-danger">Xóa</a>
+                </td>
+                <td>
+                    <a asp-action="formSuahoadon" asp-route-id="@item.Mahd" class="btn btn-primary">Sửa</a>
+                </td>
             </td>
         </tr>
 }

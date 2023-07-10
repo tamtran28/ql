@@ -5,19 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Danh sách phiếu đăng ký</h1>
 
 <p>
-    <a asp-action="SearchCourse">Create New</a>
+    <a asp-action="SearchCourse" class="btn btn-primary">Tạo phiếu đăng ký</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.Maphieu)
+               Mã phiếu
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Mahv)
+               Mã hv
             </th>
           @*  <th>
                 @Html.DisplayNameFor(model => model.Makh)
@@ -27,25 +28,30 @@
             </th>*@
 
             <th>
-                @Html.DisplayNameFor(model => model.Maloptuyensinh)
+             Họ tên học viên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ngaydk)
+               Mã lớp tuyển sinh
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tenloptuyensinh)
+                Tên lớp tuyển sinh
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Hoten)
+               Ngày đăng ký
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        <form asp-action="formLapHD" asp-controller="Hoadon" method="post">
+        @foreach (var item in Model) {
         <tr>
+                <td>
+                    <input type="checkbox" name="selectedClasses[]" value="@item.Maloptuyensinh"   />
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Maphieu)
+                    <input type="hidden" name="maphieu" value="@item.Maphieu" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Mahv)
@@ -57,16 +63,16 @@
                 @Html.DisplayFor(modelItem => item.Mamh)
             </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Maloptuyensinh)
+                @Html.DisplayFor(modelItem => item.Hoten)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ngaydk)
+                @Html.DisplayFor(modelItem => item.Maloptuyensinh)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tenloptuyensinh)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Hoten)
+                @Html.DisplayFor(modelItem => item.Ngaydk)
             </td>
            @* <td>
                     <form asp-action="Payment" method="post" asp-route-id="@Model.Maphieu">
@@ -75,14 +81,45 @@
                                 </form>
             </td>*@
             <td>
-                    <form asp-action="formLapHD" asp-controller="Hoadon" asp-route-id="@item.Maphieu">
+                    @*<form asp-action="formLapHD" asp-controller="Hoadon" asp-route-id="@item.Maphieu">
                         <button type="submit" class="btn btn-primary">Thanh toán</button>
-                        </form>
+                        </form>*@
+
+                        @*  <form asp-action="FormLapHD" asp-controller="Hoadon">
+                        <input type="hidden" name="selectedClasses" value="@item.Maloptuyensinh" />
+                        <button type="submit" class="btn btn-primary">Thanh toán</button>
+                    </form>*@
                    @* <a asp-action="hoaDon" asp-controller="Hoadon" asp-route-id="@item.Maphieu" class="btn btn-primary">Tạo</a>*@
             </td>
-               
+               <td>
+                    <a asp-action="formSuaphieudangky" asp-route-id="@item.Maphieu" class="btn btn-primary">Sửa</a>
+                </td>
+                <td>
+                    <a asp-action="formXoaphieudangky" asp-route-id="@item.Maphieu" class="btn btn-primary">Xóa</a>
+                </td>
         </tr>
-            
+       
+         @*<form action="/Hoadon/formLapHD" asp-route-id="@item.Maphieu">
+    @foreach (var item in Model)
+    {
+        <input type="hidden" name="selectedClasses" value="@item.Maphieu" />
+    }
+    <!-- Other form fields or content -->
+    <button type="submit" class="btn btn-primary">Thanh toán</button>*@
+
+   
 }
+       <button type="submit" class="btn btn-primary" >Thanh toán</button>
+       
+        </form>
     </tbody>
 </table>
+@*<form action="/Hoadon/formLapHD" asp-route-id="@item.Maphieu">
+    @foreach (var item in Model)
+    {
+        <input type="hidden" name="selectedClasses" value="@item.Maphieu" />
+    }
+    <!-- Other form fields or content -->
+    <button type="submit" class="btn btn-primary">Thanh toán</button>
+</form>
+*@

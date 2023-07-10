@@ -5,9 +5,14 @@
     Layout = "_Layout";
 }
 
-<h1>formTaolophoc</h1>
+<h1>Tạo lớp học</h1>
 
-<h4>Lophoc</h4>
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessage
+    </div>
+}
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,7 +29,7 @@
                 <span asp-validation-for="Mahv" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <label asp-for="Phonghoc" class="control-label"></label>
+                <label asp-for="Phonghoc" class="control-label">Phòng học</label>
                 <input asp-for="Phonghoc" class="form-control" />
                 <span asp-validation-for="Phonghoc" class="text-danger"></span>
             </div>
@@ -48,7 +53,20 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
 @*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }*@

@@ -23,6 +23,7 @@ namespace hocvien.Model
         public string Email { get; set; }
         public string Nguoitao { get; set; }
         public DateTime Ngaytao { get; set; }
+        public string Matkhau { get; set; }
 
         public virtual ICollection<LophocGiaovien> LophocGiaoviens { get; set; }
     }

@@ -65,7 +65,7 @@
         }*@
 
 
-@model CreateClassViewModel
+@*@model CreateClassViewModel
     @{
         Layout = "_Layout";
     }
@@ -114,63 +114,126 @@
         <div class="form-group">
             <input type="submit" value="Lưu" class="btn btn-primary" />
         </div>
-    }
-@*@model List<CreateClassViewModel>
-
+    }*@
+@*@model CreateClassViewModel
 @{
     Layout = "_Layout";
 }
-
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
 
-    @foreach (var item in Model)
-    {
-        <div class="form-group">
-            <label class="control-label">Tên khóa học</label>
-            @Html.DropDownListFor(m => item.Makh, ViewBag.DSKhoahoc as SelectList, "Chọn khóa học", new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => item.Makh, "", new { @class = "text-danger" })
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Tạo lớp học</h5>
         </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label class="control-label">Tên khóa học</label>
+                @Html.DropDownListFor(m => m.Makh, ViewBag.DSKhoahoc as SelectList, "Chọn khóa học", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Makh, "", new { @class = "text-danger" })
+            </div>
 
-        <div class="form-group">
-            <label class="control-label">Tên môn học</label>
-            <div class="form-check">
-                @foreach (var monhoc in ViewBag.DSMonhoc)
+            <div class="form-group">
+                <label class="control-label">Tên môn học</label>
+                @foreach (var monhoc in ViewBag.DSMonhoc as List<Monhoc>)
                 {
-                    <input type="checkbox" name="MamhList" value="@monhoc.Mamh" class="form-check-input" id="mamh_@monhoc.Mamh">
-                    <label class="form-check-label" for="mamh_@monhoc.Mamh">@monhoc.Tenmh</label>
+                    <div class="form-check">
+                        <input type="checkbox" name="MamhList" value="@monhoc.Mamh" class="form-check-input" id="mamh_@monhoc.Mamh">
+                        <label class="form-check-label" for="mamh_@monhoc.Mamh">@monhoc.Tenmh</label>
+                    </div>
+                    <div>
+                        <label for="Macahoc_@monhoc.Mamh">Ca học:</label>
+                        <select id="Macahoc_@monhoc.Mamh" name="Macahoc_@monhoc.Mamh" onchange="updateClassSchedule('@monhoc.Mamh')" class="form-control">
+                            <option value="">Select a class schedule</option>
+                            @foreach (var cahoc in ViewBag.Cahocs)
+                            {
+                                <option value="@cahoc.Macahoc">@cahoc.Thuhoc - @cahoc.Giohoc</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Ngày bắt đầu</label>
+                        <input type="date" id="Ngaybatdau_@monhoc.Mamh" name="NgaybatdauList[@monhoc.Mamh]" class="form-control" />
+                        @Html.ValidationMessageFor(m => m.Ngaybatdau, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Ngày kết thúc</label>
+                        <input type="date" id="Ngayketthuc_@monhoc.Mamh" name="NgayketthucList[@monhoc.Mamh]" class="form-control" />
+                        @Html.ValidationMessageFor(m => m.Ngayketthuc, "", new { @class = "text-danger" })
+                    </div>
                 }
             </div>
-            <div>
-                <label for="Macahoc_@item.Mamh">Ca học:</label>
-                <select id="Macahoc_@item.Mamh" name="Macahoc_@item.Mamh" onchange="updateClassSchedule('@item.Mamh')">
-                    <option value="">Select a class schedule</option>
-                    @foreach (var cahoc in ViewBag.Cahocs)
-                    {
-                        <option value="@cahoc.Macahoc">@cahoc.Thuhoc - @cahoc.Giohoc</option>
-                    }
-                </select>
-            </div>
+        </div>
+        <div class="card-footer">
             <div class="form-group">
-                <label class="control-label">Ngày bắt đầu</label>
-                <input type="date" id="Ngaybatdau_@item.Mamh" name="Ngaybatdau_@item.Mamh" class="form-control" />
-                @Html.ValidationMessageFor(m => item.Ngaybatdau, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Ngày kết thúc</label>
-                <input type="date" id="Ngayketthuc_@item.Mamh" name="Ngayketthuc_@item.Mamh" class="form-control" />
-                @Html.ValidationMessageFor(m => item.Ngayketthuc, "", new { @class = "text-danger" })
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
         </div>
-    }
-
-    <div class="form-group">
-        <input type="submit" value="Lưu" class="btn btn-primary" />
     </div>
-}*@
+}
+*@
+@model CreateClassViewModel
+@{
+    Layout = "_Layout";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
 
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Tạo lớp học</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label class="control-label">Tên khóa học</label>
+                @Html.DropDownListFor(m => m.Makh, ViewBag.DSKhoahoc as SelectList, "Chọn khóa học", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Makh, "", new { @class = "text-danger" })
+            </div>
+            @foreach (var monhoc in ViewBag.DSMonhoc as List<Monhoc>)
+            {
+                <div class="mb-3">
+                    <h6>Tên môn học: @monhoc.Tenmh</h6>
+                    <br>
+
+                    <div class="form-check">
+                        <input type="checkbox" name="MamhList" value="@monhoc.Mamh" class="form-check-input" id="mamh_@monhoc.Mamh">
+                        <label class="form-check-label" for="mamh_@monhoc.Mamh">@monhoc.Tenmh</label>
+                    </div>
+                    <div>
+                        <label for="Macahoc_@monhoc.Mamh">Ca học:</label>
+                        <select id="Macahoc_@monhoc.Mamh" name="Macahoc_@monhoc.Mamh" onchange="updateClassSchedule('@monhoc.Mamh')" class="form-control">
+                            <option value="">Select a class schedule</option>
+                            @foreach (var cahoc in ViewBag.Cahocs)
+                            {
+                                <option value="@cahoc.Macahoc">@cahoc.Thuhoc - @cahoc.Giohoc</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Ngày bắt đầu</label>
+                        <input type="date" id="Ngaybatdau_@monhoc.Mamh" name="NgaybatdauList[@monhoc.Mamh]" class="form-control" />
+                        @Html.ValidationMessageFor(m => m.Ngaybatdau, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Ngày kết thúc</label>
+                        <input type="date" id="Ngayketthuc_@monhoc.Mamh" name="NgayketthucList[@monhoc.Mamh]" class="form-control" />
+                        @Html.ValidationMessageFor(m => m.Ngayketthuc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br>
+            }
+        </div>
+        <div class="card-footer">
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
 
 
 @*@using (Html.BeginForm())

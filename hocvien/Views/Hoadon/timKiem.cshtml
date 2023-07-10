@@ -1,0 +1,58 @@
+﻿@model IEnumerable<hocvien.Model.Phieudangkyhoc>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Mã phiếu
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaydk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ghichu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MahvNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManvNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                  <td>
+                    @Html.DisplayFor(modelItem => item.Maphieu)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaydk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ghichu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MahvNavigation.Mahv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManvNavigation.Manv)
+            </td>
+            <td>
+                    <form method="post" action="formLapHD">
+        <input type="hidden" name="maphieu" value="@item.Maphieu" />
+        <button type="submit">Thanh toán</button>
+    </form>
+
+                   @* <a asp-action="formLapHD" asp-route-maphieu="@item.Maphieu">Thanh toán</a> |*@
+                @*<a asp-action="Details" asp-route-id="@item.Maphieu">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Maphieu">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

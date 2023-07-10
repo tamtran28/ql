@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using hocvien.Model;
 
-
 namespace hocvien.Migrations
 {
     [DbContext(typeof(centerContext))]
@@ -21,7 +20,32 @@ namespace hocvien.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("hocvien.Models.Giaovien", b =>
+            modelBuilder.Entity("hocvien.Model.Cahoc", b =>
+                {
+                    b.Property<string>("Macahoc")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("char(50)")
+                        .HasColumnName("macahoc")
+                        .IsFixedLength(true);
+
+                    b.Property<string>("Giohoc")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("giohoc");
+
+                    b.Property<string>("Thuhoc")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("thuhoc");
+
+                    b.HasKey("Macahoc")
+                        .HasName("PK_NewTable");
+
+                    b.ToTable("cahoc");
+                });
+
+            modelBuilder.Entity("hocvien.Model.Giaovien", b =>
                 {
                     b.Property<string>("Magv")
                         .HasMaxLength(50)
@@ -58,6 +82,12 @@ namespace hocvien.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("hoten");
 
+                    b.Property<string>("Matkhau")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("matkhau");
+
                     b.Property<DateTime>("Ngaysinh")
                         .HasColumnType("datetime")
                         .HasColumnName("ngaysinh");
@@ -90,7 +120,7 @@ namespace hocvien.Migrations
                     b.ToTable("giaovien");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Hoadon", b =>
+            modelBuilder.Entity("hocvien.Model.Hoadon", b =>
                 {
                     b.Property<string>("Mahd")
                         .HasMaxLength(50)
@@ -129,6 +159,12 @@ namespace hocvien.Migrations
                         .HasColumnType("datetime")
                         .HasColumnName("ngaythu");
 
+                    b.Property<decimal>("Sotienconlai")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("Sotiendatra")
+                        .HasColumnType("money");
+
                     b.Property<decimal>("Tongtienthanhtoan")
                         .HasColumnType("money")
                         .HasColumnName("tongtienthanhtoan");
@@ -142,14 +178,14 @@ namespace hocvien.Migrations
                     b.HasKey("Mahd")
                         .HasName("PK__hoadon__7A2100DE7B55A670");
 
-                    b.HasIndex("Manv");
+                    b.HasIndex(new[] { "Manv" }, "IX_hoadon_manv");
 
-                    b.HasIndex("Maphieu");
+                    b.HasIndex(new[] { "Maphieu" }, "IX_hoadon_maphieu");
 
                     b.ToTable("hoadon");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Hocvien", b =>
+            modelBuilder.Entity("hocvien.Model.Hocvien", b =>
                 {
                     b.Property<string>("Mahv")
                         .HasMaxLength(50)
@@ -175,8 +211,7 @@ namespace hocvien.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("hoten");
 
-                    b.Property<DateTime?>("Ngaysinh")
-                        .IsRequired()
+                    b.Property<DateTime>("Ngaysinh")
                         .HasColumnType("date")
                         .HasColumnName("ngaysinh");
 
@@ -206,7 +241,7 @@ namespace hocvien.Migrations
                     b.ToTable("hocvien");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Khoahoc", b =>
+            modelBuilder.Entity("hocvien.Model.Khoahoc", b =>
                 {
                     b.Property<string>("Makh")
                         .HasMaxLength(50)
@@ -242,13 +277,18 @@ namespace hocvien.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("thoiluong");
 
+                    b.Property<string>("Trangthai")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("trangthai");
+
                     b.HasKey("Makh")
                         .HasName("PK__khoahoc__7A21BB4CEC06FD83");
 
                     b.ToTable("khoahoc");
                 });
 
-            modelBuilder.Entity("hocvien.Models.LopDangkyhoc", b =>
+            modelBuilder.Entity("hocvien.Model.LopDangkyhoc", b =>
                 {
                     b.Property<string>("Maphieu")
                         .HasMaxLength(50)
@@ -264,33 +304,27 @@ namespace hocvien.Migrations
                         .HasColumnName("maloptuyensinh")
                         .IsFixedLength(true);
 
+                    b.Property<int>("Trangthai")
+                        .HasColumnType("int");
+
                     b.HasKey("Maphieu", "Maloptuyensinh")
                         .HasName("PK__lop_dang__667414EAC3CA8403");
 
-                    b.HasIndex("Maloptuyensinh");
+                    b.HasIndex(new[] { "Maloptuyensinh" }, "IX_lop_dangkyhoc_maloptuyensinh");
 
                     b.ToTable("lop_dangkyhoc");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Lophoc", b =>
+            modelBuilder.Entity("hocvien.Model.Lophoc", b =>
                 {
                     b.Property<string>("Malophoc")
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("char(50)")
-                        .HasColumnName("Malophoc")
                         .IsFixedLength(true);
 
                     b.Property<string>("Magv")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mahv")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("char(50)")
-                        .HasColumnName("mahv")
-                        .IsFixedLength(true);
 
                     b.Property<string>("Maloptuyensinh")
                         .IsRequired()
@@ -309,12 +343,12 @@ namespace hocvien.Migrations
                     b.HasKey("Malophoc")
                         .HasName("PK__lophoc__03B4ED841809EB80");
 
-                    b.HasIndex("Maloptuyensinh");
+                    b.HasIndex(new[] { "Maloptuyensinh" }, "IX_lophoc_maloptuyensinh");
 
                     b.ToTable("lophoc");
                 });
 
-            modelBuilder.Entity("hocvien.Models.LophocGiaovien", b =>
+            modelBuilder.Entity("hocvien.Model.LophocGiaovien", b =>
                 {
                     b.Property<string>("Malophoc")
                         .HasMaxLength(50)
@@ -333,12 +367,12 @@ namespace hocvien.Migrations
                     b.HasKey("Malophoc", "Magv")
                         .HasName("PK__lophoc_g__C416FC08AA169897");
 
-                    b.HasIndex("Magv");
+                    b.HasIndex(new[] { "Magv" }, "IX_lophoc_giaovien_magv");
 
                     b.ToTable("lophoc_giaovien");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Loptuyensinh", b =>
+            modelBuilder.Entity("hocvien.Model.Loptuyensinh", b =>
                 {
                     b.Property<string>("Maloptuyensinh")
                         .HasMaxLength(50)
@@ -348,11 +382,16 @@ namespace hocvien.Migrations
                         .IsFixedLength(true);
 
                     b.Property<string>("Giohoc")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(255)")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("giohoc");
+
+                    b.Property<string>("Macahoc")
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("char(50)")
+                        .HasColumnName("macahoc")
+                        .IsFixedLength(true);
 
                     b.Property<string>("Makh")
                         .IsRequired()
@@ -395,7 +434,6 @@ namespace hocvien.Migrations
                         .HasColumnName("tenloptuyensinh");
 
                     b.Property<string>("Thuhoc")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("thuhoc");
@@ -409,14 +447,16 @@ namespace hocvien.Migrations
                     b.HasKey("Maloptuyensinh")
                         .HasName("PK__loptuyen__15F456FDA9F7C730");
 
-                    b.HasIndex("Makh");
+                    b.HasIndex("Macahoc");
 
-                    b.HasIndex("Mamh");
+                    b.HasIndex(new[] { "Makh" }, "IX_loptuyensinh_makh");
+
+                    b.HasIndex(new[] { "Mamh" }, "IX_loptuyensinh_mamh");
 
                     b.ToTable("loptuyensinh");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Monhoc", b =>
+            modelBuilder.Entity("hocvien.Model.Monhoc", b =>
                 {
                     b.Property<string>("Mamh")
                         .HasMaxLength(50)
@@ -450,13 +490,18 @@ namespace hocvien.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("tenmh");
 
+                    b.Property<string>("Trangthai")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("trangthai");
+
                     b.HasKey("Mamh")
                         .HasName("PK__monhoc__7A21CB8E6E58B74A");
 
                     b.ToTable("monhoc");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Nhanvien", b =>
+            modelBuilder.Entity("hocvien.Model.Nhanvien", b =>
                 {
                     b.Property<string>("Manv")
                         .HasMaxLength(20)
@@ -497,6 +542,11 @@ namespace hocvien.Migrations
                         .HasColumnType("date")
                         .HasColumnName("ngaysinh");
 
+                    b.Property<int>("Nhom")
+                        .HasMaxLength(50)
+                        .HasColumnType("int")
+                        .HasColumnName("nhom");
+
                     b.Property<int>("Sdt")
                         .HasColumnType("int")
                         .HasColumnName("sdt");
@@ -508,9 +558,6 @@ namespace hocvien.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("trangthai");
 
-                    b.Property<int>("nhom")
-                        .HasColumnType("int");
-
                     b.HasKey("Manv")
                         .HasName("manv");
 
@@ -520,7 +567,7 @@ namespace hocvien.Migrations
                     b.ToTable("nhanvien");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Phieudangkyhoc", b =>
+            modelBuilder.Entity("hocvien.Model.Phieudangkyhoc", b =>
                 {
                     b.Property<string>("Maphieu")
                         .HasMaxLength(50)
@@ -542,8 +589,12 @@ namespace hocvien.Migrations
                         .HasColumnName("mahv")
                         .IsFixedLength(true);
 
-                    b.Property<string>("Maloptuyensinh")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Manv")
+                        .HasMaxLength(20)
+                        .IsUnicode(false)
+                        .HasColumnType("char(20)")
+                        .HasColumnName("manv")
+                        .IsFixedLength(true);
 
                     b.Property<DateTime?>("Ngaydk")
                         .HasColumnType("datetime")
@@ -552,12 +603,14 @@ namespace hocvien.Migrations
                     b.HasKey("Maphieu")
                         .HasName("PK__phieudan__A72B5185C862877D");
 
-                    b.HasIndex("Mahv");
+                    b.HasIndex("Manv");
+
+                    b.HasIndex(new[] { "Mahv" }, "IX_phieudangkyhoc_mahv");
 
                     b.ToTable("phieudangkyhoc");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Phieudiem", b =>
+            modelBuilder.Entity("hocvien.Model.Phieudiem", b =>
                 {
                     b.Property<string>("Malophoc")
                         .HasMaxLength(50)
@@ -589,23 +642,28 @@ namespace hocvien.Migrations
                         .HasColumnType("int")
                         .HasColumnName("diemviet");
 
+                    b.Property<int>("Trangthai")
+                        .HasMaxLength(50)
+                        .HasColumnType("int")
+                        .HasColumnName("trangthai");
+
                     b.HasKey("Malophoc", "Mahv")
                         .HasName("PK__phieudie__D416FD8EF39C6EED");
 
-                    b.HasIndex("Mahv");
+                    b.HasIndex(new[] { "Mahv" }, "IX_phieudiem_mahv");
 
                     b.ToTable("phieudiem");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Hoadon", b =>
+            modelBuilder.Entity("hocvien.Model.Hoadon", b =>
                 {
-                    b.HasOne("hocvien.Models.Nhanvien", "ManvNavigation")
+                    b.HasOne("hocvien.Model.Nhanvien", "ManvNavigation")
                         .WithMany("Hoadons")
                         .HasForeignKey("Manv")
                         .HasConstraintName("FKhoadon404248")
                         .IsRequired();
 
-                    b.HasOne("hocvien.Models.Phieudangkyhoc", "MaphieuNavigation")
+                    b.HasOne("hocvien.Model.Phieudangkyhoc", "MaphieuNavigation")
                         .WithMany("Hoadons")
                         .HasForeignKey("Maphieu")
                         .HasConstraintName("FKhoadon89696")
@@ -616,45 +674,45 @@ namespace hocvien.Migrations
                     b.Navigation("MaphieuNavigation");
                 });
 
-            modelBuilder.Entity("hocvien.Models.LopDangkyhoc", b =>
+            modelBuilder.Entity("hocvien.Model.LopDangkyhoc", b =>
                 {
-                    b.HasOne("hocvien.Models.Loptuyensinh", "MalopNavigation")
+                    b.HasOne("hocvien.Model.Loptuyensinh", "MaloptuyensinhNavigation")
                         .WithMany("LopDangkyhocs")
                         .HasForeignKey("Maloptuyensinh")
                         .HasConstraintName("FKlop_dangky847460")
                         .IsRequired();
 
-                    b.HasOne("hocvien.Models.Phieudangkyhoc", "MaphieuNavigation")
+                    b.HasOne("hocvien.Model.Phieudangkyhoc", "MaphieuNavigation")
                         .WithMany("LopDangkyhocs")
                         .HasForeignKey("Maphieu")
                         .HasConstraintName("FKlop_dangky777448")
                         .IsRequired();
 
-                    b.Navigation("MalopNavigation");
+                    b.Navigation("MaloptuyensinhNavigation");
 
                     b.Navigation("MaphieuNavigation");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Lophoc", b =>
+            modelBuilder.Entity("hocvien.Model.Lophoc", b =>
                 {
-                    b.HasOne("hocvien.Models.Loptuyensinh", "MalopNavigation")
+                    b.HasOne("hocvien.Model.Loptuyensinh", "MaloptuyensinhNavigation")
                         .WithMany("Lophocs")
                         .HasForeignKey("Maloptuyensinh")
                         .HasConstraintName("FKlophoc12899")
                         .IsRequired();
 
-                    b.Navigation("MalopNavigation");
+                    b.Navigation("MaloptuyensinhNavigation");
                 });
 
-            modelBuilder.Entity("hocvien.Models.LophocGiaovien", b =>
+            modelBuilder.Entity("hocvien.Model.LophocGiaovien", b =>
                 {
-                    b.HasOne("hocvien.Models.Giaovien", "MagvNavigation")
+                    b.HasOne("hocvien.Model.Giaovien", "MagvNavigation")
                         .WithMany("LophocGiaoviens")
                         .HasForeignKey("Magv")
                         .HasConstraintName("FKlophoc_gia956872")
                         .IsRequired();
 
-                    b.HasOne("hocvien.Models.Lophoc", "MalophocNavigation")
+                    b.HasOne("hocvien.Model.Lophoc", "MalophocNavigation")
                         .WithMany("LophocGiaoviens")
                         .HasForeignKey("Malophoc")
                         .HasConstraintName("FKlophoc_gia710147")
@@ -665,45 +723,59 @@ namespace hocvien.Migrations
                     b.Navigation("MalophocNavigation");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Loptuyensinh", b =>
+            modelBuilder.Entity("hocvien.Model.Loptuyensinh", b =>
                 {
-                    b.HasOne("hocvien.Models.Khoahoc", "MakhNavigation")
+                    b.HasOne("hocvien.Model.Cahoc", "MacahocNavigation")
+                        .WithMany("Loptuyensinhs")
+                        .HasForeignKey("Macahoc")
+                        .HasConstraintName("FKloptuyensinhch");
+
+                    b.HasOne("hocvien.Model.Khoahoc", "MakhNavigation")
                         .WithMany("Loptuyensinhs")
                         .HasForeignKey("Makh")
                         .HasConstraintName("FKloptuyensi996854")
                         .IsRequired();
 
-                    b.HasOne("hocvien.Models.Monhoc", "MamhNavigation")
+                    b.HasOne("hocvien.Model.Monhoc", "MamhNavigation")
                         .WithMany("Loptuyensinhs")
                         .HasForeignKey("Mamh")
                         .HasConstraintName("FKloptuyensi77378")
                         .IsRequired();
+
+                    b.Navigation("MacahocNavigation");
 
                     b.Navigation("MakhNavigation");
 
                     b.Navigation("MamhNavigation");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Phieudangkyhoc", b =>
+            modelBuilder.Entity("hocvien.Model.Phieudangkyhoc", b =>
                 {
-                    b.HasOne("hocvien.Models.Hocvien", "MahvNavigation")
+                    b.HasOne("hocvien.Model.Hocvien", "MahvNavigation")
                         .WithMany("Phieudangkyhocs")
                         .HasForeignKey("Mahv")
                         .HasConstraintName("FKphieudangk163725")
                         .IsRequired();
 
+                    b.HasOne("hocvien.Model.Nhanvien", "ManvNavigation")
+                        .WithMany("Phieudangkyhocs")
+                        .HasForeignKey("Manv")
+                        .HasConstraintName("FKphieudangkyhocnv");
+
                     b.Navigation("MahvNavigation");
+
+                    b.Navigation("ManvNavigation");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Phieudiem", b =>
+            modelBuilder.Entity("hocvien.Model.Phieudiem", b =>
                 {
-                    b.HasOne("hocvien.Models.Hocvien", "MahvNavigation")
+                    b.HasOne("hocvien.Model.Hocvien", "MahvNavigation")
                         .WithMany("Phieudiems")
                         .HasForeignKey("Mahv")
                         .HasConstraintName("FKphieudiem797904")
                         .IsRequired();
 
-                    b.HasOne("hocvien.Models.Lophoc", "MalophocNavigation")
+                    b.HasOne("hocvien.Model.Lophoc", "MalophocNavigation")
                         .WithMany("Phieudiems")
                         .HasForeignKey("Malophoc")
                         .HasConstraintName("FKphieudiem484564")
@@ -714,48 +786,55 @@ namespace hocvien.Migrations
                     b.Navigation("MalophocNavigation");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Giaovien", b =>
+            modelBuilder.Entity("hocvien.Model.Cahoc", b =>
+                {
+                    b.Navigation("Loptuyensinhs");
+                });
+
+            modelBuilder.Entity("hocvien.Model.Giaovien", b =>
                 {
                     b.Navigation("LophocGiaoviens");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Hocvien", b =>
+            modelBuilder.Entity("hocvien.Model.Hocvien", b =>
                 {
                     b.Navigation("Phieudangkyhocs");
 
                     b.Navigation("Phieudiems");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Khoahoc", b =>
+            modelBuilder.Entity("hocvien.Model.Khoahoc", b =>
                 {
                     b.Navigation("Loptuyensinhs");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Lophoc", b =>
+            modelBuilder.Entity("hocvien.Model.Lophoc", b =>
                 {
                     b.Navigation("LophocGiaoviens");
 
                     b.Navigation("Phieudiems");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Loptuyensinh", b =>
+            modelBuilder.Entity("hocvien.Model.Loptuyensinh", b =>
                 {
                     b.Navigation("LopDangkyhocs");
 
                     b.Navigation("Lophocs");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Monhoc", b =>
+            modelBuilder.Entity("hocvien.Model.Monhoc", b =>
                 {
                     b.Navigation("Loptuyensinhs");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Nhanvien", b =>
+            modelBuilder.Entity("hocvien.Model.Nhanvien", b =>
                 {
                     b.Navigation("Hoadons");
+
+                    b.Navigation("Phieudangkyhocs");
                 });
 
-            modelBuilder.Entity("hocvien.Models.Phieudangkyhoc", b =>
+            modelBuilder.Entity("hocvien.Model.Phieudangkyhoc", b =>
                 {
                     b.Navigation("Hoadons");
 

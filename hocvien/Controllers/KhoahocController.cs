@@ -1,34 +1,37 @@
 ﻿using hocvien.Model;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace hocvien.Controllers
 {
+    //[Authorize(Roles = "quanly,tuyensinh")]
+   // [Authorize(Roles = "học vụ")]
     public class KhoahocController : Controller
     {
         private centerContext db = new centerContext();
         public IActionResult Index()
         {
-            //List<Models.Khoahoc> ds = db.Khoahocs.Select(a => new Models.Khoahoc
-            //{
-            //    Makh = a.Makh,
-            //    Tenkh = a.Tenkh,
-            //    Ngaytao = a.Ngaytao.Value.ToShortDateString(),
-            //    //Gioitinh = (a.Gioitinh == 1 ? "Nam" : "Nữ"),
-            //    Motakh = a.Motakh,
-            //    Nguoitao = a.Nguoitao,
-            //    Thoiluong = a.Thoiluong,
-            //   // Trungtamhoc = a.Trungtamhoc
-
-
-            //}).ToList();
+            
+            if (TempData.ContainsKey("them"))
+            {
+                ViewBag.SuccessMessage = TempData["them"];
+            }
+            if (TempData.ContainsKey("sua"))
+            {
+                ViewBag.sua = TempData["sua"];
+            }
             return View(db.Khoahocs.ToList());
         }
       
         public IActionResult formthemKhoahoc()
         {
+            string manv = HttpContext.Session.GetString("Manv");
+            ViewBag.ten = manv;
             return View();
         }
 
@@ -41,8 +44,10 @@ namespace hocvien.Controllers
                 //ma kh se la IEMMYYYY IE052023
                 db.Khoahocs.Add(kh);
                 db.SaveChanges();
+                TempData["them"] = "Thêm khóa học thành công";
                 return RedirectToAction("Index");
             }
+            
             return View("formthemKhoahoc");
 
 
@@ -81,25 +86,26 @@ namespace hocvien.Controllers
         }
         public IActionResult formSuakhoahoc(string id)
         {
-
+            string manv = HttpContext.Session.GetString("Manv");
+            ViewBag.ten = manv;
             Model.Khoahoc x = db.Khoahocs.Find(id);
             return View(x);
         }
         [HttpPost]
         public IActionResult suaKhoahoc(Model.Khoahoc x)
         {
+           
             if (ModelState.IsValid)
             {
                 Model.Khoahoc kh = db.Khoahocs.Find(x.Makh);
                 if (kh != null)
                 {
                     kh.Tenkh = x.Tenkh;
-                    kh.Thoiluong = x.Thoiluong;
+                   // kh.Thoiluong = x.Thoiluong;
                     kh.Motakh = x.Motakh;
-                   
-
                     db.SaveChanges();
                 }
+                TempData["sua"] = "Sửa khóa học thành công";
                 return RedirectToAction("Index");
             }
 

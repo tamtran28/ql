@@ -13,16 +13,16 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Area\TVV\Controllers\" />
-    <Folder Include="Views\LopTS\" />
-    <Folder Include="Views\PhieuDK\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Views\LopTS\" />
     <None Remove="Views\PhieuDK\" />
+    <None Remove="Views\Nhanvien\" />
   </ItemGroup>
 </Project>

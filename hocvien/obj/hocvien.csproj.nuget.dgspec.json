@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\android\\dart\\trungtam-master 2 2 3\\trungtam-master 2 2\\hocvien\\hocvien.csproj": {}
+    "C:\\Users\\tam.tran\\Downloads\\trungtam-master 2 2 4 (2)\\trungtam-master 2 2 4 (1)\\trungtam-master 2 2 4\\hocvien\\hocvien.csproj": {}
   },
   "projects": {
-    "D:\\android\\dart\\trungtam-master 2 2 3\\trungtam-master 2 2\\hocvien\\hocvien.csproj": {
+    "C:\\Users\\tam.tran\\Downloads\\trungtam-master 2 2 4 (2)\\trungtam-master 2 2 4 (1)\\trungtam-master 2 2 4\\hocvien\\hocvien.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\android\\dart\\trungtam-master 2 2 3\\trungtam-master 2 2\\hocvien\\hocvien.csproj",
+        "projectUniqueName": "C:\\Users\\tam.tran\\Downloads\\trungtam-master 2 2 4 (2)\\trungtam-master 2 2 4 (1)\\trungtam-master 2 2 4\\hocvien\\hocvien.csproj",
         "projectName": "hocvien",
-        "projectPath": "D:\\android\\dart\\trungtam-master 2 2 3\\trungtam-master 2 2\\hocvien\\hocvien.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\android\\dart\\trungtam-master 2 2 3\\trungtam-master 2 2\\hocvien\\obj\\",
+        "projectPath": "C:\\Users\\tam.tran\\Downloads\\trungtam-master 2 2 4 (2)\\trungtam-master 2 2 4 (1)\\trungtam-master 2 2 4\\hocvien\\hocvien.csproj",
+        "packagesPath": "C:\\Users\\tam.tran\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tam.tran\\Downloads\\trungtam-master 2 2 4 (2)\\trungtam-master 2 2 4 (1)\\trungtam-master 2 2 4\\hocvien\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tam.tran\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,8 +25,10 @@
           "net5.0"
         ],
         "sources": {
-          "D:\\laptrinhwindow\\package": {},
-          "https://www.nuget.org/api/v2": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -56,6 +58,10 @@
               "target": "Package",
               "version": "[5.0.17, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -78,12 +84,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.17, 5.0.17]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

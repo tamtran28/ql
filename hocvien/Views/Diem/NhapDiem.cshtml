@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "nhapDiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@model List<Phieudiem>*@
+
+@*@{
+    ViewData["Title"] = "NhapDiem";
+}*@
+
+<@*h2>Nhập điểm cho lớp học</h2>
+
+<form method="post" asp-action="NhapDiem">
+    <input type="hidden" name="maLopHoc" value="@ViewBag.malop" />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã học viên</th>
+                <th>Họ tên</th>
+                <th>Điểm đọc</th>
+                <th>Điểm viết</th>
+                <th>Điểm nói</th>
+                <th>Điểm nghe</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].Mahv</td>
+                    <td>@Model[i].Hoten</td>
+                    <td>
+                        <input type="text" name="[@i].Diemdoc" value="@Model[i].Diemdoc" class="form-control" />
+                        <span asp-validation-for="[@i].Diemdoc" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].Diemviet" value="@Model[i].Diemviet" class="form-control" />
+                        <span asp-validation-for="[@i].Diemviet" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].Diemnoi" value="@Model[i].Diemnoi" class="form-control" />
+                        <span asp-validation-for="[@i].Diemnoi" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].Diemnghe" value="@Model[i].Diemnghe" class="form-control" />
+                        <span asp-validation-for="[@i].Diemnghe" class="text-danger"></span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <input type="submit" value="Lưu điểm" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@model List<Phieudiem>
+
+<h2>Sửa điểm cho lớp học</h2>
+
+<form method="post" asp-action="LuuDiem">
+    <input type="hidden" name="maLopHoc" value="@ViewBag.MaLopHoc" />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã học viên</th>
+                <th>Họ tên</th>
+                <th></th>
+                <th>Điểm đọc</th>
+                <th>Điểm viết</th>
+                <th>Điểm nói</th>
+                <th>Điểm nghe</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].Mahv</td>
+                    <td>@Model[i].MahvNavigation.Hoten</td>
+                     @*   <td>
+        <input type="text" name="[@i].Phieudiem.Mahv" value="@Model[i].Mahv" class="form-control" />
+        <span asp-validation-for="[@i].Phieudiem.Mahv" class="text-danger"></span>
+    </td>*@
+                    <td>
+                               <input type="hidden" name="[@i].Mahv" value="@Model[i].Mahv" />
+                        <input type="text" name="[@i].Diemdoc" value="@Model[i].Diemdoc" class="form-control" />
+                        <span asp-validation-for="[@i].Diemdoc" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].Diemviet" value="@Model[i].Diemviet" class="form-control" />
+                        <span asp-validation-for="[@i].Diemviet" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].Diemnoi" value="@Model[i].Diemnoi" class="form-control" />
+                        <span asp-validation-for="[@i].Diemnoi" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="[@i].Diemnghe" value="@Model[i].Diemnghe" class="form-control" />
+                        <span asp-validation-for="[@i].Diemnghe" class="text-danger"></span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <input type="submit" value="Lưu điểm" class="btn btn-primary" />
+    </div>
+</form>

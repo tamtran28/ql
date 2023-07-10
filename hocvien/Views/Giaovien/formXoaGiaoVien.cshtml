@@ -5,86 +5,86 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>formXoaGiaoVien</h1>
+<h1>Xóa giáo viên</h1>
 
 @if ((int)ViewBag.flag == 0)
 {
-    <h5>Ban thuc su muon xoa</h5>
+    <h5>Bạn thực sự muốn xóa</h5>
 }
 else
 {
-    <h5>Ban không the xoa</h5>
+    <h5>Bạn không thể xóa</h5>
 }
 <div>
-    <h4>Giaovien</h4>
+    
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Magv)
+          Mã giáo viên
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Magv)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Hoten)
+            Ho tên
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Hoten)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngaysinh)
+           Ngày sinh
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Ngaysinh)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gioitinh)
+          Giới tính
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Gioitinh)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Diachi)
+           Địa chỉ
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Diachi)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sdt)
+           Sdt
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Sdt)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Capdoday)
+          Cấp độ dạy
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Capdoday)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Trinhdo)
+            Trình độ
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Trinhdo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+           Email
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nguoitao)
+            Người tạo
         </dt>
-        <dd class = "col-sm-10">
+       @* <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nguoitao)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngaytao)
+           Ngày tạo
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Ngaytao)
-        </dd>
+        </dd>*@
     </dl>
     
     <form asp-action="xoaHocVien" asp-route-id="@Model.Magv">

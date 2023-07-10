@@ -6,23 +6,30 @@
 }
 @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
 {
-    <div class="alert alert-success" role="alert">
+    <div id="msgAlert" class="alert alert-success" role="alert">
         @ViewBag.SuccessMessage
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessage))
+{
+    <div id="msgAlertS" class="alert alert-success" role="alert">
+        @ViewBag.SuaSuccessMessage
     </div>
 }
 <h1>Danh sách học viên</h1>
 
-    <p>
+<p>
     <a asp-action="themHocVien" class="btn btn-primary">Thêm học viên</a>
-    </p>
-  
+</p>
+
 <h2>Tìm kiếm học viên</h2>
 <div class="row">
     <div class="col-md-8">
-        <input type="text" id="hotenhv" class="form-control"/>
+        <input type="text" id="hotenhv" class="form-control" />
     </div>
     <div class="col-md-4">
-        <input type="button" onclick="timHocvien_click()" value="Tìm kiếm"/>
+        <input type="button" onclick="timHocvien_click()" value="Tìm kiếm" />
     </div>
 </div>
 <div id="danhsachHocvien"></div>
@@ -31,20 +38,20 @@
 <table class="table">
     <thead>
         <tr>
-          @*  <th>
-                @Html.DisplayNameFor(model => model.Mahv)
-            </th>*@
+            @*  <th>
+                    @Html.DisplayNameFor(model => model.Mahv)
+                </th>*@
             <th>
                 Họ tên
             </th>
             <th>
-               Ngày sinh
+                Ngày sinh
             </th>
             <th>
-               SDT
+                SDT
             </th>
             <th>
-               Địa chỉ
+                Địa chỉ
             </th>
             <th>
                 Giới tính
@@ -52,86 +59,106 @@
             <th>
                 Trạng thái
             </th>
-            
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-           @* <td>
-                @Html.DisplayFor(modelItem => item.Mahv)
-             </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Hoten)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ngaysinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sdt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diachi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gioitinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Trangthai)
-            </td>
-          
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+                       @Html.DisplayFor(modelItem => item.Mahv)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hoten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaysinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sdt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gioitinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trangthai)
+                </td>
+
+                <td>
                     <a asp-action="formSuaHocvien" asp-route-id="@item.Mahv" class="btn btn-primary">Sửa</a>
-             </td>
-              <td>
+                </td>
+                <td>
                     <a asp-action="formXoaHocVien" asp-route-id="@item.Mahv" class="btn btn-danger delete-btn">Xóa</a>
-             </td>
-             <td>
+                </td>
+                <td>
                     <a asp-action="chiTiet" asp-route-id="@item.Mahv" class="btn btn-primary">Chi tiết</a>
-             </td>
-        </tr>
-}
+                </td>
+               
+            </tr>
+        }
     </tbody>
     <div class="pagination">
-       
-           <a href="@Url.Action("Index", new { currentPage = 1 })">First</a>
-            @for (int i = 1; i <= ViewBag.TotalPages; i++)
-            {
-               <a href="@Url.Action("Index", new { currentPage = i })" class="@(ViewBag.CurrentPage == i ? "active" : "")">@i</a>
-            }
-            <a href="@Url.Action("Index", new { currentPage = ViewBag.TotalPages })">Last</a>
-       
+
+        <a href="@Url.Action("Index", new { currentPage = 1 })">First</a>
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <a href="@Url.Action("Index", new { currentPage = i })" class="@(ViewBag.CurrentPage == i ? "active" : "")">@i</a>
+        }
+        <a href="@Url.Action("Index", new { currentPage = ViewBag.TotalPages })">Last</a>
+
     </div>
 </table>
 <p>Tổng số record: @ViewBag.TotalItems</p>
 <p>Trang hiện tại: @ViewBag.CurrentPage</p>
 
+
+
 @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
 {
-    <script>
-        window.onload = function () {
-            alert('@ViewBag.SuccessMessage');
-        }
-    </script>
+    <script>window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessage))
+{
+    <script>window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
 }
 
-<script type="text/javascript">
-    function timHocvien_click(){
-        const hotenhv=document.getElementById("hotenhv").value;
+<script type="text/javascript">function timHocvien_click() {
+        const hotenhv = document.getElementById("hotenhv").value;
         // Create an XMLHttpRequest object
         const xhttp = new XMLHttpRequest();
 
         // Define a callback function
         xhttp.onload = function () {
             // Here you can use the Data
-            document.getElementById("danhsachHocvien").innerHTML=xhttp.responseText;
+            document.getElementById("danhsachHocvien").innerHTML = xhttp.responseText;
         }
 
         // Send a request
-        const strUrl="/Hocvien/timHocvien/"+hotenhv;
+        const strUrl = "/Hocvien/timHocvien/" + hotenhv;
         xhttp.open("GET", strUrl);
         xhttp.send();
 
-    }
-</script>
+    }</script>

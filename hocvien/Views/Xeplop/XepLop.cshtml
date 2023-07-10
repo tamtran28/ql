@@ -15,7 +15,7 @@
 
 <form method="post" asp-controller="XepLop" asp-action="XepLop">
     <input type="hidden" name="maloptuyensinh" value="@ViewBag.Maloptuyensinh" />
-    <input type="hidden" name="malophoc" value="@ViewBag.Malophoc" />
+    <input type="hidden" name="malophoc" id="malophoc" value="@ViewBag.Malophoc" />
 
     @foreach (var hocvien in Model)
     {
@@ -24,5 +24,28 @@
         </div>
     }
 
-    <button type="submit">Xếp lớp</button>
+    <button type="submit" onclick="danhSach()">Xếp lớp</button>
 </form>
+<div id="danhsachHocvien">  @Html.Partial("DanhSachHocVien", Model)</div>
+@*@Html.Partial("DanhSachHocVien", Model)*@
+
+<script type="text/javascript">
+    function danhSach() {
+        const malop = document.getElementById("malophoc").value;
+        // Create an XMLHttpRequest object
+        const xhttp = new XMLHttpRequest();
+
+        // Define a callback function
+        xhttp.onload = function () {
+            // Here you can use the Data
+            document.getElementById("danhsachHocvien").innerHTML = xhttp.responseText;
+            // Refresh the page
+            location.reload();
+        };
+
+        // Send a request
+        const strUrl = "/Xeplop/DanhSachHocVien/" + malop;
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+    }
+</script>

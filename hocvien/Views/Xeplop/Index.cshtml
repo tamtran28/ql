@@ -5,29 +5,29 @@
     Layout = "_Layout";
 }
 
-<h1>Index</h1>
+<h1>Danh sách lớp học</h1>
 
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Malophoc)
+               Mã lớp học
             </th>
             @*<th>
                 @Html.DisplayNameFor(model => model.Mahv)
             </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Phonghoc)
+               Phòng học
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Maloptuyensinh)
+               Mã lớp tuyển sinh
             </th>
-           @* <th>
-                @Html.DisplayNameFor(model => model.Magv)
-            </th>*@
+            <th>
+                Giáo viên
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -46,9 +46,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Maloptuyensinh)
             </td>
-           @* <td>
-                @Html.DisplayFor(modelItem => item.Magv)
-            </td>*@
+            <td>
+                    @item.LophocGiaoviens
+            </td>
             <td>
 
                @* <td>
@@ -57,7 +57,7 @@
                 <td>
                     <a asp-action="danhSach" asp-route-malophoc="@item.Malophoc" asp-route-maloptuyensinh="@item.Maloptuyensinh" class="btn btn-primary">Tạo lớp học</a>
                 </td>
-                <td><a asp-action="DanhSachHocVien" asp-route-malophoc="@item.Malophoc" asp-controller="Xeplop">Xem danh sách</a></td>
+                <td><a asp-action="DanhSachHocVien" asp-route-malophoc="@item.Malophoc" asp-controller="Xeplop" class="btn btn-primary">Xem danh sách</a></td>
                 <td>
                     <a asp-action="ChonGiaoVien" asp-controller="Phancong" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Phân công</a>
                 </td>

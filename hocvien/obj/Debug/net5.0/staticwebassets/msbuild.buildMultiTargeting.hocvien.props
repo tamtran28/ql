@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="../build/hocvien.props" />
+  <Import Project="..\build\hocvien.props" />
 </Project>

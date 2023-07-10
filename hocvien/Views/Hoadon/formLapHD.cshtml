@@ -1,71 +1,39 @@
-﻿@model hocvien.Model.Hoadon
-
-@{
-    ViewData["Title"] = "formLapHD";
+﻿@{
+    ViewData["Title"] = "Lập hóa đơn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Thông tin học viên</h2>
+<p>Tên học viên: @ViewBag.Hocvien</p>
 
-<h1>formLapHD</h1>
+<h2>Danh sách lớp đăng ký</h2>
+<ul>
+    @foreach (var lop in ViewBag.LopDangkyhocs)
+    {
+        <li>@lop</li>
+    }
+</ul>
 
-<h4>Hoadon</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="hoaDon" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Mahd" class="control-label"></label>
-                <input asp-for="Mahd" class="form-control" />
-                <span asp-validation-for="Mahd" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="Ngaythu" class="control-label"></label>
-                <input asp-for="Ngaythu" class="form-control" />
-                <span asp-validation-for="Ngaythu" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="Tongtienthanhtoan" class="control-label"></label>
-                <input asp-for="Tongtienthanhtoan" class="form-control" value="@ViewBag.fee" />
-                <span asp-validation-for="Tongtienthanhtoan" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ghichu" class="control-label"></label>
-                <input asp-for="Ghichu" class="form-control" />
-                <span asp-validation-for="Ghichu" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Hinhthuc" class="control-label"></label>
-                <input asp-for="Hinhthuc" class="form-control" />
-                <span asp-validation-for="Hinhthuc" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trangthaithanhtoan" class="control-label"></label>
-                <input asp-for="Trangthaithanhtoan" class="form-control" />
-                <span asp-validation-for="Trangthaithanhtoan" class="text-danger"></span>
-            </div>
-         <div class="form-group">
-                <label asp-for="Manv" class="control-label"></label>
-                <input asp-for="Manv" class="form-control" />
-                <span asp-validation-for="Manv" class="text-danger"></span>
-            </div>
-            @* <div class="form-group">
-                <label asp-for="Mahv" class="control-label"></label>
-                <input asp-for="Mahv"  class="form-control" />
-                <span asp-validation-for="Mahv" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="Maphieu" class="control-label"></label>
-                <input asp-for="Maphieu" class="form-control" value="@ViewBag.Id" />
-                <span asp-validation-for="Maphieu" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<h2>Thông tin thanh toán</h2>
+<p>Tổng tiền: @ViewBag.TongTien</p>
+<p>Số tiền đã trả: @ViewBag.SoTienDaTra</p>
+<p>Số tiền còn lại: @ViewBag.SoTienConLai</p>
+
+<h2>Nhập số tiền đóng</h2>
+<form method="post" asp-action="hoaDon" asp-controller="Hoadon">
+    <div class="form-group">
+        <label for="sotien">Số tiền đóng:</label>
+        <input type="text" id="sotien" name="sotien" class="form-control" />
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+    <div class="form-group">
+        <label for="maphieu">Mã phiếu:</label>
+        <input type="text" id="maphieu" name="maphieu" value="@ViewBag.maphieu" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="hinhthuc">Hình thức thanh toán:</label>
+        <select id="hinhthuc" name="hinhthuc" class="form-control">
+            <option value="tienmat">Tiền mặt</option>
+            <option value="chuyenkhoan">Chuyển khoản</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu thanh toán</button>
+</form>
