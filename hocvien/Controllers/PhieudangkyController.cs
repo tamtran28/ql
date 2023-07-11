@@ -234,6 +234,11 @@ namespace hocvien.Controllers
             List<Hocvien> ds = db.Hocviens.Where(x => x.Hoten.Contains(id) || x.Sdt == (id)).ToList()
 ;
             // List<Hocvien> ds = db.Hocviens.Where(x => x.Hoten.Contains(id)).ToList();
+            if (ds.Count == 0)
+            {
+                ViewBag.Message = "Chưa có phiếu đăng ký";
+            }
+
             return PartialView(ds);
 
 
@@ -249,6 +254,10 @@ namespace hocvien.Controllers
             //List<Monhoc> dsMH = xulyhv.getDSMonhoc();
             List<Loptuyensinh> ds = db.Loptuyensinhs.Where(p => p.Makh == id).ToList();
             //Loptuyensinh x = db.Loptuyensinhs.Find(id);
+            if (ds.Count == 0)
+            {
+                ViewBag.Message = "Chưa có lớp tuyển sinh";
+            }
             return PartialView(ds);
         }
         public IActionResult formXoaphieudangky(string id)

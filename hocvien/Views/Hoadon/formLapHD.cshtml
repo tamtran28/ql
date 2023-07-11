@@ -16,7 +16,7 @@
 <h2>Thông tin thanh toán</h2>
 <p>Tổng tiền: @ViewBag.TongTien</p>
 <p>Số tiền đã trả: @ViewBag.SoTienDaTra</p>
-<input id="sotiendatra" name="sotiendatra" type="hidden" value="@ViewBag.SoTienDaTra" />
+@*<input id="sotiendatra" name="sotiendatra" type="text" value="@ViewBag.SoTienDaTra" />*@
 <p>Số tiền còn lại: @ViewBag.SoTienConLai</p>
 
 <h2>Nhập số tiền đóng</h2>
@@ -28,6 +28,10 @@
     <div class="form-group">
         <label for="maphieu">Mã phiếu:</label>
         <input type="text" id="maphieu" name="maphieu" value="@ViewBag.maphieu" class="form-control" readonly />
+    </div>
+    <div class=" form-group" >
+        @*<label for="sotiendatra">Số tiền đã trả:</label>*@
+        <input type="hidden" id="sotiendatra" name="sotiendatra" value="@ViewBag.SoTienDaTra" class="form-control" readonly />
     </div>
     <div class="form-group">
         <label for="hinhthuc">Hình thức thanh toán:</label>

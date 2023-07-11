@@ -112,6 +112,10 @@ namespace hocvien.Controllers
             List<Phieudangkyhoc> dsPhieuDangKy = db.Phieudangkyhocs
                 .Where(pdk => pdk.Maphieu.Contains(id) || pdk.MahvNavigation.Hoten.Contains(id))
                 .ToList();
+            if (dsPhieuDangKy.Count == 0)
+            {
+                ViewBag.Message = "Chưa có phiếu đăng ký";
+            }
 
             return PartialView(dsPhieuDangKy);
         }
@@ -222,7 +226,7 @@ namespace hocvien.Controllers
         //    return RedirectToAction("Index");
         //}
         [HttpPost]
-        public IActionResult formLapHD(string maphieu)
+        public IActionResult formLapHD(string maphieu,string mahv)
         {
             var hoadon = db.Phieudangkyhocs.Find(maphieu);
 
@@ -233,7 +237,11 @@ namespace hocvien.Controllers
                     .ToList();
 
                 var malopTuyenSinhs = lopDangKyHocs.Select(ldk => ldk.Maloptuyensinh).ToList();
-                //var hocvien = hoadon.MahvNavigation;
+                var hocvien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == mahv);
+                if (hocvien != null)
+                {
+                    ViewBag.Hocvien = hocvien.Hoten;
+                }
                 ViewBag.maphieu = maphieu;
                 //ViewBag.Hocvien =hocvien.Hoten ;
                 ViewBag.LopDangkyhocs = malopTuyenSinhs;
@@ -257,7 +265,7 @@ namespace hocvien.Controllers
 
         
         [HttpPost]
-        public IActionResult hoaDon(Hoadon hd, string maphieu, int sotien,int sotiendatra)
+        public IActionResult hoaDon(Hoadon hd, string maphieu, int sotien)
         {
             string manv = HttpContext.Session.GetString("Manv");
 
@@ -267,10 +275,11 @@ namespace hocvien.Controllers
             hd.Manv = manv;
             hd.Trangthaithanhtoan = "Thanh toán";
             hd.Maphieu = maphieu;
-            decimal soTienDaTra = sotiendatra;
+            decimal sotiendatra = decimal.Parse(Request.Form["sotiendatra"]);
+           // decimal soTienDaTra = sotiendatra;
 
             // Tính số tiền đã trả mới
-            decimal soTienDaTraMoi = soTienDaTra + sotien;
+            decimal soTienDaTraMoi = sotiendatra + sotien;
             // Lưu số tiền đã đóng
             hd.Sotiendatra = soTienDaTraMoi;
 

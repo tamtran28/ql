@@ -125,7 +125,12 @@ namespace hocvien.Controllers
             
             List<Hocvien>ds = db.Hocviens.Where(x => x.Hoten.Contains(id) || x.Sdt == (id)).ToList()
                 ;
-           // List<Hocvien> ds = db.Hocviens.Where(x => x.Hoten.Contains(id)).ToList();
+            // List<Hocvien> ds = db.Hocviens.Where(x => x.Hoten.Contains(id)).ToList();
+            if (ds.Count == 0)
+            {
+                ViewBag.Message = "Không tìm thấy học viên";
+            }
+
             return PartialView(ds);
 
             

@@ -1,8 +1,16 @@
 ﻿@model IEnumerable<hocvien.Model.Phieudangkyhoc>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p class="align-content-center">@ViewBag.Message</p>
+    <p>
+        <a asp-action="SearchCourse" asp-controller="Hoadon" class="btn btn-primary">Tạo phiếu đăng ký</a>
+    </p>
+}
+else
+{
+    
 <table class="table">
     <thead>
         <tr>
@@ -45,14 +53,14 @@
             <td>
                     <form method="post" action="formLapHD">
         <input type="hidden" name="maphieu" value="@item.Maphieu" />
+                        <input type="hidden" name="mahv" value="@item.Mahv" />
                         <button type="submit" class="btn btn-primary btn-rounded">Thanh toán</button>
     </form>
 
-                   @* <a asp-action="formLapHD" asp-route-maphieu="@item.Maphieu">Thanh toán</a> |*@
-                @*<a asp-action="Details" asp-route-id="@item.Maphieu">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Maphieu">Delete</a>*@
+                
             </td>
         </tr>
 }
     </tbody>
 </table>
+}

@@ -2,9 +2,15 @@
 @*@{
     Layout = "_Layout";
 }*@
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+    <p>
+        <a asp-action="themHocVien" asp-controller="Hocvien" class="btn btn-primary">Thêm học viên</a>
+    </p>
+}
+else
+{
 <table class="table">
     <thead>
         <tr>
@@ -84,3 +90,4 @@
 }
     </tbody>
 </table>
+}
