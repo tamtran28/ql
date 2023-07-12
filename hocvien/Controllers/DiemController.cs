@@ -14,67 +14,17 @@ namespace hocvien.Controllers
         {
             return View(db.Phieudiems.ToList());
         }
-        //public IActionResult NhapDiem(string maLopHoc)
-        //{
-        //    ViewBag.malop = maLopHoc;
+        public IActionResult xemDiem(string maLopHoc)
+        {
+            // Lấy danh sách phiếu điểm của lớp
+            var phieuDiemList = db.Phieudiems
+                .Where(p => p.Malophoc == maLopHoc)
+                .Include(p => p.MahvNavigation) // Nạp dữ liệu học viên liên quan
+                .ToList();
+            return View(phieuDiemList);
+        }
 
-        //    // Retrieve all students in the class from the database
-        //    var hocvien = db.Phieudiems
-        //         .Where(p => p.Malophoc == maLopHoc)
-        //         .Select(p => p.MahvNavigation)
-        //         .ToList();
-
-
-        //    // Create a list to store the grade models for each student
-        //    var gradeModels = new List<CDiemView>();
-
-        //    // Populate the grade models with the necessary data
-        //    foreach (var student in hocvien)
-        //    {
-        //        var gradeModel = new CDiemView
-        //        {
-        //            Malophoc = maLopHoc,
-        //            Mahv = student.Mahv,
-        //            Hoten = student.Hoten,
-
-        //        };
-
-        //        gradeModels.Add(gradeModel);
-        //    }
-
-        //    return View(gradeModels);
-        //}
-        //public IActionResult NhapDiem(string maLopHoc)
-        //{
-        //    ViewBag.malop = maLopHoc;
-
-        //    // Retrieve all students in the class from the database
-        //    var hocvien = db.Phieudiems
-        //         .Where(p => p.Malophoc == maLopHoc)
-        //         .Select(p => p.MahvNavigation)
-        //         .ToList();
-
-
-        //    // Create a list to store the grade models for each student
-        //    var gradeModels = new List<Phieudiem>();
-
-        //    // Populate the grade models with the necessary data
-        //    foreach (var student in hocvien)
-        //    {
-        //        var gradeModel = new Phieudiem
-        //        {
-        //            Malophoc = maLopHoc,
-        //            Mahv = student.Mahv,
-        //            //Hoten = student.Mahv,
-
-        //        };
-
-        //        gradeModels.Add(gradeModel);
-        //    }
-
-        //    return View(gradeModels);
-        //}
-        public IActionResult NhapDiem(string maLopHoc)
+            public IActionResult NhapDiem(string maLopHoc)
         {
             // Truy vấn danh sách học viên trong lớp học từ cơ sở dữ liệu
             var hocVienList = db.Phieudiems
