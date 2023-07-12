@@ -102,6 +102,12 @@
                 <td>
                     <a asp-action="formTaolophoc" asp-controller="Xeplop" asp-route-id="@item.Maloptuyensinh" class="btn btn-primary">Tạo lớp học</a>
                 </td>
+                <td>
+                    <a asp-action="formSualoptuyensinh"  asp-route-id="@item.Maloptuyensinh" class="btn btn-primary">Sửa</a>
+                </td>
+                <td>
+                    <a asp-action="formXoaloptuyensinh" asp-route-id="@item.Maloptuyensinh" class="btn btn-primary">Xóa</a>
+                </td>
                 </td>
             </tr>
         }

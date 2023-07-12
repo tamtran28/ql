@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "formXoamonhoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>formXoamonhoc</h1>
@@ -19,50 +20,51 @@ else
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Mamh)
+            Mã môn học
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Mamh)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Tenmh)
+           Tên môn học
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Tenmh)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Mota)
+          Mô tả
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Mota)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Hocphi)
+            Học phí
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Hocphi)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nguoitao)
+            Trạng thái
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Trangthai)
+        </dd>
+        <dt class="col-sm-2">
+          Người tạo
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nguoitao)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngaytao)
+           Ngày tạo
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Ngaytao)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Trangthai)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Trangthai)
-        </dd>
+      
     </dl>
 
-    <form asp-action="xoaKhoahoc" asp-route-id="@Model.Mamh">
+    <form asp-action="xoaMonhoc" asp-route-id="@Model.Mamh">
         @if ((int)ViewBag.flag == 0)
         {
             <input type="submit" value="Xóa" class="btn btn-danger" />

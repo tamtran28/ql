@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace hocvien.Controllers
 {
@@ -25,7 +26,11 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult themLophoc(Lophoc h)
         {
-           
+            //cap nhâp lại database
+            string manv = HttpContext.Session.GetString("Manv");
+            //ViewBag.ten = manv;
+            h.Nguoitao = manv;
+            h.Ngaytao = DateTime.Now;
             db.Lophocs.Add(h);
             db.SaveChanges();
             ViewBag.SuccessMessage = "Thêm học viên thành công!";

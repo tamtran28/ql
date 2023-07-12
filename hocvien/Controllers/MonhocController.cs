@@ -50,7 +50,7 @@ namespace hocvien.Controllers
             }
             return RedirectToAction("Index");
         }
-        public IActionResult formSuakhoahoc(string id)
+        public IActionResult formSuamonhoc(string id)
         {
             ViewBag.ten = User.Identity.Name;
             Model.Monhoc x = db.Monhocs.Find(id);

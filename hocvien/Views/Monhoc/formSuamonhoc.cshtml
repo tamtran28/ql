@@ -2,51 +2,52 @@
 
 @{
     ViewData["Title"] = "formSuakhoahoc";
+    Layout = "_Layout";
 }
 
-<h1>formSuakhoahoc</h1>
+<h1>Sửa môn học</h1>
 
-<h4>Monhoc</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="formSuakhoahoc">
+        <form asp-action="suaMonhoc" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Mamh" class="control-label"></label>
+                <label asp-for="Mamh" class="control-label">Mã môn học</label>
                 <input asp-for="Mamh" class="form-control" readonly/>
                 <span asp-validation-for="Mamh" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tenmh" class="control-label"></label>
+                <label asp-for="Tenmh" class="control-label">Tên môn học</label>
                 <input asp-for="Tenmh" class="form-control" />
                 <span asp-validation-for="Tenmh" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Mota" class="control-label"></label>
-                <input asp-for="Mota" class="form-control" />
-                <span asp-validation-for="Mota" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Hocphi" class="control-label"></label>
+                <label asp-for="Hocphi" class="control-label">Học phí</label>
                 <input asp-for="Hocphi" class="form-control" />
                 <span asp-validation-for="Hocphi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nguoitao" class="control-label"></label>
+                <label asp-for="Mota" class="control-label">Mô tả</label>
+                <input asp-for="Mota" class="form-control" />
+                <span asp-validation-for="Mota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trangthai" class="control-label">Trạng thái</label>
+                <input asp-for="Trangthai" class="form-control" />
+                <span asp-validation-for="Trangthai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nguoitao" class="control-label">Người tạo</label>
                 <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Ngaytao" class="control-label"></label>
+                <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
                 <input asp-for="Ngaytao" class="form-control" />
                 <span asp-validation-for="Ngaytao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Trangthai" class="control-label"></label>
-                <input asp-for="Trangthai" class="form-control" />
-                <span asp-validation-for="Trangthai" class="text-danger"></span>
-            </div>
+           
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

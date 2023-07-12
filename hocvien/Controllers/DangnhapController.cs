@@ -261,7 +261,7 @@ namespace hocvien.Controllers
                         return RedirectToAction("Index", "Hocvien");
                     }
                 }
-                return RedirectToAction("Denied", "Dangnhap");
+               // return RedirectToAction("Denied", "Dangnhap");
             }
 
             // Xử lý lỗi đăng nhập không thành công

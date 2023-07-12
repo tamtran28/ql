@@ -66,6 +66,8 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult Create(CreateClassViewModel model)
         {
+            string manv = HttpContext.Session.GetString("Manv");
+            //ViewBag.ten = manv;
             string thangNamHienTai = DateTime.Now.ToString("MMyyyy");
             if (ModelState.IsValid)
             {
@@ -82,8 +84,8 @@ namespace hocvien.Controllers
                         Maloptuyensinh = String.Concat(model.Makh, "-", mamh, thangNamHienTai).Replace(" ", ""), // Hàm để tạo mã lớp tuyển sinh duy nhất
                                                                                                                  //Maloptuyensinh ="KH",
                         Tenloptuyensinh = String.Concat(model.Makh, "-", mamh, thangNamHienTai).Replace(" ", ""),
-                        Trangthai = "Trạng thái",
-                        Nguoitao = "Người tạo",
+                        Trangthai = "đang mở",
+                        Nguoitao = manv,
                         Ngaytao = DateTime.Now,
                         Ngaybatdau = ngaybatdau,
                         Ngayketthuc = ngayketthuc,
@@ -146,12 +148,13 @@ namespace hocvien.Controllers
         {
             string manv = HttpContext.Session.GetString("Manv");
             ViewBag.ten = manv;
-           // Model.Loptuyensinh x = db.Loptuyensinhs.Find(id);
+            var cahoc = db.Cahocs.ToList();
+            Model.Loptuyensinh x = db.Loptuyensinhs.Find(id);
 
-            return View();
+            return View(x);
         }
         [HttpPost]
-        public IActionResult suaKhoahoc(Model.Loptuyensinh x)
+        public IActionResult suaLoptuyensinh(Model.Loptuyensinh x)
         {
             if (ModelState.IsValid)
             {

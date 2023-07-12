@@ -13,12 +13,12 @@
         <form asp-action="suaKhoahoc" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Makh" class="control-label"></label>
+                <label asp-for="Makh" class="control-label">Mã khóa học</label>
                 <input asp-for="Makh" class="form-control" />
                 <span asp-validation-for="Makh" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tenkh" class="control-label"></label>
+                <label asp-for="Tenkh" class="control-label">Tên khóa học</label>
                 <input asp-for="Tenkh" class="form-control" />
                 <span asp-validation-for="Tenkh" class="text-danger"></span>
             </div>
@@ -32,17 +32,17 @@
              <div class="col-md-8">
         <form asp-action="Suakhoahoc" method="post">
             <div class="form-group">
-                <label asp-for="Motakh" class="control-label"></label>
+                <label asp-for="Motakh" class="control-label">Mô tả</label>
                 <input asp-for="Motakh" class="form-control" />
                 <span asp-validation-for="Motakh" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nguoitao" class="control-label"></label>
+                <label asp-for="Nguoitao" class="control-label">Người tạo</label>
                 <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Ngaytao" class="control-label"></label>
+                <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
                 <input asp-for="Ngaytao" class="form-control" />
                 <span asp-validation-for="Ngaytao" class="text-danger"></span>
             </div>
