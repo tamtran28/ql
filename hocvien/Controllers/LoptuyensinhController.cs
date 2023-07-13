@@ -149,6 +149,7 @@ namespace hocvien.Controllers
             string manv = HttpContext.Session.GetString("Manv");
             ViewBag.ten = manv;
             var cahoc = db.Cahocs.ToList();
+            ViewBag.Cahocs = cahoc;
             Model.Loptuyensinh x = db.Loptuyensinhs.Find(id);
 
             return View(x);
@@ -156,6 +157,7 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult suaLoptuyensinh(Model.Loptuyensinh x)
         {
+            var macahoc = Request.Form[$"Macahoc"];
             if (ModelState.IsValid)
             {
                 Model.Loptuyensinh kh = db.Loptuyensinhs.Find(x.Maloptuyensinh);
@@ -163,9 +165,9 @@ namespace hocvien.Controllers
                 {
                     kh.Tenloptuyensinh = x.Tenloptuyensinh;
                     kh.Trangthai = x.Trangthai ;
-                   // kh.Macahoc = x.Macahoc;
+                   kh.Macahoc = macahoc;
 
-
+                    
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index");

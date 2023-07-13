@@ -50,10 +50,11 @@
                     @item.LophocGiaoviens
             </td>*@
                 <td>
-                    @foreach (var lophocGiaovien in item.LophocGiaoviens)
-                    {
-                        <span>@lophocGiaovien.MagvNavigation?.Hoten</span>
-                    }
+                  
+                  
+                         @item.LophocGiaoviens.FirstOrDefault()?.MagvNavigation?.Hoten
+                 
+
                 </td>
             <td>
 

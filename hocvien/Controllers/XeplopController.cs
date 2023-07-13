@@ -46,18 +46,30 @@ namespace hocvien.Controllers
             return View();
         }
 
+        //public IActionResult danhSach(string malophoc, string maloptuyensinh)
+        //{
+
+        //    ViewBag.Maloptuyensinh = maloptuyensinh;
+
+        //    // Lấy danh sách học viên dựa trên mã tuyển sinh
+        //    var danhSachHocVien = db.Phieudangkyhocs
+        //        .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
+        //        .Select(p => p.MahvNavigation)
+        //        .ToList();
+
+        //    // Lấy danh sách các học viên đã được xếp lớp
+        //    var hocvienDaXepLop = db.Hocviens
+        //        .Where(h => db.Phieudiems.Any(p => p.Mahv == h.Mahv && p.Malophoc == malophoc))
+        //        .ToList();
+
+        //    // Loại bỏ các học viên đã được xếp lớp khỏi danh sách chưa xếp lớp
+        //    var hocvienChuaXepLop = danhSachHocVien.Except(hocvienDaXepLop).ToList();
+
+        //    ViewBag.Malophoc = malophoc;
+        //    return View(hocvienChuaXepLop);
+        //}
         public IActionResult danhSach(string malophoc, string maloptuyensinh)
         {
-            //ViewBag.Maloptuyensinh = maloptuyensinh;
-            //// Lấy danh sách học viên dựa trên mã tuyển sinh
-            //var danhSachHocVien = db.Phieudangkyhocs
-            //    .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
-            //    .Select(p => p.MahvNavigation)
-            //    .ToList();
-
-
-            //ViewBag.Malophoc = malophoc;
-            //return View(danhSachHocVien);
             ViewBag.Maloptuyensinh = maloptuyensinh;
 
             // Lấy danh sách học viên dựa trên mã tuyển sinh
@@ -66,17 +78,51 @@ namespace hocvien.Controllers
                 .Select(p => p.MahvNavigation)
                 .ToList();
 
-            // Lấy danh sách các học viên đã được xếp lớp
-            var hocvienDaXepLop = db.Hocviens
-                .Where(h => db.Phieudiems.Any(p => p.Mahv == h.Mahv && p.Malophoc == malophoc))
+            // Lấy danh sách các học viên đã được xếp lớp với malophoc và trangthai = 1
+            var hocvienDaXepLop = db.Phieudiems
+     .Where(p => p.Trangthai == 1)
+     .Select(p => p.Malophoc)
+     .Distinct()
+     .ToList();
+
+            var hocvienChuaXepLop = danhSachHocVien
+                .Where(hv => !hocvienDaXepLop.Any(ml => db.Phieudiems.Any(p => p.Mahv == hv.Mahv && p.Malophoc == ml)))
                 .ToList();
 
-            // Loại bỏ các học viên đã được xếp lớp khỏi danh sách chưa xếp lớp
-            var hocvienChuaXepLop = danhSachHocVien.Except(hocvienDaXepLop).ToList();
-
+            ViewBag.Maloptuyensinh = maloptuyensinh;
             ViewBag.Malophoc = malophoc;
             return View(hocvienChuaXepLop);
+
         }
+
+        //       public IActionResult danhSach(string malophoc, string maloptuyensinh)
+        //{
+        //    ViewBag.Maloptuyensinh = maloptuyensinh;
+
+        //    // Lấy danh sách học viên dựa trên mã lớp tuyển sinh
+        //    var danhSachHocVien = db.Phieudangkyhocs
+        //        .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
+        //        .Select(p => p.MahvNavigation)
+        //        .ToList();
+
+        //    // Lấy danh sách các học viên đã được xếp vào các lớp học khác với malophoc và trangthai = 1
+        //    var hocvienDaXepLop = db.Phieudiems
+        //        .Where(p => p.Malophoc != malophoc && p.Trangthai == 1)
+        //        .Select(p => p.Mahv)
+        //        .ToList();
+
+        //    // Loại bỏ danh sách học viên đã được xếp lớp
+        //    var hocvienChuaXepLop = danhSachHocVien
+        //        .Where(hv => !hocvienDaXepLop.Contains(hv.Mahv))
+        //        .ToList();
+
+        //    ViewBag.Malophoc = malophoc;
+        //    return View(hocvienChuaXepLop);
+        //}
+
+
+
+
         [HttpPost]
         public IActionResult XepLop( string malophoc, List<string> hocvienIds)
         {
@@ -126,11 +172,14 @@ namespace hocvien.Controllers
         //}
         public IActionResult Index()
         {
+            var lophocs = db.Lophocs
+                .Include(l => l.LophocGiaoviens)
+                .ThenInclude(lg => lg.MagvNavigation)
+                .ToList();
 
-            var lophocs = db.Lophocs.Include(l => l.LophocGiaoviens).ToList();
             return View(lophocs);
-
         }
+
         //public IActionResult Index()
         //{
         //    var tenGiaoviens = db.Lophocs

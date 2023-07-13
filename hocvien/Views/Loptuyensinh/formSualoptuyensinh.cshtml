@@ -48,11 +48,19 @@
                 <input asp-for="Ngayketthuc" class="form-control" />
                 <span asp-validation-for="Ngayketthuc" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Macahoc" class="control-label">Mã ca học</label>
                 <input asp-for="Macahoc" class="form-control" />
                 <span asp-validation-for="Macahoc" class="text-danger"></span>
-            </div>
+            </div>*@
+            <label for="Macahoc">Ca học:</label>
+            <select id="Macahoc" name="Macahoc" class="form-control">
+                <option value="">Select a class schedule</option>
+                @foreach (var cahoc in ViewBag.Cahocs)
+                {
+                    <option value="@cahoc.Macahoc">@cahoc.Thuhoc - @cahoc.Giohoc</option>
+                }
+            </select>
             <div class="form-group">
                 <label asp-for="Makh" class="control-label"></label>
                 <input asp-for="Makh" class="form-control" />
