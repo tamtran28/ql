@@ -147,7 +147,7 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult suaHocvien( Model.Hocvien x)
         {
-            
+            string manv = HttpContext.Session.GetString("Manv");
             if (ModelState.IsValid)
             {
                 Model.Hocvien hv = db.Hocviens.Find(x.Mahv);
@@ -161,7 +161,7 @@ namespace hocvien.Controllers
                     //    return -1;
                     //}
                     hv.Gioitinh = x.Gioitinh;
-                    hv.Nguoitao = x.Nguoitao;
+                    hv.Nguoitao = manv;
                     hv.Diachi = x.Diachi;
                     hv.Ngaytao = x.Ngaytao;
                     hv.Sdt = x.Sdt;

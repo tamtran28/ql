@@ -85,27 +85,8 @@ namespace hocvien.Controllers
         {
             return View();
         }
-        //[HttpGet]
-        //public IActionResult timKiem(string id)
-        //{
-        //    List<LopDangkyhoc> dsLopDangKy = db.LopDangkyhocs
-        //        .Include(ldk => ldk.MaloptuyensinhNavigation)
-        //        .Where(ldk => ldk.MaphieuNavigation.Maphieu.Contains(id) || ldk.MaphieuNavigation.MahvNavigation.Hoten.Contains(id))
-        //        .ToList();
-
-        //    return PartialView(dsLopDangKy);
-        //}
-
-        //[HttpGet]
-        //public IActionResult timKiem1(string id)
-        //{
-        //    List<LopDangkyhoc> dsLopDangKy = db.LopDangkyhocs
-        //        .Include(ldk => ldk.MaloptuyensinhNavigation)
-        //        .Where(ldk => (ldk.MaphieuNavigation.Maphieu.Contains(id) || ldk.MaphieuNavigation.MahvNavigation.Hoten.Contains(id)) && ldk.Trangthai == 0)
-        //        .ToList();
-
-        //    return PartialView(dsLopDangKy);
-        //}
+      
+      
         [HttpGet]
         public IActionResult timKiem(string id)
         {
@@ -120,113 +101,49 @@ namespace hocvien.Controllers
             return PartialView(dsPhieuDangKy);
         }
 
-        //[HttpPost]
-        //public IActionResult formLapHD(List<string> selectedClasses, string maphieu)
-        //{
-
-        //    //28/6
-        //    var hoadon = db.Phieudangkyhocs.Find(maphieu);
-
-
-        //    if (hoadon != null)
-        //    {
-        //        // Lấy thông tin học viên từ bảng Phieudangkyhoc
-        //        var phieudangkyhoc = db.Phieudangkyhocs
-        //            .Include(pdk => pdk.MahvNavigation)
-        //            .FirstOrDefault(pdk => pdk.Maphieu == hoadon.Maphieu);
-
-
-        //        // Tính toán số tiền đã đóng
-        //        //   decimal sotienDaDong = hoadon.Tongtienthanhtoan - hoadon.Conlai;
-        //        decimal totalCourseFee = 0;
-        //        foreach (var classId in selectedClasses)
-        //        {
-        //            var TongTien = db.LopDangkyhocs
-        //           .Join(
-        //               db.Loptuyensinhs,
-        //               r => r.Maloptuyensinh,
-        //               a => a.Maloptuyensinh,
-        //               (r, a) => new { Phieudangkyhoc = r, Loptuyensinh = a }
-        //           )
-        //           .Join(
-        //               db.Monhocs,
-        //               a => a.Loptuyensinh.Mamh,
-        //               s => s.Mamh,
-        //               (a, s) => s.Hocphi
-        //           )
-        //           .FirstOrDefault();
-
-        //            if (TongTien != null)
-        //            {
-        //                totalCourseFee += TongTien;
-        //            }
-        //            // Truyền thông tin hóa đơn, học viên, danh sách lớp đăng ký, tổng tiền, số tiền đã trả, số tiền còn lại và số tiền đã đóng vào view
-        //            ViewBag.Hoadon = hoadon;
-        //            ViewBag.Hocvien = phieudangkyhoc?.MahvNavigation;
-        //            ViewBag.LopDangkyhocs = selectedClasses;
-        //            ViewBag.TongTien = totalCourseFee;
-        //            //ViewBag.SoTienDaTra = sotienDaDong;
-        //            //ViewBag.SoTienConLai = hoadon.Conlai;
-        //            //ViewBag.SoTienDaDong = sotienDaDong;
-
-        //            return View();
-        //        }
-        //    }
-
-        //    return RedirectToAction("Index"); // Hoặc tr
-
-        //}
-
 
         //[HttpPost]
-        //public IActionResult formLapHD(List<string> selectedClasses, string maphieu)
+        //public IActionResult formLapHD(string maphieu,string mahv)
         //{
         //    var hoadon = db.Phieudangkyhocs.Find(maphieu);
 
         //    if (hoadon != null)
         //    {
-        //        var phieudangkyhoc = db.Phieudangkyhocs
-        //            .Include(pdk => pdk.MahvNavigation)
-        //            .FirstOrDefault(pdk => pdk.Maphieu == hoadon.Maphieu);
+        //        var lopDangKyHocs = db.LopDangkyhocs
+        //            .Where(ldk => ldk.Maphieu == maphieu)
+        //            .ToList();
 
-        //        decimal totalCourseFee = 0;
+        //        var malopTuyenSinhs = lopDangKyHocs.Select(ldk => ldk.Maloptuyensinh).ToList();
 
-        //        foreach (var classId in selectedClasses)
+        //        var hocvien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == mahv);
+        //        if (hocvien != null)
         //        {
-        //            var TongTien = db.LopDangkyhocs
-        //                .Join(
-        //                    db.Loptuyensinhs,
-        //                    r => r.Maloptuyensinh,
-        //                    a => a.Maloptuyensinh,
-        //                    (r, a) => new { LopDangkyhoc = r, Loptuyensinh = a }
-        //                )
-        //                .Join(
-        //                    db.Monhocs,
-        //                    a => a.Loptuyensinh.Mamh,
-        //                    s => s.Mamh,
-        //                    (a, s) => new { LopDangkyhoc = a.LopDangkyhoc, Hocphi = s.Hocphi }
-        //                )
-        //                .FirstOrDefault(a => a.LopDangkyhoc.Maloptuyensinh == classId);
-
-        //            if (TongTien != null)
-        //            {
-        //                totalCourseFee += TongTien.Hocphi;
-        //            }
+        //            ViewBag.Hocvien = hocvien.Hoten;
+        //            //ViewBag.Hocvien = hocvien.Hoten;
+        //            ViewBag.NgaySinh = hocvien.Ngaysinh;
+        //            ViewBag.GioiTinh = hocvien.Gioitinh == 1 ? "Nam" : "Nữ";
         //        }
         //        ViewBag.maphieu = maphieu;
-        //        ViewBag.Hoadon = hoadon;
-        //        ViewBag.Hocvien = phieudangkyhoc?.MahvNavigation;
-        //        ViewBag.LopDangkyhocs = selectedClasses;
-        //        ViewBag.TongTien = totalCourseFee;
-        //        //ViewBag.SoTienDaTra = sotienDaDong;
-        //        //ViewBag.SoTienConLai = hoadon.Conlai;
+        //        //ViewBag.Hocvien =hocvien.Hoten ;
+        //        ViewBag.LopDangkyhocs = malopTuyenSinhs;
+        //        ViewBag.TongTien = hoadon.tongtien; 
+        //        if (decimal.Equals(hoadon.Sotienconlai, decimal.Zero))
+        //        {
+        //            // Redirect to the detailed invoice page
+        //            return RedirectToAction("chiTiethoadon","Hoadon", new { maphieu = maphieu });
+        //        }
+        //        ViewBag.SoTienDaTra = hoadon.Sotiendatra;
+        //        ViewBag.SoTienConLai = hoadon.Sotienconlai;
+
+
         //        return View();
         //    }
 
         //    return RedirectToAction("Index");
         //}
+
         [HttpPost]
-        public IActionResult formLapHD(string maphieu,string mahv)
+        public IActionResult formLapHD(string maphieu, string mahv)
         {
             var hoadon = db.Phieudangkyhocs.Find(maphieu);
 
@@ -234,26 +151,53 @@ namespace hocvien.Controllers
             {
                 var lopDangKyHocs = db.LopDangkyhocs
                     .Where(ldk => ldk.Maphieu == maphieu)
+                    .Join(db.Loptuyensinhs,
+                        ldk => ldk.Maloptuyensinh,
+                        lt => lt.Maloptuyensinh,
+                        (ldk, lt) => new
+                        {
+                            ldk.Maloptuyensinh,
+                            lt.Ngaybatdau,
+                            lt.Ngayketthuc,
+                            lt.Macahoc
+                        })
+                    .Join(db.Cahocs,
+                        lt => lt.Macahoc,
+                        ch => ch.Macahoc,
+                        (lt, ch) => new
+                        {
+                            lt.Maloptuyensinh,
+                            lt.Ngaybatdau,
+                            lt.Ngayketthuc,
+                            ch.Macahoc
+                        })
                     .ToList();
 
                 var malopTuyenSinhs = lopDangKyHocs.Select(ldk => ldk.Maloptuyensinh).ToList();
+                var ngayBatDauList = lopDangKyHocs.Select(ldk => ldk.Ngaybatdau).ToList();
+                var ngayKetThucList = lopDangKyHocs.Select(ldk => ldk.Ngayketthuc).ToList();
+                var caHocList = lopDangKyHocs.Select(ldk => ldk.Macahoc).ToList();
+
                 var hocvien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == mahv);
                 if (hocvien != null)
                 {
                     ViewBag.Hocvien = hocvien.Hoten;
+                    ViewBag.NgaySinh = hocvien.Ngaysinh;
+                    ViewBag.GioiTinh = hocvien.Gioitinh == 1 ? "Nam" : "Nữ";
                 }
                 ViewBag.maphieu = maphieu;
-                //ViewBag.Hocvien =hocvien.Hoten ;
                 ViewBag.LopDangkyhocs = malopTuyenSinhs;
-                ViewBag.TongTien = hoadon.tongtien; 
+                ViewBag.NgayBatDauList = ngayBatDauList;
+                ViewBag.NgayKetThucList = ngayKetThucList;
+                ViewBag.CaHocList = caHocList;
+                ViewBag.TongTien = hoadon.tongtien;
                 if (decimal.Equals(hoadon.Sotienconlai, decimal.Zero))
                 {
                     // Redirect to the detailed invoice page
-                    return RedirectToAction("chiTiethoadon","Hoadon", new { maphieu = maphieu });
+                    return RedirectToAction("chiTiethoadon", "Hoadon", new { maphieu = maphieu });
                 }
                 ViewBag.SoTienDaTra = hoadon.Sotiendatra;
                 ViewBag.SoTienConLai = hoadon.Sotienconlai;
-               
 
                 return View();
             }
@@ -263,7 +207,6 @@ namespace hocvien.Controllers
 
 
 
-        
         [HttpPost]
         public IActionResult hoaDon(Hoadon hd, string maphieu, int sotien)
         {

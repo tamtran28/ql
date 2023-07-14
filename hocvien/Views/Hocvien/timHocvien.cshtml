@@ -30,9 +30,9 @@ else
             <th>
                 Địa chỉ
             </th>
-           @* <th>
+            <th>
                 @Html.DisplayNameFor(model => model.Gioitinh)
-            </th>*@
+            </th>
             <th>
                Trạng thái
             </th>
@@ -64,9 +64,18 @@ else
             <td>
                 @Html.DisplayFor(modelItem => item.Diachi)
             </td>
-           @* <td>
-                @Html.DisplayFor(modelItem => item.Gioitinh)
-            </td>*@
+            <td>
+                <td>
+                        @if (item.Gioitinh == 1)
+                        {
+                            <span>Nam</span>
+                        }
+                        else
+                        {
+                            <span>Nữ</span>
+                        }
+                    </td>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Trangthai)
             </td>

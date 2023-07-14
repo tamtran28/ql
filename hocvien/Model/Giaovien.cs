@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -17,7 +18,8 @@ namespace hocvien.Model
         public DateTime Ngaysinh { get; set; }
         public int Gioitinh { get; set; }
         public string Diachi { get; set; }
-        public int Sdt { get; set; }
+        [MaxLength(10, ErrorMessage = "Số điện thoại không hợp lệ.")]
+        public string Sdt { get; set; }
         public string Capdoday { get; set; }
         public string Trinhdo { get; set; }
         public string Email { get; set; }

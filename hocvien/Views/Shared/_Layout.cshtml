@@ -1,77 +1,4 @@
-﻿@*@*<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - hocvien</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">hocvien</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Hocvien" asp-action="Index">Quản lý học viên</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Khoahoc" asp-action="Index">Quản lý khóa học</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Loptuyensinh" asp-action="Index">Quản lý lớp tuyển sinh</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Monhoc" asp-action="Index">Quản lý môn học</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Giaovien" asp-action="Index">Quản lý giáo viên</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Hoadon" asp-action="Index">Quản lý hóa đơn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Phieudangky" asp-action="Index">Quản lý phiếu đăng ký</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Xeplop" asp-action="Index">Quản lý xếp lớp</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - hocvien - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
-*@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 
@@ -134,113 +61,33 @@
                 Trang chủ
             </div>
 
-            <!-- Nav Item - Charts -->
-            @*<li class="nav-item">
-                <a class="nav-link" href="/Hocvien/Index/">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Quản lý học viên</span>
-                </a>
-            </li>
-*@
-            <!-- Nav Item - Tables -->
-            @*<li class="nav-item">
-                <a class="nav-link" href="/Khoahoc/Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý khóa học </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Monhoc/Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý môn học</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Loptuyensinh/Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý lớp tuyển sinh</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Phieudangky/Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý phiếu đăng ký</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Xeplop/Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý xếp lớp</span>
-                </a>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link" href="/Hoadon/Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý hóa đơn</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Giaovien/Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý giáo viên</span>
-                </a>
-            </li>*@
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            @* <li class="nav-item">
-            <a class="nav-link collapsed" href="~/Views/HocVien/Index.cshtml" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <a class="nav-link collapsed" href="/Lop/Index">Quản lý lop</a>
-            </a>
-            <a class="nav-link collapsed" href="~/Views/HocVien/Index.cshtml" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <a class="nav-link collapsed" href="/HocVien/Index">Quan ly học viên</a>
-            </a>
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="/Lop/Index" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            Quan ly lop
-            </a>*@
-            @if (User.IsInRole("tuyển sinh") || User.IsInRole("học vụ") || User.IsInRole("giáo viên")) {
+           
+           
+           
+            @if (User.IsInRole("quanly"))
+            {
                 <li class="nav-item">
-                    <a class="nav-link" href="/Hocvien/Index/">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Quản lý học viên</span>
+                    <a class="nav-link" href="/Nhanvien/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý nhân viên</span>
                     </a>
                 </li>
-            }
-
-            @if (User.IsInRole("quản lý")){ 
-            <li class="nav-item">
-                <a class="nav-link" href="/Khoahoc/Index">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý khóa học</span>
-                </a>
-            </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/Monhoc/Index">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Quản lý môn học</span>
                     </a>
                 </li>
-            }
-            @if (User.IsInRole("quản lý"))
-            {
-                
-            }
-            @if (User.IsInRole("quản lý") || (User.IsInRole("quản lý") ) )
-            {
                 <li class="nav-item">
-                    <a class="nav-link" href="/Loptuyensinh/Index">
+                    <a class="nav-link" href="/Khoahoc/Index">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Quản lý lớp tuyển sinh</span>
+                        <span>Quản lý khóa học</span>
                     </a>
                 </li>
+
             }
-            @if (User.IsInRole("tuyển sinh"))
+          
+            @if (User.IsInRole("tuyensinh"))
             {
                 <li class="nav-item">
                     <a class="nav-link" href="/Phieudangky/Index">
@@ -254,11 +101,62 @@
                         <span>Quản lý hóa đơn</span>
                     </a>
                 </li>
-               
+                <li class="nav-item">
+                    <a class="nav-link" href="/Monhoc/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý môn học</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Khoahoc/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý khóa học</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Loptuyensinh/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý lớp tuyển sinh</span>
+                    </a>
+                </li>
             }
            
-            @if (User.IsInRole("học vụ"))
+            @if (User.IsInRole("hocvu"))
             {
+                <li class="nav-item">
+                    <a class="nav-link" href="/Hocvien/Index/">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Quản lý học viên</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Giaovien/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý giáo viên</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Loptuyensinh/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý lớp tuyển sinh</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Xeplop/Index">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Quản lý lớp học</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Diem/Index/">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Quản lý điểm</span>
+                    </a>
+                </li>
+
+            }
+                    @if (User.IsInRole("giaovien"))
+                    {
                 <li class="nav-item">
                     <a class="nav-link" href="/Giaovien/Index">
                         <i class="fas fa-fw fa-table"></i>
@@ -268,39 +166,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Xeplop/Index">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Quản lý xếp lớp</span>
+                        <span>Quản lý lớp học</span>
                     </a>
                 </li>
-            }
-            @*<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-            </div>*@
-
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            @*   <li class="nav-item">
-            <a class="nav-link collapsed" href="/HocVien/Index" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Quan lý học viên</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-            </div>
-            </li>*@
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/Hocvien/Index/">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Quản lý học viên</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Diem/Index/">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Quản lý điểm</span>
+                    </a>
+                </li>
+                    }
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -316,37 +197,7 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                @*  <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-                data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item active" href="blank.html">Blank Page</a>
-                </div>
-                </div>*@
-            </li>
-
-            <!-- Nav Item - Charts -->
-            @*    <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span>
-            </a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span>
-            </a>
-            </li>*@
-
+             
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -381,7 +232,7 @@
                                 <i class="fas fa-search fa-sm"></i>
                                 </button>*@
                                 <h1 style=" font-size: 1.5rem;color: #5a5c69;text-align:justify">
-                                    TRUNG TÂM ANH NGỮ
+                                    TRUNG TÂM NGOẠI NGỮ
                                 </h1>
                             </div>
                         </div>
@@ -552,7 +403,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="@Url.Action("formSuathongtin","Profile")">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>

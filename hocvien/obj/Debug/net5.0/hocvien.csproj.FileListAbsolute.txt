@@ -2547,3 +2547,7 @@ C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Nhanvien\formThemnhanvien.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Diem\xemDiem.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Monhoc\formSuamonhoc.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Profile\formSuathongtin.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Profile\formSuathongtinnhanvien.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Profile\formSuathongtingiaovien.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\loi.cshtml.g.cs

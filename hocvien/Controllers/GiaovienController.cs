@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Data.SqlTypes;
 using System.Linq;
 
 namespace hocvien.Controllers
@@ -13,6 +14,14 @@ namespace hocvien.Controllers
         private centerContext db = new centerContext();
         public IActionResult Index()
         {
+            if (TempData.ContainsKey("SuccessMessageGV"))
+            {
+                ViewBag.SuccessMessage = TempData["SuccessMessageGV"];
+            }
+            if (TempData.ContainsKey("SuaSuccessMessageGV"))
+            {
+                ViewBag.SuaSuccessMessage = TempData["SuaSuccessMessageGV"];
+            }
             return View(db.Giaoviens.ToList());
         }
 
@@ -23,19 +32,7 @@ namespace hocvien.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult themGiaovien(Giaovien kh)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        kh.Magv = taoMagiaovien();
-        //        db.Giaoviens.Add(kh);
-        //        db.SaveChanges();
-        //        TempData["SuccessMessage"] = "Thêm gi viên thành công";
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View("formthemGiaovien");
-
+ 
 
         //}
         [HttpPost]
@@ -51,7 +48,7 @@ namespace hocvien.Controllers
             db.Giaoviens.Add(gv);
             db.SaveChanges();
 
-            TempData["SuccessMessage"] = "Thêm học viên thành công";
+            TempData["SuccessMessageGV"] = "Thêm giáo viên thành công";
             return RedirectToAction("Index");
 
 
@@ -91,41 +88,44 @@ namespace hocvien.Controllers
         {
             string manv = HttpContext.Session.GetString("Manv");
             ViewBag.ten = manv;
-            Model.Hocvien x = db.Hocviens.Find(id);
+            Model.Giaovien x = db.Giaoviens.Find(id);
 
             return View(x);
         }
+        //lỗi
         [HttpPost]
         public IActionResult suaGiaovien(Model.Giaovien x)
         {
-
             if (ModelState.IsValid)
             {
                 Model.Giaovien hv = db.Giaoviens.Find(x.Magv);
                 if (hv != null)
                 {
+                    // Cập nhật thông tin giáo viên
                     hv.Hoten = x.Hoten;
                     hv.Ngaysinh = x.Ngaysinh;
-                    if (x.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Year) < 18)
-                    {
-                        ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-                        return View("formSuaHocvien", x);
-                    }
+                    //if (x.Ngaysinh < SqlDateTime.MinValue.Value || x.Ngaysinh > SqlDateTime.MaxValue.Value)
+                    //{
+                    //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                    //    return View("formSuaGiaovien", x);
+                    //}
                     hv.Gioitinh = x.Gioitinh;
                     hv.Sdt = x.Sdt;
-                    
                     hv.Diachi = x.Diachi;
                     hv.Capdoday = x.Capdoday;
                     hv.Trinhdo = x.Trinhdo;
                     hv.Ngaytao = x.Ngaytao;
                     hv.Nguoitao = x.Nguoitao;
                     db.SaveChanges();
+
+                    TempData["SuaSuccessMessageGV"] = "Sửa giáo viên thành công";
+                    return RedirectToAction("Index");
                 }
-                TempData["SuaSuccessMessage"] = "Sửa giáo viên thành công";
-                return RedirectToAction("Index");
+               
             }
 
-            return View("formSuaHocvien");
+            return View("formSuaGiaovien");
         }
+
     }
 }

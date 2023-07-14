@@ -16,7 +16,18 @@ namespace hocvien.Controllers
         {
             return View(db.Nhanviens.ToList());
         }
+        private string taoManhanvien()
+        {
+            // Lấy mã học viên cuối cùng từ CSDL
+            var maNV = db.Nhanviens.OrderByDescending(hv => hv.Manv).FirstOrDefault();
+            int lastId = maNV != null ? int.Parse(maNV.Manv.Substring(2)) : 0;
 
+            // Tạo mã học viên mới
+            string newId = (lastId + 1).ToString("D3");
+            string maHocVien = "NV" + newId;
+
+            return maHocVien;
+        }
         public IActionResult formThemnhanvien()
         {
             ViewBag.ten = User.Identity.Name;
@@ -26,20 +37,27 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult themNhanvien(Nhanvien kh)
         {
-            if (ModelState.IsValid)
+            try
             {
-                //kh.Makh = taoMaHocVien();
-                //ma kh se la IEMMYYYY IE052023
-                db.Nhanviens.Add(kh);
-                db.SaveChanges();
-                TempData["them"] = "Thêm khóa học thành công";
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    kh.Manv = taoManhanvien();
+                    db.Nhanviens.Add(kh);
+                    db.SaveChanges();
+                    TempData["ThemSuccessMessage"] = "Thêm nhân viên thành công";
+                    return RedirectToAction("Index");
+                }
+
+                return View("formThemnhanvien", kh);
             }
-
-            return View("formThemnhanvien");
-
-
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi trong quá trình thêm nhân viên.";
+                // Log ex or do something with the exception
+                return View("formThemnhanvien", kh);
+            }
         }
+
         public IActionResult formDoimatkhau(string id)
         {
             //ViewBag.manv = 
@@ -108,7 +126,7 @@ namespace hocvien.Controllers
                 {
                     hv.Hoten = x.Hoten;
                     hv.Ngaysinh = x.Ngaysinh;
-                    //if (x.Ngaysinh.Value.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Value.Year) < 4)
+                    //if (x.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Year) <= 18)
                     //{
                     //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
                     //    return -1;
@@ -121,11 +139,11 @@ namespace hocvien.Controllers
                     hv.Sdt = x.Sdt;
                     db.SaveChanges();
                 }
-                TempData["SuaSuccessMessage"] = "Sửa học viên thành công";
+                TempData["SuaSuccessMessage"] = "Sửa nhân viên thành công";
                 return RedirectToAction("Index");
             }
 
-            return View("formSuaHocvien");
+            return View("formSuaNhanvien");
         }
 
         public IActionResult formXoaNhanVien(String id)

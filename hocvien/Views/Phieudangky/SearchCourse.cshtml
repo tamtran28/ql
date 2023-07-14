@@ -4,21 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<select id="malop" asp-items="@ViewBag.DSLop" class="form-control" onchange="chonLop_change()">
+<select id="malop" class="form-control" onchange="chonLop_change()">
+    <option value="">Chọn khóa học</option>
+    @foreach (var kh in ViewBag.DSLop)
+    {
+        <option value="@kh.Value">@kh.Text</option>
+    }
 </select>
 <div id="thongtinlophoc"></div>
 <script type="text/javascript">
     function chonLop_change() {
         const malop = document.getElementById("malop").value;
         const xhttp = new XMLHttpRequest();
-        // Define a callback function
         xhttp.onload = function () {
-            // Here you can use the Data
             document.getElementById("thongtinlophoc").innerHTML = xhttp.responseText;
-            //document.getElementById("danhsachHocvien").innerHTML = "";
         }
 
-        // Send a request
         const strUrl = "/Phieudangky/timLop/" + malop;
         xhttp.open("GET", strUrl);
         xhttp.send();

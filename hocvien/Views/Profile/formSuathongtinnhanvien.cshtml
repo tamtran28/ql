@@ -4,38 +4,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4>Sửa nhân viên</h4>
+<h4>Nhanvien</h4>
 <hr />
-<h4>Sửa nhân viên</h4>
-<hr />
-<form asp-action="suaNhanvien" method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="row">
+<form asp-action="suaNhanvien" method="post" asp-controller="Profile">
+<div class="row">
+   
         <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="Manv" class="control-label"></label>
-                <input asp-for="Manv" class="form-control" readonly />
-                <span asp-validation-for="Manv" class="text-danger"></span>
-            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Manv" />
             <div class="form-group">
                 <label asp-for="Hoten" class="control-label">Họ tên</label>
                 <input asp-for="Hoten" class="form-control" />
                 <span asp-validation-for="Hoten" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Ngaysinh" class="control-label">Ngày sinh</label>
                 <input asp-for="Ngaysinh" type="date" class="form-control" />
                 <span asp-validation-for="Ngaysinh" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Diachi" class="control-label">Địa chỉ</label>
                 <input asp-for="Diachi" class="form-control" />
                 <span asp-validation-for="Diachi" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="Gioitinh" class="control-label">Giới tính</label>
                 <select asp-for="Gioitinh" class="form-control">
@@ -45,52 +37,23 @@
                 <span asp-validation-for="Gioitinh" class="text-danger"></span>
             </div>
         </div>
-
         <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="Email" class="control-label">Email</label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-
             <div class="form-group">
                 <label asp-for="Sdt" class="control-label">SDT</label>
                 <input asp-for="Sdt" class="form-control" />
                 <span asp-validation-for="Sdt" class="text-danger"></span>
             </div>
-
-            <div class="form-group">
-                <label asp-for="Trangthai" class="control-label">Trạng thái</label>
-                <select asp-for="Trangthai" class="form-control">
-                    <option value="Đang làm">Đang làm</option>
-                    <option value="Nghỉ">Nghỉ</option>
-                </select>
-                <span asp-validation-for="Trangthai" class="text-danger"></span>
-            </div>
-
             <div class="form-group">
                 <label asp-for="Matkhau" class="control-label">Mật khẩu</label>
                 <input asp-for="Matkhau" class="form-control" />
                 <span asp-validation-for="Matkhau" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label asp-for="Nhom" class="control-label">Nhóm</label>
-                <select asp-for="Nhom" class="form-control">
-                    <option value="1">Quản lý</option>
-                    <option value="2">Tuyển sinh</option>
-                    <option value="3">Học vụ</option>
-                </select>
-                <span asp-validation-for="Nhom" class="text-danger"></span>
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
-        </div>
+        </form>
     </div>
-
-    <div class="form-group">
-        <input type="submit" value="Thêm" class="btn btn-primary" />
-    </div>
-</form>
-
+</div>
 
 <div>
     <a asp-action="Index">Back to List</a>

@@ -53,8 +53,8 @@ namespace hocvien.Controllers
             return View();
         }
 
-       
-        public IActionResult SearchCourse(string maLopHoc)
+
+        public IActionResult SearchCourse()
         {
             ViewBag.DSLop = new SelectList(db.Khoahocs.ToList(), "Makh", "Tenkh");
             // HttpContext.Session.SetString("Maloptuyensinh", maLopHoc);
@@ -62,7 +62,7 @@ namespace hocvien.Controllers
             return View();
             // return RedirectToAction("formThemphieudangky", "Phieudangky");
         }
-       
+
         [HttpPost]
         public IActionResult SelectCourse(string[] selectedClasses)
         {
@@ -87,51 +87,18 @@ namespace hocvien.Controllers
 
         public IActionResult registration(string id)
         {
-            //List<string> sessionSelectedClasses = MySessions.GetList<string>(HttpContext.Session, "SelectedClasses");
-            //ViewBag.kh = sessionSelectedClasses;
+            
             ViewBag.s = id;
             List<string> selectedClasses = MySessions.GetList<string>(HttpContext.Session, "selectedClasses");
 
-            // Set the selected classes in ViewBag
+         
             ViewBag.SelectedClasses = selectedClasses;
 
             return View();
         }
 
 
-        //[HttpPost]
-        //public IActionResult CreateRegistration(Phieudangkyhoc p)
-        //{
-        //     p.Maphieu = taoMaphieu();
 
-        //    List<string> sessionSelectedClasses = MySessions.GetList<string>(HttpContext.Session, "selectedClasses");
-
-        //    p.Maphieu = taoMaphieu();
-        //    p.Ngaydk = DateTime.Now; // Lấy ngày hiện tại
-
-        //    // Lưu phiếu đăng ký vào cơ sở dữ liệu
-        //    db.Phieudangkyhocs.Add(p);
-        //    db.SaveChanges();
-
-        //    // Lưu danh sách lớp tuyển sinh đã chọn vào bảng 'LopDangkyhoc' với mã phiếu đăng ký tương ứng
-        //    if (sessionSelectedClasses != null && sessionSelectedClasses.Count > 0)
-        //    {
-        //        foreach (var malop in sessionSelectedClasses)
-        //        {
-        //            var lopDangKyHoc = new LopDangkyhoc
-        //            {
-        //                Maphieu = p.Maphieu,
-        //                Maloptuyensinh = malop
-        //            };
-
-        //            db.LopDangkyhocs.Add(lopDangKyHoc);
-        //        }
-
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return RedirectToAction("Index");
-        //}
 
         [HttpPost]
         public IActionResult CreateRegistration(Phieudangkyhoc p)
@@ -146,6 +113,13 @@ namespace hocvien.Controllers
                 decimal totalCourseFee = 0;
                 foreach (var malop in sessionSelectedClasses)
                 {
+                    // Kiểm tra xem học viên đã đăng ký lớp tuyển sinh này trước đó hay chưa
+                    if (db.LopDangkyhocs.Any(ldk => ldk.Maloptuyensinh == malop && ldk.MaphieuNavigation.Mahv == p.Mahv))
+                    {
+                        //ModelState.AddModelError("Mahv", "Học viên đã đăng ký lớp tuyển sinh này trước đó.");
+                        return View("loi");
+                    }
+
                     var lopDangKyHoc = new LopDangkyhoc
                     {
                         Maphieu = p.Maphieu,
@@ -184,35 +158,7 @@ namespace hocvien.Controllers
             return RedirectToAction("Index");
         }
 
-        //private decimal TinhTongTienThanhToan(string maphieu)
-        //{
-        //    var tongtien = db.LopDangkyhocs
-        //        .Where(ldk => ldk.Maphieu == maphieu) // Chỉ tính tổng tiền cho những lớp chưa được thanh toán
-        //        .Join(
-        //            db.Loptuyensinhs,
-        //            ldk => ldk.Maloptuyensinh,
-        //            lt => lt.Maloptuyensinh,
-        //            (ldk, lt) => new { LopDangkyhoc = ldk, Loptuyensinh = lt }
-        //        )
-        //        .Join(
-        //            db.Monhocs,
-        //            a => a.Loptuyensinh.Mamh,
-        //            s => s.Mamh,
-        //            (a, s) => s.Hocphi
-        //        )
-        //        .Sum();
 
-        //    return tongtien;
-        //}
-
-        //[HttpPost]
-        //public IActionResult themPhieudangky(Phieudangkyhoc p)
-        //{
-        //    p.Maphieu = taoMaphieu();
-        //    db.Phieudangkyhocs.Add(p);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
         private string taoMaphieu()
         {
             // Lấy mã học viên cuối cùng từ CSDL

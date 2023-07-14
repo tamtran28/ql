@@ -9,11 +9,12 @@ using System.Linq;
 
 namespace hocvien.Controllers
 {
-    //[Authorize(Roles = "quanly,tuyensinh")]
-   // [Authorize(Roles = "học vụ")]
+    [Authorize(Roles = "quanly,tuyensinh")]
+    //[Authorize(Roles = "học vụ")]
     public class KhoahocController : Controller
     {
         private centerContext db = new centerContext();
+        //[Authorize(Roles = "tuyensinh")]
         public IActionResult Index()
         {
             
@@ -27,7 +28,7 @@ namespace hocvien.Controllers
             }
             return View(db.Khoahocs.ToList());
         }
-      
+        //[Authorize(Roles = "quanly")]
         public IActionResult formthemKhoahoc()
         {
             string manv = HttpContext.Session.GetString("Manv");
@@ -65,7 +66,7 @@ namespace hocvien.Controllers
 
             return maHocVien;
         }
-
+        [Authorize(Roles = "quanly")]
         public IActionResult formXoakhoahoc(String id)
         {
             int dem = db.Loptuyensinhs.Where(a => a.Makh == id).ToList().Count();
@@ -84,6 +85,7 @@ namespace hocvien.Controllers
             }
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "quanly")]
         public IActionResult formSuakhoahoc(string id)
         {
             string manv = HttpContext.Session.GetString("Manv");

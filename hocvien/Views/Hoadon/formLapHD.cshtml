@@ -3,16 +3,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Thông tin học viên</h2>
-<p>Tên học viên: @ViewBag.Hocvien.</p>
+<table class="table">
+    <tr>
+        <th>Tên học viên</th>
+        <th>Ngày sinh</th>
+        <th>Giới tính</th>
+    </tr>
+    <tr>
+        <td>@ViewBag.Hocvien</td>
+        <td>@ViewBag.NgaySinh.ToShortDateString()</td>
+        <td>@ViewBag.GioiTinh</td>
+    </tr>
+</table>
 
 <h2>Danh sách lớp đăng ký</h2>
-<ul>
+@*<ul>
     @foreach (var lop in ViewBag.LopDangkyhocs)
     {
         <li>@lop</li>
+        
     }
-</ul>
-
+</ul>*@
+<h2>Danh sách lớp đăng ký</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã lớp tuyển sinh</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < ViewBag.LopDangkyhocs.Count; i++)
+        {
+            <tr>
+                <td>@ViewBag.LopDangkyhocs[i]</td>
+                <td>@(ViewBag.NgayBatDauList[i] != null ? ViewBag.NgayBatDauList[i].ToShortDateString() : string.Empty)</td>
+                <td>@(ViewBag.NgayKetThucList[i] != null ? ViewBag.NgayKetThucList[i].ToShortDateString() : string.Empty)</td>
+            </tr>
+        }
+    </tbody>
+</table>
 <h2>Thông tin thanh toán</h2>
 <p>Tổng tiền: @ViewBag.TongTien</p>
 <p>Số tiền đã trả: @ViewBag.SoTienDaTra</p>

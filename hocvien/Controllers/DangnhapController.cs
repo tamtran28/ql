@@ -50,114 +50,7 @@ namespace hocvien.Controllers
 
 
 
-        //[HttpPost]
-        //public IActionResult Login(string username, string password, string role)
-        //{
-
-        //    //2806
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (role == "giáo viên")
-        //        {
-        //            var giaovien = db.Giaoviens.FirstOrDefault(x => x.Email == username && x.Matkhau == EncryptPassword(password));
-        //            if (giaovien != null)
-        //            {
-        //                string manv = giaovien.Magv;
-
-        //                // Lưu thông tin đăng nhập vào session
-        //                HttpContext.Session.SetString("Username", username);
-        //                HttpContext.Session.SetString("Manv", manv);
-
-        //                // Đặt vai trò của người dùng
-        //                var claims = new List<Claim>
-        //                {
-        //                    new Claim(ClaimTypes.Name, username),
-        //                    new Claim(ClaimTypes.Role, "giaovien")
-        //                };
-        //                var userIdentity = new ClaimsIdentity(claims, "login");
-        //                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-        //                HttpContext.SignInAsync(principal);
-
-        //                return RedirectToAction("Index", "Khoahoc");
-        //            }
-        //        }
-        //        else if (role == "quản lý")
-        //        {
-        //            var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == EncryptPassword(password) && x.Nhom == 1);
-        //            if (nhanvien != null)
-        //            {
-        //                string manv = nhanvien.Manv;
-
-        //                // Lưu thông tin đăng nhập vào session
-        //                HttpContext.Session.SetString("Username", username);
-        //                HttpContext.Session.SetString("Manv", manv);
-
-        //                // Đặt vai trò của người dùng
-        //                var claims = new List<Claim>
-        //                {
-        //                    new Claim(ClaimTypes.Name, username),
-        //                    new Claim(ClaimTypes.Role, "quanly")
-        //                };
-        //                var userIdentity = new ClaimsIdentity(claims, "login");
-        //                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-        //                HttpContext.SignInAsync(principal);
-
-        //                return RedirectToAction("Index", "Hocvien");
-        //            }
-        //        }
-        //        else if (role == "tuyển sinh")
-        //        {
-        //            var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == EncryptPassword(password) && x.Nhom == 2);
-        //            if (nhanvien != null)
-        //            {
-        //                string manv = nhanvien.Manv;
-
-        //                // Lưu thông tin đăng nhập vào session
-        //                HttpContext.Session.SetString("Username", username);
-        //                HttpContext.Session.SetString("Manv", manv);
-
-        //                var claims = new List<Claim>
-        //                {
-        //                    new Claim(ClaimTypes.Name, username),
-        //                    new Claim(ClaimTypes.Role, "tuyensinh")
-        //                };
-        //                var userIdentity = new ClaimsIdentity(claims, "login");
-        //                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-        //                HttpContext.SignInAsync(principal);
-
-        //                return RedirectToAction("Index", "Hoadon");
-        //            }
-        //        }
-        //        else if (role == "học vụ")
-        //        {
-        //            var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == EncryptPassword(password) && x.Nhom == 3);
-        //            if (nhanvien != null)
-        //            {
-        //                string manv = nhanvien.Manv;
-
-        //                // Lưu thông tin đăng nhập vào session
-        //                HttpContext.Session.SetString("Username", username);
-        //                HttpContext.Session.SetString("Manv", manv);
-
-        //                var claims = new List<Claim>
-        //                {
-        //                    new Claim(ClaimTypes.Name, username),
-        //                    new Claim(ClaimTypes.Role, "hocvu")
-        //                };
-        //                var userIdentity = new ClaimsIdentity(claims, "login");
-        //                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-        //                HttpContext.SignInAsync(principal);
-
-        //                return RedirectToAction("Index", "Hocvien");
-        //            }
-        //        }
-        //        return RedirectToAction("Denied", "Dangnhap");
-        //    }
-
-        //    // Xử lý lỗi đăng nhập không thành công
-        //    ModelState.AddModelError(string.Empty, "Thông tin đăng nhập không hợp lệ.");
-        //    return View();
-        //}
+      
         [HttpPost]
         public IActionResult Login(string username, string password, string role)
         {
@@ -185,7 +78,7 @@ namespace hocvien.Controllers
 
                         HttpContext.SignInAsync(principal).Wait();
 
-                        return RedirectToAction("Index", "Khoahoc");
+                        return RedirectToAction("Index", "Giaovien");
                     }
                 }
                 else if (role == "quản lý")
@@ -210,7 +103,7 @@ namespace hocvien.Controllers
 
                         HttpContext.SignInAsync(principal).Wait();
 
-                        return RedirectToAction("Index", "Hocvien");
+                        return RedirectToAction("Index", "Monhoc");
                     }
                 }
                 else if (role == "tuyển sinh")
