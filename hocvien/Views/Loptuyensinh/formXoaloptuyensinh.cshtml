@@ -4,78 +4,139 @@
     ViewData["Title"] = "formXoaloptuyensinh";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (TempData.ContainsKey("ErrorMessageXoaTS"))
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessageXoaTS"]
+    </div>
+}
 
-<h1>formXoaloptuyensinh</h1>
+<h1>Xóa lớp tuyển sinh</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn có thực sự muốn xóa</h3>
 <div>
-    <h4>Loptuyensinh</h4>
+    
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Maloptuyensinh)
+           Mã lớp tuyển sinh
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Maloptuyensinh)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tenloptuyensinh)
+            Tên lớp tuyển sinh
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Tenloptuyensinh)
         </dd>
+        <dt class="col-sm-2">
+            Mã khóa học
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Makh)
+        </dd>
+        <dt class="col-sm-2">
+            Mã môn học
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mamh)
+        </dd>
+        <dt class="col-sm-2">
+            Ngày bắt đầu
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ngaybatdau)
+        </dd>
+        <dt class="col-sm-2">
+            Ngày kết thúc
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ngayketthuc)
+        </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Trangthai)
+          Trạng thái
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Trangthai)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nguoitao)
+          Người tạo
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nguoitao)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngaytao)
+          Ngày tạo
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Ngaytao)
         </dd>
+        
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngaybatdau)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ngaybatdau)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngayketthuc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ngayketthuc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Macahoc)
+          Mã ca học
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Macahoc)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Makh)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Makh)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Mamh)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Mamh)
-        </dd>
+       
+        
     </dl>
-    
-    <form asp-action="xoaLoptuyensinh" method="post">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+    <form asp-action="xoaLoptuyensinh" asp-route-id="@Model.Maloptuyensinh">
+        <div class="row">
+            <div class="col-sm-2">
+        @if ((int)ViewBag.flag == 0)
+        {
+            <input type="submit" value="Xóa" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" />
+        }
+        </div>
+            <div class="col-sm-10">
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+            </div>
     </form>
+   @* <form asp-action="xoaLoptuyensinh" method="post">
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+            </div>
+          
+        </div>
+    </form>*@
+
 </div>
+
+@*<h1>Xóa lớp tuyển sinh</h1>
+
+<h3>Bạn có thực sự muốn xóa?</h3>
+
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Maloptuyensinh)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Maloptuyensinh)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Tenloptuyensinh)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Tenloptuyensinh)
+    </dd>
+    <!-- Add other fields here -->
+</dl>
+
+<form asp-action="xoaLoptuyensinh" method="post">
+    <div class="row">
+        <div class="col-sm-2">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+        <div class="col-sm-10">
+            <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+        </div>
+    </div>
+</form>
+
+*@

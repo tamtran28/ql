@@ -57,9 +57,16 @@ else
             <td>
                 @Html.DisplayFor(modelItem => item.Ngaysinh)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gioitinh)
-            </td>
+                    <td>
+                            @if (item.Gioitinh == 1)
+                            {
+                            <span>Nam</span>
+                            }
+                            else
+                            {
+                            <span>Nữ</span>
+                            }
+                    </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sdt)
             </td>

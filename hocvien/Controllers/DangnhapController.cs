@@ -158,14 +158,12 @@ namespace hocvien.Controllers
             }
 
             // Xử lý lỗi đăng nhập không thành công
-            ModelState.AddModelError(string.Empty, "Thông tin đăng nhập không hợp lệ.");
+           
+           TempData["ErrorMessageDN"] = "Thông tin đăng nhập không hợp lệ.";
             return View();
         }
 
-        public IActionResult tuVanVien()
-        {
-            return View();
-        }
+     
        
         private string EncryptPassword(string password)
         {
@@ -199,60 +197,59 @@ namespace hocvien.Controllers
 
         public IActionResult Login()
         {
-            //if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
-            //{
-            //    ViewBag.email = Request.Cookies["email"].ToString();
-            //    ViewBag.password = Request.Cookies["password"].ToString();
-            //}
-            return View();
-        }
-        public IActionResult Index()
-        {
-            if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
+            if (TempData.ContainsKey("ErrorMessageDN"))
             {
-                ViewBag.email = Request.Cookies["email"].ToString();
-                ViewBag.password = Request.Cookies["password"].ToString();
+                ViewBag.SuaSuccessMessage = TempData["ErrorMessageDN"];
             }
             return View();
         }
-        [HttpPost]
-        public ActionResult kiemtradangnhap(string username, string password, string ghinho)
-        {
-            if (Request.Cookies["email"] != null && Request.Cookies["email"] != null)
-            {
-                username = Request.Cookies["email"].ToString();
-                password = Request.Cookies["password"].ToString();
+        //public IActionResult Index()
+        //{
+        //    if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
+        //    {
+        //        ViewBag.email = Request.Cookies["email"].ToString();
+        //        ViewBag.password = Request.Cookies["password"].ToString();
+        //    }
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult kiemtradangnhap(string username, string password, string ghinho)
+        //{
+        //    if (Request.Cookies["email"] != null && Request.Cookies["email"] != null)
+        //    {
+        //        username = Request.Cookies["email"].ToString();
+        //        password = Request.Cookies["password"].ToString();
                
-            }
+        //    }
 
-            if (checkpassword(username, password))
-            {
-                var userSession = new Nhanvien();
-                userSession.Email = username;
-                userSession.Matkhau = password;
-                //    //var listGroups = GetListGroupID(username);//Có thể viết dòng lệnh lấy các GroupID từ CSDL, ví dụ gán ="ADMIN", dùng List<string>
+        //    if (checkpassword(username, password))
+        //    {
+        //        var userSession = new Nhanvien();
+        //        userSession.Email = username;
+        //        userSession.Matkhau = password;
+        //        //    //var listGroups = GetListGroupID(username);//Có thể viết dòng lệnh lấy các GroupID từ CSDL, ví dụ gán ="ADMIN", dùng List<string>
 
-                //    //Session.Add("SESSION_GROUP", listGroups);
-                //    //Session.Add("USER_SESSION", userSession);
+        //        //    //Session.Add("SESSION_GROUP", listGroups);
+        //        //    //Session.Add("USER_SESSION", userSession);
 
-                //    //if (ghinho == "on")//Ghi nhớ
-                //    //    ghinhotaikhoan(username, password);
-                //    return Redirect("~/Home");
-                return RedirectToAction("Index", "Hocvien");
-            }
-            //}
-            return RedirectToAction("Index");
-        }
-        public bool checkpassword(string username, string password)
-        {
-            if (db.Nhanviens.Where(x => x.Email == username && x.Matkhau == password).Count() > 0)
+        //        //    //if (ghinho == "on")//Ghi nhớ
+        //        //    //    ghinhotaikhoan(username, password);
+        //        //    return Redirect("~/Home");
+        //        return RedirectToAction("Index", "Hocvien");
+        //    }
+        //    //}
+        //    return RedirectToAction("Index");
+        //}
+        //public bool checkpassword(string username, string password)
+        //{
+        //    if (db.Nhanviens.Where(x => x.Email == username && x.Matkhau == password).Count() > 0)
 
-                return true;
-            else
-                return false;
+        //        return true;
+        //    else
+        //        return false;
 
 
-        }
+        //}
      
     }
 

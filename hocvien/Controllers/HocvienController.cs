@@ -40,6 +40,7 @@ namespace hocvien.Controllers
         //    return View(ds);
 
         //}
+        [Authorize(Roles = "tuyensinh,hocvu,giaovien")]
         public IActionResult Index(int currentPage = 1)
         {
             int pageSize = 5; // Số lượng học viên hiển thị trên mỗi trang
@@ -81,7 +82,7 @@ namespace hocvien.Controllers
             ViewBag.TotalItems = totalItems;
             return View(pagedHocvienList);
         }
-
+        [Authorize(Roles = "tuyensinh,hocvu")]
         public IActionResult themHocVien()
         {
             string manv = HttpContext.Session.GetString("Manv");
@@ -92,21 +93,32 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult ThemHocVien(Hocvien hocVien)
         {
-            if (hocVien.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - hocVien.Ngaysinh.Year) < 4)
+            try
             {
-                ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-                return View(hocVien);
+                if (hocVien.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - hocVien.Ngaysinh.Year) < 4)
+                {
+                    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                    return View(hocVien);
+                }
+
+                hocVien.Mahv = taoMaHocVien();
+                db.Hocviens.Add(hocVien);
+                db.SaveChanges();
+
+                TempData["SuccessMessage"] = "Thêm học viên thành công";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ và ghi log nếu cần thiết
+                // logger.LogError(ex, "Error while adding Hocvien");
+
+                TempData["ErrorThem"]="Đã xảy ra lỗi khi thêm học viên. Vui lòng thử lại sau.";
             }
 
-            hocVien.Mahv = taoMaHocVien();
-           db.Hocviens.Add(hocVien);
-            db.SaveChanges();
-
-            TempData["SuccessMessage"] = "Thêm học viên thành công";
-            return RedirectToAction("Index");
-           
-
+            return View(hocVien);
         }
+
         private string taoMaHocVien()
         {
             // Lấy mã học viên cuối cùng từ CSDL
@@ -135,7 +147,7 @@ namespace hocvien.Controllers
 
             
         }
-
+        [Authorize(Roles = "tuyensinh,hocvu")]
         public IActionResult formSuaHocvien(string id)
         {
             string manv = HttpContext.Session.GetString("Manv");
@@ -173,7 +185,7 @@ namespace hocvien.Controllers
            
             return View("formSuaHocvien");
         }
-
+        [Authorize(Roles = "tuyensinh,hocvu")]
         public IActionResult formXoaHocVien(String id)
         {
             int dem = db.Phieudangkyhocs.Where(a => a.Mahv == id).ToList().Count();

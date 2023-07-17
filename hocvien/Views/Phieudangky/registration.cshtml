@@ -12,7 +12,7 @@
 
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form asp-action="CreateRegistration" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -26,27 +26,106 @@
                     }
                 </ul>
             </div>
+           @* <h2>Thông tin học viên</h2>
+            <table class="table">
+                <tr>
+                    <th>Mã học viên</th>
+                    <th>Họ tên</th>
+                    @* <th>CaHoc</th>*@
+                  @*  <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                </tr>
+                <tr>
+                    <td>
+                        @ViewBag.s
+                    </td>
+                    <td>
+                        @ViewBag.Hocvien
+                    </td>
+                    <td>
+                        @ViewBag.NgaySinh
+                    </td>
 
-            @*<div class="form-group">
-                <label asp-for="Maphieu" class="control-label"></label>
-                <input asp-for="Maphieu" class="form-control" />
-                <span asp-validation-for="Maphieu" class="text-danger"></span>
-            </div>*@
+                    <td>
+                        @ViewBag.GioiTinh
+                    </td>
 
+
+                </tr>
+                </table>*@
             <div class="form-group">
-                <label asp-for="Mahv" class="control-label"></label>
-                <input asp-for="Mahv" class="form-control" value="@ViewBag.s" />
+                <label asp-for="Mahv" class="control-label">Mã HV</label>
+                <input asp-for="Mahv" class="form-control" value="@ViewBag.s" readonly />
                 <span asp-validation-for="Mahv" class="text-danger"></span>
             </div>
-
+           @* <div class="form-group">
+                <label class="control-label">Họ tên</label>
+                <input class="form-control" value="@ViewBag.Hocvien" readonly />
+            </div>
             <div class="form-group">
-                <label asp-for="Ghichu" class="control-label"></label>
-                <input asp-for="Ghichu" class="form-control" />
+                <label asp-for="Ghichu" class="control-label">Ghi chú</label>
+                <input asp-for="Ghichu" class="form-control" readonly />
                 <span asp-validation-for="Ghichu" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label class="control-label">Ngày sinh</label>
+                <input class="form-control" value="@ViewBag.NgaySinh" readonly />
+            </div>
+*@
+            <table class="table">
+                <tr>
+                    @*<th>Mã học viên</th>*@
+                    <th>Họ tên</th>
+                   
+                      <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    </tr>
+                    <tr>
+                   
+                    <td>
+                    @ViewBag.Hocvien
+                    </td>
+                    <td>
+                    @ViewBag.NgaySinh
+                    </td>
+
+                    <td>
+                    @ViewBag.GioiTinh
+                    </td>
+
+
+                    </tr>
+                    </table>
+            <div class="form-group">
+                <label class="control-label">Giới tính</label>
+                <input class="form-control" value="@ViewBag.GioiTinh" readonly />
+            </div>
+
+            <h2>Thông tin lớp học</h2>
+            <table class="table">
+                <tr>
+                    <th>NgayBatDau</th>
+                    <th>NgayKetThuc</th>
+                   @* <th>CaHoc</th>*@
+                    <th>ThuHoc</th>
+                    <th>GioHoc</th>
+                </tr>
+                @for (var i = 0; i < ViewBag.LopDangkyhocs.Count; i++)
+                {
+                    <tr>
+                        <td>@ViewBag.NgayBatDauList[i]</td>
+                        <td>@ViewBag.NgayKetThucList[i]</td>
+                        @*<td>@ViewBag.CaHocList[i]</td>*@
+                        <td>@ViewBag.ThuHocList[i]</td>
+                        <td>@ViewBag.GioHocList[i]</td>
+                    </tr>
+                }
+            </table>
+
+          
+            <div class="form-group">
+                <input type="submit" value="Tạo phiếu" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -4,7 +4,18 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (!string.IsNullOrEmpty(ViewBag.ThemSuccessMessageNV))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.ThemSuccessMessageNV
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageNV))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageNV
+    </div>
+}
 <h1>Danh sách nhân viên</h1>
 
 <p>

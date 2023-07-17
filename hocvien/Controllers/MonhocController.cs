@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace hocvien.Controllers
 {
-   // [Authorize(Roles = "quản lý")]
+    [Authorize(Roles = "quanly,tuyensinh")]
     public class MonhocController : Controller
     {
         private centerContext db = new centerContext();

@@ -4,8 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4>Sửa nhân viên</h4>
-<hr />
+@if (TempData["ErrorMessageSNV"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessageSNV"]
+    </div>
+}
 <h4>Sửa nhân viên</h4>
 <hr />
 <form asp-action="suaNhanvien" method="post">

@@ -85,14 +85,19 @@ namespace hocvien.Controllers
         {
             return View();
         }
-      
-      
+
+
         [HttpGet]
         public IActionResult timKiem(string id)
         {
             List<Phieudangkyhoc> dsPhieuDangKy = db.Phieudangkyhocs
+                .Include(pdk => pdk.MahvNavigation)
+                .Include(pdk => pdk.LopDangkyhocs)
+                    .ThenInclude(ldk => ldk.MaloptuyensinhNavigation)
+                        .ThenInclude(lt => lt.MakhNavigation)
                 .Where(pdk => pdk.Maphieu.Contains(id) || pdk.MahvNavigation.Hoten.Contains(id))
                 .ToList();
+
             if (dsPhieuDangKy.Count == 0)
             {
                 ViewBag.Message = "Chưa có phiếu đăng ký";
@@ -100,6 +105,7 @@ namespace hocvien.Controllers
 
             return PartialView(dsPhieuDangKy);
         }
+
 
 
         //[HttpPost]
@@ -150,26 +156,28 @@ namespace hocvien.Controllers
             if (hoadon != null)
             {
                 var lopDangKyHocs = db.LopDangkyhocs
-                    .Where(ldk => ldk.Maphieu == maphieu)
+                    .Where(a => a.Maphieu == maphieu)
                     .Join(db.Loptuyensinhs,
-                        ldk => ldk.Maloptuyensinh,
-                        lt => lt.Maloptuyensinh,
-                        (ldk, lt) => new
+                        a => a.Maloptuyensinh,
+                        b => b.Maloptuyensinh,
+                        (a, b) => new
                         {
-                            ldk.Maloptuyensinh,
-                            lt.Ngaybatdau,
-                            lt.Ngayketthuc,
-                            lt.Macahoc
+                            a.Maloptuyensinh,
+                            b.Ngaybatdau,
+                            b.Ngayketthuc,
+                            b.Macahoc
                         })
                     .Join(db.Cahocs,
-                        lt => lt.Macahoc,
-                        ch => ch.Macahoc,
-                        (lt, ch) => new
+                        b   => b.Macahoc,
+                        c => c.Macahoc,
+                        (b, c) => new
                         {
-                            lt.Maloptuyensinh,
-                            lt.Ngaybatdau,
-                            lt.Ngayketthuc,
-                            ch.Macahoc
+                            b.Maloptuyensinh,
+                            b.Ngaybatdau,
+                            b.Ngayketthuc,
+                            c.Macahoc,
+                            c.Thuhoc,
+                            c.Giohoc
                         })
                     .ToList();
 
@@ -177,6 +185,8 @@ namespace hocvien.Controllers
                 var ngayBatDauList = lopDangKyHocs.Select(ldk => ldk.Ngaybatdau).ToList();
                 var ngayKetThucList = lopDangKyHocs.Select(ldk => ldk.Ngayketthuc).ToList();
                 var caHocList = lopDangKyHocs.Select(ldk => ldk.Macahoc).ToList();
+                var thuHocList = lopDangKyHocs.Select(ldk => ldk.Thuhoc).ToList();
+                var gioHocList = lopDangKyHocs.Select(ldk => ldk.Giohoc).ToList();
 
                 var hocvien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == mahv);
                 if (hocvien != null)
@@ -184,12 +194,15 @@ namespace hocvien.Controllers
                     ViewBag.Hocvien = hocvien.Hoten;
                     ViewBag.NgaySinh = hocvien.Ngaysinh;
                     ViewBag.GioiTinh = hocvien.Gioitinh == 1 ? "Nam" : "Nữ";
+                    ViewBag.SDT = hocvien.Sdt;
                 }
                 ViewBag.maphieu = maphieu;
                 ViewBag.LopDangkyhocs = malopTuyenSinhs;
                 ViewBag.NgayBatDauList = ngayBatDauList;
                 ViewBag.NgayKetThucList = ngayKetThucList;
                 ViewBag.CaHocList = caHocList;
+                ViewBag.ThuHocList = thuHocList;
+                ViewBag.GioHocList = gioHocList;
                 ViewBag.TongTien = hoadon.tongtien;
                 if (decimal.Equals(hoadon.Sotienconlai, decimal.Zero))
                 {
@@ -254,11 +267,76 @@ namespace hocvien.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult chiTiethoadon()
+        public IActionResult chiTiethoadon(string mahd)
         {
+            var hoadon = db.Hoadons.Find(mahd);
+            var phieudangky = db.Phieudangkyhocs.FirstOrDefault(p => p.Hoadons.Any(h => h.Mahd == mahd));
 
-            return View();
+            if (phieudangky != null)
+            {
+                var lopDangKyHocs = db.LopDangkyhocs
+                    .Where(a => a.Maphieu == phieudangky.Maphieu)
+                    .Join(db.Loptuyensinhs,
+                        a => a.Maloptuyensinh,
+                        b => b.Maloptuyensinh,
+                        (a, b) => new
+                        {
+                            a.Maloptuyensinh,
+                            b.Ngaybatdau,
+                            b.Ngayketthuc,
+                            b.Macahoc
+                        })
+                    .Join(db.Cahocs,
+                        b => b.Macahoc,
+                        c => c.Macahoc,
+                        (b, c) => new
+                        {
+                            b.Maloptuyensinh,
+                            b.Ngaybatdau,
+                            b.Ngayketthuc,
+                            c.Macahoc,
+                            c.Thuhoc,
+                            c.Giohoc
+                        })
+                    .ToList();
+
+                var malopTuyenSinhs = lopDangKyHocs.Select(ldk => ldk.Maloptuyensinh).ToList();
+                var ngayBatDauList = lopDangKyHocs.Select(ldk => ldk.Ngaybatdau).ToList();
+                var ngayKetThucList = lopDangKyHocs.Select(ldk => ldk.Ngayketthuc).ToList();
+                var caHocList = lopDangKyHocs.Select(ldk => ldk.Macahoc).ToList();
+                var thuHocList = lopDangKyHocs.Select(ldk => ldk.Thuhoc).ToList();
+                var gioHocList = lopDangKyHocs.Select(ldk => ldk.Giohoc).ToList();
+
+                var hocvien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == phieudangky.Mahv);
+                if (hocvien != null)
+                {
+                    ViewBag.Hocvien = hocvien.Hoten;
+                    ViewBag.NgaySinh = hocvien.Ngaysinh;
+                    ViewBag.GioiTinh = hocvien.Gioitinh == 1 ? "Nam" : "Nữ";
+                    ViewBag.SDT = hocvien.Sdt;
+                }
+                ViewBag.maphieu = phieudangky.Maphieu;
+                ViewBag.LopDangkyhocs = malopTuyenSinhs;
+                ViewBag.NgayBatDauList = ngayBatDauList;
+                ViewBag.NgayKetThucList = ngayKetThucList;
+                ViewBag.CaHocList = caHocList;
+                ViewBag.ThuHocList = thuHocList;
+                ViewBag.GioHocList = gioHocList;
+                ViewBag.TongTien = hoadon.Tongtienthanhtoan;
+                if (decimal.Equals(hoadon.Sotienconlai, decimal.Zero))
+                {
+                    // Redirect to the detailed invoice page
+                    return RedirectToAction("chiTiethoadon", "Hoadon", new { maphieu = phieudangky.Maphieu });
+                }
+                ViewBag.SoTienDaTra = hoadon.Sotiendatra;
+                ViewBag.SoTienConLai = hoadon.Sotienconlai;
+
+                return View();
+            }
+
+            return RedirectToAction("Index");
         }
+
 
 
         // Hàm tính tổng tiền cần thanh toán dựa trên mã phiếu đăng ký

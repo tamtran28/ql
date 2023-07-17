@@ -4,6 +4,14 @@
     ViewData["Title"] = "formthemGiaovien";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!-- The view code -->
+@if (TempData.ContainsKey("ErrorMessageGV"))
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessageGV"]
+    </div>
+}
+<!-- Rest of the view content -->
 
 <h1>Thêm giáo viên</h1>
 
@@ -84,9 +92,23 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageGV))
 {
     <script>    window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessageGV))
+{
+    <script>
+        window.onload = function () {
             var alertElement = document.getElementById('msgAlert');
             alertElement.style.display = 'block';
             setTimeout(function () {

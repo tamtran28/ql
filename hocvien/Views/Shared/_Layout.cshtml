@@ -90,6 +90,12 @@
             @if (User.IsInRole("tuyensinh"))
             {
                 <li class="nav-item">
+                    <a class="nav-link" href="/Hocvien/Index/">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Quản lý học viên</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/Phieudangky/Index">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Quản lý phiếu đăng ký</span>
@@ -119,6 +125,7 @@
                         <span>Quản lý lớp tuyển sinh</span>
                     </a>
                 </li>
+
             }
            
             @if (User.IsInRole("hocvu"))

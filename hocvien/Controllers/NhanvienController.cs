@@ -14,6 +14,14 @@ namespace hocvien.Controllers
         private centerContext db = new centerContext();
         public IActionResult Index()
         {
+            if (TempData.ContainsKey("ThemSuccessMessageNV"))
+            {
+                ViewBag.ThemSuccessMessageNV = TempData["ThemSuccessMessageNV"];
+            }
+            if (TempData.ContainsKey("SuaSuccessMessageNV"))
+            {
+                ViewBag.SuccessMessageNV = TempData["SuaSuccessMessageNV"];
+            }
             return View(db.Nhanviens.ToList());
         }
         private string taoManhanvien()
@@ -30,6 +38,10 @@ namespace hocvien.Controllers
         }
         public IActionResult formThemnhanvien()
         {
+            if (TempData.ContainsKey("ErrorMessageTNV"))
+            {
+                ViewBag.loi = TempData["ErrorMessageTNV"];
+            }
             ViewBag.ten = User.Identity.Name;
             return View();
         }
@@ -44,7 +56,7 @@ namespace hocvien.Controllers
                     kh.Manv = taoManhanvien();
                     db.Nhanviens.Add(kh);
                     db.SaveChanges();
-                    TempData["ThemSuccessMessage"] = "Thêm nhân viên thành công";
+                    TempData["ThemSuccessMessageNV"] = "Thêm nhân viên thành công";
                     return RedirectToAction("Index");
                 }
 
@@ -52,11 +64,14 @@ namespace hocvien.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Đã xảy ra lỗi trong quá trình thêm nhân viên.";
+                TempData["ErrorMessageTNV"] = "Đã xảy ra lỗi trong quá trình thêm nhân viên.";
                 // Log ex or do something with the exception
                 return View("formThemnhanvien", kh);
             }
         }
+
+      
+
 
         public IActionResult formDoimatkhau(string id)
         {
@@ -109,6 +124,10 @@ namespace hocvien.Controllers
         }
         public IActionResult formSuaNhanvien(string id)
         {
+            if (TempData.ContainsKey("ErrorMessageSNV"))
+            {
+                ViewBag.loi = TempData["ErrorMessageSNV"];
+            }
             string manv = HttpContext.Session.GetString("Manv");
             ViewBag.ten = manv;
             Model.Nhanvien x = db.Nhanviens.Find(id);
@@ -118,32 +137,42 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult suaNhanvien(Model.Nhanvien x)
         {
-
-            if (ModelState.IsValid)
+            try
             {
-                Model.Nhanvien hv = db.Nhanviens.Find(x.Manv);
-                if (hv != null)
+                if (ModelState.IsValid)
                 {
-                    hv.Hoten = x.Hoten;
-                    hv.Ngaysinh = x.Ngaysinh;
-                    //if (x.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Year) <= 18)
-                    //{
-                    //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-                    //    return -1;
-                    //}
-                    hv.Gioitinh = x.Gioitinh;
-                    hv.Trangthai = x.Trangthai;
-                    hv.Diachi = x.Diachi;
-                    hv.Email   = x.Email;
-                    hv.Nhom = x.Nhom;
-                    hv.Sdt = x.Sdt;
-                    db.SaveChanges();
+                    Model.Nhanvien hv = db.Nhanviens.Find(x.Manv);
+                    if (hv != null)
+                    {
+                        hv.Hoten = x.Hoten;
+                        hv.Ngaysinh = x.Ngaysinh;
+                        //if (x.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Year) <= 18)
+                        //{
+                        //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                        //    return -1;
+                        //}
+                        hv.Gioitinh = x.Gioitinh;
+                        hv.Trangthai = x.Trangthai;
+                        hv.Diachi = x.Diachi;
+                        hv.Email = x.Email;
+                        hv.Nhom = x.Nhom;
+                        hv.Sdt = x.Sdt;
+                        db.SaveChanges();
+                    }
+                    TempData["SuaSuccessMessageNV"] = "Sửa nhân viên thành công";
+                    return RedirectToAction("Index");
                 }
-                TempData["SuaSuccessMessage"] = "Sửa nhân viên thành công";
-                return RedirectToAction("Index");
+                return View("formThemnhanvien", x);
             }
+            catch (Exception e)
+            {
+                TempData["ErrorMessageSNV"] = "Đã xảy ra lỗi trong quá trình sửa nhân viên.";
+                // Log ex or do something with the exception
+                return View("formSuaNhanvien",x);
+            }
+            
 
-            return View("formSuaNhanvien");
+           
         }
 
         public IActionResult formXoaNhanVien(String id)

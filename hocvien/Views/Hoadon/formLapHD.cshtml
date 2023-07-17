@@ -8,15 +8,17 @@
         <th>Tên học viên</th>
         <th>Ngày sinh</th>
         <th>Giới tính</th>
+        <th>SDT</th>
     </tr>
     <tr>
         <td>@ViewBag.Hocvien</td>
         <td>@ViewBag.NgaySinh.ToShortDateString()</td>
         <td>@ViewBag.GioiTinh</td>
+        <td>@ViewBag.SDT</td>
     </tr>
 </table>
 
-<h2>Danh sách lớp đăng ký</h2>
+
 @*<ul>
     @foreach (var lop in ViewBag.LopDangkyhocs)
     {
@@ -31,6 +33,9 @@
             <th>Mã lớp tuyển sinh</th>
             <th>Ngày bắt đầu</th>
             <th>Ngày kết thúc</th>
+            
+            <th>Thứ học</th>
+            <th>Giờ học</th>
         </tr>
     </thead>
     <tbody>
@@ -38,8 +43,11 @@
         {
             <tr>
                 <td>@ViewBag.LopDangkyhocs[i]</td>
-                <td>@(ViewBag.NgayBatDauList[i] != null ? ViewBag.NgayBatDauList[i].ToShortDateString() : string.Empty)</td>
-                <td>@(ViewBag.NgayKetThucList[i] != null ? ViewBag.NgayKetThucList[i].ToShortDateString() : string.Empty)</td>
+                <td>@ViewBag.NgayBatDauList[i].ToShortDateString()</td>
+                <td>@ViewBag.NgayKetThucList[i].ToShortDateString()</td>
+               
+                <td>@ViewBag.ThuHocList[i]</td>
+                <td>@ViewBag.GioHocList[i]</td>
             </tr>
         }
     </tbody>
@@ -47,14 +55,14 @@
 <h2>Thông tin thanh toán</h2>
 <p>Tổng tiền: @ViewBag.TongTien</p>
 <p>Số tiền đã trả: @ViewBag.SoTienDaTra</p>
-@*<input id="sotiendatra" name="sotiendatra" type="text" value="@ViewBag.SoTienDaTra" />*@
+
 <p>Số tiền còn lại: @ViewBag.SoTienConLai</p>
 
 <h2>Nhập số tiền đóng</h2>
 <form method="post" asp-action="hoaDon" asp-controller="Hoadon">
     <div class="form-group">
         <label for="sotien">Số tiền đóng:</label>
-        <input type="text" id="sotien" name="sotien" class="form-control" />
+        <input type="text" id="sotien" name="sotien" class="form-control" value="@ViewBag.SoTienConLai" />
     </div>
     <div class="form-group">
         <label for="maphieu">Mã phiếu:</label>

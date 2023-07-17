@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace hocvien.Controllers
 {
-    [Authorize(Roles = "quanly,tuyensinh")]
+   
     //[Authorize(Roles = "học vụ")]
     public class KhoahocController : Controller
     {
         private centerContext db = new centerContext();
-        //[Authorize(Roles = "tuyensinh")]
+        [Authorize(Roles = "quanly,tuyensinh")]
         public IActionResult Index()
         {
             
@@ -28,7 +28,7 @@ namespace hocvien.Controllers
             }
             return View(db.Khoahocs.ToList());
         }
-        //[Authorize(Roles = "quanly")]
+        [Authorize(Roles = "quanly")]
         public IActionResult formthemKhoahoc()
         {
             string manv = HttpContext.Session.GetString("Manv");
@@ -55,12 +55,7 @@ namespace hocvien.Controllers
         }
         private string taoMaHocVien()
         {
-            // Lấy mã học viên cuối cùng từ CSDL
-            //var lastkh = db.Khoahocs.OrderByDescending(kh => kh.Makh).FirstOrDefault();
-            //int lastId = lastkh != null ? int.Parse(lastkh.Makh.Substring(2)) : 0;
-
-            // Tạo mã học viên mới
-            // string newId = (lastId + 1).ToString("D3");
+            
             string thangNamHienTai = DateTime.Now.ToString("MMyyyy");
             string maHocVien = "KH" + thangNamHienTai ;
 

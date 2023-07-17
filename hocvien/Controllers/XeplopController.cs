@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace hocvien.Controllers
 {
-  //  [Authorize(Roles = "học vụ")]
+    [Authorize(Roles = "học vụ")]
     public class XeplopController : Controller
     {
         private centerContext db = new centerContext();

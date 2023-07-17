@@ -4,39 +4,7 @@
 }
 
 
-        <form method="post" action="/Phieudangky/SelectCourse">
-            @foreach (var item in Model)
-            {
-            <tr>
-                <td>
-                    <input type="checkbox" name="selectedClasses" value="@item.Maloptuyensinh" />
-                </td>
-                <td>
-                    @item.Maloptuyensinh
-                </td>
-                <td>
-                    @item.Tenloptuyensinh
-                </td>
-                <td>
-                    @item.Ngaybatdau
-                </td>
-                <td>
-                    @item.Ngayketthuc
-                </td>
-                @*<td>
-                    @item.Thuhoc
-                </td>
-                <td>
-                    @item.Giohoc
-                </td>*@
-            </tr>
-        }
-        </tbody>
-    </table>
-    <button type="button" onclick="submitForm()">Lưu</button>
 
-    </table>
-</form>-->
 @*<script>
         function luuMaLopHoc() {
             // Lấy mã lớp học từ combobox hoặc bất kỳ đâu tùy vào cách bạn thiết kế
@@ -49,7 +17,7 @@
 {
     <p>@ViewBag.Message</p>
     <p>
-        <a asp-action="Create" asp-controller="Loptuyensinh" class="btn btn-primary">Thêm lớp tuyển sinh</a>
+        <a asp-action="themLoptuyensinh" asp-controller="Loptuyensinh" class="btn btn-primary">Thêm lớp tuyển sinh</a>
     </p>
     
 }

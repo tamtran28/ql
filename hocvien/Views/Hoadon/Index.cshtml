@@ -74,13 +74,13 @@
                 @Html.DisplayFor(modelItem => item.Ngaythu)
             </td>
             <td>
-                <td>
+               @* <td>
                     <a asp-action="formXoahoadon" asp-route-id="@item.Mahd" class="btn btn-danger">Xóa</a>
-                </td>
+                </td>*@
                 <td>
-                    <a asp-action="formSuahoadon" asp-route-id="@item.Mahd" class="btn btn-primary">Sửa</a>
+                    <a asp-action="chiTiethoadon" asp-controller="Hoadon" asp-route-mahd="@item.Mahd" class="btn btn-primary">Chi tiết</a>
                 </td>
-            </td>
+            
         </tr>
 }
     </tbody>

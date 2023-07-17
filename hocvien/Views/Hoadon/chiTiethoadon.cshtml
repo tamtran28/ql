@@ -1,6 +1,43 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-Phiếu đăng ký đã được thanh toán
+﻿@{
+    ViewData["Title"] = "Chi tiết hóa đơn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Chi tiết hóa đơn</h1>
+
+<h3>Thông tin học viên</h3>
+<p><strong>Họ tên học viên:</strong> @ViewBag.Hocvien</p>
+<p><strong>Ngày sinh:</strong> @ViewBag.NgaySinh</p>
+<p><strong>Giới tính:</strong> @ViewBag.GioiTinh</p>
+<p><strong>Số điện thoại:</strong> @ViewBag.SDT</p>
+
+<h3>Thông tin lớp đăng ký</h3>
+<table class="table">
+    <tr>
+        <th>Mã lớp tuyển sinh</th>
+        <th>Ngày bắt đầu</th>
+        <th>Ngày kết thúc</th>
+        <th>Ca học</th>
+        <th>Thứ học</th>
+        <th>Giờ học</th>
+    </tr>
+    @for (int i = 0; i < ViewBag.LopDangkyhocs.Count; i++)
+    {
+        <tr>
+            <td>@ViewBag.LopDangkyhocs[i]</td>
+            <td>@ViewBag.NgayBatDauList[i]</td>
+            <td>@ViewBag.NgayKetThucList[i]</td>
+            <td>@ViewBag.CaHocList[i]</td>
+            <td>@ViewBag.ThuHocList[i]</td>
+            <td>@ViewBag.GioHocList[i]</td>
+        </tr>
+    }
+</table>
+
+<h3>Thông tin hóa đơn</h3>
+<p><strong>Mã phiếu:</strong> @ViewBag.maphieu</p>
+<p><strong>Tổng tiền:</strong> @ViewBag.TongTien</p>
+<p><strong>Số tiền đã trả:</strong> @ViewBag.SoTienDaTra</p>
+<p><strong>Số tiền còn lại:</strong> @ViewBag.SoTienConLai</p>
+
 

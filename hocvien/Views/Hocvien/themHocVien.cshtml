@@ -5,7 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@if (TempData.ContainsKey("ErrorThem"))
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorThem"]
+    </div>
+}
 <h1>Thêm học viên</h1>
 
 <hr />

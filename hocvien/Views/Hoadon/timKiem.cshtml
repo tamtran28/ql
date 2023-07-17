@@ -17,18 +17,25 @@ else
             <th>
                Mã phiếu
             </th>
+                <th>
+                    Mã lớp tuyển sinh
+                </th>
+                <th>
+                    Mã khóa học
+                </th>
             <th>
                 Mã học viên
             </th>
+                <th>
+                    Ngày sinh
+                </th>
             <th>
-               Mã nhân viên
+              Họ tên học viên
             </th>
             <th>
                 Ngày đăng ký
             </th>
-            <th>
-                Ghi chú
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -38,18 +45,28 @@ else
                   <td>
                     @Html.DisplayFor(modelItem => item.Maphieu)
                 </td>
-            <td>
+                   
+                    <td>@item.LopDangkyhocs.FirstOrDefault()?.Maloptuyensinh</td>
+
+
+
+                    <td>
+                        @item.LopDangkyhocs.FirstOrDefault()?.MaloptuyensinhNavigation?.MakhNavigation?.Makh
+                    </td>
+                
+                <td>
                 @Html.DisplayFor(modelItem => item.Mahv)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Manv)
+                @Html.DisplayFor(modelItem => item.MahvNavigation.Hoten)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ngaydk)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ghichu)
-            </td>
+                    <td>
+                        @item.MahvNavigation?.Ngaysinh.ToShortDateString()
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngaydk)
+                    </td>
+          
             <td>
                     <form method="post" action="formLapHD">
         <input type="hidden" name="maphieu" value="@item.Maphieu" />

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace hocvien.Controllers
 {
-    //[Authorize(Roles = "học vụ")]
+    [Authorize(Roles = "hocvu")]
     public class GiaovienController : Controller
     {
         private centerContext db = new centerContext();
@@ -32,27 +32,37 @@ namespace hocvien.Controllers
             return View();
         }
 
- 
+
 
         //}
         [HttpPost]
         public IActionResult themGiaovien(Giaovien gv)
         {
-            if (gv.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - gv.Ngaysinh.Year) < 18)
+            try
             {
-                ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                if (gv.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - gv.Ngaysinh.Year) < 18)
+                {
+                    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                    return RedirectToAction("formthemGiaovien");
+                }
+
+                gv.Magv = taoMagiaovien();
+                db.Giaoviens.Add(gv);
+                db.SaveChanges();
+
+                TempData["SuccessMessageGV"] = "Thêm giáo viên thành công";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessageGV"] = "Đã xảy ra lỗi khi thêm giáo viên. Vui lòng thử lại sau.";
+                // Log the exception if needed
+                // logger.LogError(ex, "Error while adding teacher");
+
                 return RedirectToAction("formthemGiaovien");
             }
-
-            gv.Magv = taoMagiaovien();
-            db.Giaoviens.Add(gv);
-            db.SaveChanges();
-
-            TempData["SuccessMessageGV"] = "Thêm giáo viên thành công";
-            return RedirectToAction("Index");
-
-
         }
+
         private string taoMagiaovien()
         {
             // Lấy mã học viên cuối cùng từ CSDL

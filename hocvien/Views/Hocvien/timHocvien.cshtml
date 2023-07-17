@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<hocvien.Model.Hocvien>
-@{
+@*@{
     Layout = "_Layout";
-}
+}*@
 
 @if (!string.IsNullOrEmpty(ViewBag.Message))
 {
@@ -64,7 +64,7 @@ else
             <td>
                 @Html.DisplayFor(modelItem => item.Diachi)
             </td>
-            <td>
+            
                 <td>
                         @if (item.Gioitinh == 1)
                         {
@@ -75,7 +75,7 @@ else
                             <span>Nữ</span>
                         }
                     </td>
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.Trangthai)
             </td>
@@ -89,9 +89,9 @@ else
             <td>
                     <a asp-action="chiTiet" class="btn btn-primary" asp-route-id="@item.Mahv">Chi tiết</a>
             </td>
-                <td>
-                    <input type="button" value="Chọn học viên" onclick="chonHocvien_click('@item.Mahv')" class="btn btn-primary" />a>
-                </td>
+               @* <td>
+                    <input type="button" value="Chọn học viên" onclick="chonHocvien_click('@item.Mahv')" class="btn btn-primary" />a
+                </td>*@
         </tr>
 }
     </tbody>

@@ -8,9 +8,11 @@
 <h1>Sửa khóa học</h1>
 
 <hr />
+<form asp-action="suaKhoahoc" method="post">
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="suaKhoahoc" method="post">
+    
+        
+            <div class="col-md-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Makh" class="control-label">Mã khóa học</label>
@@ -27,10 +29,10 @@
                 <input asp-for="Thoiluong" class="form-control" />
                 <span asp-validation-for="Thoiluong" class="text-danger"></span>
             </div>*@
-         </form>
+        
          </div>
-             <div class="col-md-8">
-        <form asp-action="Suakhoahoc" method="post">
+             <div class="col-md-6">
+       
             <div class="form-group">
                 <label asp-for="Motakh" class="control-label">Mô tả</label>
                 <input asp-for="Motakh" class="form-control" />
@@ -46,12 +48,14 @@
                 <input asp-for="Ngaytao" class="form-control" />
                 <span asp-validation-for="Ngaytao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
-        </form>
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
     </div>
-</div>
+        </form>
+    
+  
 
 <div>
     <a asp-action="Index">Back to List</a>

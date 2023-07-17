@@ -25,22 +25,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Makh)
+               Mã khóa học
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tenkh)
+              Tên khóa học
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.Thoiluong)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Motakh)
+               Mô tả
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nguoitao)
+                Người tạo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ngaytao)
+               Ngày tạo
             </th>
             <th></th>
         </tr>
@@ -68,7 +68,7 @@
                     @Html.DisplayFor(modelItem => item.Ngaytao)
                 </td>
                 <td>
-                    <a asp-action="formXoakhoahoc" asp-route-id="@item.Makh" class="btn btn-primary">Xóa</a>
+                    <a asp-action="formXoakhoahoc" asp-route-id="@item.Makh" class="btn btn-danger">Xóa</a>
                 </td>
                 <td>
                     <a asp-action="formSuakhoahoc" asp-route-id="@item.Makh" class="btn btn-primary">Sửa</a>
