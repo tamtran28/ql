@@ -2509,7 +2509,6 @@ C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phancong\ChonGiaoVien.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\formSuaphieudangky.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\formThemphieudangky.cshtml.g.cs
-C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\formXoaphieudangky.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\Index.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\registration.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\SearchCourse.cshtml.g.cs
@@ -2550,3 +2549,6 @@ C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\loi.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Giaovien\formSuaGiaovien.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Loptuyensinh\themLoptuyensinh.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Thongke\thongKepdk.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Phieudangky\formXoaphieudangky.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\formSualophoc.cshtml.g.cs

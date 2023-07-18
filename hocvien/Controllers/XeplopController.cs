@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace hocvien.Controllers
 {
-    [Authorize(Roles = "học vụ")]
+    [Authorize(Roles = "hocvu")]
     public class XeplopController : Controller
     {
         private centerContext db = new centerContext();
@@ -46,28 +46,7 @@ namespace hocvien.Controllers
             return View();
         }
 
-        //public IActionResult danhSach(string malophoc, string maloptuyensinh)
-        //{
-
-        //    ViewBag.Maloptuyensinh = maloptuyensinh;
-
-        //    // Lấy danh sách học viên dựa trên mã tuyển sinh
-        //    var danhSachHocVien = db.Phieudangkyhocs
-        //        .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
-        //        .Select(p => p.MahvNavigation)
-        //        .ToList();
-
-        //    // Lấy danh sách các học viên đã được xếp lớp
-        //    var hocvienDaXepLop = db.Hocviens
-        //        .Where(h => db.Phieudiems.Any(p => p.Mahv == h.Mahv && p.Malophoc == malophoc))
-        //        .ToList();
-
-        //    // Loại bỏ các học viên đã được xếp lớp khỏi danh sách chưa xếp lớp
-        //    var hocvienChuaXepLop = danhSachHocVien.Except(hocvienDaXepLop).ToList();
-
-        //    ViewBag.Malophoc = malophoc;
-        //    return View(hocvienChuaXepLop);
-        //}
+       
         public IActionResult danhSach(string malophoc, string maloptuyensinh)
         {
             ViewBag.Maloptuyensinh = maloptuyensinh;
@@ -241,7 +220,33 @@ namespace hocvien.Controllers
             return RedirectToAction("DanhSachHocVien", new { malophoc = maLopHoc });
         }
 
+        public IActionResult formSualophoc(string id)
+        {
+            ViewBag.ten = User.Identity.Name;
+            Model.Monhoc x = db.Monhocs.Find(id);
+            return View(x);
+        }
+        [HttpPost]
+        public IActionResult suaLophoc(Model.Lophoc x)
+        {
+            string manv = HttpContext.Session.GetString("Manv");
+            if (ModelState.IsValid)
+            {
+                Model.Lophoc kh = db.Lophocs.Find(x.Malophoc);
+                if (kh != null)
+                {
+                    kh.Phonghoc = x.Phonghoc;
+                    kh.Ngaytao = DateTime.Now;
+                    kh.Nguoitao = manv;
 
+
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+
+            return View("formSuamonhoc");
+        }
 
     }
 }

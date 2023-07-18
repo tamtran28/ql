@@ -35,7 +35,7 @@ namespace hocvien
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.IdleTimeout = TimeSpan.FromMinutes(2);
                 //options.Cookie.HttpOnly = true;
                 //options.Cookie.IsEssential = true;
             });
@@ -49,6 +49,7 @@ namespace hocvien
             })
              .AddCookie(options =>
              {
+                 options.ExpireTimeSpan = TimeSpan.FromMinutes(2);
                  options.LoginPath = "/Dangnhap/Login";
                  options.AccessDeniedPath = "/Dangnhap/Denied";
              });

@@ -1,0 +1,40 @@
+﻿@model hocvien.Model.Lophoc
+
+<h4>Sửa lớp học</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="suaLophoc" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Malophoc" />
+            <div class="form-group">
+                <label asp-for="Phonghoc" class="control-label">Phòng học</label>
+                <input asp-for="Phonghoc" class="form-control" />
+                <span asp-validation-for="Phonghoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maloptuyensinh" class="control-label"></label>
+                <select asp-for="Maloptuyensinh" class="form-control" asp-items="ViewBag.Maloptuyensinh"></select>
+                <span asp-validation-for="Maloptuyensinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nguoitao" class="control-label"></label>
+                <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten"/>
+                <span asp-validation-for="Nguoitao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
+                <input asp-for="Ngaytao" class="form-control" />
+                <span asp-validation-for="Ngaytao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
