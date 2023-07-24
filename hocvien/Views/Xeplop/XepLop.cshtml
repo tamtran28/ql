@@ -24,28 +24,40 @@
         </div>
     }
 
-    <button type="submit" onclick="danhSach()">Xếp lớp</button>
+    <button type="button" class="btn btn-primary" id="btnXepLop">Xếp lớp</button>
 </form>
-<div id="danhsachHocvien">  @Html.Partial("DanhSachHocVien", Model)</div>
+@*</form>*@
+@*<div id="danhsachHocvien">  @Html.Partial("DanhSachHocVien", Model)</div>*@
 @*@Html.Partial("DanhSachHocVien", Model)*@
 
-<script type="text/javascript">
-    function danhSach() {
-        const malop = document.getElementById("malophoc").value;
-        // Create an XMLHttpRequest object
-        const xhttp = new XMLHttpRequest();
+<h2>Danh sách học viên đã xếp lớp</h2>
 
-        // Define a callback function
-        xhttp.onload = function () {
-            // Here you can use the Data
-            document.getElementById("danhsachHocvien").innerHTML = xhttp.responseText;
-            // Refresh the page
-            location.reload();
-        };
+<div id="danhSachHocVien">
+    @await Html.PartialAsync("DanhSachHocVienPartial", Model)
+</div>
 
-        // Send a request
-        const strUrl = "/Xeplop/DanhSachHocVien/" + malop;
-        xhttp.open("GET", strUrl);
-        xhttp.send();
-    }
-</script>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Gửi Ajax khi người dùng xếp lớp
+            $("#btnXepLop").click(function () {
+                var malophoc = $("input[name='malophoc']").val();
+                var hocvienIds = $("input[name='hocvienIds']:checked").map(function () {
+                    return this.value;
+                }).get();
+
+                $.ajax({
+                    url: "/Xeplop/XepLop",
+                    type: "POST",
+                    data: {
+                        malophoc: malophoc,
+                        hocvienIds: hocvienIds
+                    },
+                    success: function (result) {
+                        $("#danhSachHocVien").html(result);
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -24,7 +24,11 @@ namespace hocvien.Controllers
             }
             if (TempData.ContainsKey("sua"))
             {
-                ViewBag.sua = TempData["sua"];
+                ViewBag.sua = TempData["xoaKH"];
+            }
+            if (TempData.ContainsKey("xoaKH"))
+            {
+                ViewBag.xoa = TempData["xoaKH"];
             }
             return View(db.Khoahocs.ToList());
         }
@@ -39,17 +43,28 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult themKhoahoc(Khoahoc kh)
         {
-            if (ModelState.IsValid)
+            try
             {
-                //kh.Makh = taoMaHocVien();
-                //ma kh se la IEMMYYYY IE052023
-                db.Khoahocs.Add(kh);
-                db.SaveChanges();
-                TempData["them"] = "Thêm khóa học thành công";
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    //kh.Makh = taoMaHocVien();
+                    //ma kh se la IEMMYYYY IE052023
+                    db.Khoahocs.Add(kh);
+                    db.SaveChanges();
+                    TempData["them"] = "Thêm khóa học thành công";
+                    return RedirectToAction("Index");
+                }
+                return View("formthemKhoahoc",kh);
             }
+
+            catch (Exception ex)
+            {
+                TempData["ErrorMessageThemKhoaHoc"] = "Đã xảy ra lỗi";
+                return View("formthemKhoahoc", kh);
+            }
+           
             
-            return View("formthemKhoahoc");
+           // return View("formthemKhoahoc");
 
 
         }
@@ -78,6 +93,7 @@ namespace hocvien.Controllers
                 db.Khoahocs.Remove(x);
                 db.SaveChanges();
             }
+            TempData["xoaKH"] = "Xóa khóa học thành công";
             return RedirectToAction("Index");
         }
         [Authorize(Roles = "quanly")]
@@ -91,22 +107,31 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult suaKhoahoc(Model.Khoahoc x)
         {
-           
-            if (ModelState.IsValid)
+            try
             {
-                Model.Khoahoc kh = db.Khoahocs.Find(x.Makh);
-                if (kh != null)
+                if (ModelState.IsValid)
                 {
-                    kh.Tenkh = x.Tenkh;
-                   // kh.Thoiluong = x.Thoiluong;
-                    kh.Motakh = x.Motakh;
-                    db.SaveChanges();
+                    Model.Khoahoc kh = db.Khoahocs.Find(x.Makh);
+                    if (kh != null)
+                    {
+                        kh.Tenkh = x.Tenkh;
+                         kh.Trangthai = x.Trangthai;
+                        kh.Motakh = x.Motakh;
+                        db.SaveChanges();
+                    }
+                    TempData["sua"] = "Sửa khóa học thành công";
+                    return RedirectToAction("Index");
                 }
-                TempData["sua"] = "Sửa khóa học thành công";
-                return RedirectToAction("Index");
-            }
 
-            return View("formSuakhoahoc");
+                return View("formSuakhoahoc");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it in a way suitable for your application
+                TempData["ErrorMessageSuaKhoaHoc"] = "Đã xảy ra lỗi";
+                return View("formSuakhoahoc", x); // Or return to the appropriate error view
+            }
         }
+
     }
 }

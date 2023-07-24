@@ -6,13 +6,19 @@
 }
 
 <h1>Tạo lớp học</h1>
+@if (TempData["ErrorMessageThemLopHoc"] != null)
+{
+    <div class="alert alert-danger" id="msgAlertError">
+        @TempData["ErrorMessageThemLopHoc"]
+    </div>
+}
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@*@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
 {
     <div id="msgAlert" class="alert alert-success" role="alert">
         @ViewBag.SuccessMessage
     </div>
-}
+}*@
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -20,9 +26,10 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Malophoc" class="control-label">Mã lớp học</label>
-                <input asp-for="Malophoc" class="form-control" />
+                <input asp-for="Malophoc" class="form-control" name="malophoc" />
                 <span asp-validation-for="Malophoc" class="text-danger"></span>
             </div>
+           
            @* <div class="form-group">
                 <label asp-for="Mahv" class="control-label"></label>
                 <input asp-for="Mahv" class="form-control" />
@@ -44,16 +51,28 @@
                 <span asp-validation-for="Magv" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Trở về</a>
 </div>
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+
+
+<script>
+    // Function to hide the error message after a specified duration (in milliseconds)
+    function hideErrorMessage() {
+        var errorMessageDiv = document.getElementById('msgAlertError');
+        errorMessageDiv.style.display = 'none';
+    }
+
+    // Set a timeout to hide the error message after 4 seconds (4000 milliseconds)
+    setTimeout(hideErrorMessage, 4000);
+</script>
+@*@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
 {
     <script>
         window.onload = function () {
@@ -66,7 +85,7 @@
                 }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
             }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
         }</script>
-}
+}*@
 @*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }*@

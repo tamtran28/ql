@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Thống kê";
+}
+
+<h1>Thống kê tổng quan</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tổng số học viên</h5>
+                    <p class="card-text">@ViewBag.SoLuongHocVien</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tổng số giáo viên</h5>
+                    @*<p class="card-text">@ViewBag.SoLuongGiaoVien</p>*@
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tổng số khoá học</h5>
+                    @*<p class="card-text">@ViewBag.SoLuongKhoaHoc</p>*@
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tổng số lớp học</h5>
+                   @* <p class="card-text">@ViewBag.SoLuongLopHoc</p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tổng doanh thu</h5>
+                    <p class="card-text">@ViewBag.DoanhThu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

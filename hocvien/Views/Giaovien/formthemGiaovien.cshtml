@@ -69,8 +69,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label">Email</label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email"  class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trangthai" class="control-label">Trạng thái</label>
+                <select asp-for="Trangthai" class="form-control">
+                    <option value="Đang làm">Đang làm</option>
+                    <option value="Nghỉ">Nghỉ</option>
+                </select>
+                <span asp-validation-for="Trangthai" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Nguoitao" class="control-label">Người tạo</label>

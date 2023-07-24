@@ -73,7 +73,7 @@
             <tr>
                 <th>Mã học viên</th>
                 <th>Họ tên</th>
-                <th></th>
+                
                 <th>Điểm đọc</th>
                 <th>Điểm viết</th>
                 <th>Điểm nói</th>
@@ -93,19 +93,19 @@
                     <td>
                                <input type="hidden" name="[@i].Mahv" value="@Model[i].Mahv" />
                         <input type="text" name="[@i].Diemdoc" value="@Model[i].Diemdoc" class="form-control" />
-                        <span asp-validation-for="[@i].Diemdoc" class="text-danger">Điểm đọc</span>
+                       
                     </td>
                     <td>
                         <input type="text" name="[@i].Diemviet" value="@Model[i].Diemviet" class="form-control" />
-                        <span asp-validation-for="[@i].Diemviet" class="text-danger">Điểm viết</span>
+                        
                     </td>
                     <td>
                         <input type="text" name="[@i].Diemnoi" value="@Model[i].Diemnoi" class="form-control" />
-                        <span asp-validation-for="[@i].Diemnoi" class="text-danger">Điểm nói</span>
+                        
                     </td>
                     <td>
                         <input type="text" name="[@i].Diemnghe" value="@Model[i].Diemnghe" class="form-control" />
-                        <span asp-validation-for="[@i].Diemnghe" class="text-danger">Điểm nghe</span>
+                        
                     </td>
                 </tr>
             }

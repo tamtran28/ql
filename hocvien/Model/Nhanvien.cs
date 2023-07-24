@@ -18,7 +18,7 @@ namespace hocvien.Model
         public string Hoten { get; set; }
         public DateTime Ngaysinh { get; set; }
         public string Diachi { get; set; }
-        public byte Gioitinh { get; set; }
+        public int Gioitinh { get; set; }
         public string Email { get; set; }
         [MaxLength(10, ErrorMessage = "Số điện thoại không hợp lệ.")]
         public string Sdt { get; set; }

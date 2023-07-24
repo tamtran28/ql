@@ -12,7 +12,7 @@
 <h2>Chọn giáo viên cho lớp học</h2>
 
 <form method="post" asp-action="PhanCongGiaoVien" asp-controller="Phancong">
-    <input type="text" name="malophoc" value="@ViewBag.MaLopHoc" />
+    <input type="hidden" name="malophoc" value="@ViewBag.MaLopHoc" />
 
         <label for="magv">Giáo viên:</label>
         <select name="magv">
@@ -22,6 +22,6 @@
                 <option value="@giaoVien.Magv">@giaoVien.Hoten</option>
             }
         </select>
-    </div>
-    <button type="submit">Lưu phân công</button>
+    
+    <button type="submit" class="btn btn-primary">Lưu phân công</button>
 </form>

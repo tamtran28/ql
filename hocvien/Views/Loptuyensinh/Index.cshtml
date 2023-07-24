@@ -37,15 +37,7 @@
             <th>
                 Tên lớp tuyển sinh
             </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Trangthai)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.Nguoitao)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Ngaytao)
-                </th>*@
+         
             <th>
                 Ngày bắt đầu
             </th>
@@ -72,20 +64,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Tenloptuyensinh)
                 </td>
-                @* <td>
-                        @Html.DisplayFor(modelItem => item.Trangthai)
-                    </td>*@
-                @*  <td>
-                        @Html.DisplayFor(modelItem => item.Nguoitao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ngaytao)
-                    </td>*@
+               
                 <td>
-                    @Html.DisplayFor(modelItem => item.Ngaybatdau.Date)
+                    @Html.DisplayFor(modelItem => item.Ngaybatdau)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Ngayketthuc.Date)
+                    @Html.DisplayFor(modelItem => item.Ngayketthuc)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Thuhoc)

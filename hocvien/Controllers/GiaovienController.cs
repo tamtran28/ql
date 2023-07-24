@@ -22,7 +22,9 @@ namespace hocvien.Controllers
             {
                 ViewBag.SuaSuccessMessage = TempData["SuaSuccessMessageGV"];
             }
-            return View(db.Giaoviens.ToList());
+            var danhSachgiaovien = db.Giaoviens.Where(nv => nv.Trangthai == "Đang làm").ToList();
+            return View(danhSachgiaovien);
+            //return View(db.Giaoviens.ToList());
         }
 
         public IActionResult formthemGiaovien()
@@ -55,7 +57,7 @@ namespace hocvien.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessageGV"] = "Đã xảy ra lỗi khi thêm giáo viên. Vui lòng thử lại sau.";
+                TempData["ErrorMessageGV"] = "Đã xảy ra lỗi khi thêm giáo viên";
                 // Log the exception if needed
                 // logger.LogError(ex, "Error while adding teacher");
 
@@ -85,13 +87,19 @@ namespace hocvien.Controllers
         }
         public IActionResult xoaGiaoVien(String id)
         {
-            Model.Giaovien x = db.Giaoviens.Find(id);
-            if (x != null)
+            var giaovien = db.Giaoviens.Find(id);
+
+            if (giaovien != null)
             {
-                db.Giaoviens.Remove(x);
+                // Thay đổi trạng thái của nhân viên thành "nghỉ"
+                giaovien.Trangthai = "Nghỉ";
+
+                // Lưu thay đổi vào cơ sở dữ liệu
                 db.SaveChanges();
             }
+
             return RedirectToAction("Index");
+
         }
 
         public IActionResult formSuaGiaovien(string id)
@@ -106,36 +114,71 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult suaGiaovien(Model.Giaovien x)
         {
+            string manv = HttpContext.Session.GetString("Manv");
             if (ModelState.IsValid)
             {
                 Model.Giaovien hv = db.Giaoviens.Find(x.Magv);
                 if (hv != null)
                 {
-                    // Cập nhật thông tin giáo viên
                     hv.Hoten = x.Hoten;
                     hv.Ngaysinh = x.Ngaysinh;
-                    //if (x.Ngaysinh < SqlDateTime.MinValue.Value || x.Ngaysinh > SqlDateTime.MaxValue.Value)
-                    //{
-                    //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-                    //    return View("formSuaGiaovien", x);
-                    //}
+
                     hv.Gioitinh = x.Gioitinh;
                     hv.Sdt = x.Sdt;
                     hv.Diachi = x.Diachi;
                     hv.Capdoday = x.Capdoday;
                     hv.Trinhdo = x.Trinhdo;
-                    hv.Ngaytao = x.Ngaytao;
-                    hv.Nguoitao = x.Nguoitao;
+                    hv.Ngaytao = DateTime.Now;
+                    //hv.Nguoitao = x.Nguoitao;
+                    hv.Trangthai = x.Trangthai;
+                   // db.SaveChanges();
                     db.SaveChanges();
-
-                    TempData["SuaSuccessMessageGV"] = "Sửa giáo viên thành công";
-                    return RedirectToAction("Index");
                 }
-               
+                TempData["SuaSuccessMessageGV"] = "Sửa thành công";
+
+
+                //else if (User.IsInRole("giaovien"))
+                //{
+                return RedirectToAction("Index");
+              
             }
 
-            return View("formSuaGiaovien");
+            return View("formSuathongtinnhanvien", x);
         }
+        //[HttpPost]
+        //public IActionResult suaGiaovien(Model.Giaovien x)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Model.Giaovien hv = db.Giaoviens.Find(x.Magv);
+        //        if (hv != null)
+        //        {
+        //            // Cập nhật thông tin giáo viên
+        //            hv.Hoten = x.Hoten;
+        //            hv.Ngaysinh = x.Ngaysinh;
+        //            //if (x.Ngaysinh < SqlDateTime.MinValue.Value || x.Ngaysinh > SqlDateTime.MaxValue.Value)
+        //            //{
+        //            //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+        //            //    return View("formSuaGiaovien", x);
+        //            //}
+        //            hv.Gioitinh = x.Gioitinh;
+        //            hv.Sdt = x.Sdt;
+        //            hv.Diachi = x.Diachi;
+        //            hv.Capdoday = x.Capdoday;
+        //            hv.Trinhdo = x.Trinhdo;
+        //            hv.Ngaytao = x.Ngaytao;
+        //            hv.Nguoitao = x.Nguoitao;
+        //            hv.Trangthai = x.Trangthai;
+        //            db.SaveChanges();
+
+        //            TempData["SuaSuccessMessageGV"] = "Sửa giáo viên thành công";
+        //            return RedirectToAction("Index");
+        //        }
+               
+        //    }
+
+        //    return View("formSuaGiaovien");
+        //}
 
     }
 }

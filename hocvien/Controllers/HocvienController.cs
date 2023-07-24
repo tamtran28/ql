@@ -47,11 +47,11 @@ namespace hocvien.Controllers
 
             if (TempData.ContainsKey("SuccessMessage"))
             {
-                ViewBag.SuccessMessage = TempData["SuccessMessage"];
+                ViewBag.SuccessMessageHV = TempData["SuccessMessage"];
             }
             if (TempData.ContainsKey("SuaSuccessMessage"))
             {
-                ViewBag.SuaSuccessMessage = TempData["SuaSuccessMessage"];
+                ViewBag.SuaSuccessMessageHV = TempData["SuaSuccessMessage"];
             }
             List<Model.CHocvienview> ds = db.Hocviens.Select(a => new Model.CHocvienview
             {
@@ -105,7 +105,7 @@ namespace hocvien.Controllers
                 db.Hocviens.Add(hocVien);
                 db.SaveChanges();
 
-                TempData["SuccessMessage"] = "Thêm học viên thành công";
+                TempData["SuccessMessageHV"] = "Thêm học viên thành công";
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -113,7 +113,7 @@ namespace hocvien.Controllers
                 // Xử lý ngoại lệ và ghi log nếu cần thiết
                 // logger.LogError(ex, "Error while adding Hocvien");
 
-                TempData["ErrorThem"]="Đã xảy ra lỗi khi thêm học viên. Vui lòng thử lại sau.";
+                TempData["ErrorThem"]="Đã xảy ra lỗi khi thêm học viên";
             }
 
             return View(hocVien);
@@ -209,7 +209,6 @@ namespace hocvien.Controllers
 
         public IActionResult chiTiet(string id)
         {
-
             var hocVien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == id);
 
             if (hocVien == null)
@@ -217,10 +216,13 @@ namespace hocvien.Controllers
                 return NotFound();
             }
 
-            var phieuDiem = db.Phieudiems.FirstOrDefault(pd => pd.Mahv==id);
+            var phieuDiems = db.Phieudiems.Where(pd => pd.Mahv == id).ToList();
 
-            if (phieuDiem == null)
+            // Check if phieuDiems is empty
+            if (phieuDiems.Count == 0)
             {
+                // Handle the case when there are no Phieudiems for the hocVien
+                // For example, you can return a view with a message like "No Phieudiems found."
                 return View(new CHocvienview
                 {
                     Mahv = hocVien.Mahv,
@@ -232,26 +234,33 @@ namespace hocvien.Controllers
                     Trangthai = hocVien.Trangthai
                 });
             }
-
-            var malophoc = phieuDiem.Malophoc;
-            var lopHoc = db.Lophocs.FirstOrDefault(lh => lh.Malophoc == malophoc);
-
-            var model = new CHocvienview
+            else
             {
-                Mahv = hocVien.Mahv,
-                Hoten = hocVien.Hoten,
-                Ngaysinh = hocVien.Ngaysinh.ToShortDateString(),
-                Sdt = hocVien.Sdt,
-                Diachi = hocVien.Diachi,
-                Gioitinh = hocVien.Gioitinh == 1 ? "Nam" : "Nữ",
-                Trangthai = hocVien.Trangthai,
-                Malophoc = lopHoc?.Malophoc ?? "Chưa có",
-                //Tenlop = lopHoc?.Malophoc ?? "Chưa có",
-                Phieudiems = new List<Phieudiem> { phieuDiem }
-            };
+                // Here, you need to decide how to handle the case when there are multiple Phieudiems
+                // For example, you might want to display all Malophoc values, or select one of them
+                // ...
 
-            return View(model);
+                // For demonstration purposes, let's assume you want to display the first Malophoc value
+                var malophoc = phieuDiems[0].Malophoc;
+                var lopHoc = db.Lophocs.FirstOrDefault(lh => lh.Malophoc == malophoc);
 
+                var model = new CHocvienview
+                {
+                    Mahv = hocVien.Mahv,
+                    Hoten = hocVien.Hoten,
+                    Ngaysinh = hocVien.Ngaysinh.ToShortDateString(),
+                    Sdt = hocVien.Sdt,
+                    Diachi = hocVien.Diachi,
+                    Gioitinh = hocVien.Gioitinh == 1 ? "Nam" : "Nữ",
+                    Trangthai = hocVien.Trangthai,
+                    Malophoc = lopHoc?.Malophoc ?? "Chưa có",
+                    //Tenlop = lopHoc?.Malophoc ?? "Chưa có",
+                    Phieudiems = phieuDiems
+                };
+
+                return View(model);
+            }
         }
+
     }
 }

@@ -14,7 +14,7 @@
 <h1>Sửa lớp tuyển sinh</h1>
 
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
         <form asp-action="sualoptuyensinh" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -79,8 +79,86 @@
             </div>
         </form>
     </div>
-</div>
+</div>*@
+<form asp-action="sualoptuyensinh" method="post">
+<div class="row">
+    <div class="col-md-6">
+        <!-- First Column -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Maloptuyensinh" class="control-label">Mã lớp tuyển sinh</label>
+                <input asp-for="Maloptuyensinh" readonly class="form-control" />
+                <span asp-validation-for="Maloptuyensinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tenloptuyensinh" class="control-label">Tên lớp tuyển sinh</label>
+                <input asp-for="Tenloptuyensinh" readonly class="form-control" />
+                <span asp-validation-for="Tenloptuyensinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Makh" class="control-label">Mã khóa học</label>
+                <input asp-for="Makh" class="form-control" />
+                <span asp-validation-for="Makh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mamh" class="control-label">Mã môn học</label>
+                <input asp-for="Mamh" class="form-control" />
+                <span asp-validation-for="Mamh" class="text-danger"></span>
+            </div>
+          @*  <div class="form-group">
+                <label asp-for="Nguoitao" class="control-label">Người tạo</label>
+                <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
+                <span asp-validation-for="Nguoitao" class="text-danger"></span>
+            </div>*@
+            
+       
+    </div>
+    <div class="col-md-6">
+        <!-- Second Column -->
+       @* <form asp-action="sualoptuyensinh" method="post">*@
+            <div class="form-group">
+                <label asp-for="Ngaybatdau" class="control-label">Ngày bắt đầu</label>
+                <input asp-for="Ngaybatdau" type="date" class="form-control" />
+                <span asp-validation-for="Ngaybatdau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ngayketthuc" class="control-label">Ngày kết thúc</label>
+                <input asp-for="Ngayketthuc" type="date" class="form-control" />
+                <span asp-validation-for="Ngayketthuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Macahoc" class="control-label">Mã ca học</label>
+                <select id="Macahoc" name="Macahoc" class="form-control">
+                    <option value="">Select a class schedule</option>
+                    @foreach (var cahoc in ViewBag.Cahocs)
+                    {
+                        var selected = cahoc.Macahoc == Model.Macahoc ? "selected" : "";
+                        <option value="@cahoc.Macahoc" selected="@selected">@cahoc.Thuhoc - @cahoc.Giohoc</option>
+                    }
+                </select>
+                <span asp-validation-for="Macahoc" class="text-danger"></span>
+            </div>
 
+            <div class="form-group">
+                <label asp-for="Trangthai" class="control-label">Trạng thái</label>
+                <select asp-for="Trangthai" class="form-control">
+                    <option value="đang mở">đang mở</option>
+                    <option value="đóng">đóng</option>
+                </select>
+                <span asp-validation-for="Trangthai" class="text-danger"></span>
+            </div>
+          @*  <div class="form-group">
+                <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
+                <input asp-for="Ngaytao" class="form-control" />
+                <span asp-validation-for="Ngaytao" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+       
+    </div>
+</div>
+</form>
 <div>
     <a asp-action="Index">Trở về</a>
 </div>

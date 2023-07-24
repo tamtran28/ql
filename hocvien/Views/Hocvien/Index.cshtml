@@ -4,17 +4,17 @@
     ViewData["Title"] = "Danh sách học viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageHV))
 {
     <div id="msgAlert" class="alert alert-success" role="alert">
-        @ViewBag.SuccessMessage
+        @ViewBag.SuccessMessageHV
     </div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessage))
+@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessageHV))
 {
     <div id="msgAlertS" class="alert alert-success" role="alert">
-        @ViewBag.SuaSuccessMessage
+        @ViewBag.SuaSuccessMessageHV
     </div>
 }
 <h1>Danh sách học viên</h1>
@@ -104,12 +104,12 @@
     </tbody>
     <div class="pagination">
 
-        <a href="@Url.Action("Index", new { currentPage = 1 })">First</a>
+        <a href="@Url.Action("Index", new { currentPage = 1 })" style="margin-right: 10px;">First</a>
         @for (int i = 1; i <= ViewBag.TotalPages; i++)
         {
-            <a href="@Url.Action("Index", new { currentPage = i })" class="@(ViewBag.CurrentPage == i ? "active" : "")">@i</a>
+            <a href="@Url.Action("Index", new { currentPage = i })" class="@(ViewBag.CurrentPage == i ? "active" : "")" style="margin-left: 10px;">@i</a>
         }
-        <a href="@Url.Action("Index", new { currentPage = ViewBag.TotalPages })">Last</a>
+        <a href="@Url.Action("Index", new { currentPage = ViewBag.TotalPages })" style="margin-left: 10px;">Last</a>
 
     </div>
 </table>
@@ -118,7 +118,7 @@
 
 
 
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageHV))
 {
     <script>window.onload = function () {
             var alertElement = document.getElementById('msgAlert');
@@ -131,7 +131,7 @@
             }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
         }</script>
 }
-@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessage))
+@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessageHV))
 {
     <script>window.onload = function () {
             var alertElement = document.getElementById('msgAlert');

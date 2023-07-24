@@ -22,7 +22,8 @@ namespace hocvien.Controllers
             {
                 ViewBag.SuccessMessageNV = TempData["SuaSuccessMessageNV"];
             }
-            return View(db.Nhanviens.ToList());
+            var danhSachNhanVienDangLam = db.Nhanviens.Where(nv => nv.Trangthai == "Đang làm").ToList();
+            return View(danhSachNhanVienDangLam);
         }
         private string taoManhanvien()
         {
@@ -183,12 +184,16 @@ namespace hocvien.Controllers
 
             return View(x);
         }
-        public IActionResult xoaHocVien(String id)
+        public IActionResult xoaNhanvien(String Manv)
         {
-            Model.Nhanvien x = db.Nhanviens.Find(id);
-            if (x != null)
+            var nhanvien = db.Nhanviens.Find(Manv);
+
+            if (nhanvien != null)
             {
-                db.Nhanviens.Remove(x);
+                // Thay đổi trạng thái của nhân viên thành "nghỉ"
+                nhanvien.Trangthai = "Nghỉ";
+
+                // Lưu thay đổi vào cơ sở dữ liệu
                 db.SaveChanges();
             }
 

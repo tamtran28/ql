@@ -5,39 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Diemdoc)
+                Họ tên học viên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Diemviet)
+               Mã lớp học
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Diemnoi)
+               Điểm đọc
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Diemnghe)
+               Điểm viết
+            <th>
+                Điểm nói
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Trangthai)
+               Điểm nghe
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MahvNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MalophocNavigation)
-            </th>
-            <th></th>
+           
+          
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MahvNavigation.Hoten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MalophocNavigation)
+                </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Diemdoc)
             </td>
@@ -50,20 +52,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Diemnghe)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Trangthai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MahvNavigation.Mahv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MalophocNavigation.Malophoc)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+           
+           
         </tr>
 }
     </tbody>

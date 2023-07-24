@@ -5,74 +5,97 @@
     Layout = "_Layout";
 }
 
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageThemLopHoc))
+{
+    <div id="msgAlertThem" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageThemLopHoc
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageSuaLopHoc))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageSuaLopHoc
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessageSua))
+{
+    <div id="msgAlertError" class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessageSua
+    </div>
+}
 <h1>Danh sách lớp học</h1>
-
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
-<table class="table">
+<table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>
-               Mã lớp học
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Mahv)
-            </th>*@
-            <th>
-               Phòng học
-            </th>
-            <th>
-               Mã lớp tuyển sinh
-            </th>
-            <th>
-                Giáo viên
-            </th>
-            <th></th>
+            <th>Mã lớp học</th>
+            <th>Phòng học</th>
+            <th>Mã lớp tuyển sinh</th>
+            <th>Giáo viên</th>
+            <th>Thao tác</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Malophoc)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Mahv)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Phonghoc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Maloptuyensinh)
-            </td>
-           @* <td>
-                    @item.LophocGiaoviens
-            </td>*@
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Malophoc)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phonghoc)</td>
+                <td>@Html.DisplayFor(modelItem => item.Maloptuyensinh)</td>
+                <td>@item.LophocGiaoviens.FirstOrDefault()?.MagvNavigation?.Hoten</td>
                 <td>
-                  
-                  
-                         @item.LophocGiaoviens.FirstOrDefault()?.MagvNavigation?.Hoten
-                 
-
+                    <div class="btn-group">
+                        <a asp-action="danhSach" asp-route-malophoc="@item.Malophoc" asp-route-maloptuyensinh="@item.Maloptuyensinh" class="btn btn-primary">Xếp lớp</a>
+                        <a asp-action="DanhSachHocVien" asp-route-malophoc="@item.Malophoc" asp-controller="Xeplop" class="btn btn-primary">Xem danh sách</a>
+                        <a asp-action="ChonGiaoVien" asp-controller="Phancong" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Phân công</a>
+                        <a asp-action="xemDiem" asp-controller="Diem" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Xem điểm</a>
+                        
+                    </div>
                 </td>
-            <td>
-
-               @* <td>
-                    <a asp-action="danhSach" asp-route-id="@item.Maloptuyensinh" class="btn btn-primary">Tạo lớp học</a>
-                </td>*@
-                <td>
-                    <a asp-action="danhSach" asp-route-malophoc="@item.Malophoc" asp-route-maloptuyensinh="@item.Maloptuyensinh" class="btn btn-primary">Xếp lớp</a>
-                </td>
-                <td><a asp-action="DanhSachHocVien" asp-route-malophoc="@item.Malophoc" asp-controller="Xeplop" class="btn btn-primary">Xem danh sách</a></td>
-                <td>
-                    <a asp-action="ChonGiaoVien" asp-controller="Phancong" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Phân công</a>
-                </td>
-                <td>
-                    <a asp-action="xemDiem" asp-controller="Diem" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Xem điểm</a>
-                </td>
-            </td>
-        </tr>
-}
-    </tbody>    
+            </tr>
+        }
+    </tbody>
 </table>
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageThemLopHoc))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertThem');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageSuaLopHoc))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessageSua))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertError');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}

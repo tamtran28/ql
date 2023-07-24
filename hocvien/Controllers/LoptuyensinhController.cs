@@ -57,7 +57,7 @@ namespace hocvien.Controllers
             });
             return View(ds);
         }
-        [Authorize(Roles = "hocvu")]
+        [Authorize(Roles = "tuyensinh")]
         public IActionResult themLoptuyensinh()
         {
            
@@ -118,10 +118,8 @@ namespace hocvien.Controllers
             }
             catch (Exception ex)
             {
-                // Xử lý ngoại lệ và ghi log nếu cần thiết
-                // logger.LogError(ex, "Error while creating Loptuyensinh");
-
-                TempData["ErrorMessageTS"] = "Đã xảy ra lỗi khi tạo lớp tuyển sinh. Vui lòng thử lại sau.";
+                
+                TempData["ErrorMessageTS"] = "Đã xảy ra lỗi khi tạo lớp tuyển sinh";
             }
 
             // Nếu dữ liệu không hợp lệ hoặc xảy ra lỗi, hiển thị lại trang tạo lớp tuyển sinh
@@ -147,7 +145,7 @@ namespace hocvien.Controllers
             Monhoc x = db.Monhocs.Find(id);
             return PartialView(x);
         }
-        [Authorize(Roles = "hocvu")]
+        [Authorize(Roles = "tuyensinh")]
         public IActionResult formXoaloptuyensinh(String id)
         {
             int dem = db.Lophocs.Where(a => a.Maloptuyensinh == id).ToList().Count();
@@ -175,11 +173,10 @@ namespace hocvien.Controllers
             }
             catch (Exception ex)
             {
-                // Xử lý ngoại lệ và ghi log nếu cần thiết
-                // logger.LogError(ex, "Error while deleting Loptuyensinh");
+              
 
                 TempData["ErrorMessageXoaTS"] = "Đã xảy ra lỗi khi xóa lớp tuyển sinh. Vui lòng thử lại sau.";
-                return View("formXoaloptuyensinh"); // Trả về view Error
+                return View("formXoaloptuyensinh");
             }
         }
 
@@ -206,6 +203,7 @@ namespace hocvien.Controllers
         [HttpPost]
         public IActionResult suaLoptuyensinh(Loptuyensinh x)
         {
+            string manv = HttpContext.Session.GetString("Manv");
             try
             {
                 if (ModelState.IsValid)
@@ -216,7 +214,11 @@ namespace hocvien.Controllers
 
                     if (kh != null)
                     {
+                        kh.Ngaybatdau = x.Ngaybatdau;
+                        kh.Ngayketthuc = x.Ngayketthuc;
                         kh.Tenloptuyensinh = x.Tenloptuyensinh;
+                        kh.Nguoitao = manv;
+                        kh.Ngaytao = DateTime.Now;
                         kh.Trangthai = x.Trangthai;
                         kh.Macahoc = x.Macahoc;
 
@@ -231,7 +233,7 @@ namespace hocvien.Controllers
                 // Xử lý ngoại lệ và ghi log nếu cần thiết
                 // logger.LogError(ex, "Error while updating Loptuyensinh");
 
-                TempData["ErrorMessageSua"]= "Đã xảy ra lỗi khi cập nhật lớp tuyển sinh. Vui lòng thử lại sau.";
+                TempData["ErrorMessageSua"]= "Đã xảy ra lỗi khi cập nhật lớp tuyển sinh";
             }
 
             // Load danh sách Cahoc để hiển thị lựa chọn cho dropdown

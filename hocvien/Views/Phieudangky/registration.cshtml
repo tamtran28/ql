@@ -31,21 +31,7 @@
                 <input asp-for="Mahv" class="form-control" value="@ViewBag.s" readonly />
                 <span asp-validation-for="Mahv" class="text-danger"></span>
             </div>
-           @* <div class="form-group">
-                <label class="control-label">Họ tên</label>
-                <input class="form-control" value="@ViewBag.Hocvien" readonly />
-            </div>
-            <div class="form-group">
-                <label asp-for="Ghichu" class="control-label">Ghi chú</label>
-                <input asp-for="Ghichu" class="form-control" readonly />
-                <span asp-validation-for="Ghichu" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label">Ngày sinh</label>
-                <input class="form-control" value="@ViewBag.NgaySinh" readonly />
-            </div>
-*@
+          </div>
             <table class="table">
                 <tr>
                     @*<th>Mã học viên</th>*@
@@ -70,17 +56,17 @@
 
                     </tr>
                     </table>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label class="control-label">Giới tính</label>
                 <input class="form-control" value="@ViewBag.GioiTinh" readonly />
-            </div>
+            </div>*@
                 <h2>Thông tin lớp học</h2>
                 <table class="table">
                     <tr>
                         <th>Ngày bắt đầu</th>
                         <th>Ngày kết thúc</th>
-                        <th>Thứ học</th>
-                        <th>Giờ học</th>
+                        @*<th>Thứ học</th>
+                        <th>Giờ học</th>*@
                     </tr>
                     @foreach (var loptuyensinh in ViewBag.LopTuyenSinhs)
                     {

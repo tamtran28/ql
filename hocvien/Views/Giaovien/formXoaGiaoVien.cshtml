@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Xóa giáo viên</h1>
+<h3>Bạn có chắc chắn muốn xóa không?</h3>
 
 @if ((int)ViewBag.flag == 0)
 {
@@ -87,7 +87,7 @@ else
         </dd>*@
     </dl>
     
-    <form asp-action="xoaHocVien" asp-route-id="@Model.Magv">
+    <form asp-action="xoaGiaoVien" asp-route-id="@Model.Magv">
         @if ((int)ViewBag.flag == 0)
         {
             <input type="submit" value="Xóa" class="btn btn-danger" />

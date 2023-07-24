@@ -14,10 +14,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
+    <PackageReference Include="System.Globalization" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Area\TVV\Controllers\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

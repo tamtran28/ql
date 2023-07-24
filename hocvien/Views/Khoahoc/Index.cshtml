@@ -16,10 +16,16 @@
         @ViewBag.sua
     </div>
 }
+@if (!string.IsNullOrEmpty(ViewBag.xoa))
+{
+    <div id="msgAlertXoaKH" class="alert alert-success" role="alert">
+        @ViewBag.xoa
+    </div>
+}
 <h1>Danh sách khóa học</h1>
 
 <p>
-    <a asp-action="formthemKhoahoc">Thêm khóa học</a>
+    <a asp-action="formthemKhoahoc" class="btn btn-primary">Thêm khóa học</a>
 </p>
 <table class="table">
     <thead>
@@ -42,7 +48,9 @@
             <th>
                Ngày tạo
             </th>
-            <th></th>
+            <th>
+                Trạng thái
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -68,11 +76,15 @@
                     @Html.DisplayFor(modelItem => item.Ngaytao)
                 </td>
                 <td>
-                    <a asp-action="formXoakhoahoc" asp-route-id="@item.Makh" class="btn btn-danger">Xóa</a>
+                    @Html.DisplayFor(modelItem => item.Trangthai)
                 </td>
                 <td>
                     <a asp-action="formSuakhoahoc" asp-route-id="@item.Makh" class="btn btn-primary">Sửa</a>
                 </td>
+                <td>
+                    <a asp-action="formXoakhoahoc" asp-route-id="@item.Makh" class="btn btn-danger">Xóa</a>
+                </td>
+                
             </tr>
         }
     </tbody>
@@ -96,6 +108,21 @@
 {
     <script>window.onload = function () {
             var alertElement = document.getElementById('msgAlertS');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.xoa))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertXoaKH');
             alertElement.style.display = 'block';
             setTimeout(function () {
                 alertElement.style.opacity = '0';

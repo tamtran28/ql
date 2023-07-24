@@ -4,7 +4,25 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageThem))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageThem
+    </div>
+}
 
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageSua))
+{
+    <div id="msgAlertS" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageSua
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageXoa))
+{
+    <div id="msgAlertX" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageXoa
+    </div>
+}
 <h1>Danh sách phiếu đăng ký</h1>
 
 <p>
@@ -123,3 +141,46 @@
     <button type="submit" class="btn btn-primary">Thanh toán</button>
 </form>
 *@
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageSua))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertS');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageXoa))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertX');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}

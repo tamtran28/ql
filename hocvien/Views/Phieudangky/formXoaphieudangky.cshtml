@@ -3,20 +3,38 @@
     
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@*<h3>Bạn có chắc chắn muốn xóa không?</h3>*@
 <div>
     @if ((int)ViewBag.flag == 0)
     {
-        <h5>Bạn thực sự muốn xóa</h5>
+        <h5 class="text-warning text-xl text-uppercase">Bạn thực sự muốn xóa</h5>
     }
     else
     {
-        <h5>Bạn không thể xóa</h5>
+        <h5 class="text-warning text-xl text-uppercase">Bạn không thể xóa</h5>
     }
-    <h3>Bạn có chắc chắn muốn xóa không?</h3>
+   
     <div>
        
         <hr />
+
         <dl class="row">
+            <dt class="col-sm-2">
+                Họ tên học viên
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.HocVien.Hoten
+            </dd>
+            <dt class="col-sm-2">Mã lớp tuyển sinh</dt>
+            <dd class="col-sm-10">@ViewBag.LopDangKy.Maloptuyensinh</dd>
+            <dt class="col-sm-2">Ngày bắt đầu</dt>
+            <dd class="col-sm-10">@ViewBag.NgayBatDau.ToString("dd/MM/yyyy")</dd>
+            <dt class="col-sm-2">Ngày kết thúc</dt>
+            <dd class="col-sm-10">@ViewBag.NgayKetThuc.ToString("dd/MM/yyyy")</dd>
+            <dt class="col-sm-2">Mã khóa học</dt>
+            <dd class="col-sm-10">@ViewBag.MaKh</dd>
+            <dt class="col-sm-2">Mã môn học</dt>
+            <dd class="col-sm-10">@ViewBag.MaMh</dd>
             <dt class="col-sm-2">
               Ngày đăng ký
             </dt>
@@ -29,12 +47,12 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Ghichu)
             </dd>
-            <dt class="col-sm-2">
+          @*  <dt class="col-sm-2">
                Tổng tiền
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.tongtien)
-            </dd>
+            </dd>*@
            @* <dt class="col-sm-2">
                Số 
             </dt>
@@ -47,12 +65,7 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Sotienconlai)
             </dd>*@
-            <dt class="col-sm-2">
-                Họ tên học viên
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MahvNavigation.Mahv)
-            </dd>
+        
           @*  <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.ManvNavigation)
             </dt>

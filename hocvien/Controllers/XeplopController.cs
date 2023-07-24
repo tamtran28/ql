@@ -17,140 +17,20 @@ namespace hocvien.Controllers
     {
         private centerContext db = new centerContext();
 
-       
-        public IActionResult formTaolophoc(string id)
-        {
-            ViewBag.s = id;
-            return View();
-        }
-        [HttpPost]
-        public IActionResult themLophoc(Lophoc h)
-        {
-            //cap nhâp lại database
-            string manv = HttpContext.Session.GetString("Manv");
-            //ViewBag.ten = manv;
-            h.Nguoitao = manv;
-            h.Ngaytao = DateTime.Now;
-            db.Lophocs.Add(h);
-            db.SaveChanges();
-            ViewBag.SuccessMessage = "Thêm học viên thành công!";
-            return RedirectToAction("Index");
-
-        }
-       
-
-       
-        public IActionResult formThemLop()
-        {
-            ViewBag.DSlop = new SelectList(db.Khoahocs.ToList(), "Makh", "Tenkh");
-            return View();
-        }
-
-       
-        public IActionResult danhSach(string malophoc, string maloptuyensinh)
-        {
-            ViewBag.Maloptuyensinh = maloptuyensinh;
-
-            // Lấy danh sách học viên dựa trên mã tuyển sinh
-            var danhSachHocVien = db.Phieudangkyhocs
-                .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
-                .Select(p => p.MahvNavigation)
-                .ToList();
-
-            // Lấy danh sách các học viên đã được xếp lớp với malophoc và trangthai = 1
-            var hocvienDaXepLop = db.Phieudiems
-     .Where(p => p.Trangthai == 1)
-     .Select(p => p.Malophoc)
-     .Distinct()
-     .ToList();
-
-            var hocvienChuaXepLop = danhSachHocVien
-                .Where(hv => !hocvienDaXepLop.Any(ml => db.Phieudiems.Any(p => p.Mahv == hv.Mahv && p.Malophoc == ml)))
-                .ToList();
-
-            ViewBag.Maloptuyensinh = maloptuyensinh;
-            ViewBag.Malophoc = malophoc;
-            return View(hocvienChuaXepLop);
-
-        }
-
-        //       public IActionResult danhSach(string malophoc, string maloptuyensinh)
-        //{
-        //    ViewBag.Maloptuyensinh = maloptuyensinh;
-
-        //    // Lấy danh sách học viên dựa trên mã lớp tuyển sinh
-        //    var danhSachHocVien = db.Phieudangkyhocs
-        //        .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
-        //        .Select(p => p.MahvNavigation)
-        //        .ToList();
-
-        //    // Lấy danh sách các học viên đã được xếp vào các lớp học khác với malophoc và trangthai = 1
-        //    var hocvienDaXepLop = db.Phieudiems
-        //        .Where(p => p.Malophoc != malophoc && p.Trangthai == 1)
-        //        .Select(p => p.Mahv)
-        //        .ToList();
-
-        //    // Loại bỏ danh sách học viên đã được xếp lớp
-        //    var hocvienChuaXepLop = danhSachHocVien
-        //        .Where(hv => !hocvienDaXepLop.Contains(hv.Mahv))
-        //        .ToList();
-
-        //    ViewBag.Malophoc = malophoc;
-        //    return View(hocvienChuaXepLop);
-        //}
-
-
-
-
-        [HttpPost]
-        public IActionResult XepLop( string malophoc, List<string> hocvienIds)
-        {
-            foreach (var hocvienId in hocvienIds)
-            {
-                // Kiểm tra trùng lặp trước khi thêm
-                var existingPhieuDiem = db.Phieudiems.FirstOrDefault(p => p.Malophoc == malophoc && p.Mahv == hocvienId);
-                if (existingPhieuDiem == null)
-                {
-                    var phieuDiem = new Phieudiem
-                    {
-                        Malophoc = malophoc,
-                        Mahv = hocvienId,
-                        Trangthai = 1,
-                        // Các thông tin khác về điểm
-                    };
-
-                    db.Phieudiems.Add(phieuDiem);
-                }
-            }
-
-            db.SaveChanges();
-         
-            
-            return RedirectToAction("DanhSachHocVien", new { malophoc = malophoc });
-            // return RedirectToAction("Index");
-        }
-        public IActionResult DanhSachHocVien(string malophoc)
-        {
-            ViewBag.malophoc = malophoc;
-            var hocvien = db.Phieudiems
-                .Where(p => p.Malophoc == malophoc)
-                .Select(p => p.MahvNavigation)
-                .ToList();
-
-            return PartialView(hocvien);
-        }
-
-
-
-        //public IActionResult Index1()
-        //{
-
-        //    //ViewBag.DSlop = new SelectList(db.Khoahocs.ToList(), "Makh", "Tenkh");
-        //    return View(db.Lophocs.ToList());
-
-        //}
         public IActionResult Index()
         {
+            if (TempData.ContainsKey("SuccessMessageThemLopHoc"))
+            {
+                ViewBag.SuccessMessageThemLopHoc = TempData["SuccessMessageThemLopHoc"];
+            }
+            if (TempData.ContainsKey("SuccessMessageSuaLopHoc"))
+            {
+                ViewBag.SuccessMessageSuaLopHoc = TempData["SuccessMessageSuaLopHoc"];
+            }
+            if (TempData.ContainsKey("ErrorMessageSua"))
+            {
+                ViewBag.ErrorMessageSua = TempData["ErrorMessageSua"];
+            }
             var lophocs = db.Lophocs
                 .Include(l => l.LophocGiaoviens)
                 .ThenInclude(lg => lg.MagvNavigation)
@@ -158,49 +38,128 @@ namespace hocvien.Controllers
 
             return View(lophocs);
         }
+        public IActionResult formTaolophoc(string id)
+        {
 
-        //public IActionResult Index()
-        //{
-        //    var tenGiaoviens = db.Lophocs
-        //        .Include(l => l.LophocGiaoviens)
-        //        .SelectMany(l => l.LophocGiaoviens.Select(lg => lg.MagvNavigation.Hoten))
-        //        .ToList();
+            ViewBag.s = id;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult themLophoc(Lophoc h)
+        {
+            try
+            {
+                string maloptuyensinh = h.Maloptuyensinh;
+                string malop = Request.Form[$"malophoc"];
+                //cap nhâp lại database
+                string manv = HttpContext.Session.GetString("Manv");
+                //ViewBag.ten = manv;
+                h.Malophoc = maloptuyensinh + malop;
+                h.Nguoitao = manv;
+                h.Ngaytao = DateTime.Now;
+                db.Lophocs.Add(h);
+                db.SaveChanges();
+                TempData["SuccessMessageThemLopHoc"] = "Thêm lớp học thành công!";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessageThemLopHoc"] = "Đã xảy ra lỗi khi thêm lớp học";
 
-        //    return View(tenGiaoviens);
-        //}
+            }
+            return View("formTaolophoc");
 
-        //        public IActionResult Index()
-        //{
-        //    var lophocs = db.Lophocs
-        //        .Include(l => l.LophocGiaoviens)
-        //        .ThenInclude(lg => lg.Giaovien)
-        //        .ToList();
+        }
+       
 
-        //    return View(lophocs);
-        //}
+       
+        public IActionResult formThemLop()
+        {
+            var khoaHocDangMo = db.Khoahocs.Where(kh => kh.Trangthai == "Đang mở").ToList();
+            ViewBag.DSlop = new SelectList(khoaHocDangMo, "Makh", "Tenkh");
+          
+            return View();
+        }
 
+        public IActionResult danhSach(string malophoc, string maloptuyensinh)
+        {
+            ViewBag.Maloptuyensinh = maloptuyensinh;
+            ViewBag.Malophoc = malophoc;
 
+            // Get the list of students who have registered for the specified course (Loptuyensinh)
+            var danhSachHocVien = db.Phieudangkyhocs
+                .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
+                .Select(p => p.MahvNavigation)
+                .ToList();
+
+            var hocvienChuaXepLop = new List<Hocvien>();
+
+            // Check if any student is already assigned to another class with the same maloptuyensinh
+            foreach (var hocvien in danhSachHocVien)
+            {
+                var existingPhieuDiemKhac = db.Phieudiems.FirstOrDefault(p => p.Mahv == hocvien.Mahv && p.Malophoc != malophoc && p.MalophocNavigation.Maloptuyensinh == maloptuyensinh);
+                if (existingPhieuDiemKhac == null)
+                {
+                    // Check if the student is not already assigned to the current class (malophoc)
+                    var existingPhieuDiem = db.Phieudiems.FirstOrDefault(p => p.Malophoc == malophoc && p.Mahv == hocvien.Mahv);
+                    if (existingPhieuDiem == null)
+                    {
+                        hocvienChuaXepLop.Add(hocvien);
+                    }
+                }
+            }
+
+            return View(hocvienChuaXepLop);
+        }
+
+        [HttpPost]
+public IActionResult XepLop(string malophoc, List<string> hocvienIds)
+{
+    foreach (var hocvienId in hocvienIds)
+    {
+        // Kiểm tra trùng lặp trước khi thêm
+        var existingPhieuDiem = db.Phieudiems.FirstOrDefault(p => p.Malophoc == malophoc && p.Mahv == hocvienId);
+        if (existingPhieuDiem == null)
+        {
+            var phieuDiem = new Phieudiem
+            {
+                Malophoc = malophoc,
+                Mahv = hocvienId,
+                Trangthai = 1,
+                // Các thông tin khác về điểm
+            };
+
+            db.Phieudiems.Add(phieuDiem);
+        }
+    }
+
+    db.SaveChanges();
+
+    return RedirectToAction("DanhSachHocVien", new { malophoc = malophoc });
+}
+
+public IActionResult DanhSachHocVien(string malophoc)
+{
+            if (TempData.ContainsKey("ErrorMessageChuyenLop"))
+            {
+                ViewBag.ErrorMessageChuyenLop = TempData["ErrorMessageChuyenLop"];
+            }
+            ViewBag.malophoc = malophoc;
+
+    var hocvien = db.Phieudiems
+        .Where(p => p.Malophoc == malophoc)
+        .Select(p => p.MahvNavigation)
+        .ToList();
+
+    return PartialView(hocvien);
+
+}
         public IActionResult xemDSLop(string id)
         {
             List<Loptuyensinh> ds = db.Loptuyensinhs.Where(p => p.Maloptuyensinh == id).ToList();
             return PartialView(ds);
         }
 
-        //public IActionResult xemDSLop(string id)
-        //{
-        //   // List<Phieudangkyhoc> ds = db.Phieudangkyhocs.Join(db.Hocviens, x => x.Mahv, y => y.Mahv, (x, y) => new { Phieudangkyhoc = x, Hocvien = y }).Where(x => x.Phieudangkyhoc.Maloptuyensinh == id).ToList();
-        //   // db.Hocviens.Join(db.Phieudiems, x => x.Mahv, y => y.Mahv,
-        //    //(x, y) => new { HocVien = x, PhieuDiem = y }
-        //    //     ).Where(x => x.HocVien.Mahv == id)
-
-        //   // return PartialView(ds);
-        //}
-        
-
-       
-
-
-      
         [HttpPost]
         public IActionResult ChuyenLop(string maHocVien, string maLopHoc)
         {
@@ -209,43 +168,65 @@ namespace hocvien.Controllers
 
             if (phieuDiemHienTai != null)
             {
-                // Xóa phiếu điểm hiện tại
+                // Check if the student has a score in the current class
+                if (HasScore(phieuDiemHienTai))
+                {
+                    // Handle the case when the student has a score
+                    TempData["ErrorMessageChuyenLop"] = "Không thể chuyển lớp vì học viên đã có điểm trong lớp này.";
+                    return RedirectToAction("DanhSachHocVien", new { malophoc = maLopHoc });
+                }
+
+                // If the student doesn't have a score, remove the Phieudiem record
                 db.Phieudiems.Remove(phieuDiemHienTai);
                 db.SaveChanges();
-
-
             }
 
             // Redirect về action "DanhSachHocVien" và truyền lại mã lớp học
             return RedirectToAction("DanhSachHocVien", new { malophoc = maLopHoc });
         }
 
-        public IActionResult formSualophoc(string id)
+        private bool HasScore(Phieudiem phieuDiem)
+        {
+            
+            return phieuDiem.Diemdoc.HasValue || phieuDiem.Diemviet.HasValue || phieuDiem.Diemnoi.HasValue || phieuDiem.Diemnghe.HasValue;
+        }
+
+
+        public IActionResult formSuaLopHoc(string id)
         {
             ViewBag.ten = User.Identity.Name;
-            Model.Monhoc x = db.Monhocs.Find(id);
+            Model.Lophoc x = db.Lophocs.Find(id);
             return View(x);
         }
         [HttpPost]
-        public IActionResult suaLophoc(Model.Lophoc x)
+        public IActionResult suaLopHoc(Model.Lophoc x)
         {
             string manv = HttpContext.Session.GetString("Manv");
             if (ModelState.IsValid)
             {
-                Model.Lophoc kh = db.Lophocs.Find(x.Malophoc);
-                if (kh != null)
+                try
                 {
-                    kh.Phonghoc = x.Phonghoc;
-                    kh.Ngaytao = DateTime.Now;
-                    kh.Nguoitao = manv;
+                    Model.Lophoc kh = db.Lophocs.Find(x.Malophoc);
+                    if (kh != null)
+                    {
+                        kh.Phonghoc = x.Phonghoc;
+                        kh.Ngaytao = DateTime.Now;
+                        kh.Nguoitao = manv;
 
-
-                    db.SaveChanges();
+                        db.SaveChanges();
+                    }
+                    TempData["SuccessMessageSuaLopHoc"] = "Thêm lớp học thành công";
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                catch (Exception ex)
+                {
+
+                    TempData["ErrorMessageSua"] = "Đã xảy ra lỗi khi sửa lớp học";
+                    return View("formSuaLopHoc");
+                }
             }
 
-            return View("formSuamonhoc");
+            return View("formSuaLopHoc");
         }
 
     }

@@ -31,7 +31,9 @@
             <th>
                Ngày tạo
             </th>
-            <th></th>
+            <th>
+                Trạng thái
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -55,6 +57,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Ngaytao)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trangthai)
+                </td>
             <td>
                 <td>
                     <a asp-action="formSuaMonhoc" asp-route-id="@item.Mamh" class="btn btn-primary">Sửa</a>

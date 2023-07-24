@@ -9,10 +9,15 @@
     Layout = "_Layout";
 }
 @model List<Hocvien>
-
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessageChuyenLop))
+{
+    <div id="msgAlert" class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessageChuyenLop
+    </div>
+}
 <h2>Danh sách học viên</h2>
 
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>Mã lớp học</th>
         <th>Mã học viên</th>
@@ -43,3 +48,17 @@
     }
     <a asp-action="NhapDiem" class="btn-btn primary" asp-controller="Diem" asp-route-maLopHoc="@ViewBag.malophoc">Nhập điểm</a>
 </table>
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessageChuyenLop))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}

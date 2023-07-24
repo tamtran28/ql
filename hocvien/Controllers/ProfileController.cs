@@ -112,19 +112,18 @@ namespace hocvien.Controllers
                     hv.Ngaysinh = x.Ngaysinh;
 
                     hv.Gioitinh = x.Gioitinh;
-                    //hv.Trangthai = x.Trangthai;
+                  
                     hv.Diachi = x.Diachi;
-                    // hv.Email = x.Email;
-                    // hv.Nhom = x.Nhom;
+                   
                     hv.Sdt = x.Sdt;
                     db.SaveChanges();
                 }
-                TempData["SuaSuccessMessage"] = "Sửa giáo viên thành công";
+                TempData["SuaSuccessMessage"] = "Sửa thành công thành công";
 
 
                 //else if (User.IsInRole("giaovien"))
                 //{
-                return RedirectToAction("Index", "Giaovien");
+                return RedirectToAction("Index", "Hocvien");
                 //}
                 //else
                 //{
@@ -132,7 +131,7 @@ namespace hocvien.Controllers
                 //}
             }
 
-            return View("formSuathongtinnhanvien");
+            return View("formSuathongtinnhanvien",x);
         }
     }
 }

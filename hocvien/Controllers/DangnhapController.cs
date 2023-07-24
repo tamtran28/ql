@@ -16,6 +16,8 @@ namespace hocvien.Controllers
     {
         private centerContext db = new centerContext();
 
+
+
         //[HttpPost]
         //public IActionResult Login(string username, string password, string role)
         //{
@@ -23,34 +25,110 @@ namespace hocvien.Controllers
         //    {
         //        if (role == "giáo viên")
         //        {
-        //            //var giaovien = db.Nhanviens.Where(x => x.Email == username);
-        //            if (db.Giaoviens.Any(x => x.Email == username && x.Matkhau == EncryptPassword(password)))
+        //            var giaovien = db.Giaoviens.FirstOrDefault(x => x.Email == username && x.Matkhau == password);
+        //            if (giaovien != null)
         //            {
-        //                // Đăng nhập thành công cho giáo viên
-        //                // Lưu thông tin đăng nhập vào session hoặc cookie
-        //                return RedirectToAction("Index", "Hocvien");
-        //            }
-        //        }
-        //        else if (role == "nhân viên")
+        //                string manv = giaovien.Magv;
+
+        //                // Lưu thông tin đăng nhập vào session
+        //                HttpContext.Session.SetString("Username", username);
+        //                HttpContext.Session.SetString("Manv", manv);
+
+        //                // Đặt vai trò của người dùng
+        //                var claims = new List<Claim>
         //        {
-        //            // var nhanvien = db.Nhanviens.FirstOrDefault(nv => nv.Email == username);
-        //            if (db.Nhanviens.Any(x => x.Email == username && x.Matkhau == EncryptPassword(password)))
-        //            {
-        //                // Đăng nhập thành công cho nhân viên
-        //                // Lưu thông tin đăng nhập vào session hoặc cookie
-        //                return RedirectToAction("Index", "Hocvien");
+        //            new Claim(ClaimTypes.Name, username),
+        //            new Claim(ClaimTypes.Role, "giaovien")
+        //        };
+        //                var userIdentity = new ClaimsIdentity(claims, "login");
+        //                var principal = new ClaimsPrincipal(userIdentity);
+
+        //                HttpContext.SignInAsync(principal).Wait();
+
+        //                return RedirectToAction("Index", "Giaovien");
         //            }
         //        }
+        //        else if (role == "quản lý")
+        //        {
+        //            var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau ==password && x.Nhom == 1);
+        //            if (nhanvien != null)
+        //            {
+        //                string manv = nhanvien.Manv;
+
+        //                // Lưu thông tin đăng nhập vào session
+        //                HttpContext.Session.SetString("Username", username);
+        //                HttpContext.Session.SetString("Manv", manv);
+
+        //                // Đặt vai trò của người dùng
+        //                var claims = new List<Claim>
+        //        {
+        //            new Claim(ClaimTypes.Name, username),
+        //            new Claim(ClaimTypes.Role, "quanly")
+        //        };
+        //                var userIdentity = new ClaimsIdentity(claims, "login");
+        //                var principal = new ClaimsPrincipal(userIdentity);
+
+        //                HttpContext.SignInAsync(principal).Wait();
+
+        //                return RedirectToAction("Index", "Monhoc");
+        //            }
+        //        }
+        //        else if (role == "tuyển sinh")
+        //        {
+        //            var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == password && x.Nhom == 2);
+        //            if (nhanvien != null)
+        //            {
+        //                string manv = nhanvien.Manv;
+
+        //                // Lưu thông tin đăng nhập vào session
+        //                HttpContext.Session.SetString("Username", username);
+        //                HttpContext.Session.SetString("Manv", manv);
+
+        //                var claims = new List<Claim>
+        //        {
+        //            new Claim(ClaimTypes.Name, username),
+        //            new Claim(ClaimTypes.Role, "tuyensinh")
+        //        };
+        //                var userIdentity = new ClaimsIdentity(claims, "login");
+        //                var principal = new ClaimsPrincipal(userIdentity);
+
+        //                HttpContext.SignInAsync(principal).Wait();
+
+        //                return RedirectToAction("Index", "Hoadon");
+        //            }
+        //        }
+        //        else if (role == "học vụ")
+        //        {
+        //            var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == password && x.Nhom == 3);
+        //            if (nhanvien != null)
+        //            {
+        //                string manv = nhanvien.Manv;
+
+        //                // Lưu thông tin đăng nhập vào session
+        //                HttpContext.Session.SetString("Username", username);
+        //                HttpContext.Session.SetString("Manv", manv);
+
+        //                var claims = new List<Claim>
+        //        {
+        //            new Claim(ClaimTypes.Name, username),
+        //            new Claim(ClaimTypes.Role, "hocvu")
+        //        };
+        //                var userIdentity = new ClaimsIdentity(claims, "login");
+        //                var principal = new ClaimsPrincipal(userIdentity);
+
+        //                HttpContext.SignInAsync(principal).Wait();
+
+        //                return RedirectToAction("Index", "Hocvien");
+        //            }
+        //        }
+        //       // return RedirectToAction("Denied", "Dangnhap");
         //    }
 
-        //    // Xử lý lỗi đăng nhập không thành công
-        //    ModelState.AddModelError(string.Empty, "Thông tin đăng nhập không hợp lệ.");
+        //    // Xử lý lỗi đăng nhập không thành công
+
+        //   TempData["ErrorMessageDN"] = "Thông tin đăng nhập không hợp lệ.";
         //    return View();
         //}
-
-
-
-      
         [HttpPost]
         public IActionResult Login(string username, string password, string role)
         {
@@ -58,124 +136,130 @@ namespace hocvien.Controllers
             {
                 if (role == "giáo viên")
                 {
-                    var giaovien = db.Giaoviens.FirstOrDefault(x => x.Email == username && x.Matkhau == EncryptPassword(password));
+                    var giaovien = db.Giaoviens.FirstOrDefault(x => x.Email == username && x.Matkhau == password && x.Nhom == GetNhom(role));
                     if (giaovien != null)
                     {
-                        string manv = giaovien.Magv;
+                        if (giaoVienNghiLam(giaovien))
+                        {
+                            TempData["ErrorMessageTuChoi"] = "Tài khoản bị vô hiệu hóa";
+                            return View();
+                        }
 
-                        // Lưu thông tin đăng nhập vào session
-                        HttpContext.Session.SetString("Username", username);
-                        HttpContext.Session.SetString("Manv", manv);
-
-                        // Đặt vai trò của người dùng
                         var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, username),
-                    new Claim(ClaimTypes.Role, "giaovien")
+                    new Claim(ClaimTypes.Role, GetRoleName(role))
                 };
                         var userIdentity = new ClaimsIdentity(claims, "login");
                         var principal = new ClaimsPrincipal(userIdentity);
 
+                        HttpContext.Session.SetString("Username", username);
+                        HttpContext.Session.SetString("Manv", giaovien.Magv);
                         HttpContext.SignInAsync(principal).Wait();
 
-                        return RedirectToAction("Index", "Giaovien");
+                        return RedirectToAction("Index", GetControllerName(role));
                     }
                 }
-                else if (role == "quản lý")
+                else
                 {
-                    var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == EncryptPassword(password) && x.Nhom == 1);
+                    var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == password && x.Nhom == GetNhom(role));
                     if (nhanvien != null)
                     {
-                        string manv = nhanvien.Manv;
-
-                        // Lưu thông tin đăng nhập vào session
-                        HttpContext.Session.SetString("Username", username);
-                        HttpContext.Session.SetString("Manv", manv);
-
-                        // Đặt vai trò của người dùng
-                        var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, username),
-                    new Claim(ClaimTypes.Role, "quanly")
-                };
-                        var userIdentity = new ClaimsIdentity(claims, "login");
-                        var principal = new ClaimsPrincipal(userIdentity);
-
-                        HttpContext.SignInAsync(principal).Wait();
-
-                        return RedirectToAction("Index", "Monhoc");
-                    }
-                }
-                else if (role == "tuyển sinh")
-                {
-                    var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == EncryptPassword(password) && x.Nhom == 2);
-                    if (nhanvien != null)
-                    {
-                        string manv = nhanvien.Manv;
-
-                        // Lưu thông tin đăng nhập vào session
-                        HttpContext.Session.SetString("Username", username);
-                        HttpContext.Session.SetString("Manv", manv);
+                        if (nhanVienNghiLam(nhanvien))
+                        {
+                            TempData["ErrorMessageTuChoi"] = "Tài khoản bị vô hiệu hóa";
+                            return View();
+                        }
 
                         var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, username),
-                    new Claim(ClaimTypes.Role, "tuyensinh")
+                    new Claim(ClaimTypes.Role, GetRoleName(role))
                 };
                         var userIdentity = new ClaimsIdentity(claims, "login");
                         var principal = new ClaimsPrincipal(userIdentity);
 
-                        HttpContext.SignInAsync(principal).Wait();
-
-                        return RedirectToAction("Index", "Hoadon");
-                    }
-                }
-                else if (role == "học vụ")
-                {
-                    var nhanvien = db.Nhanviens.FirstOrDefault(x => x.Email == username && x.Matkhau == EncryptPassword(password) && x.Nhom == 3);
-                    if (nhanvien != null)
-                    {
-                        string manv = nhanvien.Manv;
-
-                        // Lưu thông tin đăng nhập vào session
                         HttpContext.Session.SetString("Username", username);
-                        HttpContext.Session.SetString("Manv", manv);
-
-                        var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, username),
-                    new Claim(ClaimTypes.Role, "hocvu")
-                };
-                        var userIdentity = new ClaimsIdentity(claims, "login");
-                        var principal = new ClaimsPrincipal(userIdentity);
-
+                        HttpContext.Session.SetString("Manv", nhanvien.Manv);
                         HttpContext.SignInAsync(principal).Wait();
 
-                        return RedirectToAction("Index", "Hocvien");
+                        return RedirectToAction("Index", GetControllerName(role));
                     }
                 }
-               // return RedirectToAction("Denied", "Dangnhap");
+
+                TempData["ErrorMessageDN"] = "Thông tin đăng nhập không hợp lệ.";
             }
 
-            // Xử lý lỗi đăng nhập không thành công
-           
-           TempData["ErrorMessageDN"] = "Thông tin đăng nhập không hợp lệ.";
             return View();
         }
 
-     
-       
-        private string EncryptPassword(string password)
+        // Các phương thức GetRoleName, GetControllerName, GetNhom và IsNhanVienNghiLam vẫn giữ nguyên như trong bản trước đó.
+
+
+        private string GetRoleName(string role)
         {
-            // Thực hiện mã hóa mật khẩu ở đây (ví dụ: sử dụng BCrypt, SHA256, ...)
-            // Trả về mật khẩu đã được mã hóa
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-            return password;
+            switch (role)
+            {
+                case "giáo viên":
+                    return "giaovien";
+                case "quản lý":
+                    return "quanly";
+                case "tuyển sinh":
+                    return "tuyensinh";
+                case "học vụ":
+                    return "hocvu";
+                default:
+                    return string.Empty;
+            }
         }
 
+        private string GetControllerName(string role)
+        {
+            switch (role)
+            {
+                case "giáo viên":
+                    return "Hocvien";
+                case "quản lý":
+                    return "Monhoc";
+                case "tuyển sinh":
+                    return "Hoadon";
+                case "học vụ":
+                    return "Hocvien";
+                default:
+                    return "Dangnhap";
+            }
+        }
 
+        private int GetNhom(string role)
+        {
+            switch (role)
+            {
+               
+                case "quản lý":
+                    return 1;
+                case "tuyển sinh":
+                    return 2;
+                case "học vụ":
+                    return 3;
+                case "giáo viên":
+                    return 4;
+                default:
+                    return -1;
+            }
+        }
 
+        private bool nhanVienNghiLam(Nhanvien nhanvien)
+        {
 
+            return nhanvien.Trangthai == "Nghỉ";
+          
+        }
+        private bool giaoVienNghiLam(Giaovien giaovien)
+        {
+
+            return giaovien.Trangthai == "Nghỉ";
+
+        }
         public async Task<IActionResult> Logout()
         {
             // Xóa thông tin đăng nhập khỏi session hoặc cookie
@@ -201,55 +285,14 @@ namespace hocvien.Controllers
             {
                 ViewBag.SuaSuccessMessage = TempData["ErrorMessageDN"];
             }
+            if (TempData.ContainsKey("ErrorMessageTuChoi"))
+            {
+                ViewBag.Tuchoi = TempData["ErrorMessageTuChoi"];
+            }
+           
             return View();
         }
-        //public IActionResult Index()
-        //{
-        //    if (Request.Cookies["email"] != null && Request.Cookies["password"] != null)
-        //    {
-        //        ViewBag.email = Request.Cookies["email"].ToString();
-        //        ViewBag.password = Request.Cookies["password"].ToString();
-        //    }
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult kiemtradangnhap(string username, string password, string ghinho)
-        //{
-        //    if (Request.Cookies["email"] != null && Request.Cookies["email"] != null)
-        //    {
-        //        username = Request.Cookies["email"].ToString();
-        //        password = Request.Cookies["password"].ToString();
-               
-        //    }
-
-        //    if (checkpassword(username, password))
-        //    {
-        //        var userSession = new Nhanvien();
-        //        userSession.Email = username;
-        //        userSession.Matkhau = password;
-        //        //    //var listGroups = GetListGroupID(username);//Có thể viết dòng lệnh lấy các GroupID từ CSDL, ví dụ gán ="ADMIN", dùng List<string>
-
-        //        //    //Session.Add("SESSION_GROUP", listGroups);
-        //        //    //Session.Add("USER_SESSION", userSession);
-
-        //        //    //if (ghinho == "on")//Ghi nhớ
-        //        //    //    ghinhotaikhoan(username, password);
-        //        //    return Redirect("~/Home");
-        //        return RedirectToAction("Index", "Hocvien");
-        //    }
-        //    //}
-        //    return RedirectToAction("Index");
-        //}
-        //public bool checkpassword(string username, string password)
-        //{
-        //    if (db.Nhanviens.Where(x => x.Email == username && x.Matkhau == password).Count() > 0)
-
-        //        return true;
-        //    else
-        //        return false;
-
-
-        //}
+      
      
     }
 
