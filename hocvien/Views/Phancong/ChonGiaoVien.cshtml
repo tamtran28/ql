@@ -11,17 +11,49 @@
 
 <h2>Chọn giáo viên cho lớp học</h2>
 
+<h2>Chọn giáo viên cho lớp học</h2>
+
 <form method="post" asp-action="PhanCongGiaoVien" asp-controller="Phancong">
     <input type="hidden" name="malophoc" value="@ViewBag.MaLopHoc" />
 
-        <label for="magv">Giáo viên:</label>
-        <select name="magv">
-            <option value="">Chọn giáo viên</option>
-            @foreach (var giaoVien in ViewBag.DanhSachGiaoVien)
-            {
-                <option value="@giaoVien.Magv">@giaoVien.Hoten</option>
-            }
-        </select>
-    
+    <label>Giáo viên:</label><br />
+    @foreach (var giaoVien in ViewBag.DanhSachGiaoVien)
+    {
+        <label>
+            <input type="checkbox" name="magv" value="@giaoVien.Magv" />
+            @giaoVien.Hoten
+        </label>
+
+        <br />
+    }
+
     <button type="submit" class="btn btn-primary">Lưu phân công</button>
 </form>
+
+
+
+<h2>Danh sách giáo viên đã phân công</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Giáo viên</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lopGiaoVien in ViewBag.DanhSachLopGiaoVien)
+        {
+            <tr>
+                <td>@lopGiaoVien.MagvNavigation.Hoten</td>
+                <td>
+                    <!-- Add "Edit" button to each row -->
+                    <form asp-action="SuaPhanCongGiaoVien" asp-controller="Phancong" method="post">
+                        <input type="hidden" name="malophoc" value="@ViewBag.MaLopHoc" />
+                        <input type="hidden" name="magv" value="@lopGiaoVien.Magv" />
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

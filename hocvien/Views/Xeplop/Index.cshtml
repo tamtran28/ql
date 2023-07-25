@@ -24,7 +24,7 @@
     </div>
 }
 <h1>Danh sách lớp học</h1>
-<table class="table table-bordered table-hover">
+<table class="table table-bordered ">
     <thead>
         <tr>
             <th>Mã lớp học</th>
@@ -48,7 +48,8 @@
                         <a asp-action="DanhSachHocVien" asp-route-malophoc="@item.Malophoc" asp-controller="Xeplop" class="btn btn-primary">Xem danh sách</a>
                         <a asp-action="ChonGiaoVien" asp-controller="Phancong" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Phân công</a>
                         <a asp-action="xemDiem" asp-controller="Diem" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Xem điểm</a>
-                        
+                        <a asp-action="formSuaLopHoc" asp-route-id="@item.Malophoc" asp-controller="Xeplop" class="btn btn-primary">Sửa</a>
+                        <a asp-action="formXoaLopHoc" asp-controller="Xeplop" asp-route-id="@item.Malophoc" class="btn btn-danger">Xóa</a>
                     </div>
                 </td>
             </tr>

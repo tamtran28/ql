@@ -42,11 +42,21 @@
     <input type="hidden" name="malophoc" value="@ViewBag.Malophoc" />
     @foreach (var hocvien in Model)
     {
-        <div>
-            <input type="checkbox" name="hocvienIds" value="@hocvien.Mahv" /> @hocvien.Hoten
-        </div>
+        <tr>
+            <td>
+                <div class="student-info" style="display:flex;flex-wrap:wrap; gap:10px">
+                    <input type="checkbox" name="hocvienIds" value="@hocvien.Mahv" />
+                    <label style="margin:0;">
+                        <p>@hocvien.Hoten</p>
+                        <p>Ngày sinh: @hocvien.Ngaysinh</p>
+                        <p>SDT: @hocvien.Sdt</p>
+                    </label>
+                </div>
+            </td>
+            
+        </tr>
     }
-    <button type="submit">Xếp lớp</button>
+    <button type="submit" class="btn btn-primary">Xếp lớp</button>
 </form>
 <br>
 <div>

@@ -1,6 +1,7 @@
 ﻿using hocvien.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace hocvien.Controllers
@@ -19,7 +20,12 @@ namespace hocvien.Controllers
 
             ViewBag.MaLopHoc = malophoc;
             ViewBag.DanhSachGiaoVien = danhSachGiaoVien;
+            var danhSachLopGiaoVien = db.LophocGiaoviens
+           .Include(l => l.MagvNavigation)
+           .Where(l => l.Malophoc == malophoc)
+           .ToList();
 
+            ViewBag.DanhSachLopGiaoVien = danhSachLopGiaoVien;
             return View();
         }
         //[HttpPost]
@@ -38,8 +44,36 @@ namespace hocvien.Controllers
 
         //    return RedirectToAction("Index","Xeplop");
         //}
+        //[HttpPost]
+        //public IActionResult PhanCongGiaoVien(string malophoc, string magv)
+        //{
+        //    var lopHoc = db.Lophocs.FirstOrDefault(l => l.Malophoc == malophoc);
+        //    if (lopHoc == null)
+        //    {
+        //        // Handle the error or display a message that the class does not exist
+        //        return RedirectToAction("DanhSachLopHoc");
+        //    }
+
+        //    // Update the Magv property of the Lophoc entity
+        //    //lopHoc.Magv = magv;
+
+        //    // Save the changes to the database
+        //    db.SaveChanges();
+
+        //    // Create a new LophocGiaovien entity and add it to the lophoc_giaovien table
+        //    var lophocGiaovien = new LophocGiaovien
+        //    {
+        //        Malophoc = malophoc,
+        //        Magv = magv
+        //    };
+
+        //    db.LophocGiaoviens.Add(lophocGiaovien);
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("Index", "Xeplop");
+        //}
         [HttpPost]
-        public IActionResult PhanCongGiaoVien(string malophoc, string magv)
+        public IActionResult PhanCongGiaoVien(string malophoc, string[] magv)
         {
             var lopHoc = db.Lophocs.FirstOrDefault(l => l.Malophoc == malophoc);
             if (lopHoc == null)
@@ -49,19 +83,24 @@ namespace hocvien.Controllers
             }
 
             // Update the Magv property of the Lophoc entity
-            //lopHoc.Magv = magv;
+            // Note: This assumes that you are using a one-to-many relationship between Lophoc and Giaovien
+            lopHoc.LophocGiaoviens.Clear(); // Remove any existing teacher assignments for the class
+
+            foreach (var gv in magv)
+            {
+                var giaovien = db.Giaoviens.FirstOrDefault(g => g.Magv == gv);
+                if (giaovien != null)
+                {
+                    var lophocGiaovien = new LophocGiaovien
+                    {
+                        Malophoc = malophoc,
+                        Magv = gv
+                    };
+                    lopHoc.LophocGiaoviens.Add(lophocGiaovien);
+                }
+            }
 
             // Save the changes to the database
-            db.SaveChanges();
-
-            // Create a new LophocGiaovien entity and add it to the lophoc_giaovien table
-            var lophocGiaovien = new LophocGiaovien
-            {
-                Malophoc = malophoc,
-                Magv = magv
-            };
-
-            db.LophocGiaoviens.Add(lophocGiaovien);
             db.SaveChanges();
 
             return RedirectToAction("Index", "Xeplop");

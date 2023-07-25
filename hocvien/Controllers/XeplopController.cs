@@ -111,6 +111,94 @@ namespace hocvien.Controllers
 
             return View(hocvienChuaXepLop);
         }
+        //public IActionResult danhSach(string malophoc, string maloptuyensinh)
+        //{
+        //    ViewBag.Maloptuyensinh = maloptuyensinh;
+        //    ViewBag.Malophoc = malophoc;
+
+        //    // Get the list of students who have registered for the specified course (Loptuyensinh)
+        //    var danhSachHocVien = db.Phieudangkyhocs
+        //        .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
+        //        .Select(p => p.MahvNavigation)
+        //        .ToList();
+
+        //    var hocvienChuaXepLop = new List<Tuple<Hocvien, string>>();
+
+        //    // Check if any student is already assigned to another class with the same maloptuyensinh
+        //    foreach (var hocvien in danhSachHocVien)
+        //    {
+        //        var existingPhieuDiemKhac = db.Phieudiems.FirstOrDefault(p => p.Mahv == hocvien.Mahv && p.Malophoc != malophoc && p.MalophocNavigation.Maloptuyensinh == maloptuyensinh);
+        //        if (existingPhieuDiemKhac == null)
+        //        {
+        //            // Check if the student is not already assigned to the current class (malophoc)
+        //            var existingPhieuDiem = db.Phieudiems.FirstOrDefault(p => p.Malophoc == malophoc && p.Mahv == hocvien.Mahv);
+        //            if (existingPhieuDiem == null)
+        //            {
+        //                // Get Trangthaithanhtoan for each Maphieu of the Hocvien
+        //                var trangThaiThanhToan = db.Hoadons
+        //                    .Where(hd => hd.Maphieu == hocv)
+        //                    .Select(hd => hd.Trangthaithanhtoan)
+        //                    .FirstOrDefault();
+        //                ViewBag.trangthai = trangThaiThanhToan;
+        //                // hocvienChuaXepLop.Add(new Tuple<Hocvien, string>(hocvien, trangThaiThanhToan));
+        //                hocvienChuaXepLop.Add(Tuple.Create(hocvien, trangThaiThanhToan));
+        //            }
+        //        }
+
+        //    }
+
+        //    return View(hocvienChuaXepLop);
+        //}
+
+        //public IActionResult danhSach(string malophoc, string maloptuyensinh)
+        //{
+        //    ViewBag.Maloptuyensinh = maloptuyensinh;
+        //    ViewBag.Malophoc = malophoc;
+
+        //    // Get the list of students who have registered for the specified course (Loptuyensinh)
+        //    var danhSachHocVien = db.Phieudangkyhocs
+        //        .Where(p => p.LopDangkyhocs.Any(ldh => ldh.Maloptuyensinh == maloptuyensinh))
+        //        .Select(p => p.MahvNavigation)
+        //        .ToList();
+
+        //    var hocvienChuaXepLop = new List<Hocvien>();
+
+        //    // Check if any student is already assigned to another class with the same maloptuyensinh
+        //    foreach (var hocvien in danhSachHocVien)
+        //    {
+        //        var existingPhieuDiemKhac = db.Phieudiems.FirstOrDefault(p => p.Mahv == hocvien.Mahv && p.Malophoc != malophoc && p.MalophocNavigation.Maloptuyensinh == maloptuyensinh);
+        //        if (existingPhieuDiemKhac == null)
+        //        {
+        //            // Check if the student is not already assigned to the current class (malophoc)
+        //            var existingPhieuDiem = db.Phieudiems.FirstOrDefault(p => p.Malophoc == malophoc && p.Mahv == hocvien.Mahv);
+        //            if (existingPhieuDiem == null)
+        //            {
+        //                hocvienChuaXepLop.Add(hocvien);
+        //            }
+        //        }
+
+        //        // Get the associated Phieudangkyhoc for the current hocvien
+        //        var phieudangkyhoc = db.Phieudangkyhocs.FirstOrDefault(p => p.Mahv == hocvien.Mahv);
+        //        if (phieudangkyhoc != null)
+        //        {
+        //            // Get the latest Hoadon record associated with the Phieudangkyhoc
+        //            var hoadon = db.Hoadons
+        //                .Where(h => h.Maphieu == phieudangkyhoc.Maphieu)
+        //                .OrderByDescending(h => h.Ngaythu)
+        //                .FirstOrDefault();
+
+        //            phieudangkyhoc.Sotienconlai = hoadon != null ? hoadon.Sotienconlai : 0;
+        //        }
+        //        else
+        //        {
+        //            phieudangkyhoc.Sotienconlai = 0;
+        //        }
+        //    }
+
+        //    return View(hocvienChuaXepLop);
+        //}
+
+        // Other actions and methods if any...
 
         [HttpPost]
 public IActionResult XepLop(string malophoc, List<string> hocvienIds)
@@ -228,7 +316,25 @@ public IActionResult DanhSachHocVien(string malophoc)
 
             return View("formSuaLopHoc");
         }
+        public IActionResult formXoaLopHoc(String id)
+        {
+            int dem = db.Phieudiems.Where(a => a.Malophoc == id).ToList().Count();
+            Model.Lophoc x = db.Lophocs.Find(id);
+            ViewBag.flag = dem;
 
+            return View(x);
+        }
+        public IActionResult xoaLopHoc(String id)
+        {
+            Model.Lophoc x = db.Lophocs.Find(id);
+            if (x != null)
+            {
+                db.Lophocs.Remove(x);
+                db.SaveChanges();
+            }
+            TempData["xoaLH"] = "Xóa lớp học thành công";
+            return RedirectToAction("Index");
+        }
     }
 }
         

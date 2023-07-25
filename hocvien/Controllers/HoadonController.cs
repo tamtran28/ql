@@ -17,8 +17,9 @@ namespace hocvien.Controllers
         centerContext db = new centerContext();
         public IActionResult Index()
         {
-           // return View(db.Hoadons.ToList());
-            return View(db.Hoadons.ToList());
+            var hoadons = db.Hoadons.OrderByDescending(hd => hd.Ngaythu).ToList();
+
+            return View(hoadons);
         }
         //public IActionResult formLapHD(string id)
         //{
@@ -204,10 +205,15 @@ namespace hocvien.Controllers
                 ViewBag.ThuHocList = thuHocList;
                 ViewBag.GioHocList = gioHocList;
                 ViewBag.TongTien = hoadon.tongtien;
-                if (decimal.Equals(hoadon.Sotienconlai, decimal.Zero))
+
+                var nearestInvoice = db.Hoadons
+               .Where(h => h.Maphieu == maphieu && h.Sotienconlai == decimal.Zero)
+               .OrderByDescending(h => h.Ngaythu)
+               .FirstOrDefault();
+
+                if (nearestInvoice != null)
                 {
-                    // Redirect to the detailed invoice page
-                    return RedirectToAction("chiTiethoadon", "Hoadon", new { maphieu = maphieu });
+                    return RedirectToAction("chiTiethoadon", "Hoadon", new { mahd = nearestInvoice.Mahd });
                 }
                 ViewBag.SoTienDaTra = hoadon.Sotiendatra;
                 ViewBag.SoTienConLai = hoadon.Sotienconlai;
@@ -215,7 +221,7 @@ namespace hocvien.Controllers
                 return View();
             }
 
-            return RedirectToAction("Index");
+            return View();
         }
 
 
@@ -229,7 +235,7 @@ namespace hocvien.Controllers
             hd.Mahd = taoMaHD();
             hd.Ngaythu = DateTime.Now;
             hd.Manv = manv;
-            hd.Trangthaithanhtoan = "Thanh toán";
+          //  hd.Trangthaithanhtoan = "Thanh toán";
             hd.Maphieu = maphieu;
             decimal sotiendatra = decimal.Parse(Request.Form["sotiendatra"]);
            // decimal soTienDaTra = sotiendatra;
@@ -244,21 +250,28 @@ namespace hocvien.Controllers
             if (phieudangkyhoc != null)
             {
                 hd.Tongtienthanhtoan = phieudangkyhoc.tongtien;
-                hd.Sotienconlai = phieudangkyhoc.Sotienconlai - hd.Sotiendatra.Value;
+                hd.Sotienconlai = phieudangkyhoc.tongtien - hd.Sotiendatra.Value;
 
                
+                //if (decimal.Equals(phieudangkyhoc.Sotienconlai, decimal.Zero))
+                //{
+                    
+                //    return RedirectToAction("chiTiethoadon", new { mahd = hd.Mahd });
+                //}
                 if (decimal.Equals(phieudangkyhoc.Sotienconlai, decimal.Zero))
                 {
-                    
-                    return RedirectToAction("chiTiethoadon", new { mahd = hd.Mahd });
+                    hd.Trangthaithanhtoan = "Đã thanh toán";
                 }
-
+                else
+                {
+                    hd.Trangthaithanhtoan = "Còn thiếu: " + hd.Sotienconlai;
+                }
                 // Lưu hóa đơn vào cơ sở dữ liệu
                 db.Hoadons.Add(hd);
                 db.SaveChanges();
 
                 
-                phieudangkyhoc.Sotiendatra += sotien;
+                phieudangkyhoc.Sotiendatra = soTienDaTraMoi;
                 phieudangkyhoc.Sotienconlai = phieudangkyhoc.tongtien - phieudangkyhoc.Sotiendatra.Value;
 
                 db.SaveChanges();
@@ -323,11 +336,11 @@ namespace hocvien.Controllers
                 ViewBag.ThuHocList = thuHocList;
                 ViewBag.GioHocList = gioHocList;
                 ViewBag.TongTien = hoadon.Tongtienthanhtoan;
-                if (decimal.Equals(hoadon.Sotienconlai, decimal.Zero))
-                {
-                    // Redirect to the detailed invoice page
-                    return RedirectToAction("chiTiethoadon", "Hoadon", new { maphieu = phieudangky.Maphieu });
-                }
+                //if (decimal.Equals(hoadon.Sotienconlai, decimal.Zero))
+                //{
+                //    // Redirect to the detailed invoice page
+                //    return RedirectToAction("chiTiethoadon", "Hoadon", new { maphieu = phieudangky.Maphieu });
+                //}
                 ViewBag.SoTienDaTra = hoadon.Sotiendatra;
                 ViewBag.SoTienConLai = hoadon.Sotienconlai;
 
