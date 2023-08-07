@@ -127,9 +127,9 @@ namespace hocvien.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception or handle it in a way suitable for your application
+              
                 TempData["ErrorMessageSuaKhoaHoc"] = "Đã xảy ra lỗi";
-                return View("formSuakhoahoc", x); // Or return to the appropriate error view
+                return View("formSuakhoahoc", x); 
             }
         }
 

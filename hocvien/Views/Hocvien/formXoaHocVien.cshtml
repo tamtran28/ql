@@ -6,7 +6,14 @@
 }
 
 <h1>Xóa học viên</h1>
-
+@if ((int)ViewBag.flag == 0)
+{
+    <h5>Bạn thực sự muốn xóa</h5>
+}
+else
+{
+    <h5>Bạn không thể xóa</h5>
+}
 <div>
     <hr />
     <dl class="row">
@@ -44,7 +51,14 @@
             Giới tính
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Gioitinh)
+            @if (Model.Gioitinh == 1)
+            {
+                <text>Nam</text>
+            }
+            else
+            {
+                <text>Nữ</text>
+            }
         </dd>
         <dt class="col-sm-2">
             Trạng thái
@@ -54,16 +68,23 @@
         </dd>
     </dl>
 
-    <form asp-action="xoaHocVien" asp-route-id="@Model.Mahv">
-        @if ((int)ViewBag.flag == 0)
-        {
-            <input type="submit" value="Xóa" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" />
-        }
+    <form asp-action="xoaHocVien" asp-route-id="@Model.Mahv"> 
+        <div class="row">
+            <div class="col-sm-2">
+                @if ((int)ViewBag.flag == 0)
+                {
+                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                }
+            </div>
+            <div class="col-sm-10">
+                <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+            </div>
+        </div>
     </form>
 </div>
 
 <!-- Modal Confirm Delete -->
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+@*<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -81,9 +102,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
-<script>
+@*<script>
     $(document).ready(function () {
         @if ((bool)(ViewBag.DeleteSuccess ?? false)) {
             <text>
@@ -98,4 +119,4 @@
             </text>
         }
     });
-</script>
+</script>*@

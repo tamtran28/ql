@@ -23,8 +23,21 @@
         @ViewBag.ErrorMessageSua
     </div>
 }
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessagePhanCong))
+{
+    <div id="msgAlertPC" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessagePhanCong
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageXoaLH))
+{
+    <div id="msgAlertXoaLH" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageXoaLH
+    </div>
+}
+
 <h1>Danh sách lớp học</h1>
-<table class="table table-bordered ">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Mã lớp học</th>
@@ -41,21 +54,34 @@
                 <td>@Html.DisplayFor(modelItem => item.Malophoc)</td>
                 <td>@Html.DisplayFor(modelItem => item.Phonghoc)</td>
                 <td>@Html.DisplayFor(modelItem => item.Maloptuyensinh)</td>
-                <td>@item.LophocGiaoviens.FirstOrDefault()?.MagvNavigation?.Hoten</td>
                 <td>
-                    <div class="btn-group">
+                    @if (item.LophocGiaoviens.Any())
+                    {
+                        @foreach (var teacher in item.LophocGiaoviens)
+                        {
+                            <p>@teacher.MagvNavigation.Hoten</p>
+                        }
+                    }
+                    else
+                    {
+                        <p>Chưa phân công giáo viên</p>
+                    }
+                </td>
+                <td>
+                   @* <div class="btn-group">*@
                         <a asp-action="danhSach" asp-route-malophoc="@item.Malophoc" asp-route-maloptuyensinh="@item.Maloptuyensinh" class="btn btn-primary">Xếp lớp</a>
                         <a asp-action="DanhSachHocVien" asp-route-malophoc="@item.Malophoc" asp-controller="Xeplop" class="btn btn-primary">Xem danh sách</a>
                         <a asp-action="ChonGiaoVien" asp-controller="Phancong" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Phân công</a>
-                        <a asp-action="xemDiem" asp-controller="Diem" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Xem điểm</a>
+                        @*<a asp-action="xemDiem" asp-controller="Diem" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Xem điểm</a>*@
                         <a asp-action="formSuaLopHoc" asp-route-id="@item.Malophoc" asp-controller="Xeplop" class="btn btn-primary">Sửa</a>
                         <a asp-action="formXoaLopHoc" asp-controller="Xeplop" asp-route-id="@item.Malophoc" class="btn btn-danger">Xóa</a>
-                    </div>
+                  @*  </div>*@
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
 @if (!string.IsNullOrEmpty(ViewBag.SuccessMessageThemLopHoc))
 {
     <script>
@@ -91,6 +117,35 @@
     <script>
         window.onload = function () {
             var alertElement = document.getElementById('msgAlertError');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessagePhanCong))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertPC');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageXoaLH))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertXoaLH');
             alertElement.style.display = 'block';
             setTimeout(function () {
                 alertElement.style.opacity = '0';

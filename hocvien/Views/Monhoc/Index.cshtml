@@ -4,7 +4,24 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageMonHoc))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageMonHoc
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.suaMH))
+{
+    <div id="msgAlertS" class="alert alert-success" role="alert">
+        @ViewBag.suaMH
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.xoaMH))
+{
+    <div id="msgAlertXoaMH" class="alert alert-success" role="alert">
+        @ViewBag.xoaMH
+    </div>
+}
 <h1>Danh sách môn học</h1>
 
 <p>
@@ -72,3 +89,47 @@
 }
     </tbody>
 </table>
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageMonHoc))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.suaMH))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertS');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.xoaMH))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertXoaMH');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}

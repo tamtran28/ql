@@ -18,9 +18,26 @@
         @ViewBag.SuaSuccessMessage
     </div>
 }
+@if (!string.IsNullOrEmpty(ViewBag.XoaSuccessMessageGV))
+{
+    <div id="msgAlertX" class="alert alert-success" role="alert">
+        @ViewBag.XoaSuccessMessageGV
+    </div>
+}
+
 <p>
     <a asp-action="formthemGiaovien" class="btn btn-primary">Thêm giáo viên</a>
 </p>
+<h2>Tìm kiếm giáo viên</h2>
+<div class="row">
+    <div class="col-md-8">
+        <input type="search" id="hotenhv" class="form-control rounded" />
+    </div>
+    <div class="col-md-4">
+        <input type="button" class="btn btn-outline-primary" onclick="timGiaoVien_click()" value="Tìm kiếm" />
+    </div>
+</div>
+<div id="danhsachgiaovien"></div>
 <table class="table">
     <thead>
         <tr>
@@ -71,7 +88,7 @@
                 @Html.DisplayFor(modelItem => item.Hoten)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ngaysinh)
+              @(((DateTime)item.Ngaysinh).ToString("dd/MM/yyyy"))
             </td>
             <td>
                     @if (item.Gioitinh == 1)
@@ -117,7 +134,26 @@
 }
     </tbody>
 </table>
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageGV))
+<script type="text/javascript">
+    function timGiaoVien_click() {
+        const hotenhv = document.getElementById("hotenhv").value;
+        // Create an XMLHttpRequest object
+        const xhttp = new XMLHttpRequest();
+
+        // Define a callback function
+        xhttp.onload = function () {
+            // Here you can use the Data
+            document.getElementById("danhsachgiaovien").innerHTML = xhttp.responseText;
+        }
+
+        // Send a request
+        const strUrl = "/Giaovien/timGiaoVien/" + hotenhv;
+        xhttp.open("GET", strUrl);
+        xhttp.send();
+
+    }</script>
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
 {
     <script>
         window.onload = function () {
@@ -132,11 +168,25 @@
         }</script>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessageGV))
+@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessage))
 {
     <script>
         window.onload = function () {
-            var alertElement = document.getElementById('msgAlert');
+            var alertElement = document.getElementById('msgAlertS');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.XoaSuccessMessageGV))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertX');
             alertElement.style.display = 'block';
             setTimeout(function () {
                 alertElement.style.opacity = '0';

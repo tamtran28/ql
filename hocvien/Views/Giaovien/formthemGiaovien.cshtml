@@ -72,33 +72,44 @@
                 <input asp-for="Email"  class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
+             <div class="form-group">
+            <label asp-for="Matkhau" class="control-label">Mật khẩu</label>
+            <input asp-for="Matkhau" type="password" class="form-control" />
+            <span asp-validation-for="Matkhau" class="text-danger"></span>
+            </div>
+          @*  <div class="form-group">
+                <label asp-for="Nhom" class="control-label">Nhóm</label>
+                <select asp-for="Nhom" class="form-control">
+                    <option value="1">Quản lý</option>
+                    <option value="2">Tuyển sinh</option>
+                    <option value="3">Học vụ</option>
+                </select>
+                <span asp-validation-for="Nhom" class="text-danger"></span>
+            </div>*@
+           @* <div class="form-group">
                 <label asp-for="Trangthai" class="control-label">Trạng thái</label>
                 <select asp-for="Trangthai" class="form-control">
                     <option value="Đang làm">Đang làm</option>
                     <option value="Nghỉ">Nghỉ</option>
                 </select>
                 <span asp-validation-for="Trangthai" class="text-danger"></span>
-            </div>
+            </div>*@
+
             <div class="form-group">
                 <label asp-for="Nguoitao" class="control-label">Người tạo</label>
                 <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
-                <input asp-for="Ngaytao" type="date" class="form-control" />
-                <span asp-validation-for="Ngaytao" class="text-danger"></span>
+          
             </div>
-            </div>
-            <div class="form-group">
+          <div class="form-group">
                 <input type="submit" value="Thêm" class="btn btn-primary" />
-            </div>
-            </div>
+           </div>
+            </div>.
         </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary">Trở về</a>
 </div>
 @if (!string.IsNullOrEmpty(ViewBag.SuccessMessageGV))
 {

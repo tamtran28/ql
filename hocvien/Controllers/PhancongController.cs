@@ -1,20 +1,21 @@
 ﻿using hocvien.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Data;
 using System.Linq;
 
 namespace hocvien.Controllers
 {
+    [Authorize(Roles = "hocvu")]
     public class PhancongController : Controller
     {
         private centerContext db = new centerContext();
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult ChonGiaoVien(string malophoc)
         {
+           
             // Lấy danh sách giáo viên từ cơ sở dữ liệu
             var danhSachGiaoVien = db.Giaoviens.ToList();
 
@@ -28,24 +29,9 @@ namespace hocvien.Controllers
             ViewBag.DanhSachLopGiaoVien = danhSachLopGiaoVien;
             return View();
         }
+
         //[HttpPost]
-        //public IActionResult PhanCongGiaoVien(string malophoc, string magv)
-        //{
-        //    var lopHoc = db.Lophocs.FirstOrDefault(l => l.Malophoc == malophoc);
-        //    if (lopHoc == null)
-        //    {
-        //        // Xử lý lỗi hoặc thông báo lớp học không tồn tại
-        //        return RedirectToAction("DanhSachLopHoc");
-        //    }
-
-        //    lopHoc.Magv = magv;
-
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("Index","Xeplop");
-        //}
-        //[HttpPost]
-        //public IActionResult PhanCongGiaoVien(string malophoc, string magv)
+        //public IActionResult PhanCongGiaoVien(string malophoc, string[] magv)
         //{
         //    var lopHoc = db.Lophocs.FirstOrDefault(l => l.Malophoc == malophoc);
         //    if (lopHoc == null)
@@ -53,57 +39,93 @@ namespace hocvien.Controllers
         //        // Handle the error or display a message that the class does not exist
         //        return RedirectToAction("DanhSachLopHoc");
         //    }
-
-        //    // Update the Magv property of the Lophoc entity
-        //    //lopHoc.Magv = magv;
-
-        //    // Save the changes to the database
-        //    db.SaveChanges();
-
-        //    // Create a new LophocGiaovien entity and add it to the lophoc_giaovien table
-        //    var lophocGiaovien = new LophocGiaovien
+        //    foreach (var gv in magv)
         //    {
-        //        Malophoc = malophoc,
-        //        Magv = magv
-        //    };
-
-        //    db.LophocGiaoviens.Add(lophocGiaovien);
+        //        var giaovien = db.Giaoviens.FirstOrDefault(g => g.Magv == gv);
+        //        if (giaovien != null)
+        //        {
+        //            var lophocGiaovien = new LophocGiaovien
+        //            {
+        //                Malophoc = malophoc,
+        //                Magv = gv
+        //            };
+        //            lopHoc.LophocGiaoviens.Add(lophocGiaovien);
+        //        }
+        //    }
         //    db.SaveChanges();
 
         //    return RedirectToAction("Index", "Xeplop");
         //}
+
         [HttpPost]
         public IActionResult PhanCongGiaoVien(string malophoc, string[] magv)
         {
-            var lopHoc = db.Lophocs.FirstOrDefault(l => l.Malophoc == malophoc);
-            if (lopHoc == null)
+            try
             {
-                // Handle the error or display a message that the class does not exist
-                return RedirectToAction("DanhSachLopHoc");
-            }
+                var lopHoc = db.Lophocs
+                    .Include(l => l.LophocGiaoviens)
+                    .ThenInclude(lg => lg.MagvNavigation)
+                    .FirstOrDefault(l => l.Malophoc == malophoc);
 
-            // Update the Magv property of the Lophoc entity
-            // Note: This assumes that you are using a one-to-many relationship between Lophoc and Giaovien
-            lopHoc.LophocGiaoviens.Clear(); // Remove any existing teacher assignments for the class
-
-            foreach (var gv in magv)
-            {
-                var giaovien = db.Giaoviens.FirstOrDefault(g => g.Magv == gv);
-                if (giaovien != null)
+                if (lopHoc == null)
                 {
-                    var lophocGiaovien = new LophocGiaovien
-                    {
-                        Malophoc = malophoc,
-                        Magv = gv
-                    };
-                    lopHoc.LophocGiaoviens.Add(lophocGiaovien);
+                   
+                    return RedirectToAction("Index");
                 }
+
+                foreach (var gv in magv)
+                {
+                    var giaovien = db.Giaoviens.FirstOrDefault(g => g.Magv == gv);
+
+                    if (giaovien != null)
+                    {
+                       
+                        bool daXep = lopHoc.LophocGiaoviens.Any(lg =>
+                            lg.MagvNavigation.Magv == gv &&
+                            lg.MalophocNavigation.MaloptuyensinhNavigation.Macahoc == lopHoc.MaloptuyensinhNavigation.Macahoc &&
+                            lg.MalophocNavigation.Ngaytao.Date == lopHoc.Ngaytao.Date);
+
+                        if (!daXep)
+                        {
+                            var lophocGiaovien = new LophocGiaovien
+                            {
+                                Malophoc = malophoc,
+                                Magv = gv
+                            };
+                            lopHoc.LophocGiaoviens.Add(lophocGiaovien);
+                        }
+                    }
+                }
+                db.SaveChanges();
+                TempData["SuccessMessagePhanCong"] = "Phân công giáo viên thành công";
+                return RedirectToAction("Index", "Xeplop");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorPC"] = "Đã xảy ra lỗi khi phân công giáo viên";
+            }
+            return RedirectToAction("ChonGiaoVien");
+        }
+
+
+        public IActionResult formSuaPhanCongGiaoVien(string malophoc, string magv)
+        {
+          
+            var lopHoc = db.Lophocs.FirstOrDefault(l => l.Malophoc == malophoc);
+            var giaovien = db.Giaoviens.FirstOrDefault(g => g.Magv == magv);
+
+            if (lopHoc == null || giaovien == null)
+            {
+               
+                return RedirectToAction("Index", "Xeplop");
             }
 
-            // Save the changes to the database
-            db.SaveChanges();
+     
+            ViewBag.Malophoc = malophoc;
+            ViewBag.Magv = magv;
+            ViewBag.TeacherName = giaovien.Hoten; 
 
-            return RedirectToAction("Index", "Xeplop");
+            return View();
         }
 
 

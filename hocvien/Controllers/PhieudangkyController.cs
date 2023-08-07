@@ -53,7 +53,8 @@ namespace hocvien.Controllers
                 Ngaydk = s.Phieudangkyhoc.Phieudangkyhoc.Ngaydk,
                 Maloptuyensinh = s.LopDangkyhoc.Maloptuyensinh,
                 Tenloptuyensinh = j.Tenloptuyensinh,
-            });
+            })
+             .OrderByDescending(item => item.Ngaydk);
             return View(danhSachPhieuDangKy);
         }
     
@@ -72,7 +73,6 @@ namespace hocvien.Controllers
 
             // Create a SelectList using the filtered list of Khoahoc objects
             ViewBag.DSlop = new SelectList(khoaHocDangMo, "Makh", "Tenkh");
-           
 
             return View();
             // return RedirectToAction("formThemphieudangky", "Phieudangky");
@@ -89,47 +89,31 @@ namespace hocvien.Controllers
         }
         public IActionResult SearchStudent(String kh)
         {
-           // ViewBag.Kh = kh;
             return View();
         }
-
-
-
-
-
-
-
-
         public IActionResult registration(string id)
-{
-    ViewBag.s = id;
-    List<string> selectedClasses = MySessions.GetList<string>(HttpContext.Session, "selectedClasses");
-    ViewBag.SelectedClasses = selectedClasses;
+        {
+            ViewBag.s = id;
+             List<string> selectedClasses = MySessions.GetList<string>(HttpContext.Session, "selectedClasses");
+             ViewBag.SelectedClasses = selectedClasses;
 
-    var hocvien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == id);
-    if (hocvien != null)
-    {
-        ViewBag.Hocvien = hocvien.Hoten;
-        ViewBag.NgaySinh = hocvien.Ngaysinh;
-        ViewBag.GioiTinh = hocvien.Gioitinh == 1 ? "Nam" : "Nữ";
-        ViewBag.SDT = hocvien.Sdt;
-    }
+             var hocvien = db.Hocviens.FirstOrDefault(hv => hv.Mahv == id);
+             if (hocvien != null)
+             {
+                  ViewBag.Hocvien = hocvien.Hoten;
+                  ViewBag.NgaySinh = hocvien.Ngaysinh;
+                  ViewBag.GioiTinh = hocvien.Gioitinh == 1 ? "Nam" : "Nữ";
+                  ViewBag.SDT = hocvien.Sdt;
+             }
 
-    var lopTuyenSinhs = db.Loptuyensinhs
-        .Where(lts => selectedClasses.Contains(lts.Maloptuyensinh))
-        .ToList();
+          var lopTuyenSinhs = db.Loptuyensinhs
+          .Where(lts => selectedClasses.Contains(lts.Maloptuyensinh))
+          .ToList();
 
-    ViewBag.LopTuyenSinhs = lopTuyenSinhs;
+          ViewBag.LopTuyenSinhs = lopTuyenSinhs;
 
-    return View();
-}
-
-
-        // Handle the case when the "maphieu" does not exist
-
-
-
-
+         return View();
+        }
         [HttpPost]
         public IActionResult CreateRegistration(Phieudangkyhoc p)
         {
@@ -146,7 +130,6 @@ namespace hocvien.Controllers
                     // Kiểm tra xem học viên đã đăng ký lớp tuyển sinh này trước đó hay chưa
                     if (db.LopDangkyhocs.Any(ldk => ldk.Maloptuyensinh == malop && ldk.MaphieuNavigation.Mahv == p.Mahv))
                     {
-                        //ModelState.AddModelError("Mahv", "Học viên đã đăng ký lớp tuyển sinh này trước đó.");
                         return View("loi");
                     }
 
@@ -176,11 +159,10 @@ namespace hocvien.Controllers
                 }
 
                 // Cập nhật thông tin tổng tiền, số tiền đã trả và số tiền còn lại trong phiếu đăng ký
-                // p.tongtien = totalCourseFee;
                 
-                //p.tongtien = String.Format("{0:#.00}", totalCourseFee);
                 p.Sotiendatra = 0; // Ban đầu số tiền đã trả là 0
                 p.Sotienconlai = totalCourseFee;
+                p.tongtien = totalCourseFee;
             }
 
             // Lưu phiếu đăng ký vào cơ sở dữ liệu
@@ -197,8 +179,6 @@ namespace hocvien.Controllers
             var lastphieu = db.Phieudangkyhocs.OrderByDescending(x => x.Maphieu).FirstOrDefault();
             int lastId = lastphieu != null ? int.Parse(lastphieu.Maphieu.Substring(2)) : 0;
            // Lấy phần số của mã phiếu cuối cùng(trừ đi 2 ký tự đầu tiên) và gán vào biến lastId.
-   // Nếu không có phiếu nào trong CSDL, lastId sẽ được gán giá trị 0.
-
             // Tạo mã học viên mới
             string newId = (lastId + 1).ToString("D3");
             string maPhieu = "PH" + newId;
@@ -229,9 +209,9 @@ namespace hocvien.Controllers
         }
         public IActionResult timLop(string id)
         {
-            //List<Monhoc> dsMH = xulyhv.getDSMonhoc();
-            List<Loptuyensinh> ds = db.Loptuyensinhs.Where(p => p.Makh == id).ToList();
-            //Loptuyensinh x = db.Loptuyensinhs.Find(id);
+            
+           // List<Loptuyensinh> ds = db.Loptuyensinhs.Where(p => p.Makh == id).ToList();
+            List<Loptuyensinh> ds = db.Loptuyensinhs.Where(p => p.Makh == id && p.Trangthai == "đang mở").ToList();
             if (ds.Count == 0)
             {
                 ViewBag.Message = "Chưa có lớp tuyển sinh này";
@@ -259,7 +239,6 @@ namespace hocvien.Controllers
             return View(x);
         }
         [HttpPost]
-       // [HttpPost]
         public IActionResult xoaPhieudangky(string id)
         {
             // Kiểm tra xem có lớp đăng ký nào liên quan không

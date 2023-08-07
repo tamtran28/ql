@@ -3,6 +3,7 @@
     ViewData["Title"] = "danhSach";
     Layout = "_Layout";
 }
+
 @*@model List<Hocvien>
 
 <h2>Danh sách học viên đăng ký lớp</h2>
@@ -34,6 +35,13 @@
 </form>
 *@
 @model List<Hocvien>
+
+@if (TempData.ContainsKey("ErrorMessage"))
+{
+    <div class="alert alert-danger" id="msgAlertError">
+        @TempData["ErrorMessage"]
+    </div>
+}
 <h2>Danh sách học viên đăng ký lớp</h2>
 <p>Mã lớp tuyển sinh: @ViewBag.Maloptuyensinh</p>
 <p>Mã lớp học: @ViewBag.Malophoc</p>
@@ -48,7 +56,7 @@
                     <input type="checkbox" name="hocvienIds" value="@hocvien.Mahv" />
                     <label style="margin:0;">
                         <p>@hocvien.Hoten</p>
-                        <p>Ngày sinh: @hocvien.Ngaysinh</p>
+                        <p>Ngày sinh: @hocvien.Ngaysinh.ToString("dd/MM/yyyy")</p>
                         <p>SDT: @hocvien.Sdt</p>
                     </label>
                 </div>
@@ -63,3 +71,22 @@
 
     <a asp-action="Index" class="btn btn-primary">Trở về</a>
 </div>
+<script>
+
+    function hideErrorMessage() {
+        var errorMessageDiv = document.getElementById('msgAlert');
+        errorMessageDiv.style.display = 'none';
+    }
+
+    setTimeout(hideErrorMessage, 3000);
+</script>
+
+<script>
+
+    function hideErrorMessage() {
+        var errorMessageDiv = document.getElementById('msgAlertError');
+        errorMessageDiv.style.display = 'none';
+    }
+
+    setTimeout(hideErrorMessage, 3000);
+</script>

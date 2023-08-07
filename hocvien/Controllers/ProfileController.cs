@@ -12,14 +12,7 @@ namespace hocvien.Controllers
 
             return View();
         }
-        //public IActionResult formSuathongtin()
-        //{
-        //    string manv = HttpContext.Session.GetString("Manv");
-        //    ViewBag.ten = manv;
-        //    Model.Nhanvien x = db.Nhanviens.Find(manv);
-
-        //    return View(x);
-        //}
+       
         public IActionResult formSuathongtinnhanvien()
         {
             return View();
@@ -50,7 +43,7 @@ namespace hocvien.Controllers
                 }
             }
 
-            // Trường hợp không tìm thấy giáo viên hoặc nhân viên, chuyển hướng về trang mặc định
+           
             return RedirectToAction("Login", "Dangnhap");
         }
 
@@ -87,10 +80,7 @@ namespace hocvien.Controllers
                 {
                     return RedirectToAction("Index", "Giaovien");
                 }
-                //else if (User.IsInRole("giaovien"))
-                //{
-                //    return RedirectToAction("Index", "Giaovien");
-                //}
+                
                 else
                 {
                     return RedirectToAction("Login", "Dangnhap");
@@ -121,14 +111,9 @@ namespace hocvien.Controllers
                 TempData["SuaSuccessMessage"] = "Sửa thành công thành công";
 
 
-                //else if (User.IsInRole("giaovien"))
-                //{
+                
                 return RedirectToAction("Index", "Hocvien");
-                //}
-                //else
-                //{
-                  //  return RedirectToAction("Login", "Dangnhap");
-                //}
+              
             }
 
             return View("formSuathongtinnhanvien",x);

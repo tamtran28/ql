@@ -34,21 +34,6 @@
                 <input asp-for="Ngaysinh" type="date" class="form-control" />
                 <span asp-validation-for="Ngaysinh" class="text-danger"></span>
             </div>
-           
-            <div class="form-group">
-                <label asp-for="Sdt" class="control-label">SDT</label>
-                <input asp-for="Sdt" class="form-control" />
-                <span asp-validation-for="Sdt" class="text-danger"></span>
-            </div>
-           
-       
-            <div class="form-group">
-                <label asp-for="Diachi" class="control-label">Địa chỉ</label>
-                <input asp-for="Diachi" class="form-control" />
-                <span asp-validation-for="Diachi" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Gioitinh" class="control-label">Giới tính</label>
                 <div class="form-check-inline">
@@ -61,32 +46,49 @@
                         <input asp-for="Gioitinh" type="radio" value="false" checked="checked" class="form-check-input" />Nữ
                     </label>
                 </div>
+               
+
             </div>
-            <div class="form-group">
+           
+        </div>
+        <div class="col-md-6">
+           
+          @*  <div class="form-group">
                 <label asp-for="Trangthai" class="control-label">Trạng thái</label>
                 <input asp-for="Trangthai" class="form-control" />
                 <span asp-validation-for="Trangthai" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <label asp-for="Sdt" class="control-label">SDT</label>
+                <input asp-for="Sdt" class="form-control" />
+                <span asp-validation-for="Sdt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diachi" class="control-label">Địa chỉ</label>
+                <input asp-for="Diachi" class="form-control" />
+                <span asp-validation-for="Diachi" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Nguoitao" class="control-label">Người tạo</label>
-                <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
+                <input asp-for="Nguoitao" class="form-control" readonly value="@ViewBag.ten" />
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           @* <div class="form-group">
                 <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
-                <input asp-for="Ngaytao" type="date" class="form-control" />
+                <input asp-for="Ngaytao" type="" class="form-control" />
                 <span asp-validation-for="Ngaytao" class="text-danger"></span>
-            </div>
+            </div>*@
            </div>
             <div class="form-group">
-                <input type="submit" value="Them" class="btn btn-primary" />
+                <input type="submit" value="Thêm" class="btn btn-primary" />
             </div>
         
     </div>
 
 </form>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary">Trở về</a>
 </div>
 @*
 @section Scripts {

@@ -10,16 +10,20 @@ namespace hocvien.Controllers
     public class DiemController : Controller
     {
         private centerContext db = new centerContext();
-        //public IActionResult Index()
-        //{
-        //   // return View(db.Phieudiems.ToList());
-        //}
+        public IActionResult Index()
+        {
+             return View(db.Lophocs.ToList());
+        }
         public IActionResult xemDiem(string maLopHoc)
         {
+            if (TempData.ContainsKey("Diem"))
+            {
+                ViewBag.Diem = TempData["Diem"];
+            }
             // Lấy danh sách phiếu điểm của lớp
             var phieuDiemList = db.Phieudiems
                 .Where(p => p.Malophoc == maLopHoc)
-                .Include(p => p.MahvNavigation) // Nạp dữ liệu học viên liên quan
+                .Include(p => p.MahvNavigation)
                 .ToList();
             return View(phieuDiemList);
         }
@@ -61,18 +65,19 @@ namespace hocvien.Controllers
                         }
                     }
 
-                    // Lưu các đối tượng Phieudiem vào cơ sở dữ liệu
+                  
                     db.SaveChanges();
-
-                    return RedirectToAction("Index","Xeplop");
+                    TempData["Diem"] = "Nhập điểm thành công";
+                    return RedirectToAction("xemDiem", new { malophoc = maLopHoc });
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Đã xảy ra lỗi trong quá trình lưu dữ liệu: " + ex.Message);
+                    TempData["loiDiem"] = "Đã xảy ra lỗi trong quá trình lưu dữ liệu";
+                    
                 }
             }
 
-            // Nếu có lỗi, trả về View với model để người dùng có thể sửa lỗi và gửi lại form
+            
             return View(model);
         }
 

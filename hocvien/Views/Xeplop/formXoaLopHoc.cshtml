@@ -1,5 +1,8 @@
 ﻿@model hocvien.Model.Lophoc
-
+@{
+    Layout = "_Layout";
+}
+ <h3>Xóa lớp học</h3>
 @if ((int)ViewBag.flag == 0)
 {
     <h5>Bạn thực sự muốn xóa</h5>
@@ -9,40 +12,47 @@ else
     <h5>Bạn không thể xóa</h5>
 }
 <div>
-    <h4>Lophoc</h4>
+   
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phonghoc)
+           Phòng học
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Phonghoc)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nguoitao)
+           Người tạo
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nguoitao)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngaytao)
+            Ngày tạo
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Ngaytao)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaloptuyensinhNavigation)
+        @*<dt class = "col-sm-2">
+            Mã lớp tuyển sinh
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaloptuyensinhNavigation.Maloptuyensinh)
-        </dd class>
+            @Html.DisplayFor(model => model.MaloptuyensinhNavigation)
+        </dd class>*@
     </dl>
     
   <form asp-action="xoaLopHoc" asp-route-id="@Model.Malophoc">
-        @if ((int)ViewBag.flag == 0)
-        {
-            <input type="submit" value="Xóa" class="btn btn-danger" />
-
-        }
+       
+         <div class="row">
+                <div class="col-sm-2">
+                    @if ((int)ViewBag.flag == 0)
+                    {
+                        <input type="submit" value="Xóa" class="btn btn-danger" />
+                    }
+                </div>
+                <div class="col-sm-10">
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                </div>
+            </div>
     </form>
 </div>

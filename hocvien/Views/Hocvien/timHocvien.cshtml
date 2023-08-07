@@ -6,9 +6,7 @@
 @if (!string.IsNullOrEmpty(ViewBag.Message))
 {
     <p>@ViewBag.Message</p>
-    <p>
-        <a asp-action="themHocVien" asp-controller="Hocvien" class="btn btn-primary">Thêm học viên</a>
-    </p>
+    
 }
 else
 {
@@ -31,17 +29,9 @@ else
                 Địa chỉ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gioitinh)
+               Giới tính
             </th>
-            <th>
-               Trạng thái
-            </th>
-          @*  <th>
-                @Html.DisplayNameFor(model => model.Nguoitao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ngaytao)
-            </th>*@
+           
            
             <th></th>
         </tr>
@@ -77,21 +67,8 @@ else
                     </td>
             
             <td>
-                @Html.DisplayFor(modelItem => item.Trangthai)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Nguoitao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ngaytao)
-            </td>*@
-          
-            <td>
                     <a asp-action="chiTiet" class="btn btn-primary" asp-route-id="@item.Mahv">Chi tiết</a>
             </td>
-               @* <td>
-                    <input type="button" value="Chọn học viên" onclick="chonHocvien_click('@item.Mahv')" class="btn btn-primary" />a
-                </td>*@
         </tr>
 }
     </tbody>

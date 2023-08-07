@@ -17,10 +17,10 @@
         @ViewBag.SuaSuccessMessageTS
     </div>
 }
-@if (!string.IsNullOrEmpty(ViewBag.xoa))
+@if (!string.IsNullOrEmpty(ViewBag.xoaLopTS))
 {
-    <div id="msgAlertS" class="alert alert-success" role="alert">
-        @ViewBag.xoa
+    <div id="msgAlertX" class="alert alert-success" role="alert">
+        @ViewBag.xoaLopTS
     </div>
 }
 <h1>Danh sách lớp tuyển sinh</h1>
@@ -50,7 +50,7 @@
             <th>
                 Giờ học
             </th>
-          
+          <th>Trạng thái</th>
             <th></th>
         </tr>
     </thead>
@@ -77,13 +77,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Giohoc)
                 </td>
-                @* <td>
-                        @Html.DisplayFor(modelItem => item.Makh)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Mamh)
-                    </td>*@
                 <td>
+                    @Html.DisplayFor(modelItem => item.Trangthai)
+                </td>
                 <td>
                     <a asp-action="formTaolophoc" asp-controller="Xeplop" asp-route-id="@item.Maloptuyensinh" class="btn btn-primary">Tạo lớp học</a>
                 </td>
@@ -93,12 +89,12 @@
                 <td>
                     <a asp-action="formXoaloptuyensinh" asp-route-id="@item.Maloptuyensinh" class="btn btn-danger">Xóa</a>
                 </td>
-                </td>
+               
             </tr>
         }
     </tbody>
 </table>
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageTS))
 {
     <script>window.onload = function () {
             var alertElement = document.getElementById('msgAlert');
@@ -114,7 +110,7 @@
 @if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessageTS))
 {
     <script>window.onload = function () {
-            var alertElement = document.getElementById('msgAlert');
+            var alertElement = document.getElementById('msgAlertS');
             alertElement.style.display = 'block';
             setTimeout(function () {
                 alertElement.style.opacity = '0';
@@ -124,11 +120,11 @@
             }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
         }</script>
 }
-@if (!string.IsNullOrEmpty(ViewBag.xoa))
+@if (!string.IsNullOrEmpty(ViewBag.xoaLopTS))
 {
     <script>
         window.onload = function () {
-            var alertElement = document.getElementById('msgAlert');
+            var alertElement = document.getElementById('msgAlertX');
             alertElement.style.display = 'block';
             setTimeout(function () {
                 alertElement.style.opacity = '0';

@@ -17,6 +17,19 @@
         @ViewBag.SuaSuccessMessageHV
     </div>
 }
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageXoaHV))
+{
+    <div id="msgAlertXoaHV" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMessageXoaHV
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMatKhau))
+{
+    <div id="msgAlertMK" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMatKhau
+    </div>
+}
+
 <h1>Danh sách học viên</h1>
 
 <p>
@@ -56,20 +69,13 @@
             <th>
                 Giới tính
             </th>
-            <th>
-                Trạng thái
-            </th>
-
-            <th></th>
+          <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                @* <td>
-                       @Html.DisplayFor(modelItem => item.Mahv)
-                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Hoten)
                 </td>
@@ -85,9 +91,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Gioitinh)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Trangthai)
-                </td>
+              
 
                 <td>
                     <a asp-action="formSuaHocvien" asp-route-id="@item.Mahv" class="btn btn-primary">Sửa</a>
@@ -116,35 +120,6 @@
 <p>Tổng số record: @ViewBag.TotalItems</p>
 <p>Trang hiện tại: @ViewBag.CurrentPage</p>
 
-
-
-@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageHV))
-{
-    <script>window.onload = function () {
-            var alertElement = document.getElementById('msgAlert');
-            alertElement.style.display = 'block';
-            setTimeout(function () {
-                alertElement.style.opacity = '0';
-                setTimeout(function () {
-                    alertElement.style.display = 'none';
-                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
-            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
-        }</script>
-}
-@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessageHV))
-{
-    <script>window.onload = function () {
-            var alertElement = document.getElementById('msgAlert');
-            alertElement.style.display = 'block';
-            setTimeout(function () {
-                alertElement.style.opacity = '0';
-                setTimeout(function () {
-                    alertElement.style.display = 'none';
-                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
-            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
-        }</script>
-}
-
 <script type="text/javascript">function timHocvien_click() {
         const hotenhv = document.getElementById("hotenhv").value;
         // Create an XMLHttpRequest object
@@ -162,3 +137,61 @@
         xhttp.send();
 
     }</script>
+
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageHV))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuaSuccessMessageHV))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertS');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessageXoaHV))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertXoaHV');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMatKhau))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertMK');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}

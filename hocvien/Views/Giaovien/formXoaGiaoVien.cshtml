@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Bạn có chắc chắn muốn xóa không?</h3>
+<h3>Xóa giáo viên</h3>
 
 @if ((int)ViewBag.flag == 0)
 {
@@ -40,8 +40,15 @@ else
         <dt class = "col-sm-2">
           Giới tính
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gioitinh)
+        <dd class="col-sm-10">
+            @if (Model.Gioitinh == 1)
+            {
+                <text>Nam</text>
+            }
+            else
+            {
+                <text>Nữ</text>
+            }
         </dd>
         <dt class = "col-sm-2">
            Địa chỉ
@@ -76,15 +83,7 @@ else
         <dt class = "col-sm-2">
             Người tạo
         </dt>
-       @* <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nguoitao)
-        </dd>
-        <dt class = "col-sm-2">
-           Ngày tạo
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ngaytao)
-        </dd>*@
+    
     </dl>
     
     <form asp-action="xoaGiaoVien" asp-route-id="@Model.Magv">

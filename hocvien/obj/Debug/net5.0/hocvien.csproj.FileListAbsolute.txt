@@ -2480,8 +2480,6 @@ C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Giaovien\Index.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\chiTiethoadon.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\formLapHD.cshtml.g.cs
-C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\formSuahoadon.cshtml.g.cs
-C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\formXoahoadon.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\Index.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\search.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Hoadon\timKiem.cshtml.g.cs
@@ -2554,3 +2552,5 @@ C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\formSualophoc.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Thongke\Index.cshtml.g.cs
 C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Xeplop\formXoaLopHoc.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Diem\Index.cshtml.g.cs
+C:\Users\tam.tran\Downloads\trungtam-master 2 2 4 (2)\trungtam-master 2 2 4 (1)\trungtam-master 2 2 4\hocvien\obj\Debug\net5.0\Razor\Views\Giaovien\timGiaoVien.cshtml.g.cs

@@ -4,13 +4,21 @@
     ViewData["Title"] = "formSuakhoahoc";
     Layout = "_Layout";
 }
-
+@if (TempData.ContainsKey("ErrorMessageSuaMonHoc"))
+{
+    <div class="alert alert-danger" id="msgAlertError">
+        @TempData["ErrorMessageSuaMonHoc"]
+    </div>
+}
 <h1>Sửa môn học</h1>
 
 <hr />
+<form asp-action="suaMonhoc" method="post">
 <div class="row">
+    <div class="col-md-6">
+@*<div class="row">
     <div class="col-md-4">
-        <form asp-action="suaMonhoc" method="post">
+        <form asp-action="suaMonhoc" method="post">*@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Mamh" class="control-label">Mã môn học</label>
@@ -32,6 +40,8 @@
                 <input asp-for="Mota" class="form-control" />
                 <span asp-validation-for="Mota" class="text-danger"></span>
             </div>
+            </div>
+        <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Trangthai" class="control-label">Trạng thái</label>
                 <select asp-for="Trangthai" class="form-control">
@@ -50,15 +60,23 @@
                 <input asp-for="Ngaytao" class="form-control" />
                 <span asp-validation-for="Ngaytao" class="text-danger"></span>
             </div>
-           
+           </div>
             <div class="form-group">
                 <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>,
             </div>
         </form>
-    </div>
-</div>
+
 
 <div>
     <a asp-action="Index">Trở về</a>
 </div>
+<script>
 
+    function hideErrorMessage() {
+        var errorMessageDiv = document.getElementById('msgAlertError');
+        errorMessageDiv.style.display = 'none';
+    }
+
+    setTimeout(hideErrorMessage, 4000);
+</script>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<hocvien.Model.Lophoc>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<h1>Danh sách lớp học</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã lớp học</th>
+            <th>Phòng học</th>
+            <th>Mã lớp tuyển sinh</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Malophoc)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phonghoc)</td>
+                <td>@Html.DisplayFor(modelItem => item.Maloptuyensinh)</td>     
+                <td>
+                        <a asp-action="DanhSachHocVien" asp-route-malophoc="@item.Malophoc" asp-controller="Xeplop" class="btn btn-primary">Xem danh sách</a>
+                        <a asp-action="xemDiem" asp-controller="Diem" asp-route-malophoc="@item.Malophoc" class="btn btn-primary">Xem điểm</a>           
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

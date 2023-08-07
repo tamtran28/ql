@@ -15,6 +15,19 @@
         @ViewBag.ErrorMessageChuyenLop
     </div>
 }
+@if (!string.IsNullOrEmpty(ViewBag.MessageXepLop))
+{
+    <div id="msgAlertXepLop" class="alert alert-success" role="alert">
+        @ViewBag.MessageXepLop
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.MessageChuyenLop))
+{
+    <div id="msgAlertChuyenLop" class="alert alert-success" role="alert">
+        @ViewBag.MessageChuyenLop
+    </div>
+}
 <h2>Danh sách học viên</h2>
 
 <table class="table table-striped">
@@ -35,24 +48,48 @@
                 <form method="post" asp-action="ChuyenLop">
                     <input type="hidden" name="maHocVien" value="@hocvien.Mahv" />
                     <input type="hidden" name="maLopHoc" value="@ViewBag.malophoc" />
-                    <button type="submit" class="btn btn-primary">Chuyển lớp</button>
-                   
+                    <button type="submit" class="btn btn-primary">Chuyển lớp</button>        
                 </form>
-               
-
-
             </td>
-            <!-- Hiển thị các thông tin khác của học viên nếu cần -->
         </tr>
        
     }
-    <a asp-action="NhapDiem" class="btn-btn primary" asp-controller="Diem" asp-route-maLopHoc="@ViewBag.malophoc">Nhập điểm</a>
+    <a asp-action="NhapDiem" class="btn btn-primary" asp-controller="Diem" asp-route-maLopHoc="@ViewBag.malophoc">Nhập điểm</a>
 </table>
 @if (!string.IsNullOrEmpty(ViewBag.ErrorMessageChuyenLop))
 {
     <script>
         window.onload = function () {
             var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.MessageXepLop))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertXepLop');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.MessageChuyenLop))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlertChuyenLop');
             alertElement.style.display = 'block';
             setTimeout(function () {
                 alertElement.style.opacity = '0';

@@ -9,8 +9,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model hocvien.Model.Nhanvien
-
-<form method="post" asp-action="doiMatkhau">
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMatKhau))
+{
+    <div id="msgAlert" class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMatKhau
+    </div>
+}
+<h1>Thay đổi mật khẩu</h1>
+<form method="post" asp-action="doiMatkhau" asp-controller="Nhanvien">
     <input type="hidden" asp-for="Manv" value="@ViewBag.manv" />
     <div class="form-group">
         <label for="oldPassword">Mật khẩu cũ:</label>
@@ -22,3 +28,17 @@
     </div>
     <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMatKhau))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}

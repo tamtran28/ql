@@ -4,17 +4,21 @@
    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+@if (!string.IsNullOrEmpty(ViewBag.Diem))
+{
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.Diem
+    </div>
+}
 <table class="table">
     <thead>
         <tr>
             <th>
                 Họ tên học viên
             </th>
-            <th>
+          @*  <th>
                Mã lớp học
-            </th>
+            </th>*@
             <th>
                Điểm đọc
             </th>
@@ -36,9 +40,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.MahvNavigation.Hoten)
                 </td>
-                <td>
+               @* <td>
                     @Html.DisplayFor(modelItem => item.MalophocNavigation)
-                </td>
+                </td>*@
 
             <td>
                 @Html.DisplayFor(modelItem => item.Diemdoc)
@@ -58,3 +62,17 @@
 }
     </tbody>
 </table>
+@if (!string.IsNullOrEmpty(ViewBag.Diem))
+{
+    <script>
+        window.onload = function () {
+            var alertElement = document.getElementById('msgAlert');
+            alertElement.style.display = 'block';
+            setTimeout(function () {
+                alertElement.style.opacity = '0';
+                setTimeout(function () {
+                    alertElement.style.display = 'none';
+                }, 500); // Thời gian ẩn sau khi mờ dần (đơn vị: milliseconds)
+            }, 2000); // Thời gian hiển thị (đơn vị: milliseconds)
+        }</script>
+}

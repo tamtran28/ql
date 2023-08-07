@@ -6,7 +6,9 @@ using hocvien.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using BCrypt.Net;
+using System.Security.Cryptography;
+using System.Text;
 namespace hocvien.Controllers
 {
     public class NhanvienController : Controller
@@ -22,7 +24,11 @@ namespace hocvien.Controllers
             {
                 ViewBag.SuccessMessageNV = TempData["SuaSuccessMessageNV"];
             }
-            var danhSachNhanVienDangLam = db.Nhanviens.Where(nv => nv.Trangthai == "Đang làm").ToList();
+            if (TempData.ContainsKey("SuccessMatKhau"))
+            {
+                ViewBag.SuccessMatKhauNV = TempData["SuccessMatKhau"];
+            }
+            var danhSachNhanVienDangLam = db.Nhanviens.Where(nv => nv.Trangthai =="Đang làm").ToList();
             return View(danhSachNhanVienDangLam);
         }
         private string taoManhanvien()
@@ -46,83 +52,151 @@ namespace hocvien.Controllers
             ViewBag.ten = User.Identity.Name;
             return View();
         }
-
         [HttpPost]
         public IActionResult themNhanvien(Nhanvien kh)
         {
             try
             {
-                if (ModelState.IsValid)
+                if (kh.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - kh.Ngaysinh.Year) < 18)
                 {
-                    kh.Manv = taoManhanvien();
-                    db.Nhanviens.Add(kh);
-                    db.SaveChanges();
-                    TempData["ThemSuccessMessageNV"] = "Thêm nhân viên thành công";
-                    return RedirectToAction("Index");
+                    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                    return View("formThemnhanvien", kh);
                 }
+                kh.Manv = taoManhanvien();
+                kh.Trangthai = "Đang làm";
+                kh.Matkhau= GetMd5Hash(kh.Matkhau);
+                db.Nhanviens.Add(kh);
+                db.SaveChanges();
 
-                return View("formThemnhanvien", kh);
+                TempData["ThemSuccessMessageNV"] = "Thêm nhân viên thành công";
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 TempData["ErrorMessageTNV"] = "Đã xảy ra lỗi trong quá trình thêm nhân viên.";
-                // Log ex or do something with the exception
                 return View("formThemnhanvien", kh);
             }
         }
+        public string GetMd5Hash(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] data = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder sBuilder = new StringBuilder();
 
-      
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("x2"));
+                }
 
+                return sBuilder.ToString();
+            }
+        }
 
         public IActionResult formDoimatkhau(string id)
         {
             //ViewBag.manv = 
-
+            if (TempData.ContainsKey("ErrorMatKhau"))
+            {
+                ViewBag.ErrorMatKhau = TempData["ErrorMatKhau"];
+            }
             return View();
         }
+        //[HttpPost]
+        //public IActionResult doiMatkhau(string oldPassword, string newPassword)
+        //{
+        //    string username = HttpContext.Session.GetString("Manv");
+        //    var employee = db.Nhanviens.FirstOrDefault(nv => nv.Manv == username);
+        //    if (employee == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    string manv = employee.Manv;
+        //    var employee1 = db.Nhanviens.FirstOrDefault(nv => nv.Manv == manv);
+        //    if (employee1 == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    // Kiểm tra mật khẩu cũ
+        //    if (employee.Matkhau != GetMd5Hash(oldPassword))
+        //    {
+        //        return BadRequest("Mật khẩu cũ không đúng");
+        //    }
+
+        //    // Mã hóa mật khẩu mới
+        //    string hashedNewPassword = GetMd5Hash(newPassword);
+
+        //    // Cập nhật mật khẩu mới vào cơ sở dữ liệu
+        //    employee.Matkhau = hashedNewPassword;
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("Index");
+        //}
         [HttpPost]
         public IActionResult doiMatkhau(string oldPassword, string newPassword)
         {
             string username = HttpContext.Session.GetString("Manv");
-            // ViewBag.ten = manv;
-            // string username = User.Identity.Name; // Retrieve the username from the logged-in user's identity
 
-            // Example logic to retrieve the employee from the database using the username
+            // Check if the user is an employee
             var employee = db.Nhanviens.FirstOrDefault(nv => nv.Manv == username);
-            if (employee == null)
+            if (employee != null)
             {
-                // Handle case when the employee is not found
-                return NotFound();
+                // Kiểm tra mật khẩu cũ cho nhân viên
+                if (employee.Matkhau != GetMd5Hash(oldPassword))
+                {
+                    TempData["ErrorMatKhau"] = "Mật khẩu cũ không đúng";
+                    return RedirectToAction("formDoimatkhau");
+                }
+
+              
+                string hashedNewPassword = GetMd5Hash(newPassword);
+
+               
+                employee.Matkhau = hashedNewPassword;
+                db.SaveChanges();
+                TempData["SuccessMatKhau"] = "Thay đổi mật khẩu thành công";
+
+               
+                if (User.IsInRole("quanly"))
+           
+                {
+                    
+                    return RedirectToAction("Index","Khoahoc");
+                }
+
+                
+                return RedirectToAction("Index", "Hocvien");
             }
 
-            string manv = employee.Manv; // Retrieve the Manv value from the employee object
-
-            // TODO: Implement logic to change the password for the employee with the given manv (employee ID).
-
-            // Example logic to update the password in the database:
-            var employee1 = db.Nhanviens.FirstOrDefault(nv => nv.Manv == manv);
-            if (employee1 == null)
+            var teacher = db.Giaoviens.FirstOrDefault(gv => gv.Magv == username);
+            if (teacher != null)
             {
-                // Handle case when the employee is not found
-                return NotFound();
+                // Kiểm tra mật khẩu cũ cho giáo viên
+                if (teacher.Matkhau != GetMd5Hash(oldPassword))
+                {
+                    TempData["ErrorMatKhau"] = "Mật khẩu cũ không đúng";
+                    return RedirectToAction("formDoimatkhau");
+                }
+
+               
+                string hashedNewPassword = GetMd5Hash(newPassword);
+
+                
+                teacher.Matkhau = hashedNewPassword;
+                db.SaveChanges();
+                TempData["SuccessMatKhau"] = "Thay đổi mật khẩu thành công";
+
+              
+                return RedirectToAction("Index", "Hocvien");
             }
 
-            // Check if the old password matches the stored password
-            if (employee.Matkhau != oldPassword)
-            {
-                // Handle case when the old password is incorrect
-                return BadRequest("password cũ khong dung");
-            }
-
-            // Update the password with the new value
-            employee.Matkhau = newPassword;
-
-            // Save the changes to the database
-            db.SaveChanges();
-
-            // Return e success response
-            return RedirectToAction("Index");
+            
+            return NotFound();
         }
+
+
         public IActionResult formSuaNhanvien(string id)
         {
             if (TempData.ContainsKey("ErrorMessageSNV"))
@@ -147,11 +221,11 @@ namespace hocvien.Controllers
                     {
                         hv.Hoten = x.Hoten;
                         hv.Ngaysinh = x.Ngaysinh;
-                        //if (x.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Year) <= 18)
-                        //{
-                        //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-                        //    return -1;
-                        //}
+                        if (x.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Year) < 18)
+                        {
+                            ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                            return View("formSuaNhanvien", x);
+                        }
                         hv.Gioitinh = x.Gioitinh;
                         hv.Trangthai = x.Trangthai;
                         hv.Diachi = x.Diachi;
@@ -163,17 +237,13 @@ namespace hocvien.Controllers
                     TempData["SuaSuccessMessageNV"] = "Sửa nhân viên thành công";
                     return RedirectToAction("Index");
                 }
-                return View("formThemnhanvien", x);
+                return View("formSuaNhanvien", x);
             }
             catch (Exception e)
             {
                 TempData["ErrorMessageSNV"] = "Đã xảy ra lỗi trong quá trình sửa nhân viên.";
-                // Log ex or do something with the exception
                 return View("formSuaNhanvien",x);
             }
-            
-
-           
         }
 
         public IActionResult formXoaNhanVien(String id)

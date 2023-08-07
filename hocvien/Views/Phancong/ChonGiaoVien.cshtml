@@ -8,9 +8,12 @@
     Layout = "_Layout";
 }
 @model List<Giaovien>
-
-<h2>Chọn giáo viên cho lớp học</h2>
-
+@if (TempData.ContainsKey("ErrorPC"))
+{
+    <div class="alert alert-danger" id="msgAlertError">
+        @TempData["ErrorPC"]
+    </div>
+}
 <h2>Chọn giáo viên cho lớp học</h2>
 
 <form method="post" asp-action="PhanCongGiaoVien" asp-controller="Phancong">
@@ -37,7 +40,7 @@
     <thead>
         <tr>
             <th>Giáo viên</th>
-            <th>Actions</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -47,13 +50,22 @@
                 <td>@lopGiaoVien.MagvNavigation.Hoten</td>
                 <td>
                     <!-- Add "Edit" button to each row -->
-                    <form asp-action="SuaPhanCongGiaoVien" asp-controller="Phancong" method="post">
+                    <form asp-action="formSuaPhanCongGiaoVien" asp-controller="Phancong">
                         <input type="hidden" name="malophoc" value="@ViewBag.MaLopHoc" />
                         <input type="hidden" name="magv" value="@lopGiaoVien.Magv" />
-                        <button type="submit" class="btn btn-primary">Edit</button>
+                       @* <button type="submit" class="btn btn-primary">Edit</button>*@
                     </form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<script>
+
+    function hideErrorMessage() {
+        var errorMessageDiv = document.getElementById('msgAlertError');
+        errorMessageDiv.style.display = 'none';
+    }
+
+    setTimeout(hideErrorMessage, 4000);
+</script>

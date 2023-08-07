@@ -1,0 +1,61 @@
+﻿@model IEnumerable<hocvien.Model.Giaovien>
+
+<p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              Họ tên
+            </th>
+            <th>
+                Ngày sinh
+            </th>
+            <th>
+                Giới tính
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                SDT
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysinh)
+            </td>
+                <td>
+                    @if (item.Gioitinh == 1)
+                    {
+                        <span>Nam</span>
+                    }
+                    else
+                    {
+                        <span>Nữ</span>
+                    }
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+           
+            <td>
+              @*  <a asp-action="Edit" asp-route-id="@item.Magv">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Magv">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Magv">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -33,11 +33,7 @@
                 <input asp-for="Sdt" class="form-control" />
                 <span asp-validation-for="Sdt" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Diachi" class="control-label">Địa chỉ</label>
-                <input asp-for="Diachi" class="form-control" />
-                <span asp-validation-for="Diachi" class="text-danger"></span>
-            </div>
+         
         </div>
         <div class="col-md-6">
             @*<div class="form-group">*@
@@ -71,6 +67,11 @@
                @* <label asp-for="Gioitinh" class="control-label">Giới tính</label>
                 <input asp-for="Gioitinh" class="form-control" />
                 <span asp-validation-for="Gioitinh" class="text-danger"></span>*@
+            <div class="form-group">
+                <label asp-for="Diachi" class="control-label">Địa chỉ</label>
+                <input asp-for="Diachi" class="form-control" />
+                <span asp-validation-for="Diachi" class="text-danger"></span>
+            </div>
                 <div class="form-group">
                     <label asp-for="Gioitinh" class="control-label">Giới tính</label>
                     <select asp-for="Gioitinh" class="form-control">
@@ -87,14 +88,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="Nguoitao" class="control-label">Người tạo</label>
-                <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten" />
+                <input asp-for="Nguoitao" class="form-control" readonly value="@ViewBag.ten" />
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
-            <div class="form-group">
+          @*  <div class="form-group">
                 <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
                 <input asp-for="Ngaytao" type="date" class="form-control" />
                 <span asp-validation-for="Ngaytao" class="text-danger"></span>
-            </div>
+            </div>*@
         </div>
 
 

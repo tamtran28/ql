@@ -16,20 +16,20 @@
                 <span asp-validation-for="Phonghoc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Maloptuyensinh" class="control-label"></label>
+                <label asp-for="Maloptuyensinh" class="control-label">Mã lớp tuyển sinh</label>
                 <input asp-for="Maloptuyensinh" class="form-control" asp-items="ViewBag.Maloptuyensinh"></input>
                 <span asp-validation-for="Maloptuyensinh" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Nguoitao" class="control-label"></label>
-                <input asp-for="Nguoitao" class="form-control" value="@ViewBag.ten"/>
+                <input asp-for="Nguoitao" readonly class="form-control" value="@ViewBag.ten"/>
                 <span asp-validation-for="Nguoitao" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           @* <div class="form-group">
                 <label asp-for="Ngaytao" class="control-label">Ngày tạo</label>
                 <input asp-for="Ngaytao" class="form-control" />
                 <span asp-validation-for="Ngaytao" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Lưu" class="btn btn-primary" />
             </div>
@@ -38,6 +38,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary">Trở về</a>
 </div>
 

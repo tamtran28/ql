@@ -16,6 +16,7 @@
         @ViewBag.SuccessMessageNV
     </div>
 }
+
 <h1>Danh sách nhân viên</h1>
 
 <p>
@@ -61,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.Hoten)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ngaysinh)
+                @(((DateTime)item.Ngaysinh).ToString("dd/MM/yyyy"))
             </td>
             <td>
                     @if (item.Gioitinh == 1)

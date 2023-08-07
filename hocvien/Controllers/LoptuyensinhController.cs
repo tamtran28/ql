@@ -21,9 +21,9 @@ namespace hocvien.Controllers
         private centerContext db = new centerContext();
         public IActionResult Index()
         {
-            if (TempData.ContainsKey("SuccessMessage"))
+            if (TempData.ContainsKey("SuccessMessageLopTS"))
             {
-                ViewBag.SuccessMessageTS = TempData["SuccessMessage"];
+                ViewBag.SuccessMessageTS = TempData["SuccessMessageLopTS"];
             }
             if (TempData.ContainsKey("SuccessMessageSuaTS"))
             {
@@ -31,31 +31,28 @@ namespace hocvien.Controllers
             }
             if (TempData.ContainsKey("XoaTS"))
             {
-                ViewBag.xoa = TempData["XoaTS"];
+                ViewBag.xoaLopTS = TempData["XoaTS"];
             }
             var ds = db.Loptuyensinhs
-            .Join(db.Cahocs,
-                r => r.Macahoc,
-                s => s.Macahoc,
+                    .Join(db.Cahocs,
+                     r => r.Macahoc,
+                 s => s.Macahoc,
                 (r, s) =>
-            //    new { Loptuyensinh = r, Cahoc = s })
-            //.Join(db.LopDangkyhocs, s => s.Phieudangkyhoc.Maphieu, n => n.Maphieu, (s, n) => new { Phieudangkyhoc = s, LopDangkyhoc = n })
-            //.Join(db.Loptuyensinhs,
-            //s => s.LopDangkyhoc.Maloptuyensinh,
-            //j => j.Maloptuyensinh,
+
             new CLopTS
             {
-               // Maphieu = s.Phieudangkyhoc.Phieudangkyhoc.Maphieu,
-                //Mahv = s.Phieudangkyhoc.Hocvien.Mahv,
-                //Hoten = s.Phieudangkyhoc.Hocvien.Hoten,
-                Ngaybatdau = (DateTime)r.Ngaybatdau,
-                Ngayketthuc = (DateTime)r.Ngayketthuc,
-                Maloptuyensinh = r.Maloptuyensinh,
-                Tenloptuyensinh = r.Tenloptuyensinh,
-                Thuhoc = s.Thuhoc,
-                Giohoc = s.Giohoc,
-            });
+                  Ngaybatdau = r.Ngaybatdau.ToShortDateString(),
+                  Ngayketthuc = r.Ngayketthuc.ToShortDateString(),
+                  Maloptuyensinh = r.Maloptuyensinh,
+                  Tenloptuyensinh = r.Tenloptuyensinh,
+                  Thuhoc = s.Thuhoc,
+                  Giohoc = s.Giohoc,
+                  Trangthai = r.Trangthai,
+  }).Where(c => c.Trangthai == "đang mở").ToList();
+
             return View(ds);
+
+          
         }
         [Authorize(Roles = "tuyensinh")]
         public IActionResult themLoptuyensinh()
@@ -82,7 +79,7 @@ namespace hocvien.Controllers
             try
             {
                 string manv = HttpContext.Session.GetString("Manv");
-                string thangNamHienTai = DateTime.Now.ToString("MMyyyy");
+                string thangNamHienTai = DateTime.Now.ToString("ddMMyy");
 
                 if (ModelState.IsValid)
                 {
@@ -112,7 +109,7 @@ namespace hocvien.Controllers
 
                     db.SaveChanges();
 
-                    TempData["SuccessMessage"] = "Thêm lớp tuyển sinh thành công";
+                    TempData["SuccessMessageLopTS"] = "Thêm lớp tuyển sinh thành công";
                     return RedirectToAction("Index", "Loptuyensinh");
                 }
             }
@@ -179,7 +176,7 @@ namespace hocvien.Controllers
                 return View("formXoaloptuyensinh");
             }
         }
-
+        [Authorize(Roles = "tuyensinh")]
         public IActionResult formSualoptuyensinh(string id)
         {
             string manv = HttpContext.Session.GetString("Manv");
@@ -230,9 +227,7 @@ namespace hocvien.Controllers
             }
             catch (Exception ex)
             {
-                // Xử lý ngoại lệ và ghi log nếu cần thiết
-                // logger.LogError(ex, "Error while updating Loptuyensinh");
-
+               
                 TempData["ErrorMessageSua"]= "Đã xảy ra lỗi khi cập nhật lớp tuyển sinh";
             }
 

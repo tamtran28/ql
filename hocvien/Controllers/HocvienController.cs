@@ -18,46 +18,33 @@ namespace hocvien.Controllers
     public class HocvienController : Controller
     {
         private centerContext db = new centerContext();
-        //public IActionResult Index()
-
-        //{
-        //    if (TempData.ContainsKey("SuccessMessage"))
-        //    {
-        //        ViewBag.SuccessMessage = TempData["SuccessMessage"];
-        //    }
-        //    List<Models.CHocvienview> ds = db.Hocviens.Select(a => new Models.CHocvienview
-        //    {
-        //       Mahv = a.Mahv,
-        //        Hoten = a.Hoten,
-        //        Ngaysinh = a.Ngaysinh.Value.ToShortDateString(),
-        //        Gioitinh = (a.Gioitinh == 1 ? "Nam" : "Nữ"),
-        //        Sdt = a.Sdt,
-        //        Diachi = a.Diachi,
-        //        Trangthai = a.Trangthai,
-
-
-        //    }).ToList();
-        //    return View(ds);
-
-        //}
         [Authorize(Roles = "tuyensinh,hocvu,giaovien")]
         public IActionResult Index(int currentPage = 1)
         {
-            int pageSize = 5; // Số lượng học viên hiển thị trên mỗi trang
+            int pageSize = 10; // Số lượng học viên hiển thị trên mỗi trang
 
-            if (TempData.ContainsKey("SuccessMessage"))
+            if (TempData.ContainsKey("SuccessMessageHV"))
             {
-                ViewBag.SuccessMessageHV = TempData["SuccessMessage"];
+                ViewBag.SuccessMessageHV = TempData["SuccessMessageHV"];
             }
             if (TempData.ContainsKey("SuaSuccessMessage"))
             {
                 ViewBag.SuaSuccessMessageHV = TempData["SuaSuccessMessage"];
             }
+            if (TempData.ContainsKey("SuccessMessageXoaHV"))
+            {
+                ViewBag.SuccessMessageXoaHV = TempData["SuccessMessageXoaHV"];
+            }
+            if (TempData.ContainsKey("SuccessMatKhau"))
+            {
+                ViewBag.SuccessMatKhau = TempData["SuccessMatKhau"];
+            }
+
             List<Model.CHocvienview> ds = db.Hocviens.Select(a => new Model.CHocvienview
             {
                 Mahv = a.Mahv,
                 Hoten = a.Hoten,
-                Ngaysinh = a.Ngaysinh.ToShortDateString(),
+                Ngaysinh = a.Ngaysinh.ToString("dd/MM/yyyy"),
                 Gioitinh = (a.Gioitinh == 1 ? "Nam" : "Nữ"),
                 Sdt = a.Sdt,
                 Diachi = a.Diachi,
@@ -102,6 +89,8 @@ namespace hocvien.Controllers
                 }
 
                 hocVien.Mahv = taoMaHocVien();
+                hocVien.Trangthai = "mới";
+                hocVien.Ngaytao = DateTime.Now;
                 db.Hocviens.Add(hocVien);
                 db.SaveChanges();
 
@@ -110,9 +99,6 @@ namespace hocvien.Controllers
             }
             catch (Exception ex)
             {
-                // Xử lý ngoại lệ và ghi log nếu cần thiết
-                // logger.LogError(ex, "Error while adding Hocvien");
-
                 TempData["ErrorThem"]="Đã xảy ra lỗi khi thêm học viên";
             }
 
@@ -167,15 +153,15 @@ namespace hocvien.Controllers
                 {
                     hv.Hoten = x.Hoten;
                     hv.Ngaysinh = x.Ngaysinh;
-                    //if (x.Ngaysinh.Value.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Value.Year) < 4)
-                    //{
-                    //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-                    //    return -1;
-                    //}
+                    if (x.Ngaysinh.Year >= DateTime.Now.Year || (DateTime.Now.Year - x.Ngaysinh.Year) < 4)
+                    {
+                        ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
+                        return View("formSuaHocvien", x);
+                    }
                     hv.Gioitinh = x.Gioitinh;
                     hv.Nguoitao = manv;
                     hv.Diachi = x.Diachi;
-                    hv.Ngaytao = x.Ngaytao;
+                    hv.Ngaytao = DateTime.Now;
                     hv.Sdt = x.Sdt;
                     db.SaveChanges();
                 }
@@ -183,7 +169,7 @@ namespace hocvien.Controllers
                 return RedirectToAction("Index");
             }
            
-            return View("formSuaHocvien");
+            return View("formSuaHocvien",x);
         }
         [Authorize(Roles = "tuyensinh,hocvu")]
         public IActionResult formXoaHocVien(String id)
@@ -202,7 +188,7 @@ namespace hocvien.Controllers
                 db.Hocviens.Remove(x);
                 db.SaveChanges();
             }
-
+            TempData["SuccessMessageXoaHV"] = "Xóa học viên thành công";
             return RedirectToAction("Index");
 
         }
@@ -217,12 +203,8 @@ namespace hocvien.Controllers
             }
 
             var phieuDiems = db.Phieudiems.Where(pd => pd.Mahv == id).ToList();
-
-            // Check if phieuDiems is empty
             if (phieuDiems.Count == 0)
             {
-                // Handle the case when there are no Phieudiems for the hocVien
-                // For example, you can return a view with a message like "No Phieudiems found."
                 return View(new CHocvienview
                 {
                     Mahv = hocVien.Mahv,
@@ -236,11 +218,6 @@ namespace hocvien.Controllers
             }
             else
             {
-                // Here, you need to decide how to handle the case when there are multiple Phieudiems
-                // For example, you might want to display all Malophoc values, or select one of them
-                // ...
-
-                // For demonstration purposes, let's assume you want to display the first Malophoc value
                 var malophoc = phieuDiems[0].Malophoc;
                 var lopHoc = db.Lophocs.FirstOrDefault(lh => lh.Malophoc == malophoc);
 

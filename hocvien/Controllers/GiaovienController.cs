@@ -3,8 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace hocvien.Controllers
 {
@@ -22,9 +25,13 @@ namespace hocvien.Controllers
             {
                 ViewBag.SuaSuccessMessage = TempData["SuaSuccessMessageGV"];
             }
+            if (TempData.ContainsKey("MessageXoaGV"))
+            {
+                ViewBag.XoaSuccessMessageGV = TempData["MessageXoaGV"];
+            }
             var danhSachgiaovien = db.Giaoviens.Where(nv => nv.Trangthai == "Đang làm").ToList();
             return View(danhSachgiaovien);
-            //return View(db.Giaoviens.ToList());
+           
         }
 
         public IActionResult formthemGiaovien()
@@ -34,9 +41,6 @@ namespace hocvien.Controllers
             return View();
         }
 
-
-
-        //}
         [HttpPost]
         public IActionResult themGiaovien(Giaovien gv)
         {
@@ -49,6 +53,10 @@ namespace hocvien.Controllers
                 }
 
                 gv.Magv = taoMagiaovien();
+                gv.Trangthai = "Đang làm";
+                gv.Ngaytao = DateTime.Now;
+                gv.Matkhau = GetMd5Hash(gv.Matkhau);
+                gv.Nhom = 4;
                 db.Giaoviens.Add(gv);
                 db.SaveChanges();
 
@@ -58,10 +66,23 @@ namespace hocvien.Controllers
             catch (Exception ex)
             {
                 TempData["ErrorMessageGV"] = "Đã xảy ra lỗi khi thêm giáo viên";
-                // Log the exception if needed
-                // logger.LogError(ex, "Error while adding teacher");
+               
+            }
+            return RedirectToAction("formthemGiaovien", gv);
+        }
+        public string GetMd5Hash(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] data = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+                StringBuilder sBuilder = new StringBuilder();
 
-                return RedirectToAction("formthemGiaovien");
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("x2"));
+                }
+
+                return sBuilder.ToString();
             }
         }
 
@@ -97,9 +118,8 @@ namespace hocvien.Controllers
                 // Lưu thay đổi vào cơ sở dữ liệu
                 db.SaveChanges();
             }
-
+            TempData["MessageXoaGV"] = "Xóa giáo viên thành công";
             return RedirectToAction("Index");
-
         }
 
         public IActionResult formSuaGiaovien(string id)
@@ -110,7 +130,7 @@ namespace hocvien.Controllers
 
             return View(x);
         }
-        //lỗi
+       
         [HttpPost]
         public IActionResult suaGiaovien(Model.Giaovien x)
         {
@@ -129,56 +149,33 @@ namespace hocvien.Controllers
                     hv.Capdoday = x.Capdoday;
                     hv.Trinhdo = x.Trinhdo;
                     hv.Ngaytao = DateTime.Now;
-                    //hv.Nguoitao = x.Nguoitao;
-                    hv.Trangthai = x.Trangthai;
-                   // db.SaveChanges();
+                    hv.Trangthai = "đang làm";
                     db.SaveChanges();
                 }
                 TempData["SuaSuccessMessageGV"] = "Sửa thành công";
 
 
-                //else if (User.IsInRole("giaovien"))
-                //{
+               
                 return RedirectToAction("Index");
               
             }
 
-            return View("formSuathongtinnhanvien", x);
+            return View("formSuathongtinnhanvien",x);
         }
-        //[HttpPost]
-        //public IActionResult suaGiaovien(Model.Giaovien x)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        Model.Giaovien hv = db.Giaoviens.Find(x.Magv);
-        //        if (hv != null)
-        //        {
-        //            // Cập nhật thông tin giáo viên
-        //            hv.Hoten = x.Hoten;
-        //            hv.Ngaysinh = x.Ngaysinh;
-        //            //if (x.Ngaysinh < SqlDateTime.MinValue.Value || x.Ngaysinh > SqlDateTime.MaxValue.Value)
-        //            //{
-        //            //    ModelState.AddModelError("Ngaysinh", "Ngày sinh không hợp lệ.");
-        //            //    return View("formSuaGiaovien", x);
-        //            //}
-        //            hv.Gioitinh = x.Gioitinh;
-        //            hv.Sdt = x.Sdt;
-        //            hv.Diachi = x.Diachi;
-        //            hv.Capdoday = x.Capdoday;
-        //            hv.Trinhdo = x.Trinhdo;
-        //            hv.Ngaytao = x.Ngaytao;
-        //            hv.Nguoitao = x.Nguoitao;
-        //            hv.Trangthai = x.Trangthai;
-        //            db.SaveChanges();
+        [HttpGet]
+        public IActionResult timGiaoVien(string id)
+        {
 
-        //            TempData["SuaSuccessMessageGV"] = "Sửa giáo viên thành công";
-        //            return RedirectToAction("Index");
-        //        }
-               
-        //    }
+            List<Giaovien> ds = db.Giaoviens.Where(x => x.Hoten.Contains(id)).ToList();
+            
+            if (ds.Count == 0)
+            {
+                ViewBag.Message = "Không tìm thấy giáo viên";
+            }
 
-        //    return View("formSuaGiaovien");
-        //}
+            return PartialView(ds);
 
+
+        }
     }
 }

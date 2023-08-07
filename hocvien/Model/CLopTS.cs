@@ -8,8 +8,8 @@ namespace hocvien.Model
         public string Trangthai { get; set; }
         public string Nguoitao { get; set; }
         public DateTime Ngaytao { get; set; }
-        public DateTime Ngaybatdau { get; set; }
-        public DateTime Ngayketthuc { get; set; }
+        public string Ngaybatdau { get; set; }
+        public string Ngayketthuc { get; set; }
         public string Thuhoc { get; set; }
         public string Macahoc { get; set; }
         public string Makh { get; set; }

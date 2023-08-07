@@ -15,17 +15,6 @@ namespace hocvien.Controllers
             ViewBag.DoanhThu = TongTienThuTrongThang();
             return View();
         }
-        //public IActionResult thongKepdk(int month)
-        //{
-        //    int numberOfStudents = db.Phieudangkyhocs
-        //  .Where(p => p.Ngaydk.HasValue && p.Ngaydk.Value.Month == month)
-        //  .Count();
-
-
-        //    ViewBag.NumberOfStudents = numberOfStudents;
-
-        //    return View();
-        //}
         public int soLuonghocvientrongthang()
         {
             // Lấy ngày hiện tại

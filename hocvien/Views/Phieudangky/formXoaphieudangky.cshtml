@@ -7,11 +7,11 @@
 <div>
     @if ((int)ViewBag.flag == 0)
     {
-        <h5 class="text-warning text-xl text-uppercase">Bạn thực sự muốn xóa</h5>
+        <h5 class="text-xl text-uppercase">Bạn thực sự muốn xóa</h5>
     }
     else
     {
-        <h5 class="text-warning text-xl text-uppercase">Bạn không thể xóa</h5>
+        <h5 class="text-xl text-uppercase">Bạn không thể xóa</h5>
     }
    
     <div>
@@ -75,10 +75,18 @@
         </dl>
 
         <form asp-action="xoaPhieudangky" asp-route-id="@Model.Maphieu" method="post">
-            @if ((int)ViewBag.flag == 0)
-            {
-                <input type="submit" value="Xóa" class="btn btn-danger" />
-            }
+            
+            <div class="row">
+                <div class="col-sm-2">
+                    @if ((int)ViewBag.flag == 0)
+                    {
+                        <input type="submit" value="Xóa" class="btn btn-danger" />
+                    }
+                </div>
+                <div class="col-sm-10">
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                </div>
+            </div>
         </form>
     </div>
 </div>
